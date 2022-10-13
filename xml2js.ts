@@ -11,7 +11,7 @@ parser.parseString(xml_string, function (error, result) {
   if (error === null) {
     console.log(result);
     fs.writeFileSync(
-      "/home/malo/Documents/LWM2M-JSONShcema/1.JSON",
+      "/home/malo/Documents/LWM2M-JSONShcema/1.json",
       JSON.stringify(result)
     );
   } else {
