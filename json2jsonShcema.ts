@@ -1,7 +1,18 @@
 import * as json from "./1.json";
 import fs from "fs";
 
-const defineType = (
+/**
+ * Generate typebox definition with received params
+ * @param key
+ * @param type
+ * @param description
+ * @param isOptional
+ * @param rangeEnumeration
+ * @param id
+ * @param units
+ * @returns string
+ */
+const getTypebox = (
   key: string,
   type: string,
   description: string,
@@ -13,16 +24,23 @@ const defineType = (
   const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
   const maximun = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
-  const val = `Type.${getType(type)}({
+  const definition = `Type.${getType(type)}({
     $id: '${id}',
     description: "${description}"
     ${minimum ? `, minimun: ${minimum}` : ""}
     ${minimum ? `, maximun: ${maximun}` : ""}
     ${units ? `, units: '${units}'` : ""}
 })`;
-  return isOptional ? `${key}: Type.Optional(${val})` : `${key}: ${val}`;
+  return isOptional
+    ? `${key}: Type.Optional(${definition})`
+    : `${key}: ${definition}`;
 };
 
+/**
+ * Get the equivalent data type
+ * @param type
+ * @returns string
+ */
 const getType = (type: string) => {
   switch (type) {
     case "Integer":
@@ -38,20 +56,24 @@ const getType = (type: string) => {
   }
 };
 
-const x = json.LWM2M.Object[0].Resources[0].Item.reduce(
-  (previousValue: string | any[], currentValue: any) => {
-    const key = currentValue.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
-    const type = currentValue.Type[0];
-    const description = currentValue.Description[0]
+/**
+ * Iterates over the items and construct the definition of the object
+ */
+const defineProperties = json.LWM2M.Object[0].Resources[0].Item.reduce(
+  (object: string | any[], element: any) => {
+    // pick properties from the current element to generate the typebox definition
+    const key = element.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
+    const type = element.Type[0];
+    const description = element.Description[0]
       .replaceAll(`"`, "'")
       .replaceAll("’", "'")
       .replaceAll("\n", " ");
-    const isOptional = currentValue.Mandatory[0] === "Optional";
-    const rangeEnumeration = currentValue.RangeEnumeration[0].split("..");
-    const id = currentValue.ATTR.ID;
-    const units = currentValue.Units[0];
+    const isOptional = element.Mandatory[0] === "Optional";
+    const rangeEnumeration = element.RangeEnumeration[0].split("..");
+    const id = element.ATTR.ID;
+    const units = element.Units[0];
 
-    const newObject = defineType(
+    const typebox = getTypebox(
       key,
       type,
       description,
@@ -60,45 +82,39 @@ const x = json.LWM2M.Object[0].Resources[0].Item.reduce(
       id,
       units
     );
-    return previousValue.length === 0
-      ? newObject
-      : `${previousValue}, ${newObject}`;
+
+    return object.length === 0 ? typebox : `${object}, ${typebox}`;
   },
   ""
 );
 
-const example = `hola : Type.String({
-    minLength: 1,
-    description: 'Network mode',
-    examples: ['LTE-M', 'NB-IoT'],
-})`;
+/**
+ * Typebox import statement in string
+ */
 const importTypeBox = `import { Type } from '@sinclair/typebox'`;
-const description = json.LWM2M.Object[0].Description1[0]
+
+/**
+ * General description of processed object
+ */
+const generalObjectDescription = json.LWM2M.Object[0].Description1[0]
   .replaceAll(`"`, "'")
   .replaceAll("’", "'")
   .replaceAll("\n", " ");
-const object = `export const ${json.LWM2M.Object[0].Name[0].replaceAll(
-  " ",
-  "_"
-)} = Type.Object({${x}}, {description: "${description}"})`;
 
-const message = `${importTypeBox}\n ${object}`;
-/*
-{
+/**
+ * name of processed object
+ */
+const objectName = json.LWM2M.Object[0].Name[0].replaceAll(" ", "_");
 
-}
+/**
+ * Export statement of processed object
+ */
+const object = `export const ${objectName} = Type.Object({${defineProperties}}, {description: "${generalObjectDescription}"})`;
 
-*/
+const jsonSchema = `${importTypeBox}\n ${object}`;
 
 fs.writeFileSync(
   "/home/malo/Documents/LWM2M-JSONShcema/1.ts",
-  message,
+  jsonSchema,
   "utf8"
-  //{ flag: "wx" }
 );
-/*
-{
-
-}
-
-*/
