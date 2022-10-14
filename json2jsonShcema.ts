@@ -59,7 +59,19 @@ const getTypebox = (
 /**
  * Iterates over the items and construct the definition of the object
  */
-const defineProperties = (items: any[]) =>
+const defineProperties = (
+  items: any[],
+  typeboxDefinition = (
+    key: string,
+    type: string,
+    description: string,
+    isOptional: boolean,
+    rangeEnumeration: any[],
+    id: string,
+    units: string
+  ) =>
+    getTypebox(key, type, description, isOptional, rangeEnumeration, id, units)
+) =>
   items.reduce((object: string | any[], element: any) => {
     // pick properties from the current element to generate the typebox definition
     const key = element.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
@@ -73,7 +85,7 @@ const defineProperties = (items: any[]) =>
     const id = element.ATTR.ID;
     const units = element.Units[0];
 
-    const typebox = getTypebox(
+    const typebox = typeboxDefinition(
       key,
       type,
       description,
