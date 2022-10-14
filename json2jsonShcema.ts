@@ -1,15 +1,14 @@
-const json = require("./1.json");
-const fs = require("fs");
+import * as json from "./1.json";
+import fs from "fs";
 
-//(key: string, type: string, description: string)
 const defineType = (
-  key,
-  type,
-  description,
-  isOptional,
-  rangeEnumeration,
-  id,
-  units
+  key: string,
+  type: string,
+  description: string,
+  isOptional: boolean,
+  rangeEnumeration: any[],
+  id: string,
+  units: string
 ) => {
   const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
   const maximun = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
@@ -24,7 +23,7 @@ const defineType = (
   return isOptional ? `${key}: Type.Optional(${val})` : `${key}: ${val}`;
 };
 
-const getType = (type) => {
+const getType = (type: string) => {
   switch (type) {
     case "Integer":
       return "Number";
@@ -40,7 +39,7 @@ const getType = (type) => {
 };
 
 const x = json.LWM2M.Object[0].Resources[0].Item.reduce(
-  (previousValue, currentValue) => {
+  (previousValue: string | any[], currentValue: any) => {
     const key = currentValue.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
     const type = currentValue.Type[0];
     const description = currentValue.Description[0]
@@ -94,6 +93,12 @@ const message = `${importTypeBox}\n ${object}`;
 fs.writeFileSync(
   "/home/malo/Documents/LWM2M-JSONShcema/1.ts",
   message,
-  "utf8",
-  { flag: "wx" }
+  "utf8"
+  //{ flag: "wx" }
 );
+/*
+{
+
+}
+
+*/

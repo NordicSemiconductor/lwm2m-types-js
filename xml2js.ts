@@ -1,13 +1,21 @@
-const xml2js = require("xml2js");
-const fs = require("fs");
+import xml2js from "xml2js";
+import fs from "fs";
 const parser = new xml2js.Parser({ attrkey: "ATTR" });
 
-let xml_string = fs.readFileSync(
+/**
+ * load xml schema
+ */
+const xml = fs.readFileSync(
   "/home/malo/Documents/LWM2M-JSONShcema/1.XML",
   "utf8"
 );
 
-parser.parseString(xml_string, function (error, result) {
+/**
+ * Check if error and if not create a json file
+ * @param error
+ * @param result
+ */
+const writeJson = (error: Error | null, result: any): void => {
   if (error === null) {
     console.log(result);
     fs.writeFileSync(
@@ -17,4 +25,9 @@ parser.parseString(xml_string, function (error, result) {
   } else {
     console.log(error);
   }
-});
+};
+
+/**
+ * Take an xml schema and 'translate' it to json format
+ */
+parser.parseString(xml, (error, result) => writeJson(error, result));
