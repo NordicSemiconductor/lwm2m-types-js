@@ -2,6 +2,26 @@ import * as json from "./1.json";
 import fs from "fs";
 
 /**
+ * Get the equivalent data type
+ * @param type
+ * @returns string
+ */
+const getType = (type: string) => {
+  switch (type) {
+    case "Integer":
+      return "Number";
+    case "Unsigned Integer":
+      return "Number";
+    case "Boolean":
+      return "Boolean";
+    case "String":
+      return "String";
+    default:
+      return "Any";
+  }
+};
+
+/**
  * Generate typebox definition with received params
  * @param key
  * @param type
@@ -35,26 +55,6 @@ const getTypebox = (
     ? `${key}: Type.Optional(${definition})`
     : `${key}: ${definition}`;
 };
-
-/**
- * Get the equivalent data type
- * @param type
- * @returns string
- */
-const getType = (type: string) => {
-  switch (type) {
-    case "Integer":
-      return "Number";
-    case "Unsigned Integer":
-      return "Number";
-    case "Boolean":
-      return "Boolean";
-    case "String":
-      return "String";
-    default:
-      return "Any";
-  }
-}; // TODO: update order.
 
 /**
  * Iterates over the items and construct the definition of the object
