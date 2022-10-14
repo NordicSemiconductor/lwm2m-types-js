@@ -5,17 +5,17 @@ const parser = new xml2js.Parser({ attrkey: "ATTR" });
 /**
  * load xml schema
  */
-const xml =
+export const getXml =
   (dir: string, name: string) =>
-  (read = (route: string) => fs.readFileSync(`${route}.xml`, "utf8")): string =>
-    read(`${dir}/${name}`);
+  (read = (route: string) => fs.readFileSync(route, "utf8")): string =>
+    read(`${dir}/${name}.xml`);
 
 /**
  * Check if error and if not create a json file
  * @param error
  * @param result
  */
-const writeJson =
+export const createJson =
   (error: Error | null, result: any, dir: string, name: string) =>
   (
     write = (route: string, json: string) => fs.writeFileSync(route, json)
@@ -25,6 +25,7 @@ const writeJson =
       write(`${dir}/${name}.json`, JSON.stringify(result));
     } else {
       console.log(error);
+      throw new Error(error.message);
     }
   };
 
@@ -32,17 +33,21 @@ const writeJson =
  * Take a xml schema and 'translate' it to json format.
  * Then write the result in a json file
  */
-const main =
+export const main =
   (uploadDir: string, name: string, writeDir: string) =>
   (
-    xmlFile = () => xml(uploadDir, name)(),
-    write = (error: Error | null, result: any) =>
-      writeJson(error, result, writeDir, name)()
+    xmlFile = () => getXml(uploadDir, name)(),
+    writeJson = (error: Error | null, result: any) =>
+      createJson(error, result, writeDir, name)()
   ) =>
-    parser.parseString(xmlFile(), (error, result) => write(error, result));
+  (
+    xml2json = () =>
+      parser.parseString(xmlFile(), (error, result) => writeJson(error, result))
+  ) =>
+    xml2json();
 
 main(
   "/home/malo/Documents/LWM2M-JSONShcema",
   "1",
   "/home/malo/Documents/LWM2M-JSONShcema"
-)();
+)()();
