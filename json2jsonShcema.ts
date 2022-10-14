@@ -54,13 +54,13 @@ const getType = (type: string) => {
     default:
       return "Any";
   }
-};
+}; // TODO: update order.
 
 /**
  * Iterates over the items and construct the definition of the object
  */
-const defineProperties = json.LWM2M.Object[0].Resources[0].Item.reduce(
-  (object: string | any[], element: any) => {
+const defineProperties = (items: any[]) =>
+  items.reduce((object: string | any[], element: any) => {
     // pick properties from the current element to generate the typebox definition
     const key = element.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
     const type = element.Type[0];
@@ -84,9 +84,7 @@ const defineProperties = json.LWM2M.Object[0].Resources[0].Item.reduce(
     );
 
     return object.length === 0 ? typebox : `${object}, ${typebox}`;
-  },
-  ""
-);
+  }, "");
 
 /**
  * Typebox import statement in string
@@ -96,25 +94,32 @@ const importTypeBox = `import { Type } from '@sinclair/typebox'`;
 /**
  * General description of processed object
  */
-const generalObjectDescription = json.LWM2M.Object[0].Description1[0]
-  .replaceAll(`"`, "'")
-  .replaceAll("’", "'")
-  .replaceAll("\n", " ");
+const generalObjectDescription = (description: string) =>
+  description.replaceAll(`"`, "'").replaceAll("’", "'").replaceAll("\n", " ");
 
 /**
  * name of processed object
  */
-const objectName = json.LWM2M.Object[0].Name[0].replaceAll(" ", "_");
+const objectName = (name: string) => name.replaceAll(" ", "_");
 
-/**
- * Export statement of processed object
- */
-const object = `export const ${objectName} = Type.Object({${defineProperties}}, {description: "${generalObjectDescription}"})`;
+const main =
+  (dir: string, description: string, items: any[], name: string) =>
+  (
+    importStatement = importTypeBox,
+    getGeneralDescription = () => generalObjectDescription(description),
+    getProperties = () => defineProperties(items),
+    getName = () => objectName(name),
+    write = (dir: string, jsonSchema: any) =>
+      fs.writeFileSync(dir, jsonSchema, "utf8")
+  ) => {
+    const object = `export const ${getName()} = Type.Object({${getProperties()}}, {description: "${getGeneralDescription()}"})`;
+    const jsonSchema = `${importStatement}\n ${object}`;
+    write(dir, jsonSchema);
+  };
 
-const jsonSchema = `${importTypeBox}\n ${object}`;
-
-fs.writeFileSync(
+main(
   "/home/malo/Documents/LWM2M-JSONShcema/1.ts",
-  jsonSchema,
-  "utf8"
-);
+  json.LWM2M.Object[0].Description1[0],
+  json.LWM2M.Object[0].Resources[0].Item,
+  json.LWM2M.Object[0].Name[0]
+)();
