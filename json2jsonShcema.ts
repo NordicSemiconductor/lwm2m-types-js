@@ -32,25 +32,33 @@ const getType = (type: string) => {
  * @param units
  * @returns string
  */
-const getTypebox = (
+export const getTypebox = (
   key: string,
   type: string,
   description: string,
   isOptional: boolean,
-  rangeEnumeration: any[],
+  rangeEnumeration: string[],
   id: string,
   units: string
 ) => {
   const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
   const maximun = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
-  const definition = `Type.${getType(type)}({
-    $id: '${id}',
-    description: "${description}"
-    ${minimum ? `, minimun: ${minimum}` : ""}
-    ${minimum ? `, maximun: ${maximun}` : ""}
-    ${units ? `, units: '${units}'` : ""}
-})`;
+  const params = [
+    `$id: '${id}'`,
+    `description: "${description}"`,
+    minimum ? `minimun: ${minimum}` : undefined,
+    maximun ? `maximun: ${maximun}` : undefined,
+    units ? `units: '${units}'` : undefined,
+  ].reduce((previous, current, index) => {
+    if (current) {
+      if (index === 0) return current;
+      return `${previous}, ${current}`;
+    }
+    return previous;
+  }, "");
+
+  const definition = `Type.${getType(type)}({${params}})`;
   return isOptional
     ? `${key}: Type.Optional(${definition})`
     : `${key}: ${definition}`;
