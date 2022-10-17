@@ -6,7 +6,7 @@ import fs from "fs";
  * @param type
  * @returns string
  */
-const getType = (type: string) => {
+const getType = (type: string): string => {
   switch (type) {
     case "Integer":
       return "Number";
@@ -40,7 +40,7 @@ export const getTypebox = (
   rangeEnumeration: string[],
   id: string,
   units: string
-) => {
+): string => {
   const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
   const maximun = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
@@ -79,7 +79,7 @@ export const defineProperties = (
     units: string
   ) =>
     getTypebox(key, type, description, isOptional, rangeEnumeration, id, units)
-) =>
+): string =>
   items.reduce((object: string | any[], element: any) => {
     // pick properties from the current element to generate the typebox definition
     const key = element.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
@@ -114,13 +114,13 @@ const importTypeBox = `import { Type } from '@sinclair/typebox'`;
 /**
  * General description of processed object
  */
-const generalObjectDescription = (description: string) =>
+const generalObjectDescription = (description: string): string =>
   description.replaceAll(`"`, "'").replaceAll("’", "'").replaceAll("\n", " ");
 
 /**
  * name of processed object
  */
-const objectName = (name: string) => name.replaceAll(" ", "_");
+const objectName = (name: string): string => name.replaceAll(" ", "_");
 
 /**
  * Transform json object in typebox definition
