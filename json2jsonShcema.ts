@@ -44,7 +44,7 @@ export const getTypebox = (
   const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
   const maximun = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
-  const params = [
+  const props = [
     `$id: '${id}'`,
     `description: "${description}"`,
     minimum ? `minimun: ${minimum}` : undefined,
@@ -58,7 +58,7 @@ export const getTypebox = (
     return previous;
   }, "");
 
-  const definition = `Type.${getType(type)}({${params}})`;
+  const definition = `Type.${getType(type)}({${props}})`;
   return isOptional
     ? `${key}: Type.Optional(${definition})`
     : `${key}: ${definition}`;
