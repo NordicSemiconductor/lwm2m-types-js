@@ -124,7 +124,8 @@ const generalObjectDescription = (description: string): string =>
 const objectName = (name: string): string => name.replaceAll(" ", "_");
 
 /**
- * Transform json object in typebox definition
+ * Transform json object in typebox definition.
+ * Then write the result in a json file.
  * @param dir
  * @param description
  * @param items
