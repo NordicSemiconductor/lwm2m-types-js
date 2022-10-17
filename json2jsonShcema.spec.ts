@@ -1,4 +1,4 @@
-import { getTypebox } from "./json2jsonShcema";
+import { getTypebox, defineProperties } from "./json2jsonShcema";
 
 describe("json2jsonSchema", () => {
   describe("getTypebox", () => {
@@ -100,6 +100,70 @@ describe("json2jsonSchema", () => {
       const result = `Communication_Retry_Count: Type.Optional(Type.Number({$id: '16', description: "The number of successive communication attempts before which a communication sequence is considered as failed."}))`;
 
       expect(typeboxDefinition).toBe(result);
+    });
+  });
+
+  describe("defineProperties", () => {
+    it("Should construct the definition of the object", () => {
+      const typeboxDefinition = jest.fn();
+      const items = [
+        {
+          ATTR: { ID: "0" },
+          Name: ["Short Server ID"],
+          Operations: ["R"],
+          MultipleInstances: ["Single"],
+          Mandatory: ["Mandatory"],
+          Type: ["Integer"],
+          RangeEnumeration: ["1..65534"],
+          Units: [""],
+          Description: ["Used as link to associate server Object Instance."],
+        },
+      ];
+
+      defineProperties(items, typeboxDefinition);
+
+      expect(typeboxDefinition).toHaveBeenCalledWith(
+        "Short_Server_ID", // name
+        "Integer", // type
+        "Used as link to associate server Object Instance.", // description
+        false, // is optional
+        ["1", "65534"], // range enumeration
+        "0", // id
+        "" // units
+      );
+    });
+
+    it("Should iterates over items and return an string object", () => {
+      const items = [
+        {
+          ATTR: { ID: "0" },
+          Name: ["Short Server ID"],
+          Operations: ["R"],
+          MultipleInstances: ["Single"],
+          Mandatory: ["Mandatory"],
+          Type: ["Integer"],
+          RangeEnumeration: ["1..65534"],
+          Units: [""],
+          Description: ["Used as link to associate server Object Instance."],
+        },
+        {
+          ATTR: { ID: "1" },
+          Name: ["Lifetime"],
+          Operations: ["RW"],
+          MultipleInstances: ["Single"],
+          Mandatory: ["Mandatory"],
+          Type: ["Integer"],
+          RangeEnumeration: [""],
+          Units: ["s"],
+          Description: [
+            "Specify the lifetime of the registration in seconds (see Client Registration Interface). If the value is set to 0, the lifetime is infinite.",
+          ],
+        },
+      ];
+
+      expect(defineProperties(items)).toBe(
+        `Short_Server_ID: Type.Number({$id: '0', description: "Used as link to associate server Object Instance.", minimun: 1, maximun: 65534}), Lifetime: Type.Number({$id: '1', description: "Specify the lifetime of the registration in seconds (see Client Registration Interface). If the value is set to 0, the lifetime is infinite.", units: 's'})`
+      );
     });
   });
 });

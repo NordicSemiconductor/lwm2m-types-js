@@ -67,7 +67,7 @@ export const getTypebox = (
 /**
  * Iterates over the items and construct the definition of the object
  */
-const defineProperties = (
+export const defineProperties = (
   items: any[],
   typeboxDefinition = (
     key: string,
