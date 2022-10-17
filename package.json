@@ -18,5 +18,8 @@
       ]
     },
     "testRegex": ".+\\.spec\\.ts$"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
   }
 }

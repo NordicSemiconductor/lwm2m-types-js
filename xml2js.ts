@@ -1,5 +1,6 @@
 import xml2js from "xml2js";
 import fs from "fs";
+import config from "./config/config";
 const parser = new xml2js.Parser({ attrkey: "ATTR" });
 
 /**
@@ -46,8 +47,4 @@ export const main =
   ) =>
     xml2json();
 
-main(
-  "/home/malo/Documents/LWM2M-JSONShcema",
-  "1",
-  "/home/malo/Documents/LWM2M-JSONShcema"
-)()();
+main(config.COPY_DIR, "1", config.PASTE_DIR)()();
