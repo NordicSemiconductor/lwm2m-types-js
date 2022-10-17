@@ -1,4 +1,4 @@
-import { getTypebox, defineProperties } from "./json2jsonShcema";
+import { getTypebox, defineProperties, main } from "./json2jsonShcema";
 
 describe("json2jsonSchema", () => {
   describe("getTypebox", () => {
@@ -164,6 +164,75 @@ describe("json2jsonSchema", () => {
       expect(defineProperties(items)).toBe(
         `Short_Server_ID: Type.Number({$id: '0', description: "Used as link to associate server Object Instance.", minimun: 1, maximun: 65534}), Lifetime: Type.Number({$id: '1', description: "Specify the lifetime of the registration in seconds (see Client Registration Interface). If the value is set to 0, the lifetime is infinite.", units: 's'})`
       );
+    });
+  });
+
+  describe("main", () => {
+    it("Sould transform json object in typebox definition", () => {
+      const json = {
+        LWM2M: {
+          ATTR: {
+            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "xsi:noNamespaceSchemaLocation":
+              "http://www.openmobilealliance.org/tech/profiles/LWM2M-v1_1.xsd",
+          },
+          Object: [
+            {
+              ATTR: { ObjectType: "MODefinition" },
+              Name: ["LwM2M Server"],
+              Description1: [
+                "This LwM2M Objects provides the data related to a LwM2M Server. A Bootstrap-Server has no such an Object Instance associated to it.",
+              ],
+              ObjectID: ["1"],
+              ObjectURN: ["urn:oma:lwm2m:oma:1:1.2"],
+              LWM2MVersion: ["1.2"],
+              ObjectVersion: ["1.2"],
+              MultipleInstances: ["Multiple"],
+              Mandatory: ["Mandatory"],
+              Resources: [
+                {
+                  Item: [
+                    {
+                      ATTR: { ID: "0" },
+                      Name: ["Short Server ID"],
+                      Operations: ["R"],
+                      MultipleInstances: ["Single"],
+                      Mandatory: ["Mandatory"],
+                      Type: ["Integer"],
+                      RangeEnumeration: ["1..65534"],
+                      Units: [""],
+                      Description: [
+                        "Used as link to associate server Object Instance.",
+                      ],
+                    },
+                  ],
+                },
+              ],
+              Description2: [""],
+            },
+          ],
+        },
+      };
+
+      const importStatement = "home/documents";
+      const getGeneralDescription = jest.fn();
+      const getProperties = jest.fn();
+      const getName = jest.fn();
+      const write = jest.fn();
+      main(
+        "dir",
+        json.LWM2M.Object[0].Description1[0],
+        json.LWM2M.Object[0].Resources[0].Item,
+        json.LWM2M.Object[0].Name[0]
+      )(importStatement, getGeneralDescription, getProperties, getName, write);
+
+      expect(getProperties).toBeCalledWith(
+        json.LWM2M.Object[0].Resources[0].Item
+      );
+
+      expect(getGeneralDescription).toBeCalledTimes(1);
+      expect(getName).toBeCalledTimes(1);
+      expect(write).toBeCalledTimes(1);
     });
   });
 });

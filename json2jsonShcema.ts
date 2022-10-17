@@ -122,17 +122,26 @@ const generalObjectDescription = (description: string) =>
  */
 const objectName = (name: string) => name.replaceAll(" ", "_");
 
-const main =
+/**
+ * Transform json object in typebox definition
+ * @param dir
+ * @param description
+ * @param items
+ * @param name
+ */
+export const main =
   (dir: string, description: string, items: any[], name: string) =>
   (
     importStatement = importTypeBox,
     getGeneralDescription = () => generalObjectDescription(description),
-    getProperties = () => defineProperties(items),
+    getProperties = (items: any[]) => defineProperties(items),
     getName = () => objectName(name),
     write = (dir: string, jsonSchema: any) =>
       fs.writeFileSync(dir, jsonSchema, "utf8")
-  ) => {
-    const object = `export const ${getName()} = Type.Object({${getProperties()}}, {description: "${getGeneralDescription()}"})`;
+  ): void => {
+    const object = `export const ${getName()} = Type.Object({${getProperties(
+      items
+    )}}, {description: "${getGeneralDescription()}"})`;
     const jsonSchema = `${importStatement}\n ${object}`;
     write(dir, jsonSchema);
   };
