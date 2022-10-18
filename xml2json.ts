@@ -8,14 +8,8 @@ const xmlFile = process.argv[process.argv.length - 2];
 // Second command line argument
 const jsonPath = process.argv[process.argv.length - 1];
 
-export const xml2json = async () => {
-  const xmlSource = await readFile(xmlFile, "utf-8");
+const xmlSource = await readFile(xmlFile, "utf-8");
 
-  const convertedSchema = await parser.parseStringPromise(xmlSource);
+const convertedSchema = await parser.parseStringPromise(xmlSource);
 
-  await writeFile(jsonPath, JSON.stringify(convertedSchema), "utf-8");
-};
-
-xml2json();
-// FIXME: remove function and allow top level await.
-// error message: Top-level await is currently not supported with the "cjs" output format
+await writeFile(jsonPath, JSON.stringify(convertedSchema), "utf-8");
