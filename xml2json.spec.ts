@@ -1,4 +1,4 @@
-import { getXml, createJson, main } from "./xml2js";
+import { getXml, createJson, main } from "./xml2json";
 
 //TODO: rename => xml2json
 describe("xml2js", () => {
