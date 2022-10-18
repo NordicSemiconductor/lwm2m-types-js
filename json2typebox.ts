@@ -1,6 +1,4 @@
-import * as json from "./1.json";
 import fs from "fs";
-import config from "./config/config";
 
 /**
  * Get the equivalent data type
@@ -147,10 +145,3 @@ export const main =
     const jsonSchema = `${importStatement}\n ${object}`;
     write(dir, jsonSchema);
   };
-
-main(
-  `${config.PASTE_DIR}/1.ts`,
-  json.LWM2M.Object[0].Description1[0],
-  json.LWM2M.Object[0].Resources[0].Item,
-  json.LWM2M.Object[0].Name[0]
-)();
