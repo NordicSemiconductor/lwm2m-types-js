@@ -1,5 +1,3 @@
-import fs from "fs";
-
 /**
  * Get the equivalent data type
  * @param type
@@ -64,84 +62,66 @@ export const getTypebox = (
 };
 
 /**
- * Iterates over the items and construct the definition of the object
+ * Pick properties from element to generate the typebox definition
  */
-export const defineProperties = (
-  items: any[],
-  typeboxDefinition = (
-    key: string,
-    type: string,
-    description: string,
-    isOptional: boolean,
-    rangeEnumeration: any[],
-    id: string,
-    units: string
-  ) =>
-    getTypebox(key, type, description, isOptional, rangeEnumeration, id, units)
-): string =>
-  items.reduce((object: string | any[], element: any) => {
-    // pick properties from the current element to generate the typebox definition
-    const key = element.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
-    const type = element.Type[0];
-    const description = element.Description[0]
-      .replaceAll(`"`, "'")
-      .replaceAll("’", "'")
-      .replaceAll("\n", " ");
-    const isOptional = element.Mandatory[0] === "Optional";
-    const rangeEnumeration = element.RangeEnumeration[0].split("..");
-    const id = element.ATTR.ID;
-    const units = element.Units[0];
+export const parseData = (
+  element: any
+): {
+  key: string;
+  type: string;
+  description: string;
+  isOptional: boolean;
+  rangeEnumeration: string[];
+  id: string;
+  units: string;
+} => {
+  const key = element.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
+  const type = element.Type[0];
+  const description = element.Description[0]
+    .replaceAll(`"`, "'")
+    .replaceAll("’", "'")
+    .replaceAll("\n", " ");
+  const isOptional = element.Mandatory[0] === "Optional";
+  const rangeEnumeration = element.RangeEnumeration[0].split("..");
+  const id = element.ATTR.ID;
+  const units = element.Units[0];
+  return { key, type, description, isOptional, rangeEnumeration, id, units };
+};
 
-    const typebox = typeboxDefinition(
-      key,
-      type,
-      description,
-      isOptional,
-      rangeEnumeration,
-      id,
-      units
-    );
-
-    return object.length === 0 ? typebox : `${object}, ${typebox}`;
-  }, "");
+/**
+ * Iterates over the items and construct the definition of each element
+ */
+export const getObjectProps = (items: any[]) =>
+  items
+    .map(parseData)
+    .map((element) =>
+      getTypebox(
+        element.key,
+        element.type,
+        element.description,
+        element.isOptional,
+        element.rangeEnumeration,
+        element.id,
+        element.units
+      )
+    )
+    .reduce((previus, current, index) => {
+      return index === 0 ? current : `${previus}, ${current}`;
+    }, "");
 
 /**
  * Typebox import statement in string
  */
-const importTypeBox = `import { Type } from '@sinclair/typebox'`;
+export const importTypeBox = `import { Type } from '@sinclair/typebox'`;
 
 /**
  * General description of processed object
  */
-const generalObjectDescription = (description: string): string =>
+export const getObjectDescription = (description: string): string =>
   description.replaceAll(`"`, "'").replaceAll("’", "'").replaceAll("\n", " ");
 
 /**
  * name of processed object
  */
-const objectName = (name: string): string => name.replaceAll(" ", "_");
-
-/**
- * Transform json object in typebox definition.
- * Then write the result in a json file.
- * @param dir
- * @param description
- * @param items
- * @param name
- */
-export const main =
-  (dir: string, description: string, items: any[], name: string) =>
-  (
-    importStatement = importTypeBox,
-    getGeneralDescription = () => generalObjectDescription(description),
-    getProperties = (items: any[]) => defineProperties(items),
-    getName = () => objectName(name),
-    write = (dir: string, jsonSchema: any) =>
-      fs.writeFileSync(dir, jsonSchema, "utf8")
-  ): void => {
-    const object = `export const ${getName()} = Type.Object({${getProperties(
-      items
-    )}}, {description: "${getGeneralDescription()}"})`;
-    const jsonSchema = `${importStatement}\n ${object}`;
-    write(dir, jsonSchema);
-  };
+export const getObjectName = (name: string): string =>
+  name.replaceAll(" ", "_");
