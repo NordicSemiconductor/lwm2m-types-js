@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LWM2M xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.openmobilealliance.org/tech/profiles/LWM2M-v1_1.xsd">
+  <Object ObjectType="MODefinition">
+		<Name>LwM2M Server</Name>
+		<Description1><![CDATA[This LwM2M Objects provides the data related to a LwM2M Server. A Bootstrap-Server has no such an Object Instance associated to it.]]></Description1>
+		<ObjectID>1</ObjectID>
+		<ObjectURN>urn:oma:lwm2m:oma:1:1.2</ObjectURN>
+		<LWM2MVersion>1.2</LWM2MVersion>
+		<ObjectVersion>1.2</ObjectVersion>
+		<MultipleInstances>Multiple</MultipleInstances>
+		<Mandatory>Mandatory</Mandatory>
+		<Resources>
+			<Item ID="0">
+				<Name>Short Server ID</Name>
+				<Operations>R</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration>1..65534</RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Used as link to associate server Object Instance.]]></Description>
+			</Item>
+		</Resources>
+		<Description2></Description2>
+	</Object>
+</LWM2M>
