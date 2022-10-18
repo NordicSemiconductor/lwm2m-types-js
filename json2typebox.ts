@@ -39,13 +39,13 @@ export const getTypebox = (
   units: string
 ): string => {
   const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
-  const maximun = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
+  const maximum = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
   const props = [
     `$id: '${id}'`,
     `description: "${description}"`,
-    minimum ? `minimun: ${minimum}` : undefined,
-    maximun ? `maximun: ${maximun}` : undefined,
+    minimum ? `minimum: ${minimum}` : undefined,
+    maximum ? `maximum: ${maximum}` : undefined,
     units ? `units: '${units}'` : undefined,
   ].reduce((previous, current, index) => {
     if (current) {

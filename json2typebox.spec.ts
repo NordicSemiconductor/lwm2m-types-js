@@ -27,15 +27,15 @@ describe("json2jsonSchema", () => {
       expect(typeboxDefinition).toBe(result);
     });
 
-    it("Should return a typebox definition in string specifying minimum and maximun value with given params", () => {
+    it("Should return a typebox definition in string specifying minimum and maximum value with given params", () => {
       const key = "Communication_Retry_Count";
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
       const isOptional = false;
       const rangeEnumeration = ["1", "65534"];
-      const minimun = 1;
-      const maximun = 65534;
+      const minimum = 1;
+      const maximum = 65534;
       const id = "16";
       const units = "";
       const typeboxDefinition = getTypebox(
@@ -48,10 +48,10 @@ describe("json2jsonSchema", () => {
         units
       );
 
-      const result = `Communication_Retry_Count: Type.Number({$id: '16', description: "The number of successive communication attempts before which a communication sequence is considered as failed.", minimun: 1, maximun: 65534})`;
+      const result = `Communication_Retry_Count: Type.Number({$id: '16', description: "The number of successive communication attempts before which a communication sequence is considered as failed.", minimum: 1, maximum: 65534})`;
 
-      expect(typeboxDefinition).toContain(`minimun: ${minimun}`);
-      expect(typeboxDefinition).toContain(`maximun: ${maximun}`);
+      expect(typeboxDefinition).toContain(`minimum: ${minimum}`);
+      expect(typeboxDefinition).toContain(`maximum: ${maximum}`);
       expect(typeboxDefinition).toBe(result);
     });
 
@@ -146,7 +146,7 @@ describe("json2jsonSchema", () => {
           Description: ["Used as link to associate server Object Instance."],
         },
       ];
-      const result = `Short_Server_ID: Type.Number({$id: '0', description: \"Used as link to associate server Object Instance.\", minimun: 1, maximun: 65534})`;
+      const result = `Short_Server_ID: Type.Number({$id: '0', description: \"Used as link to associate server Object Instance.\", minimum: 1, maximum: 65534})`;
       expect(getObjectProps(items)).toBe(result);
     });
   });
