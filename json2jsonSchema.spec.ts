@@ -1,4 +1,4 @@
-import { getTypebox, defineProperties, main } from "./json2jsonShcema";
+import { getTypebox, defineProperties, main } from "./json2jsonSchema";
 
 describe("json2jsonSchema", () => {
   describe("getTypebox", () => {
