@@ -138,7 +138,9 @@ export const createDefinition = (
     name
   )} = Type.Object({${getObjectProps(
     items
-  )}}, {description: "${getObjectDescription(description)}"})`;
+  )}}, { additionalProperties: false }, {description: "${getObjectDescription(
+    description
+  )}"})`;
 
   return `${importTypeBox}\n ${object}`;
 };
