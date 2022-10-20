@@ -15,11 +15,4 @@ const items = json.LWM2M.Object[0].Resources[0].Item;
 const name = json.LWM2M.Object[0].Name[0];
 const typeBoxDefinition = createDefinition(description, items, name);
 
-const object = `export const ${getObjectName(
-  name
-)} = Type.Object({${getObjectProps(
-  items
-)}}, {description: "${getObjectDescription(description)}"})`;
-const typeBoxDefinition = `${importTypeBox}\n ${object}`;
-
 await writeFile(typeBoxPath, typeBoxDefinition);
