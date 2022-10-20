@@ -1,10 +1,5 @@
 import { readFile, writeFile } from "fs/promises";
-import {
-  getObjectName,
-  getObjectProps,
-  getObjectDescription,
-  importTypeBox,
-} from "./json2typebox";
+import { createDefinition } from "./json2typebox";
 
 // First command line argument
 const jsonPath = process.argv[process.argv.length - 2];
@@ -18,6 +13,7 @@ const json = JSON.parse(await readFile(jsonPath, "utf-8"));
 const description = json.LWM2M.Object[0].Description1[0];
 const items = json.LWM2M.Object[0].Resources[0].Item;
 const name = json.LWM2M.Object[0].Name[0];
+const typeBoxDefinition = createDefinition(description, items, name);
 
 const object = `export const ${getObjectName(
   name

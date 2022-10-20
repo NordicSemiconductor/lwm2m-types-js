@@ -125,3 +125,20 @@ export const getObjectDescription = (description: string): string =>
  */
 export const getObjectName = (name: string): string =>
   name.replaceAll(" ", "_");
+
+/**
+ * Generates the typescript code of the typebox object definition
+ */
+export const createDefinition = (
+  description: string,
+  items: any[],
+  name: string
+): string => {
+  const object = `export const ${getObjectName(
+    name
+  )} = Type.Object({${getObjectProps(
+    items
+  )}}, {description: "${getObjectDescription(description)}"})`;
+
+  return `${importTypeBox}\n ${object}`;
+};
