@@ -4,6 +4,26 @@
 
 This is useful if you need to validate a _JSON_ representation of those objects.
 
+## Installation
+
+1- Clone repo
+
+```
+git clone git@github.com:MLopezJ/LWM2M-JSONSchema.git
+```
+
+2- Install depencencies
+
+```
+npm ci
+```
+
+3- Run test
+
+```
+npm test
+```
+
 ## Usage
 
 ```typescript
