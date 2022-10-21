@@ -41,9 +41,16 @@ export const getTypebox = (
   const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
   const maximum = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
+  const desc = description // TODO: write a test for this
+    .replaceAll(`"`, "'")
+    .replaceAll("’", "'")
+    .replaceAll(/\n/g, " ")
+    .replaceAll(/\r/g, " ")
+    .replaceAll(/\t/g, " ");
+
   const props = [
     `$id: '${id}'`,
-    `description: "${description}"`,
+    `description: "${desc}"`,
     minimum ? `minimum: ${minimum}` : undefined,
     maximum ? `maximum: ${maximum}` : undefined,
     units ? `units: '${units}'` : undefined,
@@ -75,7 +82,12 @@ export const parseData = (
   id: string;
   units: string;
 } => {
-  const key = element.Name[0].replaceAll(" ", "_").replaceAll("-", "_");
+  const key = element.Name[0]
+    .replaceAll(" ", "_")
+    .replaceAll("-", "_")
+    .replaceAll("(", "-")
+    .replaceAll(")", "-")
+    .replaceAll(",", "-"); // TODO: add test for this
   const type = element.Type[0];
   const description = element.Description[0]
     .replaceAll(`"`, "'")
@@ -138,9 +150,7 @@ export const createDefinition = (
     name
   )} = Type.Object({${getObjectProps(
     items
-  )}}, { additionalProperties: false }, {description: "${getObjectDescription(
-    description
-  )}"})`;
+  )}}, {description: "${getObjectDescription(description)}"})`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
 
   return `${importTypeBox}\n ${object}`;
 };
