@@ -12,7 +12,7 @@ This is useful if you need to validate a _JSON_ representation of those objects.
 git clone git@github.com:MLopezJ/LWM2M-JSONSchema.git
 ```
 
-2- Install depencencies
+2- Install dependencias
 
 ```
 npm ci
