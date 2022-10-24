@@ -6,10 +6,9 @@ import {
 } from "./json2typebox";
 
 describe("json2jsonSchema", () => {
-  //FIXME: params have change
   describe("getTypebox", () => {
-    it("Should return a typebox definition in string with given params", () => {
-      const key = "Communication_Retry_Count";
+    it("Should return a typebox definition in string", () => {
+      const name = "Communication Retry Count";
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
@@ -18,7 +17,7 @@ describe("json2jsonSchema", () => {
       const id = "16";
       const units = "";
       const typeboxDefinition = getTypebox(
-        key,
+        name,
         type,
         description,
         isOptional,
@@ -26,15 +25,15 @@ describe("json2jsonSchema", () => {
         id,
         units
       );
-      const result = `Communication_Retry_Count: Type.Number({$id: '16', description: "The number of successive communication attempts before which a communication sequence is considered as failed."})`;
+      const result = `_16: Type.Number({name: 'Communication Retry Count', description: \"The number of successive communication attempts before which a communication sequence is considered as failed.\"})`;
 
-      expect(typeboxDefinition).toContain(`$id: '${id}'`);
+      expect(typeboxDefinition).toContain(`name: '${name}'`);
       expect(typeboxDefinition).toContain(`description: "${description}"`);
       expect(typeboxDefinition).toBe(result);
     });
 
-    it("Should return a typebox definition in string specifying minimum and maximum value with given params", () => {
-      const key = "Communication_Retry_Count";
+    it("Should return a typebox definition in string specifying minimum and maximum value", () => {
+      const name = "Communication Retry Count";
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
@@ -45,7 +44,7 @@ describe("json2jsonSchema", () => {
       const id = "16";
       const units = "";
       const typeboxDefinition = getTypebox(
-        key,
+        name,
         type,
         description,
         isOptional,
@@ -54,15 +53,15 @@ describe("json2jsonSchema", () => {
         units
       );
 
-      const result = `Communication_Retry_Count: Type.Number({$id: '16', description: "The number of successive communication attempts before which a communication sequence is considered as failed.", minimum: 1, maximum: 65534})`;
+      const result = `_16: Type.Number({name: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed.", minimum: 1, maximum: 65534})`;
 
       expect(typeboxDefinition).toContain(`minimum: ${minimum}`);
       expect(typeboxDefinition).toContain(`maximum: ${maximum}`);
       expect(typeboxDefinition).toBe(result);
     });
 
-    it("Should return a typebox definition in string specifying units with given params", () => {
-      const key = "Communication_Retry_Count";
+    it("Should return a typebox definition in string specifying units", () => {
+      const name = "Communication Retry Count";
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
@@ -71,7 +70,7 @@ describe("json2jsonSchema", () => {
       const id = "16";
       const units = "s";
       const typeboxDefinition = getTypebox(
-        key,
+        name,
         type,
         description,
         isOptional,
@@ -79,14 +78,14 @@ describe("json2jsonSchema", () => {
         id,
         units
       );
-      const result = `Communication_Retry_Count: Type.Number({$id: '16', description: "The number of successive communication attempts before which a communication sequence is considered as failed.", units: 's'})`;
+      const result = `_16: Type.Number({name: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed.", units: 's'})`;
 
       expect(typeboxDefinition).toContain(`units: '${units}'`);
       expect(typeboxDefinition).toBe(result);
     });
 
-    it("Should return a typebox definition in string specifying optional value with given params", () => {
-      const key = "Communication_Retry_Count";
+    it("Should return a typebox definition in string specifying optional value", () => {
+      const name = "Communication Retry Count";
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
@@ -95,7 +94,7 @@ describe("json2jsonSchema", () => {
       const id = "16";
       const units = "";
       const typeboxDefinition = getTypebox(
-        key,
+        name,
         type,
         description,
         isOptional,
@@ -103,7 +102,7 @@ describe("json2jsonSchema", () => {
         id,
         units
       );
-      const result = `Communication_Retry_Count: Type.Optional(Type.Number({$id: '16', description: "The number of successive communication attempts before which a communication sequence is considered as failed."}))`;
+      const result = `_16: Type.Optional(Type.Number({name: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed."}))`;
 
       expect(typeboxDefinition).toBe(result);
     });
