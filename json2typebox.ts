@@ -19,6 +19,35 @@ const getType = (type: string): string => {
 };
 
 /**
+ * Replace characters from element
+ * @param element
+ * @returns
+ */
+export const dataCleaning = (element: string) =>
+  element
+    .replaceAll(`"`, "'")
+    .replaceAll("‘", "'")
+    .replaceAll("’", "'")
+    .replaceAll(/\n/g, " ")
+    .replaceAll(/\r/g, " ")
+    .replaceAll(/\t/g, " ");
+
+/**
+ * Replace characters from key
+ * @param key
+ * @returns
+ */
+export const keyCleaning = (key: string) =>
+  key
+    .replaceAll(" ", "_")
+    .replaceAll("-", "_")
+    .replaceAll("(", "_")
+    .replaceAll(")", "_")
+    .replaceAll(",", "_")
+    .replaceAll("/", "_")
+    .replaceAll(".", "_");
+
+/**
  * Generate typebox definition with received params
  * @param key
  * @param type
@@ -41,16 +70,9 @@ export const getTypebox = (
   const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
   const maximum = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
-  const desc = description // TODO: write a test for this
-    .replaceAll(`"`, "'")
-    .replaceAll("’", "'")
-    .replaceAll(/\n/g, " ")
-    .replaceAll(/\r/g, " ")
-    .replaceAll(/\t/g, " ");
-
   const props = [
     `$id: '${id}'`,
-    `description: "${desc}"`,
+    `description: "${dataCleaning(description)}"`,
     minimum ? `minimum: ${minimum}` : undefined,
     maximum ? `maximum: ${maximum}` : undefined,
     units ? `units: '${units}'` : undefined,
@@ -82,17 +104,9 @@ export const parseData = (
   id: string;
   units: string;
 } => {
-  const key = element.Name[0]
-    .replaceAll(" ", "_")
-    .replaceAll("-", "_")
-    .replaceAll("(", "-")
-    .replaceAll(")", "-")
-    .replaceAll(",", "-"); // TODO: add test for this
+  const key = keyCleaning(element.Name[0]);
   const type = element.Type[0];
-  const description = element.Description[0]
-    .replaceAll(`"`, "'")
-    .replaceAll("’", "'")
-    .replaceAll("\n", " ");
+  const description = dataCleaning(element.Description[0]);
   const isOptional = element.Mandatory[0] === "Optional";
   const rangeEnumeration = element.RangeEnumeration[0].split("..");
   const id = element.ATTR.ID;
@@ -127,18 +141,6 @@ export const getObjectProps = (items: any[]) =>
 export const importTypeBox = `import { Type } from '@sinclair/typebox'`;
 
 /**
- * General description of processed object
- */
-export const getObjectDescription = (description: string): string =>
-  description.replaceAll(`"`, "'").replaceAll("’", "'").replaceAll("\n", " ");
-
-/**
- * name of processed object
- */
-export const getObjectName = (name: string): string =>
-  name.replaceAll(" ", "_");
-
-/**
  * Generates the typescript code of the typebox object definition
  */
 export const createDefinition = (
@@ -146,11 +148,11 @@ export const createDefinition = (
   items: any[],
   name: string
 ): string => {
-  const object = `export const ${getObjectName(
+  const object = `export const ${keyCleaning(
     name
-  )} = Type.Object({${getObjectProps(
-    items
-  )}}, {description: "${getObjectDescription(description)}"})`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
+  )} = Type.Object({${getObjectProps(items)}}, {description: "${dataCleaning(
+    description
+  )}"})`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
 
   return `${importTypeBox}\n ${object}`;
 };
