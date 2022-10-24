@@ -10,9 +10,6 @@ const typeBoxPath = process.argv[process.argv.length - 1];
 // Load json
 const json = JSON.parse(await readFile(jsonPath, "utf-8"));
 
-const description = json.LWM2M.Object[0].Description1[0];
-const items = json.LWM2M.Object[0].Resources[0].Item;
-const name = json.LWM2M.Object[0].Name[0];
-const typeBoxDefinition = createDefinition(description, items, name);
+const typeBoxDefinition = createDefinition(json.LWM2M.Object[0]); //TODO: Update unit tests related to it
 
 await writeFile(typeBoxPath, typeBoxDefinition);

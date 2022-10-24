@@ -33,21 +33,6 @@ export const dataCleaning = (element: string) =>
     .replaceAll(/\t/g, " ");
 
 /**
- * Replace characters from key
- * @param key
- * @returns
- */
-export const keyCleaning = (key: string) =>
-  key
-    .replaceAll(" ", "_")
-    .replaceAll("-", "_")
-    .replaceAll("(", "_")
-    .replaceAll(")", "_")
-    .replaceAll(",", "_")
-    .replaceAll("/", "_")
-    .replaceAll(".", "_");
-
-/**
  * Generate typebox definition with received params
  * @param key
  * @param type
@@ -59,7 +44,7 @@ export const keyCleaning = (key: string) =>
  * @returns string
  */
 export const getTypebox = (
-  key: string,
+  name: string,
   type: string,
   description: string,
   isOptional: boolean,
@@ -71,7 +56,7 @@ export const getTypebox = (
   const maximum = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
   const props = [
-    `$id: '${id}'`,
+    `name: '${name}'`,
     `description: "${dataCleaning(description)}"`,
     minimum ? `minimum: ${minimum}` : undefined,
     maximum ? `maximum: ${maximum}` : undefined,
@@ -86,8 +71,8 @@ export const getTypebox = (
 
   const definition = `Type.${getType(type)}({${props}})`;
   return isOptional
-    ? `${key}: Type.Optional(${definition})`
-    : `${key}: ${definition}`;
+    ? `_${id}: Type.Optional(${definition})`
+    : `_${id}: ${definition}`;
 };
 
 /**
@@ -96,7 +81,7 @@ export const getTypebox = (
 export const parseData = (
   element: any
 ): {
-  key: string;
+  name: string;
   type: string;
   description: string;
   isOptional: boolean;
@@ -104,14 +89,14 @@ export const parseData = (
   id: string;
   units: string;
 } => {
-  const key = keyCleaning(element.Name[0]);
+  const name = element.Name[0];
   const type = element.Type[0];
   const description = dataCleaning(element.Description[0]);
   const isOptional = element.Mandatory[0] === "Optional";
   const rangeEnumeration = element.RangeEnumeration[0].split("..");
   const id = element.ATTR.ID;
   const units = element.Units[0];
-  return { key, type, description, isOptional, rangeEnumeration, id, units };
+  return { name, type, description, isOptional, rangeEnumeration, id, units };
 };
 
 /**
@@ -122,7 +107,7 @@ export const getObjectProps = (items: any[]) =>
     .map(parseData)
     .map((element) =>
       getTypebox(
-        element.key,
+        element.name,
         element.type,
         element.description,
         element.isOptional,
@@ -138,19 +123,25 @@ export const getObjectProps = (items: any[]) =>
 /**
  * Typebox import statement in string
  */
-export const importTypeBox = `import { Type } from '@sinclair/typebox'`;
+export const importTypeBox = `import { Type } from '@sinclair/typebox'`; //FIXME: this has any reason to be a method. remove it.
 
 /**
  * Generates the typescript code of the typebox object definition
  */
-export const createDefinition = (
-  description: string,
-  items: any[],
-  name: string
-): string => {
-  const object = `export const ${keyCleaning(
-    name
-  )} = Type.Object({${getObjectProps(items)}}, {description: "${dataCleaning(
+export const createDefinition = (Lwm2mRegistry: any): string => {
+  const description = Lwm2mRegistry.Description1[0];
+  const items = Lwm2mRegistry.Resources[0].Item;
+  const id: string = Lwm2mRegistry.ObjectID[0];
+
+  // object metadata
+  const name = `Name: Type.String({example:"${Lwm2mRegistry.Name[0]}"})`;
+  const objectUrn = `ObjectURN: Type.String({example:"${Lwm2mRegistry.ObjectURN[0]}"})`;
+  const lwm2mVersion = `LWM2MVersion: Type.Number({example:${Lwm2mRegistry.LWM2MVersion[0]}})`;
+  const objectVersion = `ObjectVersion: Type.Number({example:${Lwm2mRegistry.ObjectVersion[0]}})`;
+
+  const resources = `Resources: Type.Object({${getObjectProps(items)}})`;
+
+  const object = `export const _${id} = Type.Object({${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${dataCleaning(
     description
   )}"})`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
 

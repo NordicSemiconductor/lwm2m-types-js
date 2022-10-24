@@ -3,10 +3,10 @@ import {
   getObjectProps,
   parseData,
   dataCleaning,
-  keyCleaning,
 } from "./json2typebox";
 
 describe("json2jsonSchema", () => {
+  //FIXME: params have change
   describe("getTypebox", () => {
     it("Should return a typebox definition in string with given params", () => {
       const key = "Communication_Retry_Count";
@@ -125,7 +125,7 @@ describe("json2jsonSchema", () => {
         },
       ];
       expect(parseData(items[0])).toStrictEqual({
-        key: "Short_Server_ID",
+        name: "Short Server ID",
         type: "Integer",
         description: "Used as link to associate server Object Instance.",
         isOptional: false,
@@ -152,31 +152,9 @@ describe("json2jsonSchema", () => {
           Description: ["Used as link to associate server Object Instance."],
         },
       ];
-      const result = `Short_Server_ID: Type.Number({$id: '0', description: \"Used as link to associate server Object Instance.\", minimum: 1, maximum: 65534})`;
+      const result = `_0: Type.Number({name: 'Short Server ID', description: \"Used as link to associate server Object Instance.\", minimum: 1, maximum: 65534})`;
       expect(getObjectProps(items)).toBe(result);
     });
-  });
-
-  describe("keyCleaning", () => {
-    it.each([
-      [" ", "Registration Update Trigger", "Registration_Update_Trigger"],
-      ["-", "Bootstrap-Request Trigger", "Bootstrap_Request_Trigger"],
-      ["(", "Validity (MCC, MNC)", "Validity__MCC__MNC_"],
-      [
-        ")",
-        "Integrated Circuit Card Identifier (ICCID)",
-        "Integrated_Circuit_Card_Identifier__ICCID_",
-      ],
-      [",", "StatusReport,StructureID", "StatusReport_StructureID"],
-      ["/", "On/Off", "On_Off"],
-      [".", "MultiState.Output", "MultiState_Output"],
-    ])(
-      "Should remove '%s' (forbiten characters) from key",
-      (forbiten, key, expected) => {
-        // characters are consider forbiten because those would cause an error if any is present on the object's key.
-        expect(keyCleaning(key)).toBe(expected);
-      }
-    );
   });
 
   describe("dataCleaning", () => {
