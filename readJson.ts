@@ -9,10 +9,15 @@ fs.readdir(dirpath, function (err, files) {
   files
     .filter((el) => path.extname(el) === EXTENSION)
     .forEach((element) => {
-      const name = element.split(".")[0];
-      console.log(`-- processing element ${name} --`);
-      execSync(
-        `npx tsx ./json2typebox-cli.ts ./LWM2M/JSON/${name}.json ./LWM2M/TS/${name}.ts`
-      );
+      const fileName = element.split(".")[0];
+      console.log(`-- processing element ${fileName} --`);
+      if (
+        !["Common", "DDF", "LWM2M_senml_units", "LWM2M-v1_1", "LWM2M"].includes(
+          fileName
+        )
+      )
+        execSync(
+          `npx tsx ./json2typebox-cli.ts ./LWM2M/JSON/${fileName}.json ./LWM2M/TS/${fileName}.ts`
+        );
     });
 });
