@@ -33,6 +33,21 @@ export const dataCleaning = (element: string) =>
     .replaceAll(/\t/g, " ");
 
 /**
+ * Replace characters from key
+ * @param key
+ * @returns
+ */
+export const keyCleaning = (key: string) =>
+  key
+    .replaceAll(" ", "_")
+    .replaceAll("-", "_")
+    .replaceAll("(", "_")
+    .replaceAll(")", "_")
+    .replaceAll(",", "_")
+    .replaceAll("/", "_")
+    .replaceAll(".", "_");
+
+/**
  * Generate typebox definition with received params
  * @param name
  * @param type
@@ -56,7 +71,8 @@ export const getTypebox = (
   const maximum = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
 
   const props = [
-    `name: '${name}'`,
+    `$id: '${id}'`,
+    `title: '${name}'`,
     `description: "${dataCleaning(description)}"`,
     minimum ? `minimum: ${minimum}` : undefined,
     maximum ? `maximum: ${maximum}` : undefined,
@@ -71,8 +87,8 @@ export const getTypebox = (
 
   const definition = `Type.${getType(type)}({${props}})`;
   return isOptional
-    ? `_${id}: Type.Optional(${definition})`
-    : `_${id}: ${definition}`;
+    ? `${keyCleaning(name)}: Type.Optional(${definition})`
+    : `${keyCleaning(name)}: ${definition}`;
 };
 
 /**
@@ -121,11 +137,6 @@ export const getObjectProps = (items: any[]) =>
     }, "");
 
 /**
- * Typebox import statement in string
- */
-export const importTypeBox = `import { Type } from '@sinclair/typebox'`; //FIXME: this has any reason to be a method. remove it.
-
-/**
  * Generates the typescript code of the typebox object definition
  */
 export const createDefinition = (Lwm2mRegistry: any): string => {
@@ -134,16 +145,19 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
   const id: string = Lwm2mRegistry.ObjectID[0];
 
   // object metadata
-  const name = `Name: Type.String({example:"${Lwm2mRegistry.Name[0]}"})`;
-  const objectUrn = `ObjectURN: Type.String({example:"${Lwm2mRegistry.ObjectURN[0]}"})`;
-  const lwm2mVersion = `LWM2MVersion: Type.Number({example:${Lwm2mRegistry.LWM2MVersion[0]}})`;
-  const objectVersion = `ObjectVersion: Type.Number({example:${Lwm2mRegistry.ObjectVersion[0]}})`;
+  const name = `Name: Type.String({examples:["${Lwm2mRegistry.Name[0]}"]})`;
+  const objectUrn = `ObjectURN: Type.String({examples:["${Lwm2mRegistry.ObjectURN[0]}"]})`;
+  const lwm2mVersion = `LWM2MVersion: Type.Number({examples:[${Lwm2mRegistry.LWM2MVersion[0]}]})`;
+  const objectVersion = `ObjectVersion: Type.Number({examples:[${Lwm2mRegistry.ObjectVersion[0]}]})`;
 
   const resources = `Resources: Type.Object({${getObjectProps(items)}})`;
-
-  const object = `export const _${id} = Type.Object({${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${dataCleaning(
+  const importTypeBox = `import { Type, Static } from '@sinclair/typebox'`;
+  const typeboxDefinition = `export const _${id} = Type.Object({${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${dataCleaning(
     description
   )}"})`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
 
-  return `${importTypeBox}\n ${object}`;
+  const nameSpaceDefinition = `export namespace Object_${id} {export type ${keyCleaning(
+    Lwm2mRegistry.Name[0]
+  )} =  Static<typeof _${id}>}`;
+  return `${importTypeBox}\n${typeboxDefinition}\n${nameSpaceDefinition}`;
 };
