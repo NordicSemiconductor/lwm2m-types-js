@@ -34,7 +34,7 @@ export const dataCleaning = (element: string) =>
 
 /**
  * Generate typebox definition with received params
- * @param key
+ * @param name
  * @param type
  * @param description
  * @param isOptional
