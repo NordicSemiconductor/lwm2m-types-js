@@ -45,7 +45,10 @@ export const keyCleaning = (key: string) =>
     .replaceAll(")", "_")
     .replaceAll(",", "_")
     .replaceAll("/", "_")
-    .replaceAll(".", "_");
+    .replaceAll(".", "_")
+    .replaceAll("&", "_and_") // TODO: make it generic
+    .replaceAll("5", "five_") // TODO: make it generic
+    .replaceAll("3", "three"); // TODO: make it generic
 
 /**
  * Generate typebox definition with received params
