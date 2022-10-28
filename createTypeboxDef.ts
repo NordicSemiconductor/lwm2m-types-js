@@ -42,7 +42,7 @@ const getData = (items: any[]) =>
     (previous: string[], element: any, index: number) => {
       // DDF value should exist and should be the current stable version of the object
       if (
-        !declarationExist(element.DDF[0].length) ||
+        !declarationExist(element.DDF[0]) ||
         !isCurrentVersion(element.DDF[0])
       )
         return previous;
