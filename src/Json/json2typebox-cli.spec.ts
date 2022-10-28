@@ -4,7 +4,7 @@ import { readFileSync } from "fs";
 describe("json2typebox-cli", () => {
   it("should transform json object into typebox definition format and create a new file with the result of the transformation", () => {
     execSync(
-      "npx tsx ./json2typebox-cli.ts ./data-test/1.json ./data-test/1.ts"
+      "npx tsx ./src/Json/json2typebox-cli.ts ./data-test/1.json ./data-test/1.ts"
     );
     const writtenSchema = readFileSync("./data-test/1.ts", "utf-8");
     // FIXME: { additionalProperties: false }, removed temporaly

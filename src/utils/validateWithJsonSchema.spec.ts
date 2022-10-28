@@ -7,7 +7,7 @@ describe("validateWithJSONSchema", () => {
     let v: ReturnType<typeof validateWithJSONSchema> | undefined = undefined;
 
     beforeAll(async () => {
-      const generatedTypes = await import("./data-test/1");
+      const generatedTypes = await import("./../../data-test/1");
       v = validateWithJSONSchema(generatedTypes._1);
     });
 

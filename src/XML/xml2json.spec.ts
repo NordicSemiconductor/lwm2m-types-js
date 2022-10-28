@@ -3,7 +3,9 @@ import { readFileSync } from "fs";
 
 describe("xml2json", () => {
   it("should transform xml schema into json format and create a new file with the result of the transformation", () => {
-    execSync("npx tsx ./xml2json.ts ./data-test/1.xml ./data-test/1.json");
+    execSync(
+      "npx tsx ./src/XML/xml2json.ts ./data-test/1.xml ./data-test/1.json"
+    );
     const writtenSchema = readFileSync("./data-test/1.json", "utf-8");
     const expectedSchema = {
       LWM2M: {

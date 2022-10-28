@@ -17,7 +17,7 @@ fs.readdir(dirpath, function (err, files) {
         )
       )
         execSync(
-          `npx tsx ./json2typebox-cli.ts ./LWM2M/JSON/${fileName}.json ./LWM2M/TS/${fileName}.ts`
+          `npx tsx ./src/Json/json2typebox-cli.ts ./LWM2M/JSON/${fileName}.json ./LWM2M/TS/${fileName}.ts`
         );
     });
 });

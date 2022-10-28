@@ -12,7 +12,7 @@ fs.readdir(dirpath, function (err, files) {
       const name = element.split(".")[0];
       console.log(`-- processing element ${name} --`);
       execSync(
-        `npx tsx ./xml2json.ts ./LWM2M/XML/lwm2m-registry/${element} ./LWM2M/JSON/${name}.json`
+        `npx tsx ./src/XML/xml2json.ts ./LWM2M/XML/lwm2m-registry/${element} ./LWM2M/JSON/${name}.json`
       );
     });
 });
