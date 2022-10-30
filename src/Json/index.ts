@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import { execSync } from "child_process";
+import { exec } from "child_process";
 
 const EXTENSION = ".xml";
 const dirpath = path.join("./LWM2M/XML/lwm2m-registry");
@@ -16,7 +16,7 @@ fs.readdir(dirpath, function (err, files) {
           fileName
         )
       )
-        execSync(
+      exec(
           `npx tsx ./src/Json/json2typebox-cli.ts ./LWM2M/JSON/${fileName}.json ./LWM2M/TS/${fileName}.ts`
         );
     });
