@@ -33,10 +33,10 @@ jobs:
       - name: From XML to Json
         run: npx tsx ./src/XML/index
 
-      - name: From Json to TypeScript
+      - name: From Json to TypeBox definition
         run: npx tsx ./src/Json/index
 
-      - name: From TypeScript to TypeBox definition
+      - name: Create LwM2M typebox definition object
         run: npx tsx ./src/TypeScript/createTypeboxDef
 
       - name: remove not needed folders
