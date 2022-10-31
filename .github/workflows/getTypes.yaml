@@ -6,12 +6,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  install-dependencies:
-    runs-on: ubuntu-latest
-
+  clone-repo:
+    runs-on: ubunto-latest
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
         with:
           node-version: "16.x"
@@ -19,9 +17,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-  clone-repo:
-    runs-on: ubunto-latest
-    steps:
       - name: Create folders
         run: mkdir ./LWM2M && cd ./LWM2M && mkdir XML && mkdir JSON && mkdir TS
       - name: Clone LwM2M repo
