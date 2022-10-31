@@ -1,3 +1,6 @@
-node_modules
-build
+build/
 .env
+lwm2m-registry-json/
+lwm2m-registry/
+types/
+node_modules/
