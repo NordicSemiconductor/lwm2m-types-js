@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  clone-repo:
+  get-types:
     runs-on: ubuntu-latest
 
     steps:
