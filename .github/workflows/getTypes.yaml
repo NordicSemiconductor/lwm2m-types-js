@@ -2,12 +2,14 @@ name: Get LwM2M type definition
 
 on:
   push:
+    branches:
 
   workflow_dispatch:
 
 jobs:
-  clone-repo:
-    runs-on: ubunto-latest
+  get-types:
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -22,3 +24,23 @@ jobs:
 
       - name: Create folders
         run: mkdir ./LWM2M && cd ./LWM2M && mkdir XML && mkdir JSON && mkdir TS
+
+      - name: Clone repo
+        run: |
+          cd ./LWM2M/XML
+          git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git
+
+      - name: From XML to Json
+        run: npx tsx ./src/XML/index
+
+      - name: From Json to TypeScript
+        run: npx tsx ./src/Json/index
+
+      - name: From TypeScript to TypeBox definition
+        run: npx tsx ./src/TypeScript/createTypeboxDef
+
+      - name: remove not needed folders
+        run: rm -r ./LWM2M/JSON && rm -r ./LWM2M/XML
+
+      - name: Print result
+        run: less ./LWM2M.ts
