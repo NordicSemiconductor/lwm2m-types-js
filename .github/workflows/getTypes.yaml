@@ -25,7 +25,7 @@ jobs:
       - name: Create folders
         run: mkdir ./LWM2M && cd ./LWM2M && mkdir XML && mkdir JSON && mkdir TS
 
-      - name: Create folders
+      - name: Clone repo
         run: |
           cd ./LWM2M/XML
           git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git
