@@ -4,7 +4,7 @@ import { exec } from "child_process";
 
 const EXTENSION = ".xml";
 const dirpath = path.join("./LWM2M/XML/lwm2m-registry");
-console.log(dirpath)
+
 fs.readdir(dirpath, function (err, files) {
   files
     .filter((el) => path.extname(el) === EXTENSION)
