@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  getTypes:
+  install-dependencies:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,5 +19,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+  clone-repo:
+    runs-on: ubunto-latest
+    steps:
+      - name: Create folders
+        run: mkdir ./LWM2M && cd ./LWM2M && mkdir XML && mkdir JSON && mkdir TS
+      - name: Clone LwM2M repo
+        uses: GuillaumeFalourd/clone-github-repo-action@v2
+        with:
+          owner: "OpenMobileAlliance"
+          repository: "lwm2m-registry"
+      - name: Logs
+        run: |
+          echo "ROOT"
+          ls -la
+          echo "CLONED REPO"
+          cd ./LWM2M/XML/lwm2m-registry
+          ls -la
+
+  getTypes:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Clone LwM2M repository
-        run: npx tsx ./src/pre-steps
+        run: npx tsx npx tsx ./src/XML/index
