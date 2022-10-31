@@ -2,6 +2,7 @@ name: Get LwM2M type definition
 
 on:
   push:
+    branches:
 
   workflow_dispatch:
 
