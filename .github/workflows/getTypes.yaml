@@ -36,10 +36,3 @@ jobs:
           echo "CLONED REPO"
           cd ./LWM2M/XML/lwm2m-registry
           ls -la
-
-  getTypes:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Clone LwM2M repository
-        run: npx tsx npx tsx ./src/XML/index
