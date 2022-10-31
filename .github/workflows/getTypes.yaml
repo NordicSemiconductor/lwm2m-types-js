@@ -22,17 +22,3 @@ jobs:
 
       - name: Create folders
         run: mkdir ./LWM2M && cd ./LWM2M && mkdir XML && mkdir JSON && mkdir TS
-
-      - name: Clone LwM2M repo
-        uses: GuillaumeFalourd/clone-github-repo-action@v2
-        with:
-          owner: "OpenMobileAlliance"
-          repository: "lwm2m-registry"
-
-      - name: Logs
-        run: |
-          echo "ROOT"
-          ls -la
-          echo "CLONED REPO"
-          cd ./LWM2M/XML/lwm2m-registry
-          ls -la
