@@ -5,7 +5,7 @@ import { exec } from "child_process";
 const EXTENSION = ".xml";
 const dirpath = path.join("./LWM2M/XML/lwm2m-registry");
 
-fs.readdir(dirpath, function (err, files) {
+const processFiles = (files: any[]) =>
   files
     .filter((el) => path.extname(el) === EXTENSION)
     .forEach((element) => {
@@ -16,8 +16,20 @@ fs.readdir(dirpath, function (err, files) {
           fileName
         )
       )
-      exec(
+        exec(
           `npx tsx ./src/Json/json2typebox-cli.ts ./LWM2M/JSON/${fileName}.json ./LWM2M/TS/${fileName}.ts`
         );
     });
-});
+
+try {
+  fs.readdir(dirpath, (err, files) => {
+    if (err) {
+      console.log(`Action failed with error ${err}`);
+      process.exit(1);
+    }
+    processFiles(files);
+  });
+} catch (err) {
+  console.log(`Action failed with error ${err}`);
+  process.exit(1);
+}
