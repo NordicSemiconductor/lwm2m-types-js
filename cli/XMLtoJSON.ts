@@ -20,6 +20,6 @@ for (const file of xmlFiles.map((file) => path.join(inputDir, file))) {
     outDir as string,
     `${path.parse(sourceFile).name}.json`
   );
-  //console.log(sourceFile, "->", outFile);
+  console.log(sourceFile, "->", outFile);
   await writeFile(outFile, JSON.stringify(convertedSchema), "utf-8");
 }

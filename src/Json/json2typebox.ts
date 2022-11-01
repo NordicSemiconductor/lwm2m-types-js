@@ -51,6 +51,14 @@ export const keyCleaning = (key: string) =>
     .replaceAll("3", "three"); // TODO: make it generic
 
 /**
+ * Remove line breakers from value
+ * @param value
+ * @returns
+ */
+export const cleanUnits = (value: string) =>
+  value.split(/\s/).filter((x) => x !== "").length === 0 ? "" : value;
+
+/**
  * Generate typebox definition with received params
  * @param name
  * @param type
@@ -79,7 +87,7 @@ export const getTypebox = (
     `description: "${dataCleaning(description)}"`,
     minimum ? `minimum: ${minimum}` : undefined,
     maximum ? `maximum: ${maximum}` : undefined,
-    units ? `units: '${units}'` : undefined,
+    units ? `units: '${cleanUnits(units)}'` : undefined,
   ].reduce((previous, current, index) => {
     if (current) {
       if (index === 0) return current;

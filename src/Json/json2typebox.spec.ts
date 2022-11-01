@@ -3,6 +3,7 @@ import {
   getObjectProps,
   parseData,
   dataCleaning,
+  cleanUnits,
 } from "./json2typebox";
 
 describe("json2jsonSchema", () => {
@@ -189,6 +190,16 @@ describe("json2jsonSchema", () => {
         // characters are consider forbiten because those would cause an error if any is present on the object's description.
         expect(dataCleaning(text)).toBe(expected);
       }
+    );
+  });
+
+  describe("cleanUnits", () => {
+    it.each([
+      ["\r\n        ", ""],
+      ["", ""],
+      ["meters", "meters"],
+    ])("Should remove line breakers from value", (units, expected) =>
+      expect(cleanUnits(units)).toBe(expected)
     );
   });
 });
