@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  get-types:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,12 +28,12 @@ jobs:
       - name: From XML to JSON
         run: |
           mkdir lwm2m-registry-json
-          npx tsx cli/XMLtoJSONFolder.ts ./lwm2m-registry ./lwm2m-registry-json
+          npx tsx cli/XMLtoJSON.ts ./lwm2m-registry ./lwm2m-registry-json
 
       - name: From JSON to TypeBox definition
         run: |
           mkdir types
-          npx tsx cli/JSONtoTypeBox.ts ./lwm2m-registry-json/*.json ./types
+          npx tsx cli/JSONtoTypeBox.ts ./lwm2m-registry-json ./types
 
       - name: Create LwM2M TypeBox definition object
         run: npx tsx ./src/TypeScript/createTypeboxDef
@@ -42,4 +42,4 @@ jobs:
         run: less ./LWM2M.ts
 
       - name: Make sure result compiles
-        run: npx tsx ./LWM2M.ts
+        run: npx tsc ./LWM2M.ts
