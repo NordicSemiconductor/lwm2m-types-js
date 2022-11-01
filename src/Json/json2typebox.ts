@@ -78,15 +78,15 @@ export const getTypebox = (
   id: string,
   units: string
 ): string => {
-  const minimum = rangeEnumeration ? Number(rangeEnumeration[0]) : null;
-  const maximum = rangeEnumeration ? Number(rangeEnumeration[1]) : null;
+  const minimum = rangeEnumeration[0] ? Number(rangeEnumeration[0]) : null;
+  const maximum = rangeEnumeration[1] ? Number(rangeEnumeration[1]) : null;
 
   const props = [
     `$id: '${id}'`,
     `title: '${name}'`,
     `description: "${dataCleaning(description)}"`,
-    minimum ? `minimum: ${minimum}` : undefined,
-    maximum ? `maximum: ${maximum}` : undefined,
+    minimum !== null ? `minimum: ${minimum}` : undefined,
+    maximum !== null ? `maximum: ${maximum}` : undefined,
     units ? `units: '${cleanUnits(units)}'` : undefined,
   ].reduce((previous, current, index) => {
     if (current) {
