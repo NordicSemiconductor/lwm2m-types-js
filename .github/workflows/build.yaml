@@ -1,0 +1,45 @@
+name: Compile LwM2M type definitions
+
+on:
+  push:
+    branches:
+
+  workflow_dispatch:
+
+jobs:
+  get-types:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Clone LwM2M object registry
+        run: git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git --depth 1
+
+      - name: From XML to JSON
+        run: |
+          mkdir lwm2m-registry-json
+          npx tsx cli/XMLtoJSON.ts ./lwm2m-registry/*.xml ./lwm2m-registry-json
+
+      - name: From JSON to TypeBox definition
+        run: |
+          mkdir types
+          npx tsx cli/JSONtoTypeBox.ts ./lwm2m-registry-json/*.json ./types
+
+      - name: Create LwM2M TypeBox definition object
+        run: npx tsx ./src/TypeScript/createTypeboxDef
+
+      - name: Print result
+        run: less ./LWM2M.ts
+
+      - name: Make sure result compiles
+        run: npx tsx ./LWM2M.ts

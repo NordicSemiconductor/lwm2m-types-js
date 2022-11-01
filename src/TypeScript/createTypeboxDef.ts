@@ -51,7 +51,7 @@ const getData = (items: any[]) =>
       const name = element.Name[0];
       if (index === 0) {
         return [
-          `import { _${id} } from "./LWM2M/TS/${id}";`, // import statement
+          `import { _${id} } from "./types/${id}";`, // import statement
           `export namespace Object_${id} { export type ${keyCleaning(
             name
           )} = Static<typeof _${id}> }\n`, // namespace declaration
@@ -59,7 +59,7 @@ const getData = (items: any[]) =>
       }
 
       return [
-        `${previous[0]} import { _${id} } from "./LWM2M/TS/${id}";`, // import statement
+        `${previous[0]} import { _${id} } from "./types/${id}";`, // import statement
         `${
           previous[1]
         } export namespace Object_${id} { export type ${keyCleaning(
@@ -74,7 +74,7 @@ const getData = (items: any[]) =>
  *
  */
 const execution = async (dir?: string) => {
-  const dirpath = dir ?? path.join("./LWM2M/JSON/DDF.json");
+  const dirpath = dir ?? path.join("./lwm2m-registry-json/DDF.json");
   const ddf = await JSON.parse(await readFile(dirpath, "utf-8"));
   const info = getData(ddf.DDFList.Item);
   const importStatic = ` import { Static } from "@sinclair/typebox";`;
