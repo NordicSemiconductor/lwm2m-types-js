@@ -28,7 +28,7 @@ jobs:
       - name: From XML to JSON
         run: |
           mkdir lwm2m-registry-json
-          npx tsx cli/XMLtoJSON.ts ./lwm2m-registry/*.xml ./lwm2m-registry-json
+          npx tsx cli/XMLtoJSONFolder.ts ./lwm2m-registry ./lwm2m-registry-json
 
       - name: From JSON to TypeBox definition
         run: |
