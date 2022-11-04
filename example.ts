@@ -1,5 +1,5 @@
 import * as assert from "node:assert/strict";
-const knowGoodShadow = require("./known-good-shadow.json");
+import knowGoodShadow from "./known-good-shadow.json";
 import { LwM2MType } from "./LWM2MType";
 import { validateWithJSONSchema } from "./src/utils/validateWithJsonSchema";
 
