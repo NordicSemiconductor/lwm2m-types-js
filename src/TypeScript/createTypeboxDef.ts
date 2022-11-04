@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import { keyCleaning } from "../Json/json2typebox";
+import { keyCleaning } from "../Json/utils";
 
 /**
  * The DDF object (https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/DDF.xml)
@@ -32,9 +32,11 @@ const declarationExist = (ddf: string) => ddf.length > 0;
  * Iterate the list and construct:
  *  - the import statement of each typebox definition of items from LwM2M standard
  *  - Namespace declaration of each items from LwM2M standard
+ *  - TypeBox object containing all the objects from LwM2M standard
  *
  * First element of the returned list is the imports statement as string
  * Second element of the returned list is the namespace declaration as string
+ * Third element of the returned list is the typebox declaration as string
  * @param items
  */
 const getData = (items: any[]) =>
@@ -49,12 +51,15 @@ const getData = (items: any[]) =>
 
       const id = element.ObjectID[0];
       const name = element.Name[0];
-      if (index === 0) {
+
+      // TODO: add explanation why this is taken as a reference
+      if (previous[2] === "") {
         return [
           `import { _${id} } from "./types/${id}";`, // import statement
           `export namespace Object_${id} { export type ${keyCleaning(
             name
           )} = Static<typeof _${id}> }\n`, // namespace declaration
+          `_${id}: Type.Optional(_${id})`, // Typebox declaration
         ];
       }
 
@@ -65,9 +70,10 @@ const getData = (items: any[]) =>
         } export namespace Object_${id} { export type ${keyCleaning(
           name
         )} = Static<typeof _${id}> }\n`, // namespace declaration
+        `${previous[2]} , _${id}: Type.Optional(_${id})`, // Typebox declaration
       ];
     },
-    ["", ""]
+    ["", "", ""]
   );
 
 /**
@@ -77,11 +83,21 @@ const execution = async (dir?: string) => {
   const dirpath = dir ?? path.join("./lwm2m-registry-json/DDF.json");
   const ddf = await JSON.parse(await readFile(dirpath, "utf-8"));
   const info = getData(ddf.DDFList.Item);
+
+  // import statements
   const importStatic = ` import { Static } from "@sinclair/typebox";`;
+  const importType = `import { Type } from "@sinclair/typebox";`;
   const imports = info[0];
-  const declarationStatement = `export namespace LwM2M {${info[1]}}`;
-  const LwM2M = `${imports}\n${importStatic} ${declarationStatement}`;
+
+  // objects declaration
+  const typeBoxDeclaration = `export const LwM2MType = Type.Object({${info[2]}})`;
+  const nameSpaceDeclaration = `export namespace LwM2M {${info[1]}}`;
+
+  // value definition
+  const LwM2M = `${imports}\n${importStatic} ${nameSpaceDeclaration}`;
+  const LwM2MType = `${imports}\n${importType} ${typeBoxDeclaration}`;
   await writeFile("./LWM2M.ts", LwM2M);
+  await writeFile("./LWM2MType.ts", LwM2MType);
 };
 
 execution();

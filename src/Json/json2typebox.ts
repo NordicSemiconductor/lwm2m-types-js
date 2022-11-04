@@ -1,62 +1,11 @@
-/**
- * Get the equivalent data type
- * @param type
- * @returns string
- */
-const getType = (type: string): string => {
-  switch (type) {
-    case "Integer":
-      return "Number";
-    case "Unsigned Integer":
-      return "Number";
-    case "Boolean":
-      return "Boolean";
-    case "String":
-      return "String";
-    default:
-      return "Any";
-  }
-};
-
-/**
- * Replace characters from element
- * @param element
- * @returns
- */
-export const dataCleaning = (element: string) =>
-  element
-    .replaceAll(`"`, "'")
-    .replaceAll("‘", "'")
-    .replaceAll("’", "'")
-    .replaceAll(/\n/g, " ")
-    .replaceAll(/\r/g, " ")
-    .replaceAll(/\t/g, " ");
-
-/**
- * Replace characters from key
- * @param key
- * @returns
- */
-export const keyCleaning = (key: string) =>
-  key
-    .replaceAll(" ", "_")
-    .replaceAll("-", "_")
-    .replaceAll("(", "_")
-    .replaceAll(")", "_")
-    .replaceAll(",", "_")
-    .replaceAll("/", "_")
-    .replaceAll(".", "_")
-    .replaceAll("&", "_and_") // TODO: make it generic
-    .replaceAll("5", "five_") // TODO: make it generic
-    .replaceAll("3", "three"); // TODO: make it generic
-
-/**
- * Remove line breakers from value
- * @param value
- * @returns
- */
-export const cleanUnits = (value: string) =>
-  value.split(/\s/).filter((x) => x !== "").length === 0 ? "" : value;
+import {
+  cleanUnits,
+  dataCleaning,
+  getMax,
+  getMin,
+  getType,
+  keyCleaning,
+} from "./utils";
 
 /**
  * Generate typebox definition with received params
@@ -74,19 +23,30 @@ export const getTypebox = (
   type: string,
   description: string,
   isOptional: boolean,
-  rangeEnumeration: string[],
+  rangeEnumeration: [...(number | null)[]] | null,
   id: string,
   units: string
 ): string => {
-  const minimum = rangeEnumeration[0] ? Number(rangeEnumeration[0]) : null;
-  const maximum = rangeEnumeration[1] ? Number(rangeEnumeration[1]) : null;
+  let minimum = undefined;
+  let maximum = undefined;
+  let enumeration = undefined;
+
+  if (rangeEnumeration !== null) {
+    minimum = rangeEnumeration[0];
+    maximum = rangeEnumeration[1];
+    if (rangeEnumeration.length > 2) {
+      minimum = getMin(rangeEnumeration);
+      maximum = getMax(rangeEnumeration);
+      enumeration = rangeEnumeration;
+    }
+  }
 
   const props = [
-    `$id: '${id}'`,
     `title: '${name}'`,
     `description: "${dataCleaning(description)}"`,
-    minimum !== null ? `minimum: ${minimum}` : undefined,
-    maximum !== null ? `maximum: ${maximum}` : undefined,
+    minimum !== undefined ? `minimum: ${minimum}` : undefined,
+    maximum !== undefined ? `maximum: ${maximum}` : undefined,
+    enumeration !== undefined ? `enumeration: [${enumeration}]` : undefined,
     units ? `units: '${cleanUnits(units)}'` : undefined,
   ].reduce((previous, current, index) => {
     if (current) {
@@ -98,8 +58,40 @@ export const getTypebox = (
 
   const definition = `Type.${getType(type)}({${props}})`;
   return isOptional
-    ? `${keyCleaning(name)}: Type.Optional(${definition})`
-    : `${keyCleaning(name)}: ${definition}`;
+    ? `_${id}: Type.Optional(${definition})`
+    : `_${id}: ${definition}`;
+};
+
+// TODO: add description
+/**
+ *
+ * @param rangeEnumeration
+ * @returns
+ */
+export const getRangeEnumeration = (
+  rangeEnumeration: string
+): [...(number | null)[]] | null => {
+  //TODO: define if null or undefine
+  if (rangeEnumeration.length === 0) return null; // empty string case
+
+  if (rangeEnumeration.includes("..")) {
+    const minAndMax = rangeEnumeration.split("..");
+
+    const minimum = minAndMax[0]
+      ? Number(minAndMax[0].replace(/\D/g, ""))
+      : null;
+    const maximum = minAndMax[1]
+      ? Number(minAndMax[1].replace(/\D/g, ""))
+      : null;
+    return [minimum, maximum];
+  }
+
+  if (rangeEnumeration.split(",").length > 1)
+    return rangeEnumeration
+      .split(",")
+      .map((element: string) => Number(element));
+
+  return null; // no valid case
 };
 
 /**
@@ -112,7 +104,7 @@ export const parseData = (
   type: string;
   description: string;
   isOptional: boolean;
-  rangeEnumeration: string[];
+  rangeEnumeration: [...(number | null)[]] | null;
   id: string;
   units: string;
 } => {
@@ -120,7 +112,7 @@ export const parseData = (
   const type = element.Type[0];
   const description = dataCleaning(element.Description[0]);
   const isOptional = element.Mandatory[0] === "Optional";
-  const rangeEnumeration = element.RangeEnumeration[0].split("..");
+  const rangeEnumeration = getRangeEnumeration(element.RangeEnumeration[0]);
   const id = element.ATTR.ID;
   const units = element.Units[0];
   return { name, type, description, isOptional, rangeEnumeration, id, units };

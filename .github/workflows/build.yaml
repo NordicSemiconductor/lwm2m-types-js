@@ -43,3 +43,9 @@ jobs:
 
       - name: Make sure result compiles
         run: npx tsc ./LWM2M.ts
+
+      - name: Make sure example compiles
+        run: npx tsc ./example.ts
+
+      - name: Make sure example runs
+        run: npx tsx ./example.ts
