@@ -1,6 +1,5 @@
 import * as assert from "node:assert/strict";
-import { knowGoodShadow } from "./known-good-shadow";
-
+const knowGoodShadow = require("./known-good-shadow.json");
 import { LwM2MType } from "./LWM2MType";
 import { validateWithJSONSchema } from "./src/utils/validateWithJsonSchema";
 
@@ -13,6 +12,7 @@ if ("error" in maybeValidLwM2M) throw new Error(`Validation failed`);
 
 // then we can access LwM2M objects in the shadow document
 assert.deepStrictEqual("value" in maybeValidLwM2M, true);
+//const shadow = maybeValidLwM2M.value;
 const shadow: typeof LwM2MType = (maybeValidLwM2M as any).value;
 
 // Ensure values are as expected
