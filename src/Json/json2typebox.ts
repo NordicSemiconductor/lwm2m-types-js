@@ -1,11 +1,9 @@
-import {
-  cleanUnits,
-  dataCleaning,
-  getMax,
-  getMin,
-  getType,
-  keyCleaning,
-} from "./utils";
+import { cleanUnits } from "./../utils/cleanUnits";
+import { dataCleaning } from "./../utils/dataCleaning";
+import { getMax } from "./../utils/getMax";
+import { getMin } from "./../utils/getMin";
+import { getType } from "./../utils/getType";
+import { keyCleaning } from "./../utils/keyCleaning";
 
 /**
  * Generate typebox definition with received params
