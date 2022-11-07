@@ -1,22 +1,24 @@
 import { LwM2M } from "./LWM2M";
 
-const _1: LwM2M.Object_1.LwM2M_Server = {
-  Name: "LwM2M Server",
-  ObjectURN: "urn:oma:lwm2m:oma:1:1.2",
-  LWM2MVersion: 1.1,
-  ObjectVersion: 1.1,
-  Resources: {
-    _0: 101,
-    _1: 43200,
-    _2: 0,
-    _3: 0,
-    _5: 86400,
-    _6: false,
-    _7: "U",
-    _23: false,
-    _8: null,
+const _1: LwM2M.Object_1.LwM2M_Server = [
+  {
+    Name: "LwM2M Server",
+    ObjectURN: "urn:oma:lwm2m:oma:1:1.2",
+    LWM2MVersion: 1.1,
+    ObjectVersion: 1.1,
+    Resources: {
+      _0: 101,
+      _1: 43200,
+      _2: 0,
+      _3: 0,
+      _5: 86400,
+      _6: false,
+      _7: "U",
+      _23: false,
+      _8: null,
+    },
   },
-};
+];
 
 const _3: LwM2M.Object_3.Device = {
   Name: "Device",
@@ -88,81 +90,91 @@ const _6: LwM2M.Object_6.Location = {
   },
 };
 
-const _3303: LwM2M.Object_3303.Temperature = {
-  Name: "Location",
-  ObjectURN: "urn:oma:lwm2m:ext:3303:1.1",
-  LWM2MVersion: 1.0,
-  ObjectVersion: 1.1,
-  Resources: {
-    _5518: "2022/10/07, 13:33:22 UTC+0",
-    _5601: 23.51,
-    _5602: 23.51,
-    _5603: -40,
-    _5604: 85,
-    _5700: 24.57,
-    _5701: "Celsius degrees",
+const _3303: LwM2M.Object_3303.Temperature = [
+  {
+    Name: "Location",
+    ObjectURN: "urn:oma:lwm2m:ext:3303:1.1",
+    LWM2MVersion: 1.0,
+    ObjectVersion: 1.1,
+    Resources: {
+      _5518: "2022/10/07, 13:33:22 UTC+0",
+      _5601: 23.51,
+      _5602: 23.51,
+      _5603: -40,
+      _5604: 85,
+      _5700: 24.57,
+      _5701: "Celsius degrees",
+    },
   },
-};
+];
 
-const _3304: LwM2M.Object_3304.Humidity = {
-  Name: "Humidity",
-  ObjectURN: "urn:oma:lwm2m:ext:3304:1.1",
-  LWM2MVersion: 1.0,
-  ObjectVersion: 1.1,
-  Resources: {
-    _5518: "2022/10/07, 13:33:22 UTC+0",
-    _5601: 31.06,
-    _5602: 31.06,
-    _5603: 0,
-    _5604: 100,
-    _5700: 28.93,
-    _5701: "%",
+const _3304: LwM2M.Object_3304.Humidity = [
+  {
+    Name: "Humidity",
+    ObjectURN: "urn:oma:lwm2m:ext:3304:1.1",
+    LWM2MVersion: 1.0,
+    ObjectVersion: 1.1,
+    Resources: {
+      _5518: "2022/10/07, 13:33:22 UTC+0",
+      _5601: 31.06,
+      _5602: 31.06,
+      _5603: 0,
+      _5604: 100,
+      _5700: 28.93,
+      _5701: "%",
+    },
   },
-};
+];
 
-const _3323: LwM2M.Object_3323.Pressure = {
-  Name: "Pressure",
-  ObjectURN: "urn:oma:lwm2m:ext:3323:1.1",
-  LWM2MVersion: 1.0,
-  ObjectVersion: 1.1,
-  Resources: {
-    _5518: "2022/10/07, 13:33:22 UTC+0",
-    _5601: 98.24,
-    _5602: 98.24,
-    _5603: 30,
-    _5604: 110,
-    _5700: 98.23,
-    _5701: "kPa",
+const _3323: LwM2M.Object_3323.Pressure = [
+  {
+    Name: "Pressure",
+    ObjectURN: "urn:oma:lwm2m:ext:3323:1.1",
+    LWM2MVersion: 1.0,
+    ObjectVersion: 1.1,
+    Resources: {
+      _5518: "2022/10/07, 13:33:22 UTC+0",
+      _5601: 98.24,
+      _5602: 98.24,
+      _5603: 30,
+      _5604: 110,
+      _5700: 98.23,
+      _5701: "kPa",
+    },
   },
-};
+];
 
-const _3347: LwM2M.Object_3347.Push_button = {
-  Name: "Pressure",
-  ObjectURN: "urn:oma:lwm2m:ext:3323:1.1",
-  LWM2MVersion: 1.0,
-  ObjectVersion: 1.1,
-  Resources: {
-    _5500: false,
-    _5501: 0,
-    _5518: "1970/01/01, 0:00:00 UTC+0",
-    _5750: "Push button 1",
+const _3347: LwM2M.Object_3347.Push_button = [
+  {
+    Name: "Pressure",
+    ObjectURN: "urn:oma:lwm2m:ext:3347:1.1",
+    LWM2MVersion: 1.0,
+    ObjectVersion: 1.1,
+    Resources: {
+      _5500: false,
+      _5501: 0,
+      _5518: "1970/01/01, 0:00:00 UTC+0",
+      _5750: "Push button 1",
+    },
   },
-};
+];
 
-const _10256: LwM2M.Object_10256.ECID_Signal_Measurement_Information = {
-  Name: "Pressure",
-  ObjectURN: "urn:oma:lwm2m:ext:3323:1.1",
-  LWM2MVersion: 1.0,
-  ObjectVersion: 1.1,
-  Resources: {
-    _0: 247,
-    _1: 0,
-    _2: 6400,
-    _3: -96,
-    _4: -12,
-    _5: 0,
+const _10256: LwM2M.Object_10256.ECID_Signal_Measurement_Information = [
+  {
+    Name: "Pressure",
+    ObjectURN: "urn:oma:lwm2m:x:10256",
+    LWM2MVersion: 1.0,
+    ObjectVersion: 1.1,
+    Resources: {
+      _0: 247,
+      _1: 0,
+      _2: 6400,
+      _3: -96,
+      _4: -12,
+      _5: 0,
+    },
   },
-};
+];
 
 export const knowGoodShadow = {
   _1,

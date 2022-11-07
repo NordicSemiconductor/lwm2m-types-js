@@ -3,6 +3,7 @@ import {
   getObjectProps,
   parseData,
   getRangeEnumeration,
+  defineInstaceType,
 } from "./json2typebox";
 
 describe("json2jsonSchema", () => {
@@ -216,5 +217,31 @@ describe("json2jsonSchema", () => {
     ])("Should return range enumeration: %s -> %p", (value, expected) =>
       expect(getRangeEnumeration(value)).toStrictEqual(expected)
     );
+  });
+
+  describe("defineInstaceType", () => {
+    it("Should create a multiple instance type definition", () => {
+      const instanceType = "Multiple";
+      const value = "";
+      expect(defineInstaceType(instanceType, value)).toStrictEqual(
+        `Type.Array(Type.Object({${value}}))`
+      );
+    });
+
+    it("Should create a single instance type definition", () => {
+      const instanceType = "Single";
+      const value = "";
+      expect(defineInstaceType(instanceType, value)).toStrictEqual(
+        `Type.Object({${value}})`
+      );
+    });
+
+    it("Should return error when instance type is different than allowed options", () => {
+      const instanceType = "somethingElse";
+      const value = "";
+      expect(() => defineInstaceType(instanceType, value)).toThrow(
+        `Instance type is not allowed`
+      );
+    });
   });
 });

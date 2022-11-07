@@ -138,6 +138,26 @@ export const getObjectProps = (items: any[]) =>
     }, "");
 
 /**
+ * Define if definition is an array instance or an object instance taking in consideration
+ * the MultipleInstances property from the LwM2m registry
+ * @param instanceType
+ * @param value
+ * @returns string
+ */
+export const defineInstaceType = (
+  instanceType: string,
+  value: string
+): string => {
+  if (instanceType !== "Multiple" && instanceType !== "Single")
+    throw new Error("Instance type is not allowed");
+
+  const isMultipleInstance = instanceType === "Multiple";
+  return isMultipleInstance
+    ? `Type.Array(Type.Object({${value}}))`
+    : `Type.Object({${value}})`;
+};
+
+/**
  * Generates the typescript code of the typebox object definition
  */
 export const createDefinition = (Lwm2mRegistry: any): string => {
@@ -153,9 +173,15 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
 
   const resources = `Resources: Type.Object({${getObjectProps(items)}})`;
   const importTypeBox = `import { Type, Static } from '@sinclair/typebox'`;
-  const typeboxDefinition = `export const _${id} = Type.Object({${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${dataCleaning(
+  const objectData = `${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${dataCleaning(
     description
-  )}"})`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
+  )}"`;
+  const typeDefinition = defineInstaceType(
+    Lwm2mRegistry.MultipleInstances[0],
+    objectData
+  );
+
+  const typeboxDefinition = `export const _${id} = ${typeDefinition}`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
 
   const nameSpaceDefinition = `export namespace Object_${id} {export type ${keyCleaning(
     Lwm2mRegistry.Name[0]
