@@ -10,7 +10,7 @@ import { keyCleaning } from "./../utils/keyCleaning";
  * @param name
  * @param type
  * @param description
- * @param isOptional
+ * @param mandatoryStatus
  * @param rangeEnumeration
  * @param id
  * @param units
@@ -20,7 +20,7 @@ export const getTypebox = (
   name: string,
   type: string,
   description: string,
-  isOptional: boolean,
+  mandatoryStatus: string,
   rangeEnumeration: [...(number | null)[]] | null,
   id: string,
   units: string
@@ -55,9 +55,7 @@ export const getTypebox = (
   }, "");
 
   const definition = `Type.${getType(type)}({${props}})`;
-  return isOptional
-    ? `_${id}: Type.Optional(${definition})`
-    : `_${id}: ${definition}`;
+  return `_${id}: ${defineMandatoryStatus(mandatoryStatus, definition)}`;
 };
 
 // TODO: add description
@@ -101,7 +99,7 @@ export const parseData = (
   name: string;
   type: string;
   description: string;
-  isOptional: boolean;
+  mandatoryStatus: string;
   rangeEnumeration: [...(number | null)[]] | null;
   id: string;
   units: string;
@@ -109,11 +107,19 @@ export const parseData = (
   const name = element.Name[0];
   const type = element.Type[0];
   const description = dataCleaning(element.Description[0]);
-  const isOptional = element.Mandatory[0] === "Optional";
+  const mandatoryStatus = element.Mandatory[0];
   const rangeEnumeration = getRangeEnumeration(element.RangeEnumeration[0]);
   const id = element.ATTR.ID;
   const units = element.Units[0];
-  return { name, type, description, isOptional, rangeEnumeration, id, units };
+  return {
+    name,
+    type,
+    description,
+    mandatoryStatus,
+    rangeEnumeration,
+    id,
+    units,
+  };
 };
 
 /**
@@ -127,7 +133,7 @@ export const getObjectProps = (items: any[]) =>
         element.name,
         element.type,
         element.description,
-        element.isOptional,
+        element.mandatoryStatus,
         element.rangeEnumeration,
         element.id,
         element.units
@@ -136,6 +142,21 @@ export const getObjectProps = (items: any[]) =>
     .reduce((previus, current, index) => {
       return index === 0 ? current : `${previus}, ${current}`;
     }, "");
+
+/**
+ * Define if the type box definition of the object is optional or mandatory.
+ * following the allowed options specified in http://openmobilealliance.org/tech/profiles/LWM2M-v1_1.xsd
+ * @param status
+ * @param object
+ * @returns
+ */
+export const defineMandatoryStatus = (status: string, object: string) => {
+  if (status !== "Mandatory" && status !== "Optional")
+    throw new Error("Status specification is not allowed");
+
+  const isMandatory = status === "Mandatory";
+  return isMandatory ? `${object}` : `Type.Optional(${object})`;
+};
 
 /**
  * Define if definition is an array instance or an object instance taking in consideration
@@ -157,6 +178,7 @@ export const defineInstaceType = (
     : `Type.Object({${value}})`;
 };
 
+// TODO: add test case
 /**
  * Generates the typescript code of the typebox object definition
  */
@@ -164,6 +186,7 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
   const description = Lwm2mRegistry.Description1[0];
   const items = Lwm2mRegistry.Resources[0].Item;
   const id: string = Lwm2mRegistry.ObjectID[0];
+  const mandatoryStatus = Lwm2mRegistry.Mandatory[0];
 
   // object metadata
   const name = `Name: Type.String({examples:["${Lwm2mRegistry.Name[0]}"]})`;
@@ -180,8 +203,9 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
     Lwm2mRegistry.MultipleInstances[0],
     objectData
   );
+  const object = `${defineMandatoryStatus(mandatoryStatus, typeDefinition)}`;
 
-  const typeboxDefinition = `export const _${id} = ${typeDefinition}`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
+  const typeboxDefinition = `export const _${id} = ${object}`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
 
   const nameSpaceDefinition = `export namespace Object_${id} {export type ${keyCleaning(
     Lwm2mRegistry.Name[0]

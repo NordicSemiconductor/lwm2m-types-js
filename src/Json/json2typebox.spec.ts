@@ -4,6 +4,7 @@ import {
   parseData,
   getRangeEnumeration,
   defineInstaceType,
+  defineMandatoryStatus,
 } from "./json2typebox";
 
 describe("json2jsonSchema", () => {
@@ -18,7 +19,7 @@ describe("json2jsonSchema", () => {
         },
         {
           rangeEnumeration: [1, 65534],
-          isOptional: false,
+          mandatoryStatus: "Mandatory",
           type: "Integer",
           units: "s",
         },
@@ -32,7 +33,7 @@ describe("json2jsonSchema", () => {
         },
         {
           rangeEnumeration: [1, 655, 34],
-          isOptional: true,
+          mandatoryStatus: "Optional",
           type: "String",
           units: "",
         },
@@ -46,7 +47,7 @@ describe("json2jsonSchema", () => {
         },
         {
           rangeEnumeration: null,
-          isOptional: true,
+          mandatoryStatus: "Optional",
           type: "String",
           units: "",
         },
@@ -71,7 +72,7 @@ describe("json2jsonSchema", () => {
           name: "Short Server ID",
           type: expected.type,
           description: "Used as link to associate server Object Instance.",
-          isOptional: expected.isOptional,
+          mandatoryStatus: expected.mandatoryStatus,
           rangeEnumeration: expected.rangeEnumeration,
           id: "0",
           units: expected.units,
@@ -86,7 +87,7 @@ describe("json2jsonSchema", () => {
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
-      const isOptional = false;
+      const mandatoryStatus = "Mandatory";
       const rangeEnumeration = null;
       const id = "16";
       const units = "";
@@ -94,7 +95,7 @@ describe("json2jsonSchema", () => {
         name,
         type,
         description,
-        isOptional,
+        mandatoryStatus,
         rangeEnumeration,
         id,
         units
@@ -111,7 +112,7 @@ describe("json2jsonSchema", () => {
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
-      const isOptional = false;
+      const mandatoryStatus = "Mandatory";
       const rangeEnumeration = [1, 65534];
       const minimum = 1;
       const maximum = 65534;
@@ -121,7 +122,7 @@ describe("json2jsonSchema", () => {
         name,
         type,
         description,
-        isOptional,
+        mandatoryStatus,
         rangeEnumeration,
         id,
         units
@@ -139,7 +140,7 @@ describe("json2jsonSchema", () => {
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
-      const isOptional = false;
+      const mandatoryStatus = "Mandatory";
       const rangeEnumeration = null;
       const id = "16";
       const units = "s";
@@ -147,7 +148,7 @@ describe("json2jsonSchema", () => {
         name,
         type,
         description,
-        isOptional,
+        mandatoryStatus,
         rangeEnumeration,
         id,
         units
@@ -163,7 +164,7 @@ describe("json2jsonSchema", () => {
       const type = "Unsigned Integer";
       const description =
         "The number of successive communication attempts before which a communication sequence is considered as failed.";
-      const isOptional = true;
+      const mandatoryStatus = "Optional";
       const rangeEnumeration = null;
       const id = "16";
       const units = "";
@@ -171,12 +172,35 @@ describe("json2jsonSchema", () => {
         name,
         type,
         description,
-        isOptional,
+        mandatoryStatus,
         rangeEnumeration,
         id,
         units
       );
       const result = `_16: Type.Optional(Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed."}))`;
+
+      expect(typeboxDefinition).toBe(result);
+    });
+
+    it("Should return a typebox definition in string specifying mandatory value", () => {
+      const name = "Communication Retry Count";
+      const type = "Unsigned Integer";
+      const description =
+        "The number of successive communication attempts before which a communication sequence is considered as failed.";
+      const mandatoryStatus = "Mandatory";
+      const rangeEnumeration = null;
+      const id = "16";
+      const units = "";
+      const typeboxDefinition = getTypebox(
+        name,
+        type,
+        description,
+        mandatoryStatus,
+        rangeEnumeration,
+        id,
+        units
+      );
+      const result = `_16: Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed."})`;
 
       expect(typeboxDefinition).toBe(result);
     });
@@ -241,6 +265,32 @@ describe("json2jsonSchema", () => {
       const value = "";
       expect(() => defineInstaceType(instanceType, value)).toThrow(
         `Instance type is not allowed`
+      );
+    });
+  });
+
+  describe("defineMandatoryStatus", () => {
+    it("Should create a mandatory instance type definition", () => {
+      const instanceType = "Mandatory";
+      const value = "";
+      expect(defineMandatoryStatus(instanceType, value)).toStrictEqual(
+        `${value}`
+      );
+    });
+
+    it("Should create an optional instance type definition", () => {
+      const instanceType = "Optional";
+      const value = "";
+      expect(defineMandatoryStatus(instanceType, value)).toStrictEqual(
+        `Type.Optional(${value})`
+      );
+    });
+
+    it("Should return error when instance type is different than allowed options", () => {
+      const instanceType = "somethingElse";
+      const value = "";
+      expect(() => defineMandatoryStatus(instanceType, value)).toThrow(
+        `Status specification is not allowed`
       );
     });
   });
