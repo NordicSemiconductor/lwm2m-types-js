@@ -1,4 +1,6 @@
 // TODO: add description
+// TODO: Update when this issue is resolved https://github.com/OpenMobileAlliance/lwm2m-registry/issues/690
+// https://github.com/OpenMobileAlliance/lwm2m-registry/pull/685
 /**
  *
  * @param rangeEnumeration
