@@ -18,7 +18,7 @@ const shadow: typeof LwM2MType = (maybeValidLwM2M as any).value;
 // Ensure values are as expected
 assert.deepStrictEqual(shadow._1[0].Resources._1, 43200);
 assert.deepStrictEqual(shadow._3.Resources._1, "thingy91_nrf9160");
-assert.deepStrictEqual(shadow._4.Resources._7, "ibasis.iot");
+assert.deepStrictEqual(shadow._4.Resources._7[0], "ibasis.iot");
 assert.deepStrictEqual(shadow._3303[0].Resources._5701, "Celsius degrees");
 assert.deepStrictEqual(shadow._3323[0].Resources._5602, 98.24);
 

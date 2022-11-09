@@ -21,6 +21,7 @@ export const getTypebox = (
   type: string,
   description: string,
   mandatoryStatus: string,
+  multipleInstances: string,
   rangeEnumeration: [...(number | null)[]] | null,
   id: string,
   units: string
@@ -55,7 +56,14 @@ export const getTypebox = (
   }, "");
 
   const definition = `Type.${getType(type)}({${props}})`;
-  return `_${id}: ${defineMandatoryStatus(mandatoryStatus, definition)}`;
+
+  const object = getTypeboxDefinition(
+    multipleInstances,
+    mandatoryStatus,
+    definition
+  );
+
+  return `_${id}: ${object}`;
 };
 
 // TODO: add description
@@ -100,6 +108,7 @@ export const parseData = (
   type: string;
   description: string;
   mandatoryStatus: string;
+  multipleInstances: string;
   rangeEnumeration: [...(number | null)[]] | null;
   id: string;
   units: string;
@@ -108,6 +117,7 @@ export const parseData = (
   const type = element.Type[0];
   const description = dataCleaning(element.Description[0]);
   const mandatoryStatus = element.Mandatory[0];
+  const multipleInstances = element.MultipleInstances[0];
   const rangeEnumeration = getRangeEnumeration(element.RangeEnumeration[0]);
   const id = element.ATTR.ID;
   const units = element.Units[0];
@@ -116,6 +126,7 @@ export const parseData = (
     type,
     description,
     mandatoryStatus,
+    multipleInstances,
     rangeEnumeration,
     id,
     units,
@@ -134,6 +145,7 @@ export const getObjectProps = (items: any[]) =>
         element.type,
         element.description,
         element.mandatoryStatus,
+        element.multipleInstances,
         element.rangeEnumeration,
         element.id,
         element.units
@@ -150,7 +162,7 @@ export const getObjectProps = (items: any[]) =>
  * @param object
  * @returns
  */
-export const defineMandatoryStatus = (status: string, object: string) => {
+export const getMandatoryStatus = (status: string, object: string) => {
   if (status !== "Mandatory" && status !== "Optional")
     throw new Error("Status specification is not allowed");
 
@@ -158,6 +170,7 @@ export const defineMandatoryStatus = (status: string, object: string) => {
   return isMandatory ? `${object}` : `Type.Optional(${object})`;
 };
 
+// TODO: update description
 /**
  * Define if definition is an array instance or an object instance taking in consideration
  * the MultipleInstances property from the LwM2m registry
@@ -165,7 +178,7 @@ export const defineMandatoryStatus = (status: string, object: string) => {
  * @param value
  * @returns string
  */
-export const defineInstaceType = (
+export const getInstanceType = (
   instanceType: string,
   value: string
 ): string => {
@@ -173,9 +186,25 @@ export const defineInstaceType = (
     throw new Error("Instance type is not allowed");
 
   const isMultipleInstance = instanceType === "Multiple";
-  return isMultipleInstance
-    ? `Type.Array(Type.Object({${value}}))`
-    : `Type.Object({${value}})`;
+  return isMultipleInstance ? `Type.Array(${value})` : `${value}`;
+};
+
+// TODO: take the decision if keep it or remove it.
+/**
+ *
+ * @param multipleInstances
+ * @param mandatoryStatus
+ * @param object
+ * @returns
+ */
+const getTypeboxDefinition = (
+  multipleInstances: string,
+  mandatoryStatus: string,
+  object: string
+) => {
+  let instance = getInstanceType(multipleInstances, object);
+  instance = getMandatoryStatus(mandatoryStatus, instance);
+  return instance;
 };
 
 // TODO: add test case
@@ -187,6 +216,7 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
   const items = Lwm2mRegistry.Resources[0].Item;
   const id: string = Lwm2mRegistry.ObjectID[0];
   const mandatoryStatus = Lwm2mRegistry.Mandatory[0];
+  const multipleInstances = Lwm2mRegistry.MultipleInstances[0];
 
   // object metadata
   const name = `Name: Type.String({examples:["${Lwm2mRegistry.Name[0]}"]})`;
@@ -199,11 +229,18 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
   const objectData = `${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${dataCleaning(
     description
   )}"`;
-  const typeDefinition = defineInstaceType(
-    Lwm2mRegistry.MultipleInstances[0],
-    objectData
+
+  /* */
+  const object = getTypeboxDefinition(
+    multipleInstances,
+    mandatoryStatus,
+    `Type.Object({${objectData}})`
   );
-  const object = `${defineMandatoryStatus(mandatoryStatus, typeDefinition)}`;
+
+  /*
+  const typeDefinition = getInstanceType(Lwm2mRegistry.MultipleInstances[0]);
+  const object = `${getMandatoryStatus(mandatoryStatus, typeDefinition)}`;
+  */
 
   const typeboxDefinition = `export const _${id} = ${object}`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
 
