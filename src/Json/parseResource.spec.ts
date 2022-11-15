@@ -31,7 +31,7 @@ describe("parseResource", () => {
         mandatoryStatus: "Optional",
         multipleInstances: "Single",
         type: "String",
-        units: "",
+        units: undefined,
       },
     ],
     [
@@ -43,39 +43,36 @@ describe("parseResource", () => {
         units: [""],
       },
       {
-        rangeEnumeration: "",
+        rangeEnumeration: undefined,
         mandatoryStatus: "Optional",
         multipleInstances: "Multiple",
         type: "String",
-        units: "",
+        units: undefined,
       },
     ],
-  ])(
-    "Should pick properties from element and parse data.",
-    (value, expected) => {
-      const items = [
-        {
-          ATTR: { ID: "0" },
-          Name: ["Short Server ID"],
-          Operations: ["R"],
-          MultipleInstances: value.multipleInstances,
-          Mandatory: value.mandatory,
-          Type: value.type,
-          RangeEnumeration: value.rangeEnumeration,
-          Units: value.units,
-          Description: ["Used as link to associate server Object Instance."],
-        },
-      ];
-      expect(parseResource(items[0])).toStrictEqual({
-        name: "Short Server ID",
-        type: expected.type,
-        description: "Used as link to associate server Object Instance.",
-        mandatoryStatus: expected.mandatoryStatus,
-        multipleInstances: expected.multipleInstances,
-        rangeEnumeration: expected.rangeEnumeration,
-        id: "0",
-        units: expected.units,
-      });
-    }
-  );
+  ])("should parse %j into %j", (value, expected) => {
+    const items = [
+      {
+        ATTR: { ID: "0" },
+        Name: ["Short Server ID"],
+        Operations: ["R"],
+        MultipleInstances: value.multipleInstances,
+        Mandatory: value.mandatory,
+        Type: value.type,
+        RangeEnumeration: value.rangeEnumeration,
+        Units: value.units,
+        Description: ["Used as link to associate server Object Instance."],
+      },
+    ];
+    expect(parseResource(items[0])).toStrictEqual({
+      name: "Short Server ID",
+      type: expected.type,
+      description: "Used as link to associate server Object Instance.",
+      mandatoryStatus: expected.mandatoryStatus,
+      multipleInstances: expected.multipleInstances,
+      rangeEnumeration: expected.rangeEnumeration,
+      id: "0",
+      units: expected.units,
+    });
+  });
 });

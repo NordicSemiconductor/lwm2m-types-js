@@ -1,9 +1,10 @@
 import { dataCleaning } from "./../utils/dataCleaning";
 
 import { keyCleaning } from "./../utils/keyCleaning";
+import { createResourceDefinition } from "./createResourceDefinition";
 import { getMandatoryStatus } from "./getMandatoryStatus";
 import { getMultipleInstanceStatus } from "./getMultipleInstanceStatus";
-import { getResourcesDefinition } from "./getResourcesDefinition";
+import { parseResource } from "./parseResource";
 
 // TODO: add test case
 /**
@@ -22,9 +23,10 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
   const lwm2mVersion = `LWM2MVersion: Type.Number({examples:[${Lwm2mRegistry.LWM2MVersion[0]}]})`;
   const objectVersion = `ObjectVersion: Type.Number({examples:[${Lwm2mRegistry.ObjectVersion[0]}]})`;
 
-  const resources = `Resources: Type.Object({${getResourcesDefinition(
-    items
-  )}})`;
+  const resources = `Resources: Type.Object({${items
+    .map(parseResource)
+    .map(createResourceDefinition)
+    .join(", ")}})`;
   const importTypeBox = `import { Type, Static } from '@sinclair/typebox'`;
 
   let object = `${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${dataCleaning(

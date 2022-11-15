@@ -3,21 +3,18 @@ import Ajv, { ErrorObject } from "ajv";
 
 export const validateWithJSONSchema = <T extends TSchema>(
   schema: T
-): ((
-  value: unknown
-) =>
+): ((value: unknown) =>
   | { value: Static<typeof schema> }
-  | { errors: ErrorObject[]; input: unknown }) => {
+  | {
+      errors: ErrorObject[];
+    }) => {
   const ajv = new Ajv();
-  // see @https://github.com/sinclairzx81/typebox/issues/51
-  ajv.addKeyword("units");
   const v = ajv.compile(schema);
   return (value: unknown) => {
     const valid = v(value);
     if (valid !== true) {
       return {
         errors: v.errors as ErrorObject[],
-        input: value,
       };
     }
     return { value: value as Static<typeof schema> };

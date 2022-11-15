@@ -3,6 +3,7 @@ import {
   createLiteralDefinition,
   createEnumDefinition,
 } from "./createResourceDefinition";
+import { Mandatory, MultipleInstances } from "./parseResource";
 
 describe("createResourceDefinition", () => {
   it("Should return a typebox definition in string", () => {
@@ -10,12 +11,11 @@ describe("createResourceDefinition", () => {
     const type = "Unsigned Integer";
     const description =
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Single";
+    const mandatoryStatus = Mandatory.Mandatory;
+    const multipleInstances = MultipleInstances.Single;
     const rangeEnumeration = "";
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -23,8 +23,7 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
+    });
     const result = `_16: Type.Number({title: 'Communication Retry Count', description: \"The number of successive communication attempts before which a communication sequence is considered as failed.\"})`;
 
     expect(typeboxDefinition).toContain(`title: '${name}'`);
@@ -37,14 +36,13 @@ describe("createResourceDefinition", () => {
     const type = "Unsigned Integer";
     const description =
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Single";
+    const mandatoryStatus = Mandatory.Mandatory;
+    const multipleInstances = MultipleInstances.Single;
     const rangeEnumeration = "1..65534";
     const minimum = 1;
     const maximum = 65534;
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -52,8 +50,7 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
+    });
 
     const result = `_16: Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed.", minimum: 1, maximum: 65534})`;
 
@@ -62,43 +59,16 @@ describe("createResourceDefinition", () => {
     expect(typeboxDefinition).toBe(result);
   });
 
-  it("Should return a typebox definition in string specifying units", () => {
-    const name = "Communication Retry Count";
-    const type = "Unsigned Integer";
-    const description =
-      "The number of successive communication attempts before which a communication sequence is considered as failed.";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Single";
-    const rangeEnumeration = "";
-    const id = "16";
-    const units = "s";
-    const typeboxDefinition = createResourceDefinition(
-      name,
-      type,
-      description,
-      mandatoryStatus,
-      multipleInstances,
-      rangeEnumeration,
-      id,
-      units
-    );
-    const result = `_16: Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed.", units: 's'})`;
-
-    expect(typeboxDefinition).toContain(`units: '${units}'`);
-    expect(typeboxDefinition).toBe(result);
-  });
-
   it("Should return a typebox definition in string specifying optional value", () => {
     const name = "Communication Retry Count";
     const type = "Unsigned Integer";
     const description =
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
-    const mandatoryStatus = "Optional";
-    const multipleInstances = "Single";
+    const mandatoryStatus = Mandatory.Optional;
+    const multipleInstances = MultipleInstances.Single;
     const rangeEnumeration = "";
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -106,8 +76,7 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
+    });
     const result = `_16: Type.Optional(Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed."}))`;
 
     expect(typeboxDefinition).toBe(result);
@@ -118,12 +87,11 @@ describe("createResourceDefinition", () => {
     const type = "Unsigned Integer";
     const description =
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Single";
+    const mandatoryStatus = Mandatory.Mandatory;
+    const multipleInstances = MultipleInstances.Single;
     const rangeEnumeration = "";
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -131,8 +99,7 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
+    });
     const result = `_16: Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed."})`;
 
     expect(typeboxDefinition).toBe(result);
@@ -143,12 +110,11 @@ describe("createResourceDefinition", () => {
     const type = "Unsigned Integer";
     const description =
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Multiple";
+    const mandatoryStatus = Mandatory.Mandatory;
+    const multipleInstances = MultipleInstances.Multiple;
     const rangeEnumeration = "";
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -156,8 +122,7 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
+    });
     const result = `_16: Type.Array(Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed."}))`;
 
     expect(typeboxDefinition).toBe(result);
@@ -168,12 +133,11 @@ describe("createResourceDefinition", () => {
     const type = "Unsigned Integer";
     const description =
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Single";
+    const mandatoryStatus = Mandatory.Mandatory;
+    const multipleInstances = MultipleInstances.Single;
     const rangeEnumeration = "";
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -181,8 +145,7 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
+    });
     const result = `_16: Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed."})`;
 
     expect(typeboxDefinition).toBe(result);
@@ -191,13 +154,12 @@ describe("createResourceDefinition", () => {
   it("Should check typebox definition when rangeEnumeration format is a range", () => {
     const name = "name";
     const type = "Integer";
-    const description = "Description";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Single";
+    const description = "Description.";
+    const mandatoryStatus = Mandatory.Mandatory;
+    const multipleInstances = MultipleInstances.Single;
     const rangeEnumeration = "0..255";
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -205,9 +167,8 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
-    const result = `_16: Type.Number({title: 'name', description: "Description", minimum: 0, maximum: 255})`;
+    });
+    const result = `_16: Type.Number({title: 'name', description: "Description.", minimum: 0, maximum: 255})`;
 
     expect(typeboxDefinition).toBe(result);
   });
@@ -215,13 +176,12 @@ describe("createResourceDefinition", () => {
   it("Should check typebox definition when rangeEnumeration format is a single instance", () => {
     const name = "name";
     const type = "Integer";
-    const description = "Description";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Single";
+    const description = "Description.";
+    const mandatoryStatus = Mandatory.Mandatory;
+    const multipleInstances = MultipleInstances.Single;
     const rangeEnumeration = "0";
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -229,9 +189,8 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
-    const result = `_16: Type.Literal(0 ,{title: 'name', description: "Description"})`;
+    });
+    const result = `_16: Type.Literal(0 ,{title: 'name', description: "Description."})`;
 
     expect(typeboxDefinition).toBe(result);
   });
@@ -239,13 +198,12 @@ describe("createResourceDefinition", () => {
   it("Should check typebox definition when rangeEnumeration format is a list", () => {
     const name = "name";
     const type = "Integer";
-    const description = "Description";
-    const mandatoryStatus = "Mandatory";
-    const multipleInstances = "Single";
+    const description = "Description.";
+    const mandatoryStatus = Mandatory.Mandatory;
+    const multipleInstances = MultipleInstances.Single;
     const rangeEnumeration = "0, 1, 2";
     const id = "16";
-    const units = "";
-    const typeboxDefinition = createResourceDefinition(
+    const typeboxDefinition = createResourceDefinition({
       name,
       type,
       description,
@@ -253,9 +211,8 @@ describe("createResourceDefinition", () => {
       multipleInstances,
       rangeEnumeration,
       id,
-      units
-    );
-    const result = `_16: Type.Union([Type.Literal(0 ),Type.Literal(1 ),Type.Literal(2 )],{title: 'name', description: "Description"})`;
+    });
+    const result = `_16: Type.Union([Type.Literal(0 ),Type.Literal(1 ),Type.Literal(2 )],{title: 'name', description: "Description."})`;
 
     expect(typeboxDefinition).toBe(result);
   });
@@ -263,27 +220,26 @@ describe("createResourceDefinition", () => {
   it.each([
     [
       "0..255 bytes",
-      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '0..255 bytes'"})`,
+      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '0..255 bytes'."})`,
     ],
     [
       "1: normal\r\n\t\t\t\t2: remote\r\n\t\t\t\t3: local",
-      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '1: normal      2: remote      3: local'"})`,
+      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '1: normal      2: remote      3: local'."})`,
     ],
     [
       "<7 to >12.5",
-      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '<7 to >12.5'"})`,
+      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '<7 to >12.5'."})`,
     ],
   ])(
     "Should check typebox definition when rangeEnumeration format is invalid",
     (rangeEnumeration, expected) => {
       const name = "name";
       const type = "Integer";
-      const description = "Description";
-      const mandatoryStatus = "Mandatory";
-      const multipleInstances = "Single";
+      const description = "Description.";
+      const mandatoryStatus = Mandatory.Mandatory;
+      const multipleInstances = MultipleInstances.Single;
       const id = "16";
-      const units = "";
-      const typeboxDefinition = createResourceDefinition(
+      const typeboxDefinition = createResourceDefinition({
         name,
         type,
         description,
@@ -291,8 +247,7 @@ describe("createResourceDefinition", () => {
         multipleInstances,
         rangeEnumeration,
         id,
-        units
-      );
+      });
 
       expect(typeboxDefinition).toBe(expected);
     }

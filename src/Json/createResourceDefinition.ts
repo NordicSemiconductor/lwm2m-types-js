@@ -4,58 +4,78 @@ import { getType } from "../utils/getType";
 import { getMandatoryStatus } from "./getMandatoryStatus";
 import { getMultipleInstanceStatus } from "./getMultipleInstanceStatus";
 import { getRangeEnumeration } from "./getRangeEnumeration";
+import { ParsedResource } from "./parseResource";
 
 /**
- * Generate typebox definition with received params
- * @param name
- * @param type
- * @param description
- * @param mandatoryStatus
- * @param rangeEnumeration
- * @param id
- * @param units
- * @returns string
+ * Generate TypeBox definition with received params
+ *
+ * @see http://www.openmobilealliance.org/release/lightweightm2m/V1_0_2-20180209-A/OMA-TS-LightweightM2M-V1_0_2-20180209-A.pdf
  */
-export const createResourceDefinition = (
-  name: string,
-  type: string,
-  description: string,
-  mandatoryStatus: string,
-  multipleInstances: string,
-  rangeEnumeration: string,
-  id: string,
-  units: string
-): string => {
-  const rangeEnumObject: {
-    invalidFormat: boolean;
-    value: string | Number | Number[] | String[] | null;
-    dataStruct?: "enum" | "range" | undefined;
-  } = getRangeEnumeration(rangeEnumeration);
+export const createResourceDefinition = ({
+  name,
+  type,
+  description,
+  mandatoryStatus,
+  multipleInstances,
+  rangeEnumeration,
+  id,
+  units,
+}: ParsedResource): string => {
+  let rangeEnumObject:
+    | {
+        invalidFormat: boolean;
+        value: string | Number | Number[] | String[] | null;
+        dataStruct?: "enum" | "range" | undefined;
+      }
+    | undefined = undefined;
+  if (rangeEnumeration !== undefined)
+    rangeEnumObject = getRangeEnumeration(rangeEnumeration);
 
-  let descriptionValue = `${dataCleaning(description)}`;
-  if (
-    rangeEnumObject.invalidFormat === true &&
-    rangeEnumObject.value !== "null"
-  ) {
-    descriptionValue = `${descriptionValue}. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '${dataCleaning(
-      rangeEnumObject.value as any
-    )}'`;
+  const descriptionValue = [dataCleaning(description)];
+  if (rangeEnumObject?.invalidFormat === true) {
+    descriptionValue.push(
+      `RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '${dataCleaning(
+        rangeEnumObject.value as any
+      )}'.`
+    );
   }
+
+  if (units !== undefined) descriptionValue.push(`Units: ${units}.`);
 
   let minimum = undefined;
   let maximum = undefined;
-  if (rangeEnumObject.dataStruct === "range") {
+  if (rangeEnumObject?.dataStruct === "range") {
     minimum = (rangeEnumObject.value as any)[0];
     maximum = (rangeEnumObject.value as any)[1];
   }
 
-  const props = [
+  let typeBoxType = getType(type);
+  const propDefs = [
     `title: '${name}'`,
-    `description: "${descriptionValue}"`,
-    minimum !== undefined ? `minimum: ${minimum}` : undefined,
-    maximum !== undefined ? `maximum: ${maximum}` : undefined,
-    units ? `units: '${cleanUnits(units)}'` : undefined,
-  ].reduce((previous, current, index) => {
+    `description: "${descriptionValue.join(" ")}"`,
+  ];
+
+  if (type === "Boolean") {
+    typeBoxType = "Integer";
+    propDefs.push(`minimum: 0`, `maximum: 1`);
+  } else {
+    if (minimum !== undefined) {
+      if (typeBoxType === "String") {
+        propDefs.push(`minLength: ${minimum}`);
+      } else {
+        propDefs.push(`minimum: ${minimum}`);
+      }
+    }
+    if (maximum !== undefined) {
+      if (typeBoxType === "String") {
+        propDefs.push(`maxLength: ${maximum}`);
+      } else {
+        propDefs.push(`maximum: ${maximum}`);
+      }
+    }
+  }
+
+  const props = propDefs.reduce((previous, current, index) => {
     if (current) {
       if (index === 0) return current;
       return `${previous}, ${current}`;
@@ -63,13 +83,15 @@ export const createResourceDefinition = (
     return previous;
   }, "");
 
-  let object = `Type.${getType(type)}({${props}})`;
-  if (rangeEnumObject.dataStruct === "enum") {
+  let object = `Type.${typeBoxType}({${props}})`;
+  if (rangeEnumObject?.dataStruct === "enum") {
     object = createEnumDefinition(rangeEnumObject.value as any, props as any);
   }
 
-  object = getMultipleInstanceStatus(multipleInstances, object);
-  object = getMandatoryStatus(mandatoryStatus, object);
+  if (multipleInstances !== undefined)
+    object = getMultipleInstanceStatus(multipleInstances, object);
+  if (mandatoryStatus !== undefined)
+    object = getMandatoryStatus(mandatoryStatus, object);
 
   return `_${id}: ${object}`;
 };

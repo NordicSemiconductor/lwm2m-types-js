@@ -6,22 +6,25 @@ This is useful if you need to validate a _JSON_ representation of those objects.
 
 ## Installation
 
-1- Clone repo
-
-```
-git clone git@github.com:MLopezJ/LWM2M-JSONSchema.git
-```
-
-2- Install dependencies
-
-```
+```bash
 npm ci
-```
-
-3- Run test
-
-```
 npm test
+```
+
+## Building the types
+
+```bash
+git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git --depth 1
+mkdir lwm2m-registry-json
+npx tsx cli/XMLtoJSON.ts ./lwm2m-registry ./lwm2m-registry-json
+mkdir types
+npx tsx cli/JSONtoTypeBox.ts ./lwm2m-registry-json ./types
+npx tsx ./src/TypeScript/createTypeboxDef
+# Make sure result compiles
+npx tsc
+# Make sure example runs
+npx tsx ./example.ts
+
 ```
 
 ## Usage
