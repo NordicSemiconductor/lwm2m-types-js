@@ -1,5 +1,4 @@
 import { dataCleaning } from "./../utils/dataCleaning";
-import { getRangeEnumeration } from "./getRangeEnumeration";
 
 /**
  * Pick properties from element to generate the typebox definition
@@ -12,7 +11,7 @@ export const parseResource = (
   description: string;
   mandatoryStatus: string;
   multipleInstances: string;
-  rangeEnumeration: [...(number | null)[]] | null;
+  rangeEnumeration: string;
   id: string;
   units: string;
 } => {
@@ -21,7 +20,7 @@ export const parseResource = (
   const description = dataCleaning(element.Description[0]);
   const mandatoryStatus = element.Mandatory[0];
   const multipleInstances = element.MultipleInstances[0];
-  const rangeEnumeration = getRangeEnumeration(element.RangeEnumeration[0]);
+  const rangeEnumeration = element.RangeEnumeration[0];
   const id = element.ATTR.ID;
   const units = element.Units[0];
   return {

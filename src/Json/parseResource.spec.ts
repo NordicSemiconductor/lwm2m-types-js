@@ -11,7 +11,7 @@ describe("parseResource", () => {
         units: ["s"],
       },
       {
-        rangeEnumeration: [1, 65534],
+        rangeEnumeration: "1..65534",
         mandatoryStatus: "Mandatory",
         multipleInstances: "Multiple",
         type: "Integer",
@@ -27,7 +27,7 @@ describe("parseResource", () => {
         units: [""],
       },
       {
-        rangeEnumeration: [1, 655, 34],
+        rangeEnumeration: "1,655,34",
         mandatoryStatus: "Optional",
         multipleInstances: "Single",
         type: "String",
@@ -43,7 +43,7 @@ describe("parseResource", () => {
         units: [""],
       },
       {
-        rangeEnumeration: null,
+        rangeEnumeration: "",
         mandatoryStatus: "Optional",
         multipleInstances: "Multiple",
         type: "String",

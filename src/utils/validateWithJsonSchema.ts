@@ -11,7 +11,6 @@ export const validateWithJSONSchema = <T extends TSchema>(
   const ajv = new Ajv();
   // see @https://github.com/sinclairzx81/typebox/issues/51
   ajv.addKeyword("units");
-  ajv.addKeyword("enumeration");
   const v = ajv.compile(schema);
   return (value: unknown) => {
     const valid = v(value);

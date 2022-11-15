@@ -1,4 +1,8 @@
-import { createResourceDefinition } from "./createResourceDefinition";
+import {
+  createResourceDefinition,
+  createLiteralDefinition,
+  createEnumDefinition,
+} from "./createResourceDefinition";
 
 describe("createResourceDefinition", () => {
   it("Should return a typebox definition in string", () => {
@@ -8,7 +12,7 @@ describe("createResourceDefinition", () => {
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
     const mandatoryStatus = "Mandatory";
     const multipleInstances = "Single";
-    const rangeEnumeration = null;
+    const rangeEnumeration = "";
     const id = "16";
     const units = "";
     const typeboxDefinition = createResourceDefinition(
@@ -35,7 +39,7 @@ describe("createResourceDefinition", () => {
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
     const mandatoryStatus = "Mandatory";
     const multipleInstances = "Single";
-    const rangeEnumeration = [1, 65534];
+    const rangeEnumeration = "1..65534";
     const minimum = 1;
     const maximum = 65534;
     const id = "16";
@@ -65,7 +69,7 @@ describe("createResourceDefinition", () => {
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
     const mandatoryStatus = "Mandatory";
     const multipleInstances = "Single";
-    const rangeEnumeration = null;
+    const rangeEnumeration = "";
     const id = "16";
     const units = "s";
     const typeboxDefinition = createResourceDefinition(
@@ -91,7 +95,7 @@ describe("createResourceDefinition", () => {
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
     const mandatoryStatus = "Optional";
     const multipleInstances = "Single";
-    const rangeEnumeration = null;
+    const rangeEnumeration = "";
     const id = "16";
     const units = "";
     const typeboxDefinition = createResourceDefinition(
@@ -116,7 +120,7 @@ describe("createResourceDefinition", () => {
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
     const mandatoryStatus = "Mandatory";
     const multipleInstances = "Single";
-    const rangeEnumeration = null;
+    const rangeEnumeration = "";
     const id = "16";
     const units = "";
     const typeboxDefinition = createResourceDefinition(
@@ -141,7 +145,7 @@ describe("createResourceDefinition", () => {
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
     const mandatoryStatus = "Mandatory";
     const multipleInstances = "Multiple";
-    const rangeEnumeration = null;
+    const rangeEnumeration = "";
     const id = "16";
     const units = "";
     const typeboxDefinition = createResourceDefinition(
@@ -166,7 +170,7 @@ describe("createResourceDefinition", () => {
       "The number of successive communication attempts before which a communication sequence is considered as failed.";
     const mandatoryStatus = "Mandatory";
     const multipleInstances = "Single";
-    const rangeEnumeration = null;
+    const rangeEnumeration = "";
     const id = "16";
     const units = "";
     const typeboxDefinition = createResourceDefinition(
@@ -182,5 +186,154 @@ describe("createResourceDefinition", () => {
     const result = `_16: Type.Number({title: 'Communication Retry Count', description: "The number of successive communication attempts before which a communication sequence is considered as failed."})`;
 
     expect(typeboxDefinition).toBe(result);
+  });
+
+  it("Should check typebox definition when rangeEnumeration format is a range", () => {
+    const name = "name";
+    const type = "Integer";
+    const description = "Description";
+    const mandatoryStatus = "Mandatory";
+    const multipleInstances = "Single";
+    const rangeEnumeration = "0..255";
+    const id = "16";
+    const units = "";
+    const typeboxDefinition = createResourceDefinition(
+      name,
+      type,
+      description,
+      mandatoryStatus,
+      multipleInstances,
+      rangeEnumeration,
+      id,
+      units
+    );
+    const result = `_16: Type.Number({title: 'name', description: "Description", minimum: 0, maximum: 255})`;
+
+    expect(typeboxDefinition).toBe(result);
+  });
+
+  it("Should check typebox definition when rangeEnumeration format is a single instance", () => {
+    const name = "name";
+    const type = "Integer";
+    const description = "Description";
+    const mandatoryStatus = "Mandatory";
+    const multipleInstances = "Single";
+    const rangeEnumeration = "0";
+    const id = "16";
+    const units = "";
+    const typeboxDefinition = createResourceDefinition(
+      name,
+      type,
+      description,
+      mandatoryStatus,
+      multipleInstances,
+      rangeEnumeration,
+      id,
+      units
+    );
+    const result = `_16: Type.Literal(0 ,{title: 'name', description: "Description"})`;
+
+    expect(typeboxDefinition).toBe(result);
+  });
+
+  it("Should check typebox definition when rangeEnumeration format is a list", () => {
+    const name = "name";
+    const type = "Integer";
+    const description = "Description";
+    const mandatoryStatus = "Mandatory";
+    const multipleInstances = "Single";
+    const rangeEnumeration = "0, 1, 2";
+    const id = "16";
+    const units = "";
+    const typeboxDefinition = createResourceDefinition(
+      name,
+      type,
+      description,
+      mandatoryStatus,
+      multipleInstances,
+      rangeEnumeration,
+      id,
+      units
+    );
+    const result = `_16: Type.Union([Type.Literal(0 ),Type.Literal(1 ),Type.Literal(2 )],{title: 'name', description: "Description"})`;
+
+    expect(typeboxDefinition).toBe(result);
+  });
+
+  it.each([
+    [
+      "0..255 bytes",
+      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '0..255 bytes'"})`,
+    ],
+    [
+      "1: normal\r\n\t\t\t\t2: remote\r\n\t\t\t\t3: local",
+      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '1: normal      2: remote      3: local'"})`,
+    ],
+    [
+      "<7 to >12.5",
+      `_16: Type.Number({title: 'name', description: "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '<7 to >12.5'"})`,
+    ],
+  ])(
+    "Should check typebox definition when rangeEnumeration format is invalid",
+    (rangeEnumeration, expected) => {
+      const name = "name";
+      const type = "Integer";
+      const description = "Description";
+      const mandatoryStatus = "Mandatory";
+      const multipleInstances = "Single";
+      const id = "16";
+      const units = "";
+      const typeboxDefinition = createResourceDefinition(
+        name,
+        type,
+        description,
+        mandatoryStatus,
+        multipleInstances,
+        rangeEnumeration,
+        id,
+        units
+      );
+
+      expect(typeboxDefinition).toBe(expected);
+    }
+  );
+});
+
+describe("createLiteralDefinition", () => {
+  it.each([
+    [
+      { isString: true, isUnion: false, value: "a", props: "" },
+      `Type.Literal('a' ,{})`,
+    ],
+    [
+      { isString: false, isUnion: false, value: 1, props: "" },
+      `Type.Literal(1 ,{})`,
+    ],
+  ])("Should create a 'Literal' typebox definition", (params, expected) => {
+    expect(
+      createLiteralDefinition(
+        params.isString,
+        params.isUnion,
+        params.value,
+        params.props
+      )
+    ).toBe(expected);
+  });
+});
+
+describe("createEnumDefinition", () => {
+  it.each([
+    [{ value: "a", props: "" }, `Type.Literal('a' ,{})`],
+    [{ value: 1, props: "" }, `Type.Literal(1 ,{})`],
+    [
+      { value: [1, 2, 3], props: "" },
+      `Type.Union([Type.Literal(1 ),Type.Literal(2 ),Type.Literal(3 )],{})`,
+    ],
+    [
+      { value: ["a", "b", "c"], props: "" },
+      `Type.Union([Type.Literal('a' ),Type.Literal('b' ),Type.Literal('c' )],{})`,
+    ],
+  ])("Should create a 'Enum' typebox definition", (params, expected) => {
+    expect(createEnumDefinition(params.value, params.props)).toBe(expected);
   });
 });
