@@ -7,6 +7,10 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nordicsemiconductor/lwm2m-typebox-types": ["index.d.ts"]
+    }
   }
 }

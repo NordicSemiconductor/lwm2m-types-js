@@ -1,9 +1,7 @@
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import { keyCleaning } from "./../utils/keyCleaning";
 import { ignoredLwM2MObjects } from "./ignoredLwM2MObjects";
 import os from "node:os";
-import { tokenizeName } from "../Json/tokenizeName";
 import { typeName } from "../Json/json2typebox";
 
 /**
@@ -47,7 +45,7 @@ const createExports = (items: any[]) =>
   items.map((element: any) => {
     const id = element.ObjectID[0];
     const name = typeName(id, element.Name[0]);
-    return `export { ${name} } from "./types/${id}";`;
+    return `export { ${name} } from "./${id}";`;
   });
 
 const createDocumentProps = (items: any[]) => {
@@ -57,7 +55,7 @@ const createDocumentProps = (items: any[]) => {
       const id = element.ObjectID[0];
 
       const name = typeName(id, element.Name[0]);
-      return `import { objectURN as ${name}URN, ${name} } from "./types/${id}";`;
+      return `import { objectURN as urn${name}, ${name} } from "./${id}";`;
     })
   );
 
@@ -70,7 +68,7 @@ const createDocumentProps = (items: any[]) => {
         `/**`,
         ` * ${id}: ${element.Name[0]}`,
         ` */`,
-        `[${name}URN]: Type.Optional(${name}),`,
+        `[urn${name}]: Type.Optional(${name}),`,
       ].join(os.EOL);
     })
   );
@@ -102,10 +100,13 @@ const execution = async (dir?: string) => {
     return true;
   });
 
-  await writeFile("./LwM2M.ts", createExports(types).join(os.EOL));
+  await writeFile(
+    path.join(process.cwd(), "types", "LwM2M.ts"),
+    createExports(types).join(os.EOL)
+  );
 
   await writeFile(
-    "./LwM2MDocument.ts",
+    path.join(process.cwd(), "types", "LwM2MDocument.ts"),
     createDocumentProps(types).join(os.EOL)
   );
 };

@@ -1,6 +1,6 @@
 import * as assert from "node:assert/strict";
 import knowGoodShadow from "./known-good-shadow.json";
-import { LwM2MDocument } from "./LwM2MDocument";
+import { LwM2MDocument } from "@nordicsemiconductor/lwm2m-typebox-types";
 import { validateWithJSONSchema } from "./src/utils/validateWithJsonSchema";
 
 // validate shadow
