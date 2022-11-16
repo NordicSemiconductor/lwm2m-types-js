@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
 import { keyCleaning } from "./../utils/keyCleaning";
+import { ignoredLwM2MObjects } from "./ignoredLwM2MObjects";
 
 /**
  * The DDF object (https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/DDF.xml)
@@ -50,6 +51,7 @@ const getData = (items: any[]) =>
         return previous;
 
       const id = element.ObjectID[0];
+      if (ignoredLwM2MObjects.includes(id)) return previous;
       const name = element.Name[0];
 
       // TODO: add explanation why this is taken as a reference

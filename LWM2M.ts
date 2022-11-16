@@ -1,4 +1,3 @@
-import { _0 } from "./types/0";
 import { _1 } from "./types/1";
 import { _2 } from "./types/2";
 import { _3 } from "./types/3";
@@ -17,9 +16,7 @@ import { _15 } from "./types/15";
 import { _16 } from "./types/16";
 import { _19 } from "./types/19";
 import { _20 } from "./types/20";
-import { _21 } from "./types/21";
 import { _22 } from "./types/22";
-import { _23 } from "./types/23";
 import { _24 } from "./types/24";
 import { _25 } from "./types/25";
 import { _26 } from "./types/26";
@@ -302,9 +299,6 @@ import { _18830 } from "./types/18830";
 import { _18831 } from "./types/18831";
 import { Static } from "@sinclair/typebox";
 export namespace LwM2M {
-  export namespace Object_0 {
-    export type LWM2M_Security = Static<typeof _0>;
-  }
   export namespace Object_1 {
     export type LwM2M_Server = Static<typeof _1>;
   }
@@ -359,14 +353,8 @@ export namespace LwM2M {
   export namespace Object_20 {
     export type Event_Log = Static<typeof _20>;
   }
-  export namespace Object_21 {
-    export type LWM2M_OSCORE = Static<typeof _21>;
-  }
   export namespace Object_22 {
     export type Virtual_Observe_Notify = Static<typeof _22>;
-  }
-  export namespace Object_23 {
-    export type LwM2M_COSE = Static<typeof _23>;
   }
   export namespace Object_24 {
     export type MQTT_Server = Static<typeof _24>;

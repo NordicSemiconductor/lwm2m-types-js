@@ -1,4 +1,3 @@
-import { _0 } from "./types/0";
 import { _1 } from "./types/1";
 import { _2 } from "./types/2";
 import { _3 } from "./types/3";
@@ -17,9 +16,7 @@ import { _15 } from "./types/15";
 import { _16 } from "./types/16";
 import { _19 } from "./types/19";
 import { _20 } from "./types/20";
-import { _21 } from "./types/21";
 import { _22 } from "./types/22";
-import { _23 } from "./types/23";
 import { _24 } from "./types/24";
 import { _25 } from "./types/25";
 import { _26 } from "./types/26";
@@ -302,7 +299,6 @@ import { _18830 } from "./types/18830";
 import { _18831 } from "./types/18831";
 import { Type } from "@sinclair/typebox";
 export const LwM2MType = Type.Object({
-  _0: Type.Optional(_0),
   _1: Type.Optional(_1),
   _2: Type.Optional(_2),
   _3: Type.Optional(_3),
@@ -321,9 +317,7 @@ export const LwM2MType = Type.Object({
   _16: Type.Optional(_16),
   _19: Type.Optional(_19),
   _20: Type.Optional(_20),
-  _21: Type.Optional(_21),
   _22: Type.Optional(_22),
-  _23: Type.Optional(_23),
   _24: Type.Optional(_24),
   _25: Type.Optional(_25),
   _26: Type.Optional(_26),

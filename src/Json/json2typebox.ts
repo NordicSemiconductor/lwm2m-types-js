@@ -15,16 +15,39 @@ import {
 } from "./parseResource";
 import { validateWithJSONSchema } from "../utils/validateWithJsonSchema";
 import { filterOutBlankValues } from "../utils/filterOutBlankValues";
+import { parseLwM2MURN } from "../utils/parseLwM2MURN";
 
 const RegistrySchema = Type.Object(
   {
     Name: NonEmptyArrayWithNonBlankString,
-    ObjectURN: NonEmptyArrayWithNonBlankString, // TOOD: add constraint regex for this value
-    LWM2MVersion: NonEmptyArrayWithNonBlankString, // same format as ObjectVersion
-    ObjectVersion: NonEmptyArrayWithNonBlankString, // Object Version format http://www.openmobilealliance.org/release/LightweightM2M/V1_1_1-20190617-A/OMA-TS-LightweightM2M_Core-V1_1_1-20190617-A.pdf
-    // 2 digits separate by "."
+    ObjectURN: nonEmptyArray(
+      Type.RegEx(/^urn:oma:lwm2m:(oma|ext|x):\d+(:[1-9]+\.\d+)?$/, {
+        description:
+          "Unique identifier for this object. The object version is optional.",
+      })
+    ),
+    LWM2MVersion: Type.Optional(
+      nonEmptyArray(
+        Type.RegEx(/^[1-9]+\.\d+$/, {
+          description:
+            "LwM2M version. When the minimum LwM2M version supporting the Object is the Initial Version of the LwM2M Enabler (1.0), this information may be omitted.",
+        })
+      )
+    ),
+    ObjectVersion: Type.Optional(
+      nonEmptyArray(
+        Type.RegEx(/^[1-9]+\.\d+$/, {
+          description:
+            "Object version. When the Object version is the Initial Version of that Object (1.0), the Object Version information may be omitted.",
+        })
+      )
+    ),
     Description1: NonEmptyArrayWithNonBlankString,
-    ObjectID: NonEmptyArrayWithNonBlankString, // 0 and positive int
+    ObjectID: nonEmptyArray(
+      Type.RegEx(/^\d+$/, {
+        description: "The ID of the LwM2M object, it is globally unique.",
+      })
+    ),
     Mandatory: Type.Optional(nonEmptyArray(Type.Enum(Mandatory))),
     MultipleInstances: Type.Optional(
       nonEmptyArray(Type.Enum(MultipleInstances))
@@ -33,7 +56,7 @@ const RegistrySchema = Type.Object(
       Type.Object({
         Item: nonEmptyArray(
           Type.Object({
-            Operations: nonEmptyArray(Type.Enum(Operations)), // Type.Array(Type.String()), //
+            Operations: nonEmptyArray(Type.Enum(Operations)),
           })
         ),
       })
@@ -49,7 +72,9 @@ const validate = validateWithJSONSchema(RegistrySchema);
 /**
  * Parse object data, get resources definition and generate the typebox object definition
  */
-export const createDefinition = (Lwm2mRegistry: any): string => {
+export const createDefinition = (
+  Lwm2mRegistry: Record<string, any>
+): string => {
   const sanitized = filterOutBlankValues(Lwm2mRegistry);
   const maybeValidResource = validate(sanitized);
 
@@ -80,9 +105,20 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
     .join(", ")}})`;
   const importTypeBox = `import { Type, Static } from '@sinclair/typebox'`;
 
-  let object = `${Name[0]},${ObjectURN[0]},${LWM2MVersion[0]},${
-    ObjectVersion[0]
-  }, ${resources}},{description: "${escapeText(Description1[0])}"`;
+  const parsedURN = parseLwM2MURN(ObjectURN[0]);
+  const parsedVersion =
+    "ObjectVersion" in parsedURN ? parsedURN.ObjectVersion : undefined;
+  const version = ObjectVersion?.[0] ?? parsedVersion ?? "1.0"; // default
+  const lwm2mVersion = LWM2MVersion?.[0] ?? "1.0";
+
+  const nameDef = `Name: Type.String({examples:["${Name[0]}"]})`;
+  const objectUrnDef = `ObjectURN: Type.String({examples:["${ObjectURN[0]}"]})`;
+  const lwm2mVersionDef = `LWM2MVersion: Type.Number({examples:[${lwm2mVersion}]})`;
+  const objectVersionDef = `ObjectVersion: Type.Number({examples:[${version}]})`;
+
+  let object = `${nameDef}, ${objectUrnDef}, ${lwm2mVersionDef}, ${objectVersionDef}, ${resources}},{description: "${escapeText(
+    Description1[0]
+  )}"`;
 
   if (MultipleInstances && MultipleInstances[0] !== undefined)
     object = getMultipleInstanceStatus(
