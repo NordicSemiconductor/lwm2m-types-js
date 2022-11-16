@@ -1,49 +1,103 @@
 import { escapeText } from "../utils/escapeText";
-
+import { TArray, TSchema, Type } from "@sinclair/typebox";
 import { keyCleaning } from "./../utils/keyCleaning";
 import { createResourceDefinition } from "./createResourceDefinition";
 import { excludeWriteOnlyResources } from "./excludeWriteOnlyResources";
 import { getMandatoryStatus } from "./getMandatoryStatus";
 import { getMultipleInstanceStatus } from "./getMultipleInstanceStatus";
-import { parseResource } from "./parseResource";
+import {
+  Mandatory,
+  MultipleInstances,
+  nonEmptyArray,
+  NonEmptyArrayWithNonBlankString,
+  Operations,
+  parseResource,
+} from "./parseResource";
+import { validateWithJSONSchema } from "../utils/validateWithJsonSchema";
+import { filterOutBlankValues } from "../utils/filterOutBlankValues";
+
+const RegistrySchema = Type.Object(
+  {
+    Name: NonEmptyArrayWithNonBlankString,
+    ObjectURN: NonEmptyArrayWithNonBlankString, // TOOD: add constraint regex for this value
+    LWM2MVersion: NonEmptyArrayWithNonBlankString, // same format as ObjectVersion
+    ObjectVersion: NonEmptyArrayWithNonBlankString, // Object Version format http://www.openmobilealliance.org/release/LightweightM2M/V1_1_1-20190617-A/OMA-TS-LightweightM2M_Core-V1_1_1-20190617-A.pdf
+    // 2 digits separate by "."
+    Description1: NonEmptyArrayWithNonBlankString,
+    ObjectID: NonEmptyArrayWithNonBlankString, // 0 and positive int
+    Mandatory: Type.Optional(nonEmptyArray(Type.Enum(Mandatory))),
+    MultipleInstances: Type.Optional(
+      nonEmptyArray(Type.Enum(MultipleInstances))
+    ),
+    Resources: nonEmptyArray(
+      Type.Object({
+        Item: nonEmptyArray(
+          Type.Object({
+            Operations: nonEmptyArray(Type.Enum(Operations)), // Type.Array(Type.String()), //
+          })
+        ),
+      })
+    ),
+  },
+  {
+    description: "A LwM2M object definition, converted from XML to JSON",
+  }
+);
+const validate = validateWithJSONSchema(RegistrySchema);
 
 // TODO: add test case
 /**
  * Parse object data, get resources definition and generate the typebox object definition
  */
 export const createDefinition = (Lwm2mRegistry: any): string => {
-  const description = Lwm2mRegistry.Description1[0];
-  const items = Lwm2mRegistry.Resources[0].Item;
-  const id: string = Lwm2mRegistry.ObjectID[0];
-  const mandatoryStatus = Lwm2mRegistry.Mandatory[0];
-  const multipleInstances = Lwm2mRegistry.MultipleInstances[0];
+  const sanitized = filterOutBlankValues(Lwm2mRegistry);
+  const maybeValidResource = validate(sanitized);
 
-  // object metadata
-  const name = `Name: Type.String({examples:["${Lwm2mRegistry.Name[0]}"]})`;
-  const objectUrn = `ObjectURN: Type.String({examples:["${Lwm2mRegistry.ObjectURN[0]}"]})`;
-  const lwm2mVersion = `LWM2MVersion: Type.Number({examples:[${Lwm2mRegistry.LWM2MVersion[0]}]})`;
-  const objectVersion = `ObjectVersion: Type.Number({examples:[${Lwm2mRegistry.ObjectVersion[0]}]})`;
+  if ("errors" in maybeValidResource)
+    throw new Error(
+      `Invalid resource definition: ${JSON.stringify(
+        Lwm2mRegistry
+      )}! ${JSON.stringify(maybeValidResource.errors)}`
+    );
 
-  const resources = `Resources: Type.Object({${items
-    .filter(excludeWriteOnlyResources)
+  const {
+    Name,
+    ObjectURN,
+    LWM2MVersion,
+    ObjectVersion,
+    Description1,
+    Resources,
+    ObjectID,
+    Mandatory,
+    MultipleInstances,
+  } = maybeValidResource.value;
+
+  const resources = `Resources: Type.Object({${Resources[0].Item.filter(
+    excludeWriteOnlyResources
+  )
     .map(parseResource)
     .map(createResourceDefinition)
     .join(", ")}})`;
   const importTypeBox = `import { Type, Static } from '@sinclair/typebox'`;
 
-  let object = `${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${escapeText(
-    description
-  )}"`;
-  object = getMultipleInstanceStatus(
-    multipleInstances,
-    `Type.Object({${object}})`
-  );
-  object = getMandatoryStatus(mandatoryStatus, object);
+  let object = `${Name[0]},${ObjectURN[0]},${LWM2MVersion[0]},${
+    ObjectVersion[0]
+  }, ${resources}},{description: "${escapeText(Description1[0])}"`;
 
-  const typeboxDefinition = `export const _${id} = ${object}`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
+  if (MultipleInstances && MultipleInstances[0] !== undefined)
+    object = getMultipleInstanceStatus(
+      MultipleInstances[0],
+      `Type.Object({${object}})`
+    );
 
-  const nameSpaceDefinition = `export namespace Object_${id} {export type ${keyCleaning(
-    Lwm2mRegistry.Name[0]
-  )} =  Static<typeof _${id}>}`;
+  if (Mandatory && Mandatory[0] !== undefined)
+    object = getMandatoryStatus(Mandatory[0], object);
+
+  const typeboxDefinition = `export const _${ObjectID[0]} = ${object}`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
+
+  const nameSpaceDefinition = `export namespace Object_${
+    ObjectID[0]
+  } {export type ${keyCleaning(Name[0])} =  Static<typeof _${ObjectID[0]}>}`;
+
   return `${importTypeBox}\n${typeboxDefinition}\n${nameSpaceDefinition}`;
 };

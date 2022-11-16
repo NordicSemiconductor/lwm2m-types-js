@@ -1,3 +1,5 @@
+import { Operations } from "./parseResource";
+
 /**
  * This excludes resources which will not report values: Execute and Write-Only.
  *
@@ -6,5 +8,5 @@
 export const excludeWriteOnlyResources = ({
   Operations,
 }: {
-  Operations: [string];
+  Operations: Operations[];
 }): boolean => !["W", "E"].includes(Operations?.[0]);

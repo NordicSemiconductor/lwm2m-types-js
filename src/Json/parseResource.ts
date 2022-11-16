@@ -15,17 +15,19 @@ export type ParsedResource = {
   units?: string;
 };
 
-const nonEmptyArray = <Schema extends TSchema>(type: Schema): TArray<Schema> =>
+export const nonEmptyArray = <Schema extends TSchema>(
+  type: Schema
+): TArray<Schema> =>
   Type.Array(type, {
     minItems: 1,
     description: "An array with at least one element",
   });
 
-const NonBlankString = Type.String({
+export const NonBlankString = Type.String({
   minLength: 1,
   description: "A string with at least one character.",
 });
-const NonEmptyArrayWithNonBlankString = nonEmptyArray(NonBlankString);
+export const NonEmptyArrayWithNonBlankString = nonEmptyArray(NonBlankString);
 
 export enum MultipleInstances {
   Multiple = "Multiple",
@@ -37,7 +39,14 @@ export enum Mandatory {
   Optional = "Optional",
 }
 
-const ResourceSchema = Type.Object(
+export enum Operations {
+  R = "R",
+  RW = "RW",
+  W = "W",
+  E = "E",
+}
+
+export const ResourceSchema = Type.Object(
   {
     Name: NonEmptyArrayWithNonBlankString,
     Type: NonEmptyArrayWithNonBlankString,
