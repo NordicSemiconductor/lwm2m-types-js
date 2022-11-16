@@ -1,7 +1,6 @@
 {
   "_1": [
     {
-      "Name": "LwM2M Server",
       "ObjectURN": "urn:oma:lwm2m:oma:1:1.2",
       "LWM2MVersion": 1.1,
       "ObjectVersion": 1.1,
@@ -19,7 +18,6 @@
     }
   ],
   "_3": {
-    "Name": "Device",
     "ObjectURN": "urn:oma:lwm2m:oma:3:1.2",
     "LWM2MVersion": 1.1,
     "ObjectVersion": 1.1,
@@ -38,7 +36,6 @@
     }
   },
   "_4": {
-    "Name": "Device",
     "ObjectURN": "urn:oma:lwm2m:oma:3:1.2",
     "LWM2MVersion": 1.1,
     "ObjectVersion": 1.1,
@@ -57,7 +54,6 @@
     }
   },
   "_5": {
-    "Name": "Firmware Update",
     "ObjectURN": "urn:oma:lwm2m:oma:5:1.1",
     "LWM2MVersion": 1.1,
     "ObjectVersion": 1.1,
@@ -71,7 +67,6 @@
     }
   },
   "_6": {
-    "Name": "Location",
     "ObjectURN": "urn:oma:lwm2m:oma:6",
     "LWM2MVersion": 1.1,
     "ObjectVersion": 1.1,
@@ -86,7 +81,6 @@
   },
   "_3303": [
     {
-      "Name": "Location",
       "ObjectURN": "urn:oma:lwm2m:ext:3303:1.1",
       "LWM2MVersion": 1.0,
       "ObjectVersion": 1.1,
@@ -103,7 +97,6 @@
   ],
   "_3304": [
     {
-      "Name": "Humidity",
       "ObjectURN": "urn:oma:lwm2m:ext:3304:1.1",
       "LWM2MVersion": 1.0,
       "ObjectVersion": 1.1,
@@ -120,7 +113,6 @@
   ],
   "_3323": [
     {
-      "Name": "Pressure",
       "ObjectURN": "urn:oma:lwm2m:ext:3323:1.1",
       "LWM2MVersion": 1.0,
       "ObjectVersion": 1.1,
@@ -137,7 +129,6 @@
   ],
   "_3347": [
     {
-      "Name": "Pressure",
       "ObjectURN": "urn:oma:lwm2m:ext:3323:1.1",
       "LWM2MVersion": 1.0,
       "ObjectVersion": 1.1,
@@ -151,7 +142,6 @@
   ],
   "_10256": [
     {
-      "Name": "Pressure",
       "ObjectURN": "urn:oma:lwm2m:ext:3323:1.1",
       "LWM2MVersion": 1.0,
       "ObjectVersion": 1.1,

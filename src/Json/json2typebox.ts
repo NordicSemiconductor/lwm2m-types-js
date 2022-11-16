@@ -111,12 +111,11 @@ export const createDefinition = (
   const version = ObjectVersion?.[0] ?? parsedVersion ?? "1.0"; // default
   const lwm2mVersion = LWM2MVersion?.[0] ?? "1.0";
 
-  const nameDef = `Name: Type.String({examples:["${Name[0]}"]})`;
   const objectUrnDef = `ObjectURN: Type.String({examples:["${ObjectURN[0]}"]})`;
   const lwm2mVersionDef = `LWM2MVersion: Type.Number({examples:[${lwm2mVersion}]})`;
   const objectVersionDef = `ObjectVersion: Type.Number({examples:[${version}]})`;
 
-  let object = `${nameDef}, ${objectUrnDef}, ${lwm2mVersionDef}, ${objectVersionDef}, ${resources}},{description: "${escapeText(
+  let object = `${objectUrnDef}, ${lwm2mVersionDef}, ${objectVersionDef}, ${resources}},{description: "${escapeText(
     Description1[0]
   )}"`;
 
