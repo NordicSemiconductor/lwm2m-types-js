@@ -20,6 +20,7 @@ npx tsx cli/XMLtoJSON.ts ./lwm2m-registry ./lwm2m-registry-json
 mkdir types
 npx tsx cli/JSONtoTypeBox.ts ./lwm2m-registry-json ./types
 npx tsx ./src/TypeScript/createTypeboxDef
+npx prettier --write ./
 # Make sure result compiles
 npx tsc
 # Make sure example runs

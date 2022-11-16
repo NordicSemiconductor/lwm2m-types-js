@@ -1,9 +1,7 @@
 /**
- * Replace characters from element
- * @param element
- * @returns
+ * Clean up a text so it can be used as a comment.
  */
-export const dataCleaning = (element: string) =>
+export const escapeText = (element: string): string =>
   element
     .replaceAll(`"`, "'")
     .replaceAll("‘", "'")

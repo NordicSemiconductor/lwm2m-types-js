@@ -1,5 +1,5 @@
-import { dataCleaning } from "./dataCleaning";
-describe("dataCleaning", () => {
+import { escapeText } from "./escapeText";
+describe("escapeText", () => {
   it.each([
     [
       `"`,
@@ -30,7 +30,7 @@ describe("dataCleaning", () => {
     "Should remove %s (forbiten characters) from string",
     (forbiten, text, expected) => {
       // characters are consider forbiten because those would cause an error if any is present on the object's description.
-      expect(dataCleaning(text)).toBe(expected);
+      expect(escapeText(text)).toBe(expected);
     }
   );
 });

@@ -1,6 +1,6 @@
 import { cleanUnits } from "../utils/cleanUnits";
-import { dataCleaning } from "../utils/dataCleaning";
-import { getType } from "../utils/getType";
+import { escapeText } from "../utils/escapeText";
+import { getTypeBoxType } from "../utils/getType";
 import { getMandatoryStatus } from "./getMandatoryStatus";
 import { getMultipleInstanceStatus } from "./getMultipleInstanceStatus";
 import { getRangeEnumeration } from "./getRangeEnumeration";
@@ -31,16 +31,17 @@ export const createResourceDefinition = ({
   if (rangeEnumeration !== undefined)
     rangeEnumObject = getRangeEnumeration(rangeEnumeration);
 
-  const descriptionValue = [dataCleaning(description)];
+  const descriptionValue = [escapeText(description)];
   if (rangeEnumObject?.invalidFormat === true) {
     descriptionValue.push(
-      `RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '${dataCleaning(
+      `RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '${escapeText(
         rangeEnumObject.value as any
       )}'.`
     );
   }
 
-  if (units !== undefined) descriptionValue.push(`Units: ${units}.`);
+  if (units !== undefined)
+    descriptionValue.push(`Units: ${escapeText(units)}.`);
 
   let minimum = undefined;
   let maximum = undefined;
@@ -49,41 +50,57 @@ export const createResourceDefinition = ({
     maximum = (rangeEnumObject.value as any)[1];
   }
 
-  let typeBoxType = getType(type);
-  const propDefs = [
-    `title: '${name}'`,
-    `description: "${descriptionValue.join(" ")}"`,
-  ];
+  let typeBoxType = getTypeBoxType(type);
+  const props: Record<string, any> = {
+    title: name,
+    description: descriptionValue.join(" "),
+  };
 
-  if (type === "Boolean") {
-    typeBoxType = "Integer";
-    propDefs.push(`minimum: 0`, `maximum: 1`);
-  } else {
-    if (minimum !== undefined) {
-      if (typeBoxType === "String") {
-        propDefs.push(`minLength: ${minimum}`);
-      } else {
-        propDefs.push(`minimum: ${minimum}`);
+  switch (type) {
+    case "Boolean":
+      typeBoxType = "Integer";
+      props.minimum = 0;
+      props.maximum = 1;
+      break;
+    case "Objlnk":
+      /*
+       * The object link is used to
+       * refer an Instance of a given Object. An
+       * Object link value is composed of two
+       * concatenated 16 bit unsigned integers
+       * following the Network Byte Order
+       * convention. The Most Significant Halfword is an Object ID, the Least
+       * Significant Half-word is an Object
+       * Instance ID.
+       * An Object Link referencing no Object
+       * Instance will contain the concatenation
+       * of 2 MAX-ID values (null link).
+       */
+      typeBoxType = "RegEx";
+      let regexType = `Type.RegEx(/^\d\d:\d\d$/, ${JSON.stringify(props)})`;
+      if (multipleInstances !== undefined)
+        regexType = getMultipleInstanceStatus(multipleInstances, regexType);
+      if (mandatoryStatus !== undefined)
+        regexType = getMandatoryStatus(mandatoryStatus, regexType);
+      return `_${id}: ${regexType}`;
+    default:
+      if (minimum !== undefined) {
+        if (typeBoxType === "String") {
+          props.minLength = minimum;
+        } else {
+          props.minimum = minimum;
+        }
       }
-    }
-    if (maximum !== undefined) {
-      if (typeBoxType === "String") {
-        propDefs.push(`maxLength: ${maximum}`);
-      } else {
-        propDefs.push(`maximum: ${maximum}`);
+      if (maximum !== undefined) {
+        if (typeBoxType === "String") {
+          props.maxLength = maximum;
+        } else {
+          props.maximum = maximum;
+        }
       }
-    }
   }
 
-  const props = propDefs.reduce((previous, current, index) => {
-    if (current) {
-      if (index === 0) return current;
-      return `${previous}, ${current}`;
-    }
-    return previous;
-  }, "");
-
-  let object = `Type.${typeBoxType}({${props}})`;
+  let object = `Type.${typeBoxType}(${JSON.stringify(props)})`;
   if (rangeEnumObject?.dataStruct === "enum") {
     object = createEnumDefinition(rangeEnumObject.value as any, props as any);
   }
@@ -104,7 +121,7 @@ export const createResourceDefinition = ({
  */
 export const createEnumDefinition = (
   value: string | number | number[] | string[],
-  props: string
+  props: Record<string, string>
 ) => {
   if (typeof value === "number" || typeof value === "string") {
     const isString = isNaN(+(value as any));
@@ -113,24 +130,19 @@ export const createEnumDefinition = (
     // list case
     return `Type.Union([${(value as any).map((element: string | number) => {
       return createLiteralDefinition(isNaN(+element), true, element, props);
-    })}],{${props}})`;
+    })}],${JSON.stringify(props)})`;
   }
 };
 
 /**
  * Create custom "literal" type definition
- * @param isString
- * @param isUnion
- * @param value
- * @param props
- * @returns
  */
 export const createLiteralDefinition = (
   isString: boolean,
   isUnion: boolean,
   value: string | number,
-  props: string
+  props: Record<string, string>
 ): string =>
   isString
-    ? `Type.Literal('${value}' ${isUnion ? "" : `,{${props}}`})`
-    : `Type.Literal(${value} ${isUnion ? "" : `,{${props}}`})`;
+    ? `Type.Literal('${value}' ${isUnion ? "" : `,${JSON.stringify(props)}`})`
+    : `Type.Literal(${value} ${isUnion ? "" : `,${JSON.stringify(props)}`})`;

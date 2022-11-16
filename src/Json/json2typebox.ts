@@ -1,7 +1,8 @@
-import { dataCleaning } from "./../utils/dataCleaning";
+import { escapeText } from "../utils/escapeText";
 
 import { keyCleaning } from "./../utils/keyCleaning";
 import { createResourceDefinition } from "./createResourceDefinition";
+import { excludeWriteOnlyResources } from "./excludeWriteOnlyResources";
 import { getMandatoryStatus } from "./getMandatoryStatus";
 import { getMultipleInstanceStatus } from "./getMultipleInstanceStatus";
 import { parseResource } from "./parseResource";
@@ -24,12 +25,13 @@ export const createDefinition = (Lwm2mRegistry: any): string => {
   const objectVersion = `ObjectVersion: Type.Number({examples:[${Lwm2mRegistry.ObjectVersion[0]}]})`;
 
   const resources = `Resources: Type.Object({${items
+    .filter(excludeWriteOnlyResources)
     .map(parseResource)
     .map(createResourceDefinition)
     .join(", ")}})`;
   const importTypeBox = `import { Type, Static } from '@sinclair/typebox'`;
 
-  let object = `${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${dataCleaning(
+  let object = `${name},${objectUrn},${lwm2mVersion},${objectVersion}, ${resources}},{description: "${escapeText(
     description
   )}"`;
   object = getMultipleInstanceStatus(

@@ -1,7 +1,7 @@
 import { TArray, TSchema, Type } from "@sinclair/typebox";
 import { LwM2MType } from "../../LWM2MType";
 import { validateWithJSONSchema } from "../utils/validateWithJsonSchema";
-import { dataCleaning } from "./../utils/dataCleaning";
+import { escapeText } from "../utils/escapeText";
 import { filterOutBlankValues } from "../utils/filterOutBlankValues";
 
 export type ParsedResource = {
@@ -86,7 +86,7 @@ export const parseResource = (element: Record<string, any>): ParsedResource => {
   return {
     name: Name[0],
     type: Type[0],
-    description: dataCleaning(Description[0]),
+    description: escapeText(Description[0]),
     mandatoryStatus: Mandatory?.[0],
     multipleInstances: MultipleInstances?.[0],
     rangeEnumeration: RangeEnumeration?.[0],

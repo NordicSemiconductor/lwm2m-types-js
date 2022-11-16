@@ -3,8 +3,8 @@
  *
  * @see http://www.openmobilealliance.org/release/lightweightm2m/V1_0_2-20180209-A/OMA-TS-LightweightM2M-V1_0_2-20180209-A.pdf
  */
-export const getType = (type: string): string => {
-  switch (type) {
+export const getTypeBoxType = (lwm2mType: string): string => {
+  switch (lwm2mType) {
     case "Integer":
       return "Number";
     case "Float":
@@ -15,6 +15,7 @@ export const getType = (type: string): string => {
       return "Boolean";
     case "String":
     case "Opaque":
+    case "Objlnk":
       return "String";
     /*
       // TODO: give a solution for this case. https://github.com/sinclairzx81/typebox/issues/2
