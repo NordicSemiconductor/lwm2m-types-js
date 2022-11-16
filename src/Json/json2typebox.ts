@@ -18,6 +18,7 @@ import { filterOutBlankValues } from "../utils/filterOutBlankValues";
 import { parseLwM2MURN } from "../utils/parseLwM2MURN";
 import { tokenizeName } from "./tokenizeName";
 import os from "node:os";
+import { createURN } from "../TypeScript/createURN";
 
 const RegistrySchema = Type.Object(
   {
@@ -104,7 +105,7 @@ export const createDefinition = (
   )
     .map(parseResource)
     .map(createResourceDefinition)
-    .join(", ")}})`;
+    .join(`, ${os.EOL}`)}})`;
   const importTypeBox = `import { Type } from '@sinclair/typebox'`;
 
   const parsedURN = parseLwM2MURN(ObjectURN[0]);
@@ -114,8 +115,12 @@ export const createDefinition = (
   const lwm2mVersion = LWM2MVersion?.[0] ?? "1.0";
   const omaNamespace = parsedURN?.ObjectNamespace ?? "oma";
 
-  // Construct the URN including the LwM2M version in one string how will be used in the JSON document.
-  const objectURN = `${omaNamespace}:${ObjectID[0]}:${version}@${lwm2mVersion}`;
+  const objectURN = createURN({
+    omaNamespace,
+    ObjectID: ObjectID[0],
+    ObjectVersion: version,
+    LwM2MVersion: lwm2mVersion,
+  });
 
   let object = `${resources}},{description: "${escapeText(Description1[0])}"`;
 

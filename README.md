@@ -46,7 +46,7 @@ console.log(validateShadow?.["LwM2M Server"][0].Lifetime); // 43200, typeof numb
 
 ## JSON document
 
-LwM2M values are encoded as a JSON document, where the key is an extended version of the LwM2M URN: `<"oma"|"ext"|"x">:<ObjectID>:<ObjectVersion>@<LwM2MVersion>`.
+LwM2M values are encoded as a JSON document, where the key is an extended version of the LwM2M URN: `<"oma"|"ext"|"x">:<ObjectID>:<ObjectVersion>@<LwM2MVersion>` (where `ObjectVersion` and/or `LwM2MVersion` can be omitted if it is `1.0` ).
 
 ```json
 {

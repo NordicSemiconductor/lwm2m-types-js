@@ -27,9 +27,9 @@ assert.deepStrictEqual(
   "ibasis.iot"
 );
 assert.deepStrictEqual(
-  shadow["ext:3303:1.1@1.0"]?.[0].Resources._5701,
+  shadow["ext:3303:1.1"]?.[0].Resources._5701,
   "Celsius degrees"
 );
-assert.deepStrictEqual(shadow["ext:3323:1.1@1.0"]?.[0].Resources._5602, 98.24);
+assert.deepStrictEqual(shadow["ext:3323:1.1"]?.[0].Resources._5602, 98.24);
 
 console.log("Validation completed successfully");
