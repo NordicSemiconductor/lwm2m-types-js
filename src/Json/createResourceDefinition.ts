@@ -83,6 +83,13 @@ export const createResourceDefinition = ({
       if (mandatoryStatus !== undefined)
         regexType = getMandatoryStatus(mandatoryStatus, regexType);
       return `_${id}: ${regexType}`;
+    case "Time":
+      let timeType = `Type.Integer({minimum: 1000000000, description: "Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."})`;
+      if (multipleInstances !== undefined)
+        timeType = getMultipleInstanceStatus(multipleInstances, timeType);
+      if (mandatoryStatus !== undefined)
+        timeType = getMandatoryStatus(mandatoryStatus, timeType);
+      return `_${id}: ${timeType}`;
     default:
       if (minimum !== undefined) {
         if (typeBoxType === "String") {

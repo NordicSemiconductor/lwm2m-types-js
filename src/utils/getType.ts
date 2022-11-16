@@ -16,13 +16,11 @@ export const getTypeBoxType = (lwm2mType: string): string => {
     case "String":
     case "Opaque":
     case "Objlnk":
+    case "Corelnk": // CoRE Link
       return "String";
-    /*
-      // TODO: give a solution for this case. https://github.com/sinclairzx81/typebox/issues/2
-      case "Time":
-        return "Date";
-      */
+    case "Time":
+      return "Integer";
     default:
-      return "Any";
+      throw new Error(`Unexpected LwM2M type: ${lwm2mType}!`);
   }
 }; // TODO: add test case and show examples of use cases
