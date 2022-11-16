@@ -16,6 +16,8 @@ import {
 import { validateWithJSONSchema } from "../utils/validateWithJsonSchema";
 import { filterOutBlankValues } from "../utils/filterOutBlankValues";
 import { parseLwM2MURN } from "../utils/parseLwM2MURN";
+import { tokenizeName } from "./tokenizeName";
+import os from "node:os";
 
 const RegistrySchema = Type.Object(
   {
@@ -103,21 +105,19 @@ export const createDefinition = (
     .map(parseResource)
     .map(createResourceDefinition)
     .join(", ")}})`;
-  const importTypeBox = `import { Type, Static } from '@sinclair/typebox'`;
+  const importTypeBox = `import { Type } from '@sinclair/typebox'`;
 
   const parsedURN = parseLwM2MURN(ObjectURN[0]);
-  const parsedVersion =
-    "ObjectVersion" in parsedURN ? parsedURN.ObjectVersion : undefined;
+  const parsedVersion = parsedURN?.ObjectVersion;
+
   const version = ObjectVersion?.[0] ?? parsedVersion ?? "1.0"; // default
   const lwm2mVersion = LWM2MVersion?.[0] ?? "1.0";
+  const omaNamespace = parsedURN?.ObjectNamespace ?? "oma";
 
-  const objectUrnDef = `ObjectURN: Type.String({examples:["${ObjectURN[0]}"]})`;
-  const lwm2mVersionDef = `LWM2MVersion: Type.Number({examples:[${lwm2mVersion}]})`;
-  const objectVersionDef = `ObjectVersion: Type.Number({examples:[${version}]})`;
+  // Construct the URN including the LwM2M version in one string how will be used in the JSON document.
+  const objectURN = `${omaNamespace}:${ObjectID[0]}:${version}@${lwm2mVersion}`;
 
-  let object = `${objectUrnDef}, ${lwm2mVersionDef}, ${objectVersionDef}, ${resources}},{description: "${escapeText(
-    Description1[0]
-  )}"`;
+  let object = `${resources}},{description: "${escapeText(Description1[0])}"`;
 
   if (MultipleInstances && MultipleInstances[0] !== undefined)
     object = getMultipleInstanceStatus(
@@ -128,11 +128,18 @@ export const createDefinition = (
   if (Mandatory && Mandatory[0] !== undefined)
     object = getMandatoryStatus(Mandatory[0], object);
 
-  const typeboxDefinition = `export const _${ObjectID[0]} = ${object}`; // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
+  // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
+  const typeboxDefinition = [
+    `/**`,
+    ` * Name: ${Name[0]}`,
+    ` * LWM2MVersion: ${LWM2MVersion?.[0] ?? "not set"}`,
+    ` * ObjectVersion: ${ObjectVersion?.[0] ?? "not set"}`,
+    ` */`,
+    `export const ${typeName(ObjectID[0], Name[0])} = ${object}`,
+  ].join(os.EOL);
 
-  const nameSpaceDefinition = `export namespace Object_${
-    ObjectID[0]
-  } {export type ${keyCleaning(Name[0])} =  Static<typeof _${ObjectID[0]}>}`;
-
-  return `${importTypeBox}\n${typeboxDefinition}\n${nameSpaceDefinition}`;
+  return `${importTypeBox}\n${typeboxDefinition}\nexport const objectURN = '${objectURN}';`;
 };
+
+export const typeName = (id: string, name: string) =>
+  `${tokenizeName(name)}_${id}`;

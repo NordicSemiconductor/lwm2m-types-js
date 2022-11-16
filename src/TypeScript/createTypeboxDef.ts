@@ -2,6 +2,9 @@ import { readFile, writeFile } from "fs/promises";
 import path from "path";
 import { keyCleaning } from "./../utils/keyCleaning";
 import { ignoredLwM2MObjects } from "./ignoredLwM2MObjects";
+import os from "node:os";
+import { tokenizeName } from "../Json/tokenizeName";
+import { typeName } from "../Json/json2typebox";
 
 /**
  * The DDF object (https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/DDF.xml)
@@ -40,43 +43,41 @@ const declarationExist = (ddf: string) => ddf.length > 0;
  * Third element of the returned list is the typebox declaration as string
  * @param items
  */
-const getData = (items: any[]) =>
-  items.reduce(
-    (previous: string[], element: any, index: number) => {
-      // DDF value should exist and should be the current stable version of the object
-      if (
-        !declarationExist(element.DDF[0]) ||
-        !isCurrentVersion(element.DDF[0])
-      )
-        return previous;
+const createExports = (items: any[]) =>
+  items.map((element: any) => {
+    const id = element.ObjectID[0];
+    const name = typeName(id, element.Name[0]);
+    return `export { ${name} } from "./types/${id}";`;
+  });
 
+const createDocumentProps = (items: any[]) => {
+  const source = [`import { Type } from "@sinclair/typebox";`];
+  source.push(
+    ...items.map((element: any) => {
       const id = element.ObjectID[0];
-      if (ignoredLwM2MObjects.includes(id)) return previous;
-      const name = element.Name[0];
 
-      // TODO: add explanation why this is taken as a reference
-      if (previous[2] === "") {
-        return [
-          `import { _${id} } from "./types/${id}";`, // import statement
-          `export namespace Object_${id} { export type ${keyCleaning(
-            name
-          )} = Static<typeof _${id}> }\n`, // namespace declaration
-          `_${id}: Type.Optional(_${id})`, // Typebox declaration
-        ];
-      }
-
-      return [
-        `${previous[0]} import { _${id} } from "./types/${id}";`, // import statement
-        `${
-          previous[1]
-        } export namespace Object_${id} { export type ${keyCleaning(
-          name
-        )} = Static<typeof _${id}> }\n`, // namespace declaration
-        `${previous[2]} , _${id}: Type.Optional(_${id})`, // Typebox declaration
-      ];
-    },
-    ["", "", ""]
+      const name = typeName(id, element.Name[0]);
+      return `import { objectURN as ${name}URN, ${name} } from "./types/${id}";`;
+    })
   );
+
+  source.push(`export const LwM2MDocument = Type.Object({`);
+  source.push(
+    ...items.map((element: any) => {
+      const id = element.ObjectID[0];
+      const name = typeName(id, element.Name[0]);
+      return `[${name}URN]: Type.Optional(${name}),`;
+    })
+  );
+
+  source.push(`},{
+    description:
+      "Defines a type that can be used to validate JSON documents that encode LwM2M object data.",
+  }
+);
+`);
+  return source;
+};
 
 /**
  *
@@ -84,22 +85,24 @@ const getData = (items: any[]) =>
 const execution = async (dir?: string) => {
   const dirpath = dir ?? path.join("./lwm2m-registry-json/DDF.json");
   const ddf = await JSON.parse(await readFile(dirpath, "utf-8"));
-  const info = getData(ddf.DDFList.Item);
 
-  // import statements
-  const importStatic = ` import { Static } from "@sinclair/typebox";`;
-  const importType = `import { Type } from "@sinclair/typebox";`;
-  const imports = info[0];
+  const types = ddf.DDFList.Item.filter((element: any) => {
+    // DDF value should exist and should be the current stable version of the object
+    if (!declarationExist(element.DDF[0]) || !isCurrentVersion(element.DDF[0]))
+      return false;
+    return true;
+  }).filter((element: any) => {
+    const id = element.ObjectID[0];
+    if (ignoredLwM2MObjects.includes(id)) return false;
+    return true;
+  });
 
-  // objects declaration
-  const typeBoxDeclaration = `export const LwM2MType = Type.Object({${info[2]}})`;
-  const nameSpaceDeclaration = `export namespace LwM2M {${info[1]}}`;
+  await writeFile("./LwM2M.ts", createExports(types).join(os.EOL));
 
-  // value definition
-  const LwM2M = `${imports}\n${importStatic} ${nameSpaceDeclaration}`;
-  const LwM2MType = `${imports}\n${importType} ${typeBoxDeclaration}`;
-  await writeFile("./LWM2M.ts", LwM2M);
-  await writeFile("./LWM2MType.ts", LwM2MType);
+  await writeFile(
+    "./LwM2MDocument.ts",
+    createDocumentProps(types).join(os.EOL)
+  );
 };
 
 execution();

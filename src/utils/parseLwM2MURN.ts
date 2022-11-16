@@ -1,14 +1,18 @@
 export const parseLwM2MURN = (
   urn: string
-): { ObjectID: string; ObjectVersion?: string } | { error: Error } => {
+): {
+  ObjectID: string;
+  ObjectVersion?: string;
+  ObjectNamespace: "oma" | "ext" | "x";
+} | null => {
   const match =
-    /^urn:oma:lwm2m:(?:oma|ext|x):(?<ObjectID>\d+)(?::(?<ObjectVersion>[0-9]+\.\d+))?/.exec(
+    /^urn:oma:lwm2m:(?<namespace>oma|ext|x):(?<ObjectID>\d+)(?::(?<ObjectVersion>[0-9]+\.\d+))?/.exec(
       urn
     );
-  if (match?.groups === undefined)
-    return { error: new Error(`Failed to parse LwM2M URN: '${urn}'`) };
+  if (match?.groups === undefined) return null;
   return {
     ObjectID: match.groups?.ObjectID,
     ObjectVersion: match.groups?.ObjectVersion,
+    ObjectNamespace: match.groups?.namespace as "oma" | "ext" | "x",
   };
 };

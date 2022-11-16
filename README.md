@@ -43,3 +43,24 @@ if ("error" in maybeValidLwM2M) throw new Error(`Validation failed`);
 maybeValidLwM2M?.["LwM2M Server"]; // typed as LwM2MServer | undefined
 console.log(validateShadow?.["LwM2M Server"][0].Lifetime); // 43200, typeof number
 ```
+
+## JSON document
+
+LwM2M values are encoded as a JSON document, where the key is an extended version of the LwM2M URN: `<"oma"|"ext"|"x">:<ObjectID>:<ObjectVersion>@<LwM2MVersion>`.
+
+```json
+{
+  "oma:3:1.1@1.1": {
+    "0": "Nordic Semiconductor ASA",
+    "1": "thingy91_nrf9160",
+    "2": "351358815340515",
+    "3": "0.0.0-development",
+    "7": [4113],
+    "11": [0],
+    "13": 1665149633,
+    "16": "U",
+    "18": "nRF9160_SICA",
+    "19": "mfw_nrf9160_1.3.2"
+  }
+}
+```

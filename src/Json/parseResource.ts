@@ -1,5 +1,4 @@
 import { TArray, TSchema, Type } from "@sinclair/typebox";
-import { LwM2MType } from "../../LWM2MType";
 import { validateWithJSONSchema } from "../utils/validateWithJsonSchema";
 import { escapeText } from "../utils/escapeText";
 import { filterOutBlankValues } from "../utils/filterOutBlankValues";

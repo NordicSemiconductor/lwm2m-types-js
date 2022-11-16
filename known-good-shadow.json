@@ -1,9 +1,6 @@
 {
-  "_1": [
+  "oma:1:1.1@1.1": [
     {
-      "ObjectURN": "urn:oma:lwm2m:oma:1:1.2",
-      "LWM2MVersion": 1.1,
-      "ObjectVersion": 1.1,
       "Resources": {
         "_0": 101,
         "_1": 43200,
@@ -17,10 +14,7 @@
       }
     }
   ],
-  "_3": {
-    "ObjectURN": "urn:oma:lwm2m:oma:3:1.2",
-    "LWM2MVersion": 1.1,
-    "ObjectVersion": 1.1,
+  "oma:3:1.1@1.1": {
     "Resources": {
       "_0": "Nordic Semiconductor ASA",
       "_1": "thingy91_nrf9160",
@@ -35,10 +29,7 @@
       "_4": null
     }
   },
-  "_4": {
-    "ObjectURN": "urn:oma:lwm2m:oma:3:1.2",
-    "LWM2MVersion": 1.1,
-    "ObjectVersion": 1.1,
+  "oma:4:1.1@1.1": {
     "Resources": {
       "_0": 6,
       "_1": [6],
@@ -53,10 +44,7 @@
       "_12": 30401
     }
   },
-  "_5": {
-    "ObjectURN": "urn:oma:lwm2m:oma:5:1.1",
-    "LWM2MVersion": 1.1,
-    "ObjectVersion": 1.1,
+  "oma:5:1.1@1.1": {
     "Resources": {
       "_0": "1.0.0",
       "_1": "",
@@ -66,10 +54,7 @@
       "_9": 2
     }
   },
-  "_6": {
-    "ObjectURN": "urn:oma:lwm2m:oma:6",
-    "LWM2MVersion": 1.1,
-    "ObjectVersion": 1.1,
+  "oma:6:1.1@1.1": {
     "Resources": {
       "_0": 0,
       "_1": 0,
@@ -79,11 +64,8 @@
       "_6": 0
     }
   },
-  "_3303": [
+  "ext:3303:1.1": [
     {
-      "ObjectURN": "urn:oma:lwm2m:ext:3303:1.1",
-      "LWM2MVersion": 1.0,
-      "ObjectVersion": 1.1,
       "Resources": {
         "_5518": 1665149633,
         "_5601": 23.51,
@@ -95,11 +77,8 @@
       }
     }
   ],
-  "_3304": [
+  "ext:3304:1.1@1.0": [
     {
-      "ObjectURN": "urn:oma:lwm2m:ext:3304:1.1",
-      "LWM2MVersion": 1.0,
-      "ObjectVersion": 1.1,
       "Resources": {
         "_5518": 1665149633,
         "_5601": 31.06,
@@ -111,11 +90,8 @@
       }
     }
   ],
-  "_3323": [
+  "ext:3323:1.1@1.0": [
     {
-      "ObjectURN": "urn:oma:lwm2m:ext:3323:1.1",
-      "LWM2MVersion": 1.0,
-      "ObjectVersion": 1.1,
       "Resources": {
         "_5518": 1665149633,
         "_5601": 98.24,
@@ -127,11 +103,8 @@
       }
     }
   ],
-  "_3347": [
+  "ext:3347:1.1@1.0": [
     {
-      "ObjectURN": "urn:oma:lwm2m:ext:3323:1.1",
-      "LWM2MVersion": 1.0,
-      "ObjectVersion": 1.1,
       "Resources": {
         "_5500": 0,
         "_5501": 0,
@@ -140,11 +113,8 @@
       }
     }
   ],
-  "_10256": [
+  "ext:10256:1.1@1.0": [
     {
-      "ObjectURN": "urn:oma:lwm2m:ext:3323:1.1",
-      "LWM2MVersion": 1.0,
-      "ObjectVersion": 1.1,
       "Resources": {
         "_0": 247,
         "_1": 0,

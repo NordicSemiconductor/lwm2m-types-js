@@ -15,7 +15,5 @@ describe("parseLwM2MURN()", () => {
       ObjectID: "10241",
     }));
   it("should not parse invalid URNs", () =>
-    expect(parseLwM2MURN("foo")).toMatchObject({
-      error: /Failed to parse LwM2M URN: 'foo'/,
-    }));
+    expect(parseLwM2MURN("foo")).toBeNull());
 });
