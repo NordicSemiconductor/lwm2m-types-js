@@ -5,6 +5,7 @@ import { getMandatoryStatus } from "./getMandatoryStatus";
 import { getMultipleInstanceStatus } from "./getMultipleInstanceStatus";
 import { getRangeEnumeration } from "./getRangeEnumeration";
 import { ParsedResource } from "./parseResource";
+import os from "node:os";
 
 /**
  * Generate TypeBox definition with received params
@@ -56,6 +57,8 @@ export const createResourceDefinition = ({
     description: descriptionValue.join(" "),
   };
 
+  const comments = [`/**`, ` * ${id}: ${name}`, ` */`];
+
   switch (type) {
     case "Boolean":
       typeBoxType = "Integer";
@@ -82,14 +85,14 @@ export const createResourceDefinition = ({
         regexType = getMultipleInstanceStatus(multipleInstances, regexType);
       if (mandatoryStatus !== undefined)
         regexType = getMandatoryStatus(mandatoryStatus, regexType);
-      return `_${id}: ${regexType}`;
+      return [...comments, `_${id}: ${regexType}`].join(os.EOL);
     case "Time":
       let timeType = `Type.Integer({minimum: 1000000000, description: "Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."})`;
       if (multipleInstances !== undefined)
         timeType = getMultipleInstanceStatus(multipleInstances, timeType);
       if (mandatoryStatus !== undefined)
         timeType = getMandatoryStatus(mandatoryStatus, timeType);
-      return `_${id}: ${timeType}`;
+      return [...comments, `_${id}: ${timeType}`].join(os.EOL);
     default:
       if (minimum !== undefined) {
         if (typeBoxType === "String") {
@@ -117,7 +120,7 @@ export const createResourceDefinition = ({
   if (mandatoryStatus !== undefined)
     object = getMandatoryStatus(mandatoryStatus, object);
 
-  return `_${id}: ${object}`;
+  return [...comments, `_${id}: ${object}`].join(os.EOL);
 };
 
 /**

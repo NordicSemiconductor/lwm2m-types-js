@@ -24,11 +24,13 @@ describe("createResourceDefinition", () => {
       rangeEnumeration,
       id,
     });
-    const result = `_16: Type.Number(${JSON.stringify({
-      title: "Communication Retry Count",
-      description:
-        "The number of successive communication attempts before which a communication sequence is considered as failed.",
-    })})`;
+    const result = `/**\n * 16: Communication Retry Count\n */\n_16: Type.Number(${JSON.stringify(
+      {
+        title: "Communication Retry Count",
+        description:
+          "The number of successive communication attempts before which a communication sequence is considered as failed.",
+      }
+    )})`;
 
     expect(typeboxDefinition).toContain(`"title":"${name}"`);
     expect(typeboxDefinition).toContain(`"description":"${description}"`);
@@ -56,13 +58,15 @@ describe("createResourceDefinition", () => {
       id,
     });
 
-    const result = `_16: Type.Number(${JSON.stringify({
-      title: "Communication Retry Count",
-      description:
-        "The number of successive communication attempts before which a communication sequence is considered as failed.",
-      minimum: 1,
-      maximum: 65534,
-    })})`;
+    const result = `/**\n * 16: Communication Retry Count\n */\n_16: Type.Number(${JSON.stringify(
+      {
+        title: "Communication Retry Count",
+        description:
+          "The number of successive communication attempts before which a communication sequence is considered as failed.",
+        minimum: 1,
+        maximum: 65534,
+      }
+    )})`;
 
     expect(typeboxDefinition).toContain(`"minimum":${minimum}`);
     expect(typeboxDefinition).toContain(`"maximum":${maximum}`);
@@ -87,11 +91,13 @@ describe("createResourceDefinition", () => {
       rangeEnumeration,
       id,
     });
-    const result = `_16: Type.Optional(Type.Number(${JSON.stringify({
-      title: "Communication Retry Count",
-      description:
-        "The number of successive communication attempts before which a communication sequence is considered as failed.",
-    })}))`;
+    const result = `/**\n * 16: Communication Retry Count\n */\n_16: Type.Optional(Type.Number(${JSON.stringify(
+      {
+        title: "Communication Retry Count",
+        description:
+          "The number of successive communication attempts before which a communication sequence is considered as failed.",
+      }
+    )}))`;
 
     expect(typeboxDefinition).toBe(result);
   });
@@ -114,11 +120,13 @@ describe("createResourceDefinition", () => {
       rangeEnumeration,
       id,
     });
-    const result = `_16: Type.Number(${JSON.stringify({
-      title: "Communication Retry Count",
-      description:
-        "The number of successive communication attempts before which a communication sequence is considered as failed.",
-    })})`;
+    const result = `/**\n * 16: Communication Retry Count\n */\n_16: Type.Number(${JSON.stringify(
+      {
+        title: "Communication Retry Count",
+        description:
+          "The number of successive communication attempts before which a communication sequence is considered as failed.",
+      }
+    )})`;
 
     expect(typeboxDefinition).toBe(result);
   });
@@ -141,11 +149,13 @@ describe("createResourceDefinition", () => {
       rangeEnumeration,
       id,
     });
-    const result = `_16: Type.Array(Type.Number(${JSON.stringify({
-      title: "Communication Retry Count",
-      description:
-        "The number of successive communication attempts before which a communication sequence is considered as failed.",
-    })}))`;
+    const result = `/**\n * 16: Communication Retry Count\n */\n_16: Type.Array(Type.Number(${JSON.stringify(
+      {
+        title: "Communication Retry Count",
+        description:
+          "The number of successive communication attempts before which a communication sequence is considered as failed.",
+      }
+    )}))`;
 
     expect(typeboxDefinition).toBe(result);
   });
@@ -168,11 +178,13 @@ describe("createResourceDefinition", () => {
       rangeEnumeration,
       id,
     });
-    const result = `_16: Type.Number(${JSON.stringify({
-      title: "Communication Retry Count",
-      description:
-        "The number of successive communication attempts before which a communication sequence is considered as failed.",
-    })})`;
+    const result = `/**\n * 16: Communication Retry Count\n */\n_16: Type.Number(${JSON.stringify(
+      {
+        title: "Communication Retry Count",
+        description:
+          "The number of successive communication attempts before which a communication sequence is considered as failed.",
+      }
+    )})`;
 
     expect(typeboxDefinition).toBe(result);
   });
@@ -194,7 +206,7 @@ describe("createResourceDefinition", () => {
       rangeEnumeration,
       id,
     });
-    const result = `_16: Type.Number(${JSON.stringify({
+    const result = `/**\n * 16: name\n */\n_16: Type.Number(${JSON.stringify({
       title: "name",
       description: "Description.",
       minimum: 0,
@@ -221,10 +233,12 @@ describe("createResourceDefinition", () => {
       rangeEnumeration,
       id,
     });
-    const result = `_16: Type.Literal(0 ,${JSON.stringify({
-      title: "name",
-      description: "Description.",
-    })})`;
+    const result = `/**\n * 16: name\n */\n_16: Type.Literal(0 ,${JSON.stringify(
+      {
+        title: "name",
+        description: "Description.",
+      }
+    )})`;
 
     expect(typeboxDefinition).toBe(result);
   });
@@ -246,7 +260,7 @@ describe("createResourceDefinition", () => {
       rangeEnumeration,
       id,
     });
-    const result = `_16: Type.Union([Type.Literal(0 ),Type.Literal(1 ),Type.Literal(2 )],${JSON.stringify(
+    const result = `/**\n * 16: name\n */\n_16: Type.Union([Type.Literal(0 ),Type.Literal(1 ),Type.Literal(2 )],${JSON.stringify(
       { title: "name", description: "Description." }
     )})`;
 
@@ -256,7 +270,7 @@ describe("createResourceDefinition", () => {
   it.each([
     [
       "0..255 bytes",
-      `_16: Type.Number(${JSON.stringify({
+      `/**\n * 16: name\n */\n_16: Type.Number(${JSON.stringify({
         title: "name",
         description:
           "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '0..255 bytes'.",
@@ -264,7 +278,7 @@ describe("createResourceDefinition", () => {
     ],
     [
       "1: normal\r\n\t\t\t\t2: remote\r\n\t\t\t\t3: local",
-      `_16: Type.Number(${JSON.stringify({
+      `/**\n * 16: name\n */\n_16: Type.Number(${JSON.stringify({
         title: "name",
         description:
           "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '1: normal      2: remote      3: local'.",
@@ -272,7 +286,7 @@ describe("createResourceDefinition", () => {
     ],
     [
       "<7 to >12.5",
-      `_16: Type.Number(${JSON.stringify({
+      `/**\n * 16: name\n */\n_16: Type.Number(${JSON.stringify({
         title: "name",
         description:
           "Description. RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '<7 to >12.5'.",

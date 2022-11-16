@@ -66,7 +66,12 @@ const createDocumentProps = (items: any[]) => {
     ...items.map((element: any) => {
       const id = element.ObjectID[0];
       const name = typeName(id, element.Name[0]);
-      return `[${name}URN]: Type.Optional(${name}),`;
+      return [
+        `/**`,
+        ` * ${id}: ${element.Name[0]}`,
+        ` */`,
+        `[${name}URN]: Type.Optional(${name}),`,
+      ].join(os.EOL);
     })
   );
 

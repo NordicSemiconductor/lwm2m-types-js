@@ -918,398 +918,1295 @@ import {
 } from "./types/18831";
 export const LwM2MDocument = Type.Object(
   {
+    /**
+     * 1: LwM2M Server
+     */
     [LwM2MServer_1URN]: Type.Optional(LwM2MServer_1),
+    /**
+     * 2: LwM2M Access Control
+     */
     [LwM2MAccessControl_2URN]: Type.Optional(LwM2MAccessControl_2),
+    /**
+     * 3: Device
+     */
     [Device_3URN]: Type.Optional(Device_3),
+    /**
+     * 4: Connectivity Monitoring
+     */
     [ConnectivityMonitoring_4URN]: Type.Optional(ConnectivityMonitoring_4),
+    /**
+     * 5: Firmware Update
+     */
     [FirmwareUpdate_5URN]: Type.Optional(FirmwareUpdate_5),
+    /**
+     * 6: Location
+     */
     [Location_6URN]: Type.Optional(Location_6),
+    /**
+     * 7: Connectivity Statistics
+     */
     [ConnectivityStatistics_7URN]: Type.Optional(ConnectivityStatistics_7),
+    /**
+     * 8: Lock and Wipe
+     */
     [LockandWipe_8URN]: Type.Optional(LockandWipe_8),
+    /**
+     * 9: LWM2M Software Management
+     */
     [LWM2MSoftwareManagement_9URN]: Type.Optional(LWM2MSoftwareManagement_9),
+    /**
+     * 10: LWM2M Cellular Connectivity
+     */
     [LWM2MCellularConnectivity_10URN]: Type.Optional(
       LWM2MCellularConnectivity_10
     ),
+    /**
+     * 11: LWM2M APN Connection Profile
+     */
     [LWM2MAPNConnectionProfile_11URN]: Type.Optional(
       LWM2MAPNConnectionProfile_11
     ),
+    /**
+     * 12: WLAN connectivity
+     */
     [WLANconnectivity_12URN]: Type.Optional(WLANconnectivity_12),
+    /**
+     * 13: LWM2M Bearer Selection
+     */
     [LWM2MBearerSelection_13URN]: Type.Optional(LWM2MBearerSelection_13),
+    /**
+     * 14: LWM2M Software Component
+     */
     [LWM2MSoftwareComponent_14URN]: Type.Optional(LWM2MSoftwareComponent_14),
+    /**
+     * 15: DevCapMgmt
+     */
     [DevCapMgmt_15URN]: Type.Optional(DevCapMgmt_15),
+    /**
+     * 16: Portfolio
+     */
     [Portfolio_16URN]: Type.Optional(Portfolio_16),
+    /**
+     * 19: BinaryAppDataContainer
+     */
     [BinaryAppDataContainer_19URN]: Type.Optional(BinaryAppDataContainer_19),
+    /**
+     * 20: Event Log
+     */
     [EventLog_20URN]: Type.Optional(EventLog_20),
+    /**
+     * 22: Virtual Observe Notify
+     */
     [VirtualObserveNotify_22URN]: Type.Optional(VirtualObserveNotify_22),
+    /**
+     * 24: MQTT Server
+     */
     [MQTTServer_24URN]: Type.Optional(MQTTServer_24),
+    /**
+     * 25: LwM2M Gateway
+     */
     [LwM2MGateway_25URN]: Type.Optional(LwM2MGateway_25),
+    /**
+     * 26: LwM2M Gateway Routing
+     */
     [LwM2MGatewayRouting_26URN]: Type.Optional(LwM2MGatewayRouting_26),
+    /**
+     * 27: 5GNR Connectivity
+     */
     [n5GNRConnectivity_27URN]: Type.Optional(n5GNRConnectivity_27),
+    /**
+     * 28: Device RF Capabilities
+     */
     [DeviceRFCapabilities_28URN]: Type.Optional(DeviceRFCapabilities_28),
+    /**
+     * 500: CoAP Config
+     */
     [CoAPConfig_500URN]: Type.Optional(CoAPConfig_500),
+    /**
+     * 501: LTE-MTC Band Config
+     */
     [LTE_MTCBandConfig_501URN]: Type.Optional(LTE_MTCBandConfig_501),
+    /**
+     * 502: CO Detector
+     */
     [CODetector_502URN]: Type.Optional(CODetector_502),
+    /**
+     * 503: Fire Alarm
+     */
     [FireAlarm_503URN]: Type.Optional(FireAlarm_503),
+    /**
+     * 504: Remote SIM Provisioning
+     */
     [RemoteSIMProvisioning_504URN]: Type.Optional(RemoteSIMProvisioning_504),
+    /**
+     * 505: LwM2M SIM Provisioning
+     */
     [LwM2MSIMProvisioning_505URN]: Type.Optional(LwM2MSIMProvisioning_505),
+    /**
+     * 507: nuSIM Profile
+     */
     [nuSIMProfile_507URN]: Type.Optional(nuSIMProfile_507),
+    /**
+     * 508: nuSIM
+     */
     [nuSIM_508URN]: Type.Optional(nuSIM_508),
+    /**
+     * 509: Measurement Metadata
+     */
     [MeasurementMetadata_509URN]: Type.Optional(MeasurementMetadata_509),
+    /**
+     * 510: Vendor Specific Measurement Quality Reason
+     */
     [VendorSpecificMeasurementQualityReason_510URN]: Type.Optional(
       VendorSpecificMeasurementQualityReason_510
     ),
+    /**
+     * 2048: CmdhPolicy
+     */
     [CmdhPolicy_2048URN]: Type.Optional(CmdhPolicy_2048),
+    /**
+     * 2049: ActiveCmdhPolicy
+     */
     [ActiveCmdhPolicy_2049URN]: Type.Optional(ActiveCmdhPolicy_2049),
+    /**
+     * 2050: CmdhDefaults
+     */
     [CmdhDefaults_2050URN]: Type.Optional(CmdhDefaults_2050),
+    /**
+     * 2051: CmdhDefEcValues
+     */
     [CmdhDefEcValues_2051URN]: Type.Optional(CmdhDefEcValues_2051),
+    /**
+     * 2052: CmdhEcDefParamValues
+     */
     [CmdhEcDefParamValues_2052URN]: Type.Optional(CmdhEcDefParamValues_2052),
+    /**
+     * 2053: CmdhLimits
+     */
     [CmdhLimits_2053URN]: Type.Optional(CmdhLimits_2053),
+    /**
+     * 2054: CmdhNetworkAccessRules
+     */
     [CmdhNetworkAccessRules_2054URN]: Type.Optional(
       CmdhNetworkAccessRules_2054
     ),
+    /**
+     * 2055: CmdhNwAccessRule
+     */
     [CmdhNwAccessRule_2055URN]: Type.Optional(CmdhNwAccessRule_2055),
+    /**
+     * 2056: CmdhBuffer
+     */
     [CmdhBuffer_2056URN]: Type.Optional(CmdhBuffer_2056),
+    /**
+     * 2057: CmdhBackOffParametersSet
+     */
     [CmdhBackOffParametersSet_2057URN]: Type.Optional(
       CmdhBackOffParametersSet_2057
     ),
+    /**
+     * 3200: Digital Input
+     */
     [DigitalInput_3200URN]: Type.Optional(DigitalInput_3200),
+    /**
+     * 3201: Digital Output
+     */
     [DigitalOutput_3201URN]: Type.Optional(DigitalOutput_3201),
+    /**
+     * 3202: Analog Input
+     */
     [AnalogInput_3202URN]: Type.Optional(AnalogInput_3202),
+    /**
+     * 3203: Analog Output
+     */
     [AnalogOutput_3203URN]: Type.Optional(AnalogOutput_3203),
+    /**
+     * 3300: Generic Sensor
+     */
     [GenericSensor_3300URN]: Type.Optional(GenericSensor_3300),
+    /**
+     * 3301: Illuminance
+     */
     [Illuminance_3301URN]: Type.Optional(Illuminance_3301),
+    /**
+     * 3302: Presence
+     */
     [Presence_3302URN]: Type.Optional(Presence_3302),
+    /**
+     * 3303: Temperature
+     */
     [Temperature_3303URN]: Type.Optional(Temperature_3303),
+    /**
+     * 3304: Humidity
+     */
     [Humidity_3304URN]: Type.Optional(Humidity_3304),
+    /**
+     * 3305: Power Measurement
+     */
     [PowerMeasurement_3305URN]: Type.Optional(PowerMeasurement_3305),
+    /**
+     * 3306: Actuation
+     */
     [Actuation_3306URN]: Type.Optional(Actuation_3306),
+    /**
+     * 3308: Set Point
+     */
     [SetPoint_3308URN]: Type.Optional(SetPoint_3308),
+    /**
+     * 3310: Load Control
+     */
     [LoadControl_3310URN]: Type.Optional(LoadControl_3310),
+    /**
+     * 3311: Light Control
+     */
     [LightControl_3311URN]: Type.Optional(LightControl_3311),
+    /**
+     * 3312: Power Control
+     */
     [PowerControl_3312URN]: Type.Optional(PowerControl_3312),
+    /**
+     * 3313: Accelerometer
+     */
     [Accelerometer_3313URN]: Type.Optional(Accelerometer_3313),
+    /**
+     * 3314: Magnetometer
+     */
     [Magnetometer_3314URN]: Type.Optional(Magnetometer_3314),
+    /**
+     * 3315: Barometer
+     */
     [Barometer_3315URN]: Type.Optional(Barometer_3315),
+    /**
+     * 3316: Voltage
+     */
     [Voltage_3316URN]: Type.Optional(Voltage_3316),
+    /**
+     * 3317: Current
+     */
     [Current_3317URN]: Type.Optional(Current_3317),
+    /**
+     * 3318: Frequency
+     */
     [Frequency_3318URN]: Type.Optional(Frequency_3318),
+    /**
+     * 3319: Depth
+     */
     [Depth_3319URN]: Type.Optional(Depth_3319),
+    /**
+     * 3320: Percentage
+     */
     [Percentage_3320URN]: Type.Optional(Percentage_3320),
+    /**
+     * 3321: Altitude
+     */
     [Altitude_3321URN]: Type.Optional(Altitude_3321),
+    /**
+     * 3322: Load
+     */
     [Load_3322URN]: Type.Optional(Load_3322),
+    /**
+     * 3323: Pressure
+     */
     [Pressure_3323URN]: Type.Optional(Pressure_3323),
+    /**
+     * 3324: Loudness
+     */
     [Loudness_3324URN]: Type.Optional(Loudness_3324),
+    /**
+     * 3325: Concentration
+     */
     [Concentration_3325URN]: Type.Optional(Concentration_3325),
+    /**
+     * 3326: Acidity
+     */
     [Acidity_3326URN]: Type.Optional(Acidity_3326),
+    /**
+     * 3327: Conductivity
+     */
     [Conductivity_3327URN]: Type.Optional(Conductivity_3327),
+    /**
+     * 3328: Power
+     */
     [Power_3328URN]: Type.Optional(Power_3328),
+    /**
+     * 3329: Power Factor
+     */
     [PowerFactor_3329URN]: Type.Optional(PowerFactor_3329),
+    /**
+     * 3330: Distance
+     */
     [Distance_3330URN]: Type.Optional(Distance_3330),
+    /**
+     * 3331: Energy
+     */
     [Energy_3331URN]: Type.Optional(Energy_3331),
+    /**
+     * 3332: Direction
+     */
     [Direction_3332URN]: Type.Optional(Direction_3332),
+    /**
+     * 3333: Time
+     */
     [Time_3333URN]: Type.Optional(Time_3333),
+    /**
+     * 3334: Gyrometer
+     */
     [Gyrometer_3334URN]: Type.Optional(Gyrometer_3334),
+    /**
+     * 3335: Colour
+     */
     [Colour_3335URN]: Type.Optional(Colour_3335),
+    /**
+     * 3336: Location
+     */
     [Location_3336URN]: Type.Optional(Location_3336),
+    /**
+     * 3337: Positioner
+     */
     [Positioner_3337URN]: Type.Optional(Positioner_3337),
+    /**
+     * 3338: Buzzer
+     */
     [Buzzer_3338URN]: Type.Optional(Buzzer_3338),
+    /**
+     * 3339: Audio Clip
+     */
     [AudioClip_3339URN]: Type.Optional(AudioClip_3339),
+    /**
+     * 3340: Timer
+     */
     [Timer_3340URN]: Type.Optional(Timer_3340),
+    /**
+     * 3341: Addressable Text Display
+     */
     [AddressableTextDisplay_3341URN]: Type.Optional(
       AddressableTextDisplay_3341
     ),
+    /**
+     * 3342: On/Off switch
+     */
     [On_Offswitch_3342URN]: Type.Optional(On_Offswitch_3342),
+    /**
+     * 3343: Dimmer
+     */
     [Dimmer_3343URN]: Type.Optional(Dimmer_3343),
+    /**
+     * 3344: Up/Down Control
+     */
     [Up_DownControl_3344URN]: Type.Optional(Up_DownControl_3344),
+    /**
+     * 3345: Multiple Axis Joystick
+     */
     [MultipleAxisJoystick_3345URN]: Type.Optional(MultipleAxisJoystick_3345),
+    /**
+     * 3346: Rate
+     */
     [Rate_3346URN]: Type.Optional(Rate_3346),
+    /**
+     * 3347: Push button
+     */
     [Pushbutton_3347URN]: Type.Optional(Pushbutton_3347),
+    /**
+     * 3348: Multi-state Selector
+     */
     [Multi_stateSelector_3348URN]: Type.Optional(Multi_stateSelector_3348),
+    /**
+     * 3349: Bitmap
+     */
     [Bitmap_3349URN]: Type.Optional(Bitmap_3349),
+    /**
+     * 3350: Stopwatch
+     */
     [Stopwatch_3350URN]: Type.Optional(Stopwatch_3350),
+    /**
+     * 3351: powerupLog
+     */
     [powerupLog_3351URN]: Type.Optional(powerupLog_3351),
+    /**
+     * 3352: plmnSearchEvent
+     */
     [plmnSearchEvent_3352URN]: Type.Optional(plmnSearchEvent_3352),
+    /**
+     * 3353: scellID
+     */
     [scellID_3353URN]: Type.Optional(scellID_3353),
+    /**
+     * 3354: cellReselectionEvent
+     */
     [cellReselectionEvent_3354URN]: Type.Optional(cellReselectionEvent_3354),
+    /**
+     * 3355: handoverEvent
+     */
     [handoverEvent_3355URN]: Type.Optional(handoverEvent_3355),
+    /**
+     * 3356: radioLinkFailureEvent
+     */
     [radioLinkFailureEvent_3356URN]: Type.Optional(radioLinkFailureEvent_3356),
+    /**
+     * 3357: rrcStateChangeEvent
+     */
     [rrcStateChangeEvent_3357URN]: Type.Optional(rrcStateChangeEvent_3357),
+    /**
+     * 3358: rrcTimerExpiryEvent
+     */
     [rrcTimerExpiryEvent_3358URN]: Type.Optional(rrcTimerExpiryEvent_3358),
+    /**
+     * 3359: cellBlacklistEvent
+     */
     [cellBlacklistEvent_3359URN]: Type.Optional(cellBlacklistEvent_3359),
+    /**
+     * 3360: esmContextInfo
+     */
     [esmContextInfo_3360URN]: Type.Optional(esmContextInfo_3360),
+    /**
+     * 3361: emmStateValue
+     */
     [emmStateValue_3361URN]: Type.Optional(emmStateValue_3361),
+    /**
+     * 3362: nasEmmTimerExpiryEvent
+     */
     [nasEmmTimerExpiryEvent_3362URN]: Type.Optional(
       nasEmmTimerExpiryEvent_3362
     ),
+    /**
+     * 3363: nasEsmExpiryEvent
+     */
     [nasEsmExpiryEvent_3363URN]: Type.Optional(nasEsmExpiryEvent_3363),
+    /**
+     * 3364: emmFailureCauseEvent
+     */
     [emmFailureCauseEvent_3364URN]: Type.Optional(emmFailureCauseEvent_3364),
+    /**
+     * 3365: rachLatency_delay
+     */
     [rachLatency_delay_3365URN]: Type.Optional(rachLatency_delay_3365),
+    /**
+     * 3366: macRachAttemptEvent
+     */
     [macRachAttemptEvent_3366URN]: Type.Optional(macRachAttemptEvent_3366),
+    /**
+     * 3367: macRachAttemptReasonEvent
+     */
     [macRachAttemptReasonEvent_3367URN]: Type.Optional(
       macRachAttemptReasonEvent_3367
     ),
+    /**
+     * 3368: macTimerStatusEvent
+     */
     [macTimerStatusEvent_3368URN]: Type.Optional(macTimerStatusEvent_3368),
+    /**
+     * 3369: macTimingAdvanceEvent
+     */
     [macTimingAdvanceEvent_3369URN]: Type.Optional(macTimingAdvanceEvent_3369),
+    /**
+     * 3370: ServingCellMeasurement
+     */
     [ServingCellMeasurement_3370URN]: Type.Optional(
       ServingCellMeasurement_3370
     ),
+    /**
+     * 3371: NeighborCellMeasurements
+     */
     [NeighborCellMeasurements_3371URN]: Type.Optional(
       NeighborCellMeasurements_3371
     ),
+    /**
+     * 3372: TimingAdvance
+     */
     [TimingAdvance_3372URN]: Type.Optional(TimingAdvance_3372),
+    /**
+     * 3373: txPowerHeadroomEvent
+     */
     [txPowerHeadroomEvent_3373URN]: Type.Optional(txPowerHeadroomEvent_3373),
+    /**
+     * 3374: radioLinkMonitoring
+     */
     [radioLinkMonitoring_3374URN]: Type.Optional(radioLinkMonitoring_3374),
+    /**
+     * 3375: PagingDRX
+     */
     [PagingDRX_3375URN]: Type.Optional(PagingDRX_3375),
+    /**
+     * 3376: txPowerBackOffEvent
+     */
     [txPowerBackOffEvent_3376URN]: Type.Optional(txPowerBackOffEvent_3376),
+    /**
+     * 3377: Message3Report
+     */
     [Message3Report_3377URN]: Type.Optional(Message3Report_3377),
+    /**
+     * 3378: PbchDecodingResults
+     */
     [PbchDecodingResults_3378URN]: Type.Optional(PbchDecodingResults_3378),
+    /**
+     * 3379: pucchPowerControl
+     */
     [pucchPowerControl_3379URN]: Type.Optional(pucchPowerControl_3379),
+    /**
+     * 3380: PrachReport
+     */
     [PrachReport_3380URN]: Type.Optional(PrachReport_3380),
+    /**
+     * 3381: VolteCallEvent
+     */
     [VolteCallEvent_3381URN]: Type.Optional(VolteCallEvent_3381),
+    /**
+     * 3382: SipRegistrationEvent
+     */
     [SipRegistrationEvent_3382URN]: Type.Optional(SipRegistrationEvent_3382),
+    /**
+     * 3383: sipPublishEvent
+     */
     [sipPublishEvent_3383URN]: Type.Optional(sipPublishEvent_3383),
+    /**
+     * 3384: sipSubscriptionEvent
+     */
     [sipSubscriptionEvent_3384URN]: Type.Optional(sipSubscriptionEvent_3384),
+    /**
+     * 3385: volteCallStateChangeEvent
+     */
     [volteCallStateChangeEvent_3385URN]: Type.Optional(
       volteCallStateChangeEvent_3385
     ),
+    /**
+     * 3386: VoLTErtpPacketLoss
+     */
     [VoLTErtpPacketLoss_3386URN]: Type.Optional(VoLTErtpPacketLoss_3386),
+    /**
+     * 3387: oA Basic Control
+     */
     [oABasicControl_3387URN]: Type.Optional(oABasicControl_3387),
+    /**
+     * 3388: oA Device
+     */
     [oADevice_3388URN]: Type.Optional(oADevice_3388),
+    /**
+     * 3389: oA Group
+     */
     [oAGroup_3389URN]: Type.Optional(oAGroup_3389),
+    /**
+     * 3390: oA Logical Colour Light-Point Actuator
+     */
     [oALogicalColourLight_PointActuator_3390URN]: Type.Optional(
       oALogicalColourLight_PointActuator_3390
     ),
+    /**
+     * 3391: oA Logical Colour Temperature Light-Point Actuator
+     */
     [oALogicalColourTemperatureLight_PointActuator_3391URN]: Type.Optional(
       oALogicalColourTemperatureLight_PointActuator_3391
     ),
+    /**
+     * 3392: oA Logical Illuminance Sensor
+     */
     [oALogicalIlluminanceSensor_3392URN]: Type.Optional(
       oALogicalIlluminanceSensor_3392
     ),
+    /**
+     * 3393: oA Logical Light-Point Actuator
+     */
     [oALogicalLight_PointActuator_3393URN]: Type.Optional(
       oALogicalLight_PointActuator_3393
     ),
+    /**
+     * 3394: oA Logical Presence Sensor
+     */
     [oALogicalPresenceSensor_3394URN]: Type.Optional(
       oALogicalPresenceSensor_3394
     ),
+    /**
+     * 3395: oA Logical Push-Button Sensor
+     */
     [oALogicalPush_ButtonSensor_3395URN]: Type.Optional(
       oALogicalPush_ButtonSensor_3395
     ),
+    /**
+     * 3396: oA Physical Colour Light-Point Actuator
+     */
     [oAPhysicalColourLight_PointActuator_3396URN]: Type.Optional(
       oAPhysicalColourLight_PointActuator_3396
     ),
+    /**
+     * 3397: oA Physical Colour Temperature Light-Point Actuator
+     */
     [oAPhysicalColourTemperatureLight_PointActuator_3397URN]: Type.Optional(
       oAPhysicalColourTemperatureLight_PointActuator_3397
     ),
+    /**
+     * 3398: oA Physical Illuminance Sensor
+     */
     [oAPhysicalIlluminanceSensor_3398URN]: Type.Optional(
       oAPhysicalIlluminanceSensor_3398
     ),
+    /**
+     * 3399: oA Physical Light-Point Actuator
+     */
     [oAPhysicalLight_PointActuator_3399URN]: Type.Optional(
       oAPhysicalLight_PointActuator_3399
     ),
+    /**
+     * 3400: oA Physical Presence Sensor
+     */
     [oAPhysicalPresenceSensor_3400URN]: Type.Optional(
       oAPhysicalPresenceSensor_3400
     ),
+    /**
+     * 3401: oA Physical Push-Button Sensor
+     */
     [oAPhysicalPush_ButtonSensor_3401URN]: Type.Optional(
       oAPhysicalPush_ButtonSensor_3401
     ),
+    /**
+     * 3402: oA Receiving Object
+     */
     [oAReceivingObject_3402URN]: Type.Optional(oAReceivingObject_3402),
+    /**
+     * 3403: oA Reporting Object
+     */
     [oAReportingObject_3403URN]: Type.Optional(oAReportingObject_3403),
+    /**
+     * 3404: oA Scene
+     */
     [oAScene_3404URN]: Type.Optional(oAScene_3404),
+    /**
+     * 3405: oA OGC-Security
+     */
     [oAOGC_Security_3405URN]: Type.Optional(oAOGC_Security_3405),
+    /**
+     * 3406: oA Status Report Structure
+     */
     [oAStatusReportStructure_3406URN]: Type.Optional(
       oAStatusReportStructure_3406
     ),
+    /**
+     * 3407: Smoke Alarm
+     */
     [SmokeAlarm_3407URN]: Type.Optional(SmokeAlarm_3407),
+    /**
+     * 3408: Manhole Cover
+     */
     [ManholeCover_3408URN]: Type.Optional(ManholeCover_3408),
+    /**
+     * 3410: Device Extension
+     */
     [DeviceExtension_3410URN]: Type.Optional(DeviceExtension_3410),
+    /**
+     * 3411: Battery
+     */
     [Battery_3411URN]: Type.Optional(Battery_3411),
+    /**
+     * 3412: LPWAN Communication
+     */
     [LPWANCommunication_3412URN]: Type.Optional(LPWANCommunication_3412),
+    /**
+     * 3413: uCIFI Generic Actuator
+     */
     [uCIFIGenericActuator_3413URN]: Type.Optional(uCIFIGenericActuator_3413),
+    /**
+     * 3414: uCIFI data bridge
+     */
     [uCIFIdatabridge_3414URN]: Type.Optional(uCIFIdatabridge_3414),
+    /**
+     * 3415: Time synchronization
+     */
     [Timesynchronization_3415URN]: Type.Optional(Timesynchronization_3415),
+    /**
+     * 3416: Outdoor lamp controller
+     */
     [Outdoorlampcontroller_3416URN]: Type.Optional(Outdoorlampcontroller_3416),
+    /**
+     * 3417: Luminaire asset
+     */
     [Luminaireasset_3417URN]: Type.Optional(Luminaireasset_3417),
+    /**
+     * 3418: Electrical monitor
+     */
     [Electricalmonitor_3418URN]: Type.Optional(Electricalmonitor_3418),
+    /**
+     * 3419: Photocell
+     */
     [Photocell_3419URN]: Type.Optional(Photocell_3419),
+    /**
+     * 3420: LED color light
+     */
     [LEDcolorlight_3420URN]: Type.Optional(LEDcolorlight_3420),
+    /**
+     * 3421: Single-phase electrical meter
+     */
     [Single_phaseelectricalmeter_3421URN]: Type.Optional(
       Single_phaseelectricalmeter_3421
     ),
+    /**
+     * 3423: Gas meter
+     */
     [Gasmeter_3423URN]: Type.Optional(Gasmeter_3423),
+    /**
+     * 3424: Water meter
+     */
     [Watermeter_3424URN]: Type.Optional(Watermeter_3424),
+    /**
+     * 3425: Irrigation valve
+     */
     [Irrigationvalve_3425URN]: Type.Optional(Irrigationvalve_3425),
+    /**
+     * 3426: Water quality sensor
+     */
     [Waterqualitysensor_3426URN]: Type.Optional(Waterqualitysensor_3426),
+    /**
+     * 3427: Pressure monitoring sensor
+     */
     [Pressuremonitoringsensor_3427URN]: Type.Optional(
       Pressuremonitoringsensor_3427
     ),
+    /**
+     * 3428: Air quality
+     */
     [Airquality_3428URN]: Type.Optional(Airquality_3428),
+    /**
+     * 3429: Tilt sensor
+     */
     [Tiltsensor_3429URN]: Type.Optional(Tiltsensor_3429),
+    /**
+     * 3430: Global Navigation Satellite System
+     */
     [GlobalNavigationSatelliteSystem_3430URN]: Type.Optional(
       GlobalNavigationSatelliteSystem_3430
     ),
+    /**
+     * 3431: Parking Sensor
+     */
     [ParkingSensor_3431URN]: Type.Optional(ParkingSensor_3431),
+    /**
+     * 3432: Traffic Counter
+     */
     [TrafficCounter_3432URN]: Type.Optional(TrafficCounter_3432),
+    /**
+     * 3433: Noise sensor
+     */
     [Noisesensor_3433URN]: Type.Optional(Noisesensor_3433),
+    /**
+     * 3434: People counter
+     */
     [Peoplecounter_3434URN]: Type.Optional(Peoplecounter_3434),
+    /**
+     * 3435: Filling level
+     */
     [Fillinglevel_3435URN]: Type.Optional(Fillinglevel_3435),
+    /**
+     * 3436: Edge computing manager
+     */
     [Edgecomputingmanager_3436URN]: Type.Optional(Edgecomputingmanager_3436),
+    /**
+     * 3437: Edge computing script
+     */
     [Edgecomputingscript_3437URN]: Type.Optional(Edgecomputingscript_3437),
+    /**
+     * 3438: Edge computing time condition
+     */
     [Edgecomputingtimecondition_3438URN]: Type.Optional(
       Edgecomputingtimecondition_3438
     ),
+    /**
+     * 3439: Edge computing generic condition
+     */
     [Edgecomputinggenericcondition_3439URN]: Type.Optional(
       Edgecomputinggenericcondition_3439
     ),
+    /**
+     * 3441: LwM2M v1.0 Test Object
+     */
     [LwM2Mv1_0TestObject_3441URN]: Type.Optional(LwM2Mv1_0TestObject_3441),
+    /**
+     * 3442: LwM2M v1.1 Test Object
+     */
     [LwM2Mv1_1TestObject_3442URN]: Type.Optional(LwM2Mv1_1TestObject_3442),
+    /**
+     * 10241: HostDeviceInfo
+     */
     [HostDeviceInfo_10241URN]: Type.Optional(HostDeviceInfo_10241),
+    /**
+     * 10242: 3-Phase Power Meter
+     */
     [n3_PhasePowerMeter_10242URN]: Type.Optional(n3_PhasePowerMeter_10242),
+    /**
+     * 10243: Single-Phase Power Meter
+     */
     [Single_PhasePowerMeter_10243URN]: Type.Optional(
       Single_PhasePowerMeter_10243
     ),
+    /**
+     * 10244: VehicleControlUnit
+     */
     [VehicleControlUnit_10244URN]: Type.Optional(VehicleControlUnit_10244),
+    /**
+     * 10245: Relay Management
+     */
     [RelayManagement_10245URN]: Type.Optional(RelayManagement_10245),
+    /**
+     * 10246: CrowdBox Measurements
+     */
     [CrowdBoxMeasurements_10246URN]: Type.Optional(CrowdBoxMeasurements_10246),
+    /**
+     * 10247: Neighbour Cell Report
+     */
     [NeighbourCellReport_10247URN]: Type.Optional(NeighbourCellReport_10247),
+    /**
+     * 10248: Connected UE Measurements
+     */
     [ConnectedUEMeasurements_10248URN]: Type.Optional(
       ConnectedUEMeasurements_10248
     ),
+    /**
+     * 10249: 	Connected UE Report
+     */
     [ConnectedUEReport_10249URN]: Type.Optional(ConnectedUEReport_10249),
+    /**
+     * 10250: App Data Container
+     */
     [AppDataContainer_10250URN]: Type.Optional(AppDataContainer_10250),
+    /**
+     * 10251: AT Command
+     */
     [ATCommand_10251URN]: Type.Optional(ATCommand_10251),
+    /**
+     * 10252: Manifest
+     */
     [Manifest_10252URN]: Type.Optional(Manifest_10252),
+    /**
+     * 10253: Confidential Data
+     */
     [ConfidentialData_10253URN]: Type.Optional(ConfidentialData_10253),
+    /**
+     * 10254: Current Loop Input
+     */
     [CurrentLoopInput_10254URN]: Type.Optional(CurrentLoopInput_10254),
+    /**
+     * 10255: Device Metadata
+     */
     [DeviceMetadata_10255URN]: Type.Optional(DeviceMetadata_10255),
+    /**
+     * 10256: ECID-Signal Measurement Information
+     */
     [ECID_SignalMeasurementInformation_10256URN]: Type.Optional(
       ECID_SignalMeasurementInformation_10256
     ),
+    /**
+     * 10257: Heat / Cooling meter
+     */
     [Heat_Coolingmeter_10257URN]: Type.Optional(Heat_Coolingmeter_10257),
+    /**
+     * 10258: Current Loop Output
+     */
     [CurrentLoopOutput_10258URN]: Type.Optional(CurrentLoopOutput_10258),
+    /**
+     * 10259: System Log
+     */
     [SystemLog_10259URN]: Type.Optional(SystemLog_10259),
+    /**
+     * 10260: RDB
+     */
     [RDB_10260URN]: Type.Optional(RDB_10260),
+    /**
+     * 10262: Interval Data Delivery
+     */
     [IntervalDataDelivery_10262URN]: Type.Optional(IntervalDataDelivery_10262),
+    /**
+     * 10263: Event Data Delivery
+     */
     [EventDataDelivery_10263URN]: Type.Optional(EventDataDelivery_10263),
+    /**
+     * 10264: Delivery Schedule
+     */
     [DeliverySchedule_10264URN]: Type.Optional(DeliverySchedule_10264),
+    /**
+     * 10265: Leakage Detection Configuration
+     */
     [LeakageDetectionConfiguration_10265URN]: Type.Optional(
       LeakageDetectionConfiguration_10265
     ),
+    /**
+     * 10266: Water Flow Readings
+     */
     [WaterFlowReadings_10266URN]: Type.Optional(WaterFlowReadings_10266),
+    /**
+     * 10267: Daily Maximum Flow Rate Readings
+     */
     [DailyMaximumFlowRateReadings_10267URN]: Type.Optional(
       DailyMaximumFlowRateReadings_10267
     ),
+    /**
+     * 10268: Temperature Readings
+     */
     [TemperatureReadings_10268URN]: Type.Optional(TemperatureReadings_10268),
+    /**
+     * 10269: Pressure Readings
+     */
     [PressureReadings_10269URN]: Type.Optional(PressureReadings_10269),
+    /**
+     * 10270: Battery Level Readings
+     */
     [BatteryLevelReadings_10270URN]: Type.Optional(BatteryLevelReadings_10270),
+    /**
+     * 10271: Communications Activity Time Readings
+     */
     [CommunicationsActivityTimeReadings_10271URN]: Type.Optional(
       CommunicationsActivityTimeReadings_10271
     ),
+    /**
+     * 10272: Water Meter Customer Leakage Alarm
+     */
     [WaterMeterCustomerLeakageAlarm_10272URN]: Type.Optional(
       WaterMeterCustomerLeakageAlarm_10272
     ),
+    /**
+     * 10273: Water Meter Reverse Flow Alarm
+     */
     [WaterMeterReverseFlowAlarm_10273URN]: Type.Optional(
       WaterMeterReverseFlowAlarm_10273
     ),
+    /**
+     * 10274: Water Meter Empty Pipe Alarm
+     */
     [WaterMeterEmptyPipeAlarm_10274URN]: Type.Optional(
       WaterMeterEmptyPipeAlarm_10274
     ),
+    /**
+     * 10275: Water Meter Tamper Alarm
+     */
     [WaterMeterTamperAlarm_10275URN]: Type.Optional(
       WaterMeterTamperAlarm_10275
     ),
+    /**
+     * 10276: Water Meter High Pressure Alarm
+     */
     [WaterMeterHighPressureAlarm_10276URN]: Type.Optional(
       WaterMeterHighPressureAlarm_10276
     ),
+    /**
+     * 10277: Water Meter Low Pressure Alarm
+     */
     [WaterMeterLowPressureAlarm_10277URN]: Type.Optional(
       WaterMeterLowPressureAlarm_10277
     ),
+    /**
+     * 10278: High Temperature Alarm
+     */
     [HighTemperatureAlarm_10278URN]: Type.Optional(HighTemperatureAlarm_10278),
+    /**
+     * 10279: Low Temperature Alarm
+     */
     [LowTemperatureAlarm_10279URN]: Type.Optional(LowTemperatureAlarm_10279),
+    /**
+     * 10280: Water Network Leak Alarm
+     */
     [WaterNetworkLeakAlarm_10280URN]: Type.Optional(
       WaterNetworkLeakAlarm_10280
     ),
+    /**
+     * 10281: Low Battery Alarm
+     */
     [LowBatteryAlarm_10281URN]: Type.Optional(LowBatteryAlarm_10281),
+    /**
+     * 10282: Daughter Board Failure Alarm
+     */
     [DaughterBoardFailureAlarm_10282URN]: Type.Optional(
       DaughterBoardFailureAlarm_10282
     ),
+    /**
+     * 10283: Device Reboot Event
+     */
     [DeviceRebootEvent_10283URN]: Type.Optional(DeviceRebootEvent_10283),
+    /**
+     * 10284: Time Synchronisation Event
+     */
     [TimeSynchronisationEvent_10284URN]: Type.Optional(
       TimeSynchronisationEvent_10284
     ),
+    /**
+     * 10286: App Fota Container
+     */
     [AppFotaContainer_10286URN]: Type.Optional(AppFotaContainer_10286),
+    /**
+     * 10290: Voltage Logging
+     */
     [VoltageLogging_10290URN]: Type.Optional(VoltageLogging_10290),
+    /**
+     * 10291: Voltage Transient
+     */
     [VoltageTransient_10291URN]: Type.Optional(VoltageTransient_10291),
+    /**
+     * 10292: Pressure Transient
+     */
     [PressureTransient_10292URN]: Type.Optional(PressureTransient_10292),
+    /**
+     * 10299: HostDevice
+     */
     [HostDevice_10299URN]: Type.Optional(HostDevice_10299),
+    /**
+     * 10300: LWM2M Meta Object
+     */
     [LWM2MMetaObject_10300URN]: Type.Optional(LWM2MMetaObject_10300),
+    /**
+     * 10308: AT&T Connectivity Extension
+     */
     [ATandTConnectivityExtension_10308URN]: Type.Optional(
       ATandTConnectivityExtension_10308
     ),
+    /**
+     * 10309: Shareparkinglot
+     */
     [Shareparkinglot_10309URN]: Type.Optional(Shareparkinglot_10309),
+    /**
+     * 10311: Solar Radiation
+     */
     [SolarRadiation_10311URN]: Type.Optional(SolarRadiation_10311),
+    /**
+     * 10313: Gas Readings
+     */
     [GasReadings_10313URN]: Type.Optional(GasReadings_10313),
+    /**
+     * 10314: Particulates
+     */
     [Particulates_10314URN]: Type.Optional(Particulates_10314),
+    /**
+     * 10315: Robot
+     */
     [Robot_10315URN]: Type.Optional(Robot_10315),
+    /**
+     * 10316: RCU
+     */
     [RCU_10316URN]: Type.Optional(RCU_10316),
+    /**
+     * 10318: RCU PM
+     */
     [RCUPM_10318URN]: Type.Optional(RCUPM_10318),
+    /**
+     * 10319: RCU Control
+     */
     [RCUControl_10319URN]: Type.Optional(RCUControl_10319),
+    /**
+     * 10320: CCU
+     */
     [CCU_10320URN]: Type.Optional(CCU_10320),
+    /**
+     * 10322: CCU PM
+     */
     [CCUPM_10322URN]: Type.Optional(CCUPM_10322),
+    /**
+     * 10323: CCU Control
+     */
     [CCUControl_10323URN]: Type.Optional(CCUControl_10323),
+    /**
+     * 10324: ECU
+     */
     [ECU_10324URN]: Type.Optional(ECU_10324),
+    /**
+     * 10326: Robot PM
+     */
     [RobotPM_10326URN]: Type.Optional(RobotPM_10326),
+    /**
+     * 10327: Compressor
+     */
     [Compressor_10327URN]: Type.Optional(Compressor_10327),
+    /**
+     * 10328: SCA PM
+     */
     [SCAPM_10328URN]: Type.Optional(SCAPM_10328),
+    /**
+     * 10329: Robot Control
+     */
     [RobotControl_10329URN]: Type.Optional(RobotControl_10329),
+    /**
+     * 10330: Network Info
+     */
     [NetworkInfo_10330URN]: Type.Optional(NetworkInfo_10330),
+    /**
+     * 10331: Robot Service Info
+     */
     [RobotServiceInfo_10331URN]: Type.Optional(RobotServiceInfo_10331),
+    /**
+     * 10332: Robot Selfcheck Info
+     */
     [RobotSelfcheckInfo_10332URN]: Type.Optional(RobotSelfcheckInfo_10332),
+    /**
+     * 10333: PM Threshold
+     */
     [PMThreshold_10333URN]: Type.Optional(PMThreshold_10333),
+    /**
+     * 10334: Robot Alarm
+     */
     [RobotAlarm_10334URN]: Type.Optional(RobotAlarm_10334),
+    /**
+     * 10335: Event
+     */
     [Event_10335URN]: Type.Optional(Event_10335),
+    /**
+     * 10336: MIC
+     */
     [MIC_10336URN]: Type.Optional(MIC_10336),
+    /**
+     * 10337: SCA
+     */
     [SCA_10337URN]: Type.Optional(SCA_10337),
+    /**
+     * 10338: Speaker
+     */
     [Speaker_10338URN]: Type.Optional(Speaker_10338),
+    /**
+     * 10339: Tripod Head
+     */
     [TripodHead_10339URN]: Type.Optional(TripodHead_10339),
+    /**
+     * 10340: Camera
+     */
     [Camera_10340URN]: Type.Optional(Camera_10340),
+    /**
+     * 10341: GPS
+     */
     [GPS_10341URN]: Type.Optional(GPS_10341),
+    /**
+     * 10342: IMU
+     */
     [IMU_10342URN]: Type.Optional(IMU_10342),
+    /**
+     * 10343: LiDAR
+     */
     [LiDAR_10343URN]: Type.Optional(LiDAR_10343),
+    /**
+     * 10344: Arm
+     */
     [Arm_10344URN]: Type.Optional(Arm_10344),
+    /**
+     * 10345: Leg
+     */
     [Leg_10345URN]: Type.Optional(Leg_10345),
+    /**
+     * 10346: Servomotor
+     */
     [Servomotor_10346URN]: Type.Optional(Servomotor_10346),
+    /**
+     * 10347: Screen
+     */
     [Screen_10347URN]: Type.Optional(Screen_10347),
+    /**
+     * 10348: Wheel
+     */
     [Wheel_10348URN]: Type.Optional(Wheel_10348),
+    /**
+     * 10349: Chassis
+     */
     [Chassis_10349URN]: Type.Optional(Chassis_10349),
+    /**
+     * 10350: Light
+     */
     [Light_10350URN]: Type.Optional(Light_10350),
+    /**
+     * 10351: Door
+     */
     [Door_10351URN]: Type.Optional(Door_10351),
+    /**
+     * 10352: Thermal Imager
+     */
     [ThermalImager_10352URN]: Type.Optional(ThermalImager_10352),
+    /**
+     * 10353: Warning Light
+     */
     [WarningLight_10353URN]: Type.Optional(WarningLight_10353),
+    /**
+     * 10354: APP
+     */
     [APP_10354URN]: Type.Optional(APP_10354),
+    /**
+     * 10355: General Info
+     */
     [GeneralInfo_10355URN]: Type.Optional(GeneralInfo_10355),
+    /**
+     * 10356: Service Info
+     */
     [ServiceInfo_10356URN]: Type.Optional(ServiceInfo_10356),
+    /**
+     * 10357: PM
+     */
     [PM_10357URN]: Type.Optional(PM_10357),
+    /**
+     * 10358: Fan PM
+     */
     [FanPM_10358URN]: Type.Optional(FanPM_10358),
+    /**
+     * 10359: Lock
+     */
     [Lock_10359URN]: Type.Optional(Lock_10359),
+    /**
+     * 10360: Ultrasonic Sensor
+     */
     [UltrasonicSensor_10360URN]: Type.Optional(UltrasonicSensor_10360),
+    /**
+     * 10361: Collision Sensor
+     */
     [CollisionSensor_10361URN]: Type.Optional(CollisionSensor_10361),
+    /**
+     * 10362: Drop Sensor
+     */
     [DropSensor_10362URN]: Type.Optional(DropSensor_10362),
+    /**
+     * 10363: Temperature Sensor
+     */
     [TemperatureSensor_10363URN]: Type.Optional(TemperatureSensor_10363),
+    /**
+     * 10364: Humidity Sensor
+     */
     [HumiditySensor_10364URN]: Type.Optional(HumiditySensor_10364),
+    /**
+     * 10365: Gas-Dust Sensor
+     */
     [Gas_DustSensor_10365URN]: Type.Optional(Gas_DustSensor_10365),
+    /**
+     * 10366: Fan
+     */
     [Fan_10366URN]: Type.Optional(Fan_10366),
+    /**
+     * 10368: SpringMotor
+     */
     [SpringMotor_10368URN]: Type.Optional(SpringMotor_10368),
+    /**
+     * 10369: MCU
+     */
     [MCU_10369URN]: Type.Optional(MCU_10369),
+    /**
+     * 10371: Reboot Status
+     */
     [RebootStatus_10371URN]: Type.Optional(RebootStatus_10371),
+    /**
+     * 10374: Modbus Connection
+     */
     [ModbusConnection_10374URN]: Type.Optional(ModbusConnection_10374),
+    /**
+     * 10375: Modbus Register Cluster
+     */
     [ModbusRegisterCluster_10375URN]: Type.Optional(
       ModbusRegisterCluster_10375
     ),
+    /**
+     * 10376: Periodic Activity
+     */
     [PeriodicActivity_10376URN]: Type.Optional(PeriodicActivity_10376),
+    /**
+     * 10377: Data Monitoring
+     */
     [DataMonitoring_10377URN]: Type.Optional(DataMonitoring_10377),
+    /**
+     * 10378: Edge Application Server Configuration
+     */
     [EdgeApplicationServerConfiguration_10378URN]: Type.Optional(
       EdgeApplicationServerConfiguration_10378
     ),
+    /**
+     * 18830: MQTT Broker
+     */
     [MQTTBroker_18830URN]: Type.Optional(MQTTBroker_18830),
+    /**
+     * 18831: MQTT Publication
+     */
     [MQTTPublication_18831URN]: Type.Optional(MQTTPublication_18831),
   },
   {

@@ -131,7 +131,8 @@ export const createDefinition = (
   // FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
   const typeboxDefinition = [
     `/**`,
-    ` * Name: ${Name[0]}`,
+    ` * ${ObjectID[0]}: ${Name[0]}`,
+    ` *`,
     ` * LWM2MVersion: ${LWM2MVersion?.[0] ?? "not set"}`,
     ` * ObjectVersion: ${ObjectVersion?.[0] ?? "not set"}`,
     ` */`,
