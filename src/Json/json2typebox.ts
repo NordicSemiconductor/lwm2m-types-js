@@ -100,12 +100,10 @@ export const createDefinition = (
     MultipleInstances,
   } = maybeValidResource.value;
 
-  const resources = `Resources: Type.Object({${Resources[0].Item.filter(
-    excludeWriteOnlyResources
-  )
+  const resources = `${Resources[0].Item.filter(excludeWriteOnlyResources)
     .map(parseResource)
     .map(createResourceDefinition)
-    .join(`, ${os.EOL}`)}})`;
+    .join(`, ${os.EOL}`)}}`;
   const importTypeBox = `import { Type } from '@sinclair/typebox'`;
 
   const parsedURN = parseLwM2MURN(ObjectURN[0]);
@@ -122,7 +120,7 @@ export const createDefinition = (
     LwM2MVersion: lwm2mVersion,
   });
 
-  let object = `${resources}},{description: "${escapeText(Description1[0])}"`;
+  let object = `${resources},{description: "${escapeText(Description1[0])}"`;
 
   if (MultipleInstances && MultipleInstances[0] !== undefined)
     object = getMultipleInstanceStatus(

@@ -17,19 +17,10 @@ if ("errors" in maybeValidLwM2M) {
 const shadow = maybeValidLwM2M.value;
 
 // Ensure values are as expected
-assert.deepStrictEqual(shadow["oma:1:1.2@1.2"]?.[0].Resources._1, 43200);
-assert.deepStrictEqual(
-  shadow["oma:3:1.2@1.1"]?.Resources._1,
-  "thingy91_nrf9160"
-);
-assert.deepStrictEqual(
-  shadow["oma:4:1.3@1.1"]?.Resources._7?.[0],
-  "ibasis.iot"
-);
-assert.deepStrictEqual(
-  shadow["ext:3303:1.1"]?.[0].Resources._5701,
-  "Celsius degrees"
-);
-assert.deepStrictEqual(shadow["ext:3323:1.1"]?.[0].Resources._5602, 98.24);
+assert.deepStrictEqual(shadow["oma:1:1.2@1.2"]?.[0][1], 43200);
+assert.deepStrictEqual(shadow["oma:3:1.2@1.1"]?.[1], "thingy91_nrf9160");
+assert.deepStrictEqual(shadow["oma:4:1.3@1.1"]?.[7]?.[0], "ibasis.iot");
+assert.deepStrictEqual(shadow["ext:3303:1.1"]?.[0][5701], "Celsius degrees");
+assert.deepStrictEqual(shadow["ext:3323:1.1"]?.[0][5602], 98.24);
 
 console.log("Validation completed successfully");

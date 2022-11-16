@@ -85,14 +85,14 @@ export const createResourceDefinition = ({
         regexType = getMultipleInstanceStatus(multipleInstances, regexType);
       if (mandatoryStatus !== undefined)
         regexType = getMandatoryStatus(mandatoryStatus, regexType);
-      return [...comments, `_${id}: ${regexType}`].join(os.EOL);
+      return [...comments, `'${id}': ${regexType}`].join(os.EOL);
     case "Time":
       let timeType = `Type.Integer({minimum: 1000000000, description: "Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."})`;
       if (multipleInstances !== undefined)
         timeType = getMultipleInstanceStatus(multipleInstances, timeType);
       if (mandatoryStatus !== undefined)
         timeType = getMandatoryStatus(mandatoryStatus, timeType);
-      return [...comments, `_${id}: ${timeType}`].join(os.EOL);
+      return [...comments, `'${id}': ${timeType}`].join(os.EOL);
     default:
       if (minimum !== undefined) {
         if (typeBoxType === "String") {
@@ -120,7 +120,7 @@ export const createResourceDefinition = ({
   if (mandatoryStatus !== undefined)
     object = getMandatoryStatus(mandatoryStatus, object);
 
-  return [...comments, `_${id}: ${object}`].join(os.EOL);
+  return [...comments, `'${id}': ${object}`].join(os.EOL);
 };
 
 /**
