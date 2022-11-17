@@ -4,7 +4,8 @@ import { getTypeBoxType } from '../utils/getTypeBoxType'
 import { getMandatoryStatus } from './getMandatoryStatus'
 import { getMultipleInstanceStatus } from './getMultipleInstanceStatus'
 import { getRangeEnumeration } from './getRangeEnumeration'
-import { Mandatory, MultipleInstances, ParsedResource } from './parseResource'
+import { ParsedResource } from './parseResource'
+import { Mandatory, MultipleInstances } from './types'
 
 /**
  * Generate TypeBox definition with received params

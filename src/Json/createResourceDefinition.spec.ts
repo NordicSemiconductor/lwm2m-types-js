@@ -3,7 +3,7 @@ import {
 	createLiteralDefinition,
 	createResourceDefinition,
 } from './createResourceDefinition'
-import { Mandatory, MultipleInstances } from './parseResource'
+import { Mandatory, MultipleInstances } from './types'
 
 describe('createResourceDefinition', () => {
 	it('Should return a typebox definition in string', () => {

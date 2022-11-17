@@ -26,6 +26,8 @@ export const NonBlankString = Type.String({
 	minLength: 1,
 	description: 'A string with at least one character.',
 })
+export const NonEmptyString = NonBlankString
+
 export const NonEmptyArrayWithNonBlankString = nonEmptyArray(NonBlankString)
 
 export enum MultipleInstances {
