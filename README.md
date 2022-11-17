@@ -32,23 +32,8 @@ npx tsx ./example.ts
 
 See [example.ts](./example.ts)
 
-## JSON document
+## JSON document structure
 
-LwM2M values are encoded as a JSON document, where the key is an extended version of the LwM2M URN: `<"oma"|"ext"|"x">:<ObjectID>:<ObjectVersion>@<LwM2MVersion>` (where `ObjectVersion` and/or `LwM2MVersion` can be omitted if it is `1.0` ).
+LwM2M values are encoded as a JSON document, where the key is an extended version of the LwM2M URN: `<"oma"|"ext"|"x">:<ObjectID>:<ObjectVersion>@<LwM2MVersion>` (where `ObjectVersion` and/or `LwM2MVersion` can be omitted if it is `1.0`).
 
-```json
-{
-  "3:1.1@1.1": {
-    "0": "Nordic Semiconductor ASA",
-    "1": "thingy91_nrf9160",
-    "2": "351358815340515",
-    "3": "0.0.0-development",
-    "7": [4113],
-    "11": [0],
-    "13": 1665149633,
-    "16": "U",
-    "18": "nRF9160_SICA",
-    "19": "mfw_nrf9160_1.3.2"
-  }
-}
-```
+[Example](./known-good-shadow.json)
