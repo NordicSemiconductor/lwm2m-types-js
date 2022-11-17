@@ -1,22 +1,22 @@
-import type { Static, TSchema } from "@sinclair/typebox";
-import Ajv, { ErrorObject } from "ajv";
+import type { Static, TSchema } from '@sinclair/typebox'
+import Ajv, { ErrorObject } from 'ajv'
 
 export const validateWithJSONSchema = <T extends TSchema>(
-  schema: T
+	schema: T,
 ): ((value: unknown) =>
-  | { value: Static<typeof schema> }
-  | {
-      errors: ErrorObject[];
-    }) => {
-  const ajv = new Ajv();
-  const v = ajv.compile(schema);
-  return (value: unknown) => {
-    const valid = v(value);
-    if (valid !== true) {
-      return {
-        errors: v.errors as ErrorObject[],
-      };
-    }
-    return { value: value as Static<typeof schema> };
-  };
-};
+	| { value: Static<typeof schema> }
+	| {
+			errors: ErrorObject[]
+	  }) => {
+	const ajv = new Ajv()
+	const v = ajv.compile(schema)
+	return (value: unknown) => {
+		const valid = v(value)
+		if (valid !== true) {
+			return {
+				errors: v.errors as ErrorObject[],
+			}
+		}
+		return { value: value as Static<typeof schema> }
+	}
+}

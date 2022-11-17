@@ -3,19 +3,21 @@
   "description": "TypeBox definitions for the objects defined in the LwM2M Object Registry.",
   "scripts": {
     "test": "jest",
-    "postinstall": ""
+    "prepare": "husky install"
   },
   "type": "module",
-  "types": "./types/index.d.ts",
+  "types": "./index.d.ts",
   "dependencies": {
     "@sinclair/typebox": "0.24.46",
     "ajv": "8.11.0"
   },
   "devDependencies": {
+    "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.141",
     "@nordicsemiconductor/eslint-config-asset-tracker-cloud-typescript": "10.0.47",
     "@swc/jest": "0.2.23",
     "@types/jest": "29.1.2",
     "@types/xml2js": "0.4.11",
+    "husky": "8.0.2",
     "jest": "29.2.0",
     "prettier": "2.7.1",
     "tsx": "3.11.0",
@@ -29,5 +31,19 @@
       ]
     },
     "testRegex": ".+\\.spec\\.ts$"
+  },
+  "prettier": "@nordicsemiconductor/asset-tracker-cloud-code-style/.prettierrc",
+  "lint-staged": {
+    "*.{md,json,yaml,yml}": [
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --ext .js,.ts"
+    ]
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
   }
 }

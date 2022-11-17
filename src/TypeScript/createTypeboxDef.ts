@@ -1,8 +1,8 @@
-import { readFile, writeFile } from "fs/promises";
-import path from "path";
-import { ignoredLwM2MObjects } from "./ignoredLwM2MObjects";
-import os from "node:os";
-import { typeName } from "../Json/json2typebox";
+import { readFile, writeFile } from 'fs/promises'
+import os from 'node:os'
+import path from 'path'
+import { typeName } from '../Json/typeName'
+import { ignoredLwM2MObjects } from './ignoredLwM2MObjects'
 
 /**
  * The DDF object (https://github.com/OpenMobileAlliance/lwm2m-registry/blob/prod/DDF.xml)
@@ -17,18 +17,14 @@ import { typeName } from "../Json/json2typebox";
  *  - "id-of-item"
  * meains the item represent the current stable version of the item.
  *
- * @param ddf
- * @returns
  */
 const isCurrentVersion = (ddf: string) =>
-  ddf.split("version_history/").length === 1;
+	ddf.split('version_history/').length === 1
 
 /**
  * Check if value is not an empty string
- * @param ddf
- * @returns
  */
-const declarationExist = (ddf: string) => ddf.length > 0;
+const declarationExist = (ddf: string) => ddf.length > 0
 
 /**
  * Iterate the list and construct:
@@ -39,76 +35,68 @@ const declarationExist = (ddf: string) => ddf.length > 0;
  * First element of the returned list is the imports statement as string
  * Second element of the returned list is the namespace declaration as string
  * Third element of the returned list is the typebox declaration as string
- * @param items
  */
 const createExports = (items: any[]) =>
-  items.map((element: any) => {
-    const id = element.ObjectID[0];
-    const name = typeName(id, element.Name[0]);
-    return `export { ${name} } from "./${id}";`;
-  });
+	items.map((element: any) => {
+		const id = element.ObjectID[0]
+		const name = typeName(id, element.Name[0])
+		return `export { ${name} } from "./${id}";`
+	})
 
 const createDocumentProps = (items: any[]) => {
-  const source = [`import { Type } from "@sinclair/typebox";`];
-  source.push(
-    ...items.map((element: any) => {
-      const id = element.ObjectID[0];
+	const source = [`import { Type } from "@sinclair/typebox";`]
+	source.push(
+		...items.map((element: any) => {
+			const id = element.ObjectID[0]
 
-      const name = typeName(id, element.Name[0]);
-      return `import { objectURN as urn${name}, ${name} } from "./${id}";`;
-    })
-  );
+			const name = typeName(id, element.Name[0])
+			return `import { objectURN as urn${name}, ${name} } from "./${id}";`
+		}),
+	)
 
-  source.push(`export const LwM2MDocument = Type.Object({`);
-  source.push(
-    ...items.map((element: any) => {
-      const id = element.ObjectID[0];
-      const name = typeName(id, element.Name[0]);
-      return [
-        `/**`,
-        ` * ${id}: ${element.Name[0]}`,
-        ` */`,
-        `[urn${name}]: Type.Optional(${name}),`,
-      ].join(os.EOL);
-    })
-  );
+	source.push(`export const LwM2MDocument = Type.Object({`)
+	source.push(
+		...items.map((element: any) => {
+			const id = element.ObjectID[0]
+			const name = typeName(id, element.Name[0])
+			return [
+				`/**`,
+				` * ${id}: ${element.Name[0]}`,
+				` */`,
+				`[urn${name}]: Type.Optional(${name}),`,
+			].join(os.EOL)
+		}),
+	)
 
-  source.push(`},{
+	source.push(`},{
     description:
       "Defines a type that can be used to validate JSON documents that encode LwM2M object data.",
   }
 );
-`);
-  return source;
-};
+`)
+	return source
+}
 
-/**
- *
- */
-const execution = async (dir?: string) => {
-  const dirpath = dir ?? path.join("./lwm2m-registry-json/DDF.json");
-  const ddf = await JSON.parse(await readFile(dirpath, "utf-8"));
+const dirpath = path.join(process.cwd(), 'lwm2m-registry-json', 'DDF.json')
+const ddf = await JSON.parse(await readFile(dirpath, 'utf-8'))
 
-  const types = ddf.DDFList.Item.filter((element: any) => {
-    // DDF value should exist and should be the current stable version of the object
-    if (!declarationExist(element.DDF[0]) || !isCurrentVersion(element.DDF[0]))
-      return false;
-    return true;
-  }).filter((element: any) => {
-    const id = element.ObjectID[0];
-    if (ignoredLwM2MObjects.includes(id)) return false;
-    return true;
-  });
+const types = ddf.DDFList.Item.filter((element: any) => {
+	// DDF value should exist and should be the current stable version of the object
+	if (!declarationExist(element.DDF[0]) || !isCurrentVersion(element.DDF[0]))
+		return false
+	return true
+}).filter((element: any) => {
+	const id = element.ObjectID[0]
+	if (ignoredLwM2MObjects.includes(id)) return false
+	return true
+})
 
-  await writeFile(
-    path.join(process.cwd(), "types", "LwM2M.ts"),
-    createExports(types).join(os.EOL)
-  );
+await writeFile(
+	path.join(process.cwd(), 'typebox-definitions', 'LwM2M.ts'),
+	createExports(types).join(os.EOL),
+)
 
-  await writeFile(
-    path.join(process.cwd(), "types", "LwM2MDocument.ts"),
-    createDocumentProps(types).join(os.EOL)
-  );
-};
-
-execution();
+await writeFile(
+	path.join(process.cwd(), 'typebox-definitions', 'LwM2MDocument.ts'),
+	createDocumentProps(types).join(os.EOL),
+)

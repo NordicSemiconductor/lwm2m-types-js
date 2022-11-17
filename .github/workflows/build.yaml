@@ -23,7 +23,9 @@ jobs:
         run: npm test
 
       - name: Clone LwM2M object registry
-        run: git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git --depth 1
+        run:
+          git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git
+          --depth 1
 
       - name: From XML to JSON
         run: |

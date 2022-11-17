@@ -1,6 +1,4 @@
-dist/
-.env
 lwm2m-registry-json/
 lwm2m-registry/
-types/
+typebox-definitions/
 node_modules/

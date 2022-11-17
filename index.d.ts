@@ -1,2 +1,2 @@
-export * from "./types/LwM2M";
-export * from "./types/LwM2MDocument";
+export * from './typebox-definitions/LwM2M'
+export * from './typebox-definitions/LwM2MDocument'
