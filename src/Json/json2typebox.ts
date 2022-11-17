@@ -111,10 +111,8 @@ export const createDefinition = (
 
   const version = ObjectVersion?.[0] ?? parsedVersion ?? "1.0"; // default
   const lwm2mVersion = LWM2MVersion?.[0] ?? "1.0";
-  const omaNamespace = parsedURN?.ObjectNamespace ?? "oma";
 
   const objectURN = createURN({
-    omaNamespace,
     ObjectID: ObjectID[0],
     ObjectVersion: version,
     LwM2MVersion: lwm2mVersion,

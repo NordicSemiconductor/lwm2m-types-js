@@ -50,7 +50,7 @@ LwM2M values are encoded as a JSON document, where the key is an extended versio
 
 ```json
 {
-  "oma:3:1.1@1.1": {
+  "3:1.1@1.1": {
     "0": "Nordic Semiconductor ASA",
     "1": "thingy91_nrf9160",
     "2": "351358815340515",
