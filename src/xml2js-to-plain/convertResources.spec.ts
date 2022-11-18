@@ -1,5 +1,5 @@
 import { convertResources } from './convertResources'
-import { ObjectDef } from './LwM2MJSONfromXML2js'
+import { LwM2MType, ObjectDef } from './LwM2MJSONfromXML2js'
 
 describe('convertResources()', () => {
 	it('Shopuld convert resources', () => {
@@ -44,8 +44,8 @@ describe('convertResources()', () => {
 				Operations: 'R',
 				MultipleInstances: false,
 				Mandatory: true,
-				Type: 'Integer',
-				RangeEnumeration: '1..65534',
+				Type: LwM2MType.Integer,
+				RangeEnumeration: { min: 1, max: 65534 },
 				Description: 'Used as link to associate server Object Instance.',
 			},
 			'2': {
@@ -53,7 +53,7 @@ describe('convertResources()', () => {
 				Operations: 'RW',
 				MultipleInstances: false,
 				Mandatory: false,
-				Type: 'Integer',
+				Type: LwM2MType.Integer,
 				Description:
 					'The default value the LwM2M Client should use for the Minimum Period of an Observation in the absence of this parameter being included in an Observation.\r\nIf this Resource doesn’t exist, the default value is 0.',
 			},

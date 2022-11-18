@@ -3,7 +3,7 @@ import { escapeText } from '../utils/escapeText'
 import { getTypeBoxType } from '../utils/getTypeBoxType'
 import { getMandatoryStatus } from './getMandatoryStatus'
 import { getMultipleInstanceStatus } from './getMultipleInstanceStatus'
-import { getRangeEnumeration } from './getRangeEnumeration'
+import { parseRangeEnumeration } from './parseRangeEnumeration'
 import { Mandatory, MultipleInstances, ParsedResource } from './parseResource'
 
 /**
@@ -21,32 +21,27 @@ export const createResourceDefinition = ({
 	id,
 	units,
 }: ParsedResource): string => {
-	let rangeEnumObject:
-		| {
-				invalidFormat: boolean
-				value: string | number | number[] | string[] | null
-				dataStruct?: 'enum' | 'range' | undefined
-		  }
-		| undefined = undefined
-	if (rangeEnumeration !== undefined)
-		rangeEnumObject = getRangeEnumeration(rangeEnumeration)
-
 	const descriptionValue = [escapeText(description)]
-	if (rangeEnumObject?.invalidFormat === true) {
-		descriptionValue.push(
-			`RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '${escapeText(
-				rangeEnumObject.value as any,
-			)}'.`,
-		)
+	let rangeEnumObject: ReturnType<typeof parseRangeEnumeration> = null
+	if (rangeEnumeration !== undefined) {
+		rangeEnumObject = parseRangeEnumeration(rangeEnumeration.trim())
+
+		if (rangeEnumObject === null) {
+			descriptionValue.push(
+				`RangeEnumeration is not following the defined standard by openmobilealliance.org and for that reason value is not contemplate in the type definition. Original RangeEnumeration value: '${escapeText(
+					rangeEnumeration,
+				)}'.`,
+			)
+		}
 	}
 
 	if (units !== undefined) descriptionValue.push(`Units: ${escapeText(units)}.`)
 
 	let minimum = undefined
 	let maximum = undefined
-	if (rangeEnumObject?.dataStruct === 'range') {
-		minimum = (rangeEnumObject.value as any)[0]
-		maximum = (rangeEnumObject.value as any)[1]
+	if (rangeEnumObject !== null && 'min' in rangeEnumObject) {
+		minimum = rangeEnumObject.min
+		maximum = rangeEnumObject.max
 	}
 
 	let typeBoxType = getTypeBoxType(type)
@@ -109,8 +104,8 @@ export const createResourceDefinition = ({
 	}
 
 	let object = `Type.${typeBoxType}(${JSON.stringify(props)})`
-	if (rangeEnumObject?.dataStruct === 'enum') {
-		object = createEnumDefinition(rangeEnumObject.value as any, props as any)
+	if (rangeEnumObject !== null && 'enum' in rangeEnumObject) {
+		object = createEnumDefinition(rangeEnumObject.enum, props as any)
 	}
 
 	if (multipleInstances !== undefined)
@@ -125,7 +120,7 @@ export const createResourceDefinition = ({
  * Create an enumeration definition from a single instance or a list of values
  */
 export const createEnumDefinition = (
-	value: string | number | number[] | string[],
+	value: (number | string)[],
 	props: Record<string, string>,
 ): string => {
 	if (typeof value === 'number' || typeof value === 'string') {

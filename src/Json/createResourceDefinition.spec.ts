@@ -13,7 +13,6 @@ describe('createResourceDefinition', () => {
 			'The number of successive communication attempts before which a communication sequence is considered as failed.'
 		const mandatoryStatus = Mandatory.Mandatory
 		const multipleInstances = MultipleInstances.Single
-		const rangeEnumeration = ''
 		const id = '16'
 		const typeboxDefinition = createResourceDefinition({
 			name,
@@ -21,7 +20,6 @@ describe('createResourceDefinition', () => {
 			description,
 			mandatoryStatus,
 			multipleInstances,
-			rangeEnumeration,
 			id,
 		})
 		const result = `/**\n * 16: Communication Retry Count\n */\n'16': Type.Number(${JSON.stringify(
@@ -80,7 +78,6 @@ describe('createResourceDefinition', () => {
 			'The number of successive communication attempts before which a communication sequence is considered as failed.'
 		const mandatoryStatus = Mandatory.Optional
 		const multipleInstances = MultipleInstances.Single
-		const rangeEnumeration = ''
 		const id = '16'
 		const typeboxDefinition = createResourceDefinition({
 			name,
@@ -88,7 +85,6 @@ describe('createResourceDefinition', () => {
 			description,
 			mandatoryStatus,
 			multipleInstances,
-			rangeEnumeration,
 			id,
 		})
 		const result = `/**\n * 16: Communication Retry Count\n */\n'16': Type.Optional(Type.Number(${JSON.stringify(
@@ -109,7 +105,6 @@ describe('createResourceDefinition', () => {
 			'The number of successive communication attempts before which a communication sequence is considered as failed.'
 		const mandatoryStatus = Mandatory.Mandatory
 		const multipleInstances = MultipleInstances.Single
-		const rangeEnumeration = ''
 		const id = '16'
 		const typeboxDefinition = createResourceDefinition({
 			name,
@@ -117,7 +112,6 @@ describe('createResourceDefinition', () => {
 			description,
 			mandatoryStatus,
 			multipleInstances,
-			rangeEnumeration,
 			id,
 		})
 		const result = `/**\n * 16: Communication Retry Count\n */\n'16': Type.Number(${JSON.stringify(
@@ -138,7 +132,6 @@ describe('createResourceDefinition', () => {
 			'The number of successive communication attempts before which a communication sequence is considered as failed.'
 		const mandatoryStatus = Mandatory.Mandatory
 		const multipleInstances = MultipleInstances.Multiple
-		const rangeEnumeration = ''
 		const id = '16'
 		const typeboxDefinition = createResourceDefinition({
 			name,
@@ -146,7 +139,6 @@ describe('createResourceDefinition', () => {
 			description,
 			mandatoryStatus,
 			multipleInstances,
-			rangeEnumeration,
 			id,
 		})
 		const result = `/**\n * 16: Communication Retry Count\n */\n'16': Type.Array(Type.Number(${JSON.stringify(
@@ -167,7 +159,6 @@ describe('createResourceDefinition', () => {
 			'The number of successive communication attempts before which a communication sequence is considered as failed.'
 		const mandatoryStatus = Mandatory.Mandatory
 		const multipleInstances = MultipleInstances.Single
-		const rangeEnumeration = ''
 		const id = '16'
 		const typeboxDefinition = createResourceDefinition({
 			name,
@@ -175,7 +166,6 @@ describe('createResourceDefinition', () => {
 			description,
 			mandatoryStatus,
 			multipleInstances,
-			rangeEnumeration,
 			id,
 		})
 		const result = `/**\n * 16: Communication Retry Count\n */\n'16': Type.Number(${JSON.stringify(
@@ -233,7 +223,7 @@ describe('createResourceDefinition', () => {
 			rangeEnumeration,
 			id,
 		})
-		const result = `/**\n * 16: name\n */\n'16': Type.Literal(0 ,${JSON.stringify(
+		const result = `/**\n * 16: name\n */\n'16': Type.Union([Type.Literal(0 )],${JSON.stringify(
 			{
 				title: 'name',
 				description: 'Description.',
@@ -249,7 +239,7 @@ describe('createResourceDefinition', () => {
 		const description = 'Description.'
 		const mandatoryStatus = Mandatory.Mandatory
 		const multipleInstances = MultipleInstances.Single
-		const rangeEnumeration = '0, 1, 2'
+		const rangeEnumeration = '0,1,2'
 		const id = '16'
 		const typeboxDefinition = createResourceDefinition({
 			name,
@@ -340,8 +330,8 @@ describe('createLiteralDefinition', () => {
 
 describe('createEnumDefinition', () => {
 	it.each([
-		[{ value: 'a', props: {} }, `Type.Literal('a' ,{})`],
-		[{ value: 1, props: {} }, `Type.Literal(1 ,{})`],
+		[{ value: ['a'], props: {} }, `Type.Union([Type.Literal('a' )],{})`],
+		[{ value: [1], props: {} }, `Type.Union([Type.Literal(1 )],{})`],
 		[
 			{ value: [1, 2, 3], props: {} },
 			`Type.Union([Type.Literal(1 ),Type.Literal(2 ),Type.Literal(3 )],{})`,

@@ -5,6 +5,7 @@ import { Operations } from '../Json/parseResource'
 import {
 	LwM2MJSONfromXML2js,
 	LwM2MObjectDefinition,
+	LwM2MType,
 } from './LwM2MJSONfromXML2js'
 const parser = new Parser({ attrkey: 'ATTR' })
 
@@ -30,8 +31,8 @@ describe('LwM2MJSONfromXML2js()', () => {
 					Operations: Operations.Read,
 					MultipleInstances: false,
 					Mandatory: true,
-					Type: 'Integer',
-					RangeEnumeration: '1..65534',
+					Type: LwM2MType.Integer,
+					RangeEnumeration: { min: 1, max: 65534 },
 					Description:
 						'Resources 0 and 1 point to the Object Instance for which the Instances of the ACL Resource of that Access Control Object Instance are applicable.',
 				},
@@ -40,8 +41,8 @@ describe('LwM2MJSONfromXML2js()', () => {
 					Operations: Operations.ReadWrite,
 					MultipleInstances: true,
 					Mandatory: false,
-					Type: 'Integer',
-					RangeEnumeration: '0..31',
+					Type: LwM2MType.Integer,
+					RangeEnumeration: { min: 0, max: 31 },
 					Description:
 						'The Resource Instance ID MUST be the Short Server ID of a certain LwM2M Server for which associated access rights are contained in the Resource Instance value.\r\nThe Resource Instance ID 0 is a specific ID, determining the ACL Instance which contains the default access rights.\r\nEach bit set in the Resource Instance value, grants an access right to the LwM2M Server to the corresponding operation.\r\nThe bit order is specified as below.\r\n1st LSB: R(Read, Observe, Write-Attributes)\r\n2nd LSB: W(Write)\r\n3rd LSB: E(Execute)\r\n4th LSB: D(Delete)\r\n5th LSB: C(Create)\r\nOther bits are reserved for future use.',
 				},

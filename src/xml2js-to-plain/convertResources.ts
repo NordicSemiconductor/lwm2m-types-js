@@ -1,7 +1,13 @@
 import { Static } from '@sinclair/typebox'
+import { parseRangeEnumeration } from '../Json/parseRangeEnumeration'
 import { Mandatory, MultipleInstances, Operations } from '../Json/parseResource'
 import { addIfNotBlank } from './addIfNotBlank'
-import { ObjectDef, Resource, Resources } from './LwM2MJSONfromXML2js'
+import {
+	ObjectDef,
+	Resource,
+	Resources,
+	toLwM2mType,
+} from './LwM2MJSONfromXML2js'
 
 export const convertResources = (
 	resources: Static<typeof ObjectDef>['Resources'],
@@ -11,15 +17,19 @@ export const convertResources = (
 			const resource: Resource = {
 				Name: current.Name[0] as string,
 				Operations: current.Operations[0] as unknown as Operations,
-				Type: current.Type[0] as string,
+				Type: toLwM2mType(current.Type[0]),
 				Description: current.Description[0] as string,
 				MultipleInstances:
 					current.MultipleInstances?.[0] === MultipleInstances.Multiple,
 				Mandatory: current.Mandatory?.[0] === Mandatory.Mandatory,
 			}
 
+			const RangeEnumeration = current.RangeEnumeration?.[0]?.trim()
 			addIfNotBlank(resource, {
-				RangeEnumeration: current.RangeEnumeration?.[0],
+				RangeEnumeration:
+					RangeEnumeration !== undefined
+						? parseRangeEnumeration(RangeEnumeration)
+						: undefined,
 			})
 			addIfNotBlank(resource, {
 				Units: current.Units?.[0],

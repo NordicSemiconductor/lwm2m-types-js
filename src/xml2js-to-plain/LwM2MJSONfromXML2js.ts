@@ -72,13 +72,43 @@ const xml2jsDef = Type.Object(
 	},
 )
 
+export enum LwM2MType {
+	Boolean = 'Boolean',
+	Float = 'Float',
+	Integer = 'Integer',
+	UnsignedInteger = 'Unsigned Integer',
+	Objlnk = 'Objlnk',
+	Corelnk = 'Corelnk',
+	Opaque = 'Opaque',
+	String = 'String',
+	Time = 'Time',
+}
+
+export const toLwM2mType = (type: unknown): LwM2MType => {
+	if (
+		![
+			LwM2MType.Boolean,
+			LwM2MType.Float,
+			LwM2MType.Integer,
+			LwM2MType.UnsignedInteger,
+			LwM2MType.Objlnk,
+			LwM2MType.Corelnk,
+			LwM2MType.Opaque,
+			LwM2MType.String,
+			LwM2MType.Time,
+		].includes(type as any)
+	)
+		throw new Error(`Not a LwM2M type: ${type}`)
+	return type as LwM2MType
+}
+
 export type Resource = {
 	Name: string
 	Operations: Operations
 	MultipleInstances: boolean
 	Mandatory: boolean
-	Type: string // TODO: should be a enum
-	RangeEnumeration?: string
+	Type: LwM2MType
+	RangeEnumeration?: { min: number; max: number } | number[]
 	Units?: string
 	Description: string
 }
