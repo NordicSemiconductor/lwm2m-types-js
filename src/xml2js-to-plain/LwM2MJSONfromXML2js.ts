@@ -8,7 +8,7 @@ import {
 	nonEmptyArray,
 	NonEmptyArrayWithNonBlankString,
 	Operations,
-} from '../Json/types'
+} from '../Json/parseResource'
 import { filterOutBlankValues } from '../utils/filterOutBlankValues'
 import { validateWithJSONSchema } from '../utils/validateWithJsonSchema'
 import { addIfNotBlank } from './addIfNotBlank'
@@ -72,31 +72,31 @@ const xml2jsDef = Type.Object(
 	},
 )
 
-export const Resource = Type.Object({
-	Name: NonBlankString,
-	Operations: Type.Enum(Operations),
-	MultipleInstances: Type.Enum(MultipleInstances),
-	Mandatory: Type.Enum(Mandatory),
-	Type: NonBlankString, // TODO: should be a enum
-	RangeEnumeration: Type.Optional(NonBlankString),
-	Units: Type.Optional(NonBlankString),
-	Description: NonBlankString,
-})
+export type Resource = {
+	Name: string
+	Operations: Operations
+	MultipleInstances: boolean
+	Mandatory: boolean
+	Type: string // TODO: should be a enum
+	RangeEnumeration?: string
+	Units?: string
+	Description: string
+}
 
-export const Resources = Type.Record(Type.String({ minLength: 1 }), Resource)
+export type Resources = Record<string, Resource>
 
-export const parsedObject = Type.Object({
-	Name: NonBlankString,
-	Description1: NonBlankString,
-	Description2: Type.Optional(NonBlankString),
-	ObjectID: NonBlankString,
-	ObjectURN: NonBlankString, // 'urn:oma:lwm2m:oma:1:1.2'
-	LWM2MVersion: NonBlankString, // "1.2"
-	ObjectVersion: NonBlankString, // "1.2"
-	MultipleInstances: Type.Enum(MultipleInstances),
-	Mandatory: Type.Enum(Mandatory),
-	Resources,
-})
+export type LwM2MObjectDefinition = {
+	Name: string
+	Description1: string
+	Description2?: string
+	ObjectID: string
+	ObjectURN: string // 'urn:oma:lwm2m:oma:1:1.2'
+	LWM2MVersion: string // "1.2"
+	ObjectVersion: string // "1.2"
+	MultipleInstances: boolean
+	Mandatory: boolean
+	Resources: Resources
+}
 
 const validateInput = validateWithJSONSchema(xml2jsDef)
 
@@ -107,7 +107,7 @@ const validateInput = validateWithJSONSchema(xml2jsDef)
  */
 export const LwM2MJSONfromXML2js = (
 	value: Record<string, any>,
-): Static<typeof parsedObject> => {
+): LwM2MObjectDefinition => {
 	const maybeValidValue = validateInput(
 		filterOutResourcesWithUnsupportedTypes(
 			filterOutBlankValues(value) as Record<string, any>,
@@ -157,7 +157,7 @@ const filterOutResourcesWithUnsupportedTypes = (
 
 const convertObject = (
 	LwM2MObject: Static<typeof ObjectDef>,
-): Static<typeof parsedObject> => {
+): LwM2MObjectDefinition => {
 	const converted = {
 		Name: LwM2MObject.Name[0] as string,
 		Description1: LwM2MObject.Description1[0] as string,
@@ -165,8 +165,9 @@ const convertObject = (
 		ObjectURN: LwM2MObject.ObjectURN[0] as string,
 		LWM2MVersion: LwM2MObject.LWM2MVersion[0] as string,
 		ObjectVersion: LwM2MObject.ObjectVersion[0] as string,
-		MultipleInstances: LwM2MObject.MultipleInstances[0] as MultipleInstances,
-		Mandatory: LwM2MObject.Mandatory[0] as Mandatory,
+		MultipleInstances:
+			LwM2MObject.MultipleInstances[0] === MultipleInstances.Multiple,
+		Mandatory: LwM2MObject.Mandatory[0] === Mandatory.Mandatory,
 		Resources: convertResources(LwM2MObject.Resources),
 	}
 

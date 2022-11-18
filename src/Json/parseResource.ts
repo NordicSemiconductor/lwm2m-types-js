@@ -41,10 +41,10 @@ export enum Mandatory {
 }
 
 export enum Operations {
-	R = 'R',
-	RW = 'RW',
-	W = 'W',
-	E = 'E',
+	Read = 'R',
+	ReadWrite = 'RW',
+	Write = 'W',
+	Execute = 'E',
 }
 
 export const ResourceSchema = Type.Object(

@@ -1,7 +1,11 @@
 import { readFile } from 'fs/promises'
 import path from 'node:path'
 import { Parser } from 'xml2js'
-import { LwM2MJSONfromXML2js } from './LwM2MJSONfromXML2js'
+import { Operations } from '../Json/parseResource'
+import {
+	LwM2MJSONfromXML2js,
+	LwM2MObjectDefinition,
+} from './LwM2MJSONfromXML2js'
 const parser = new Parser({ attrkey: 'ATTR' })
 
 describe('LwM2MJSONfromXML2js()', () => {
@@ -10,7 +14,7 @@ describe('LwM2MJSONfromXML2js()', () => {
 		const xml = await readFile(sourceFile, 'utf-8')
 		const value = await parser.parseStringPromise(xml)
 
-		const expected = {
+		const expected: LwM2MObjectDefinition = {
 			Name: 'LwM2M Access Control',
 			Description1:
 				'Access Control Object is used to check whether the LwM2M Server has access right for performing an operation.',
@@ -18,14 +22,14 @@ describe('LwM2MJSONfromXML2js()', () => {
 			ObjectURN: 'urn:oma:lwm2m:oma:2:1.1',
 			LWM2MVersion: '1.0',
 			ObjectVersion: '1.1',
-			MultipleInstances: 'Multiple',
-			Mandatory: 'Optional',
+			MultipleInstances: true,
+			Mandatory: false,
 			Resources: {
 				'0': {
 					Name: 'Object ID',
-					Operations: 'R',
-					MultipleInstances: 'Single',
-					Mandatory: 'Mandatory',
+					Operations: Operations.Read,
+					MultipleInstances: false,
+					Mandatory: true,
 					Type: 'Integer',
 					RangeEnumeration: '1..65534',
 					Description:
@@ -33,9 +37,9 @@ describe('LwM2MJSONfromXML2js()', () => {
 				},
 				'2': {
 					Name: 'ACL',
-					Operations: 'RW',
-					MultipleInstances: 'Multiple',
-					Mandatory: 'Optional',
+					Operations: Operations.ReadWrite,
+					MultipleInstances: true,
+					Mandatory: false,
 					Type: 'Integer',
 					RangeEnumeration: '0..31',
 					Description:

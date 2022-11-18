@@ -42,8 +42,8 @@ describe('convertResources()', () => {
 			'0': {
 				Name: 'Short Server ID',
 				Operations: 'R',
-				MultipleInstances: 'Single',
-				Mandatory: 'Mandatory',
+				MultipleInstances: false,
+				Mandatory: true,
 				Type: 'Integer',
 				RangeEnumeration: '1..65534',
 				Description: 'Used as link to associate server Object Instance.',
@@ -51,8 +51,8 @@ describe('convertResources()', () => {
 			'2': {
 				Name: 'Default Minimum Period',
 				Operations: 'RW',
-				MultipleInstances: 'Single',
-				Mandatory: 'Optional',
+				MultipleInstances: false,
+				Mandatory: false,
 				Type: 'Integer',
 				Description:
 					'The default value the LwM2M Client should use for the Minimum Period of an Observation in the absence of this parameter being included in an Observation.\r\nIf this Resource doesn’t exist, the default value is 0.',
