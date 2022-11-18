@@ -26,7 +26,7 @@ export const filterOutBlankValues = (input: unknown): unknown => {
 				return blanksRemoved
 			return {
 				...blanksRemoved,
-				[k]: v,
+				[k]: filterOutBlankValues(v),
 			}
 		},
 		{} as Record<string, any>,
