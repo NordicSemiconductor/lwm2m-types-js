@@ -1,9 +1,6 @@
 // define input format
 
 import { Static, Type } from '@sinclair/typebox'
-import { validateWithJSONSchema } from '../utils/validateWithJsonSchema'
-import { addIfNotBlank } from './addIfNotBlank'
-import { convertResources } from './convertResources'
 import {
 	Mandatory,
 	MultipleInstances,
@@ -11,7 +8,11 @@ import {
 	nonEmptyArray,
 	NonEmptyArrayWithNonBlankString,
 	Operations,
-} from './types'
+} from '../Json/types'
+import { filterOutBlankValues } from '../utils/filterOutBlankValues'
+import { validateWithJSONSchema } from '../utils/validateWithJsonSchema'
+import { addIfNotBlank } from './addIfNotBlank'
+import { convertResources } from './convertResources'
 
 export const ObjectDef = Type.Object({
 	ATTR: Type.Object({
@@ -19,7 +20,7 @@ export const ObjectDef = Type.Object({
 	}),
 	Name: NonEmptyArrayWithNonBlankString,
 	Description1: NonEmptyArrayWithNonBlankString,
-	Description2: nonEmptyArray(Type.String()),
+	Description2: Type.Optional(nonEmptyArray(Type.String())),
 	ObjectID: NonEmptyArrayWithNonBlankString,
 	ObjectURN: NonEmptyArrayWithNonBlankString, // 'urn:oma:lwm2m:oma:1:1.2'
 	LWM2MVersion: NonEmptyArrayWithNonBlankString, // "1.2"
@@ -37,9 +38,9 @@ export const ObjectDef = Type.Object({
 					Operations: nonEmptyArray(Type.Enum(Operations)),
 					MultipleInstances: nonEmptyArray(Type.Enum(MultipleInstances)),
 					Mandatory: nonEmptyArray(Type.Enum(Mandatory)),
-					Type: NonEmptyArrayWithNonBlankString, // TODO: should be a enum
-					RangeEnumeration: nonEmptyArray(Type.String()),
-					Units: nonEmptyArray(Type.String()),
+					Type: NonEmptyArrayWithNonBlankString,
+					RangeEnumeration: Type.Optional(nonEmptyArray(Type.String())),
+					Units: Type.Optional(nonEmptyArray(Type.String())),
 					Description: NonEmptyArrayWithNonBlankString,
 				}),
 			),
@@ -71,7 +72,7 @@ const xml2jsDef = Type.Object(
 	},
 )
 
-const Resource = Type.Object({
+export const Resource = Type.Object({
 	Name: NonBlankString,
 	Operations: Type.Enum(Operations),
 	MultipleInstances: Type.Enum(MultipleInstances),
@@ -106,8 +107,12 @@ const validateInput = validateWithJSONSchema(xml2jsDef)
  */
 export const LwM2MJSONfromXML2js = (
 	value: Record<string, any>,
-): Record<string, any> => {
-	const maybeValidValue = validateInput(value)
+): Static<typeof parsedObject> => {
+	const maybeValidValue = validateInput(
+		filterOutResourcesWithUnsupportedTypes(
+			filterOutBlankValues(value) as Record<string, any>,
+		),
+	)
 	if ('errors' in maybeValidValue)
 		throw new Error(
 			`Invalid resource definition: ${JSON.stringify(value)}! ${JSON.stringify(
@@ -119,6 +124,36 @@ export const LwM2MJSONfromXML2js = (
 
 	return convertObject(LWM2M.Object[0] as Static<typeof ObjectDef>)
 }
+
+/**
+ * This filters out unsupported resource definitions, like write-only or
+ * execution resources or resources that have no Type defined.
+ */
+const filterOutResourcesWithUnsupportedTypes = (
+	lwm2mJson: Record<string, any>,
+): Record<string, any> => ({
+	LWM2M: {
+		...lwm2mJson.LWM2M,
+		Object: [
+			...lwm2mJson.LWM2M.Object.map((Object: Record<string, any>) => ({
+				...Object,
+				Resources: [
+					{
+						Item: Object.Resources[0].Item.filter(
+							(resource: Record<string, any>) => {
+								const type = resource.Type?.[0]
+								if (type === undefined) return false
+								if ([Operations.Execute, Operations.Write].includes(type))
+									return false
+								return true
+							},
+						),
+					},
+				],
+			})),
+		],
+	},
+})
 
 const convertObject = (
 	LwM2MObject: Static<typeof ObjectDef>,
@@ -136,7 +171,7 @@ const convertObject = (
 	}
 
 	addIfNotBlank(converted, {
-		Description2: LwM2MObject.Description2[0],
+		Description2: LwM2MObject.Description2?.[0],
 	})
 
 	return converted

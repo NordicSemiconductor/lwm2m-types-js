@@ -7,8 +7,6 @@ import { parseLwM2MURN } from '../utils/parseLwM2MURN'
 import { validateWithJSONSchema } from '../utils/validateWithJsonSchema'
 import { createResourceDefinition } from './createResourceDefinition'
 import { excludeWriteOnlyResources } from './excludeWriteOnlyResources'
-import { getMandatoryStatus } from './getMandatoryStatus'
-import { getMultipleInstanceStatus } from './getMultipleInstanceStatus'
 import {
 	Mandatory,
 	MultipleInstances,
@@ -95,8 +93,8 @@ export const createDefinition = (
 		Description1,
 		Resources,
 		ObjectID,
-		Mandatory,
 		MultipleInstances,
+		Mandatory,
 	} = maybeValidResource.value
 
 	const resources = `${Resources[0]?.Item.filter(excludeWriteOnlyResources)
@@ -117,18 +115,9 @@ export const createDefinition = (
 		LwM2MVersion: lwm2mVersion,
 	})
 
-	let object = `${resources},{description: "${escapeText(
+	const object = `${resources},{description: "${escapeText(
 		Description1[0] ?? '',
 	)}"`
-
-	if (MultipleInstances?.[0] !== undefined)
-		object = getMultipleInstanceStatus(
-			MultipleInstances[0],
-			`Type.Object({${object}})`,
-		)
-
-	if (Mandatory?.[0] !== undefined)
-		object = getMandatoryStatus(Mandatory[0], object)
 
 	// FIXME:  { additionalProperties: false },  --> is creating issues. Error message: Expected 1-2 arguments, but got 3.
 	const typeboxDefinition = [
@@ -137,8 +126,13 @@ export const createDefinition = (
 		` *`,
 		` * LWM2MVersion: ${LWM2MVersion?.[0] ?? 'not set'}`,
 		` * ObjectVersion: ${ObjectVersion?.[0] ?? 'not set'}`,
+		` * MultipleInstances: ${MultipleInstances?.[0] ?? 'not set'}`,
+		` * Mandatory: ${Mandatory?.[0] ?? 'not set'}`,
 		` */`,
-		`export const ${typeName(ObjectID[0] ?? '', Name[0] ?? '')} = ${object}`,
+		`export const ${typeName(
+			ObjectID[0] ?? '',
+			Name[0] ?? '',
+		)} = Type.Object({${object}})`,
 	].join(os.EOL)
 
 	return `${importTypeBox}\n${typeboxDefinition}\nexport const objectURN = '${objectURN}';`

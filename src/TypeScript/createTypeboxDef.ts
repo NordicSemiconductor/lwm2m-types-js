@@ -1,6 +1,8 @@
-import { readFile, writeFile } from 'fs/promises'
+import { readFileSync } from 'node:fs'
+import { readFile, writeFile } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'path'
+import { MultipleInstances } from 'src/Json/parseResource'
 import { typeName } from '../Json/typeName'
 import { ignoredLwM2MObjects } from './ignoredLwM2MObjects'
 
@@ -59,11 +61,15 @@ const createDocumentProps = (items: any[]) => {
 		...items.map((element: any) => {
 			const id = element.ObjectID[0]
 			const name = typeName(id, element.Name[0])
+			let def = name
+			const multiple = element.MultipleInstances?.[0]
+			if (multiple === MultipleInstances.Multiple)
+				def = `Type.Array(${def}, {minItems: 1})`
 			return [
 				`/**`,
 				` * ${id}: ${element.Name[0]}`,
 				` */`,
-				`[urn${name}]: Type.Optional(${name}),`,
+				`[urn${name}]: Type.Optional(${def}),`,
 			].join(os.EOL)
 		}),
 	)
@@ -77,19 +83,39 @@ const createDocumentProps = (items: any[]) => {
 	return source
 }
 
-const dirpath = path.join(process.cwd(), 'lwm2m-registry-json', 'DDF.json')
-const ddf = await JSON.parse(await readFile(dirpath, 'utf-8'))
+const jsonDir = path.join(process.cwd(), 'lwm2m-registry-json')
+const ddfPath = path.join(jsonDir, 'DDF.json')
+const ddf = await JSON.parse(await readFile(ddfPath, 'utf-8'))
 
 const types = ddf.DDFList.Item.filter((element: any) => {
 	// DDF value should exist and should be the current stable version of the object
 	if (!declarationExist(element.DDF[0]) || !isCurrentVersion(element.DDF[0]))
 		return false
 	return true
-}).filter((element: any) => {
-	const id = element.ObjectID[0]
-	if (ignoredLwM2MObjects.includes(id)) return false
-	return true
 })
+	.filter((element: { ObjectID: [string] }) => {
+		const id = element.ObjectID[0]
+		if (ignoredLwM2MObjects.includes(id)) return false
+		return true
+	})
+	.map((element: any) => {
+		const ObjectID = element.ObjectID[0]
+		const objectJSON = JSON.parse(
+			readFileSync(path.join(jsonDir, `${ObjectID}.json`), 'utf-8'),
+		) as {
+			LWM2M: {
+				Object: [
+					{
+						MultipleInstances: [string]
+					},
+				]
+			}
+		}
+		return {
+			...element,
+			MultipleInstances: objectJSON.LWM2M.Object[0].MultipleInstances,
+		}
+	})
 
 await writeFile(
 	path.join(process.cwd(), 'typebox-definitions', 'LwM2M.ts'),
