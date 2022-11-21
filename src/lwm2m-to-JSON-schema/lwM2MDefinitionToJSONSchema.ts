@@ -43,6 +43,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 				prop = S.number()
 				break
 			case LwM2MType.Integer:
+			case LwM2MType.UnsignedInteger:
 				prop = S.integer()
 				if (RangeEnumeration !== undefined) {
 					if ('min' in RangeEnumeration) {

@@ -186,4 +186,29 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			}),
 		).toMatchObject(expectedSchema)
 	})
+
+	it('should implement Unsigned Integer', async () => {
+		const lwm2mDefinition = await loadDefinition(3391)
+
+		const expectedSchema = {
+			properties: {
+				'902': {
+					title: 'Recall Scene',
+					description: 'When written, the scene with the given ID is recalled.',
+					type: 'integer',
+					minimum: 0,
+					maximum: 65535,
+				},
+			},
+		} as const
+
+		expect(
+			lwM2MDefinitionToJSONSchema({
+				...lwm2mDefinition,
+				Resources: {
+					'902': lwm2mDefinition.Resources[902] as any,
+				},
+			}),
+		).toMatchObject(expectedSchema)
+	})
 })
