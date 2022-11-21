@@ -1,4 +1,4 @@
-import { Operations } from './parseResource'
+import type { Operations } from './parseResource'
 
 /**
  * This excludes resources which will not report values: Execute and Write-Only.

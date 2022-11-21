@@ -1,4 +1,4 @@
-import { Static } from '@sinclair/typebox'
+import type { Static } from '@sinclair/typebox'
 import { parseRangeEnumeration } from '../Json/parseRangeEnumeration'
 import { Mandatory, MultipleInstances, Operations } from '../Json/parseResource'
 import { addIfNotBlank } from './addIfNotBlank'

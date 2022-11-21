@@ -17,6 +17,7 @@
     "noUnusedLocals": true,
     "noEmit": true,
     "isolatedModules": true,
+    "importsNotUsedAsValues": "error",
     "baseUrl": ".",
     "paths": {
       "@nordicsemiconductor/lwm2m-typebox-types": ["index.d.ts"]
