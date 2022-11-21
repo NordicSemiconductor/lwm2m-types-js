@@ -1,14 +1,8 @@
-import { TSchema } from '@sinclair/typebox'
+import S, { JSONSchema } from 'fluent-json-schema'
 import {
 	LwM2MObjectDefinition,
 	LwM2MType,
 } from '../xml2js-to-plain/LwM2MJSONfromXML2js'
-import { TypeBoxObjectFactory } from './TypeBoxObjectFactory'
-import {
-	TypeBoxBooleanObjectPropertyFactory,
-	TypeBoxIntegerObjectPropertyFactory,
-	TypeBoxNumberObjectPropertyFactory,
-} from './TypeBoxObjectPropertyFactory'
 
 /**
  * Converts the given LwM2M object definition into a JSON schema
@@ -22,42 +16,44 @@ export const lwM2MDefinitionToJSONSchema = ({
 	Mandatory,
 	Description1,
 	Resources,
-}: LwM2MObjectDefinition): TSchema => {
-	const typeBoxDefFactory = new TypeBoxObjectFactory()
-	typeBoxDefFactory
-		.setTitle(`${ObjectID}: ${Name}`)
-		.addToDescription(Description1)
-		.addToDescription(`LWM2MVersion: ${LWM2MVersion}`)
-		.addToDescription(`ObjectVersion: ${ObjectVersion}`)
-		.addToDescription(`MultipleInstances: ${MultipleInstances}`)
-		.addToDescription(`Mandatory: ${Mandatory}`)
+}: LwM2MObjectDefinition): Record<string, any> => {
+	let lwm2mObjectSchema = S.object()
+		.id(
+			`https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/${ObjectID}.xml`,
+		)
+		.title(`${ObjectID}: ${Name}`)
+		.description(
+			[
+				Description1,
+				`LWM2MVersion: ${LWM2MVersion}`,
+				`ObjectVersion: ${ObjectVersion}`,
+				`MultipleInstances: ${MultipleInstances}`,
+				`Mandatory: ${Mandatory}`,
+			].join(' '),
+		)
 
 	for (const [
 		ResourceID,
 		{ Name, Type, RangeEnumeration, Description, Units, Mandatory },
 	] of Object.entries(Resources)) {
-		let propFactory:
-			| TypeBoxNumberObjectPropertyFactory
-			| TypeBoxBooleanObjectPropertyFactory
-			| TypeBoxIntegerObjectPropertyFactory
+		let prop: JSONSchema | undefined = undefined
 		switch (Type) {
 			case LwM2MType.Float:
+				prop = S.number()
+				break
 			case LwM2MType.Integer:
-				propFactory = new TypeBoxNumberObjectPropertyFactory()
+				prop = S.integer()
 				if (RangeEnumeration !== undefined) {
 					if ('min' in RangeEnumeration) {
-						;(propFactory as TypeBoxNumberObjectPropertyFactory).setRange(
-							RangeEnumeration.min,
-							RangeEnumeration.max,
-						)
+						prop = prop.minimum(RangeEnumeration.min)
+						prop = prop.maximum(RangeEnumeration.max)
 					}
 					// FIXME: Implement integer enum
 				}
 				break
 			case LwM2MType.Boolean:
 				// In LwM2M Boolean is an 8 bit unsigned integer with the value 0 for False and the value 1 for True.
-				propFactory = new TypeBoxIntegerObjectPropertyFactory()
-				;(propFactory as TypeBoxIntegerObjectPropertyFactory).setRange(0, 1)
+				prop = S.integer().minimum(0).maximum(1)
 				break
 			default:
 				throw new Error(
@@ -65,15 +61,16 @@ export const lwM2MDefinitionToJSONSchema = ({
 				)
 		}
 		if (Mandatory) {
-			propFactory.require()
+			prop = prop.required()
 		}
-		propFactory.setTitle(Name)
-		propFactory.addToDescription(Description)
+		prop = prop.title(Name)
+		const description = [Description]
 		if (Units !== undefined) {
-			propFactory.addToDescription(`Units: ${Units}.`)
+			description.push(`Units: ${Units}.`)
 		}
-		typeBoxDefFactory.addProperty(ResourceID, propFactory.toProperty())
+		prop = prop.description(description.join(' '))
+		lwm2mObjectSchema = lwm2mObjectSchema.prop(ResourceID, prop)
 	}
 
-	return typeBoxDefFactory.toSchema()
+	return lwm2mObjectSchema.valueOf()
 }

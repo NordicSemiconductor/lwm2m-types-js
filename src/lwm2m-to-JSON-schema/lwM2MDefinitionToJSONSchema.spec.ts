@@ -1,4 +1,3 @@
-import { SchemaOptions } from '@sinclair/typebox'
 import { readFile } from 'fs/promises'
 import path from 'node:path'
 import { Parser } from 'xml2js'
@@ -13,7 +12,7 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 		const xmlAsJSON = await parser.parseStringPromise(xml)
 		const lwm2mDefinition = LwM2MJSONfromXML2js(xmlAsJSON)
 
-		const expectedSchema: SchemaOptions = {
+		const expectedSchema = {
 			title: '3427: Pressure monitoring sensor',
 			description: [
 				'The uCIFI water pressure monitoring sensor measures water pressure and help identify water leaks in water distribution pipelines.',
@@ -33,7 +32,7 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 				'2': {
 					title: 'Sampling period',
 					description: 'Number of seconds between two measurement. Units: s.',
-					type: 'number',
+					type: 'integer',
 				},
 				'3': {
 					title: 'Leak detected',
@@ -76,10 +75,10 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 				},
 			},
 			required: ['1'],
-		}
+		} as const
 
-		expect(lwM2MDefinitionToJSONSchema(lwm2mDefinition)).toMatchObject(
-			expectedSchema,
-		)
+		const schema = lwM2MDefinitionToJSONSchema(lwm2mDefinition)
+
+		expect(schema).toMatchObject(expectedSchema)
 	})
 })
