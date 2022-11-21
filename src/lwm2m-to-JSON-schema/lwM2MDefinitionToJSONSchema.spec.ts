@@ -211,4 +211,27 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			}),
 		).toMatchObject(expectedSchema)
 	})
+
+	it('should implement Core Link', async () => {
+		const lwm2mDefinition = await loadDefinition(18831)
+		const expectedSchema = {
+			properties: {
+				'0': {
+					title: 'Source',
+					description:
+						'The source of the data to publish (e.g. </sensors/temp>, or </3303/0/5700>; </3336/0>). If this Resource is empty, the published data are implementation dependent.',
+					type: 'string',
+				},
+			},
+		} as const
+
+		expect(
+			lwM2MDefinitionToJSONSchema({
+				...lwm2mDefinition,
+				Resources: {
+					'0': lwm2mDefinition.Resources[0] as any,
+				},
+			}),
+		).toMatchObject(expectedSchema)
+	})
 })

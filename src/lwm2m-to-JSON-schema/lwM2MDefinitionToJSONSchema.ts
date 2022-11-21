@@ -76,6 +76,9 @@ export const lwM2MDefinitionToJSONSchema = ({
 					'Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone.',
 				)
 				break
+			case LwM2MType.Corelnk:
+				prop = S.string()
+				break
 			default:
 				throw new Error(
 					`Unknown type: '${Type}' on Object ${ObjectID}, Resource ${ResourceID}!`,
