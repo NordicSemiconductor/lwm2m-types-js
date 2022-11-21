@@ -5,4 +5,5 @@ export const ignoredLwM2MObjects = [
 	'0', // LwM2M Server
 	'21', // LwM2M OSCORE
 	'23', // LwM2M COSE
+	'10323', // CCU Control
 ]
