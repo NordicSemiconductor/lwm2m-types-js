@@ -45,7 +45,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 			case LwM2MType.Integer:
 			case LwM2MType.UnsignedInteger:
 				prop = S.integer()
-				if (RangeEnumeration !== undefined) {
+				if (RangeEnumeration !== undefined && RangeEnumeration !== null) {
 					if ('min' in RangeEnumeration) {
 						prop = prop.minimum(RangeEnumeration.min)
 						prop = prop.maximum(RangeEnumeration.max)
@@ -63,7 +63,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 			case LwM2MType.String:
 			case LwM2MType.Opaque:
 				prop = S.string()
-				if (RangeEnumeration !== undefined) {
+				if (RangeEnumeration !== undefined && RangeEnumeration !== null) {
 					if ('min' in RangeEnumeration) {
 						prop = prop.minLength(RangeEnumeration.min)
 						prop = prop.maxLength(RangeEnumeration.max)
