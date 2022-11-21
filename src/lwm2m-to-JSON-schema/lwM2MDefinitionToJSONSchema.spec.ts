@@ -112,4 +112,30 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			}),
 		).toMatchObject(expectedSchema)
 	})
+
+	it('should implement String', async () => {
+		const lwm2mDefinition = await loadDefinition(5)
+		const description = `URI from where the device can download the firmware package by an alternative mechanism. As soon the device has received the Package URI it performs the download at the next practical opportunity. \r\nThe URI format is defined in RFC 3986. For example, coaps://example.org/firmware is a syntactically valid URI. The URI scheme determines the protocol to be used. For CoAP this endpoint MAY be a LwM2M Server but does not necessarily need to be. A CoAP server implementing block-wise transfer is sufficient as a server hosting a firmware repository and the expectation is that this server merely serves as a separate file server making firmware images available to LwM2M Clients.`
+
+		const expectedSchema = {
+			properties: {
+				'1': {
+					title: 'Package URI',
+					description: description,
+					type: 'string',
+					minLength: 0,
+					maxLength: 255,
+				},
+			},
+		} as const
+
+		expect(
+			lwM2MDefinitionToJSONSchema({
+				...lwm2mDefinition,
+				Resources: {
+					'1': lwm2mDefinition.Resources[1] as any,
+				},
+			}),
+		).toMatchObject(expectedSchema)
+	})
 })

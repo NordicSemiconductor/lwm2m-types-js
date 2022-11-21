@@ -58,6 +58,15 @@ export const lwM2MDefinitionToJSONSchema = ({
 			case LwM2MType.Objlnk:
 				prop = S.string().pattern('^dd:dd$')
 				break
+			case LwM2MType.String:
+				prop = S.string()
+				if (RangeEnumeration !== undefined) {
+					if ('min' in RangeEnumeration) {
+						prop = prop.minLength(RangeEnumeration.min)
+						prop = prop.maxLength(RangeEnumeration.max)
+					}
+				}
+				break
 			default:
 				throw new Error(
 					`Unknown type: '${Type}' on Object ${ObjectID}, Resource ${ResourceID}!`,
