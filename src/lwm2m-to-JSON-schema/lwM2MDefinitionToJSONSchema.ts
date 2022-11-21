@@ -60,6 +60,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 				prop = S.string().pattern('^dd:dd$')
 				break
 			case LwM2MType.String:
+			case LwM2MType.Opaque:
 				prop = S.string()
 				if (RangeEnumeration !== undefined) {
 					if ('min' in RangeEnumeration) {

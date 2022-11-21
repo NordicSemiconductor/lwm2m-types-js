@@ -162,4 +162,28 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			}),
 		).toMatchObject(expectedSchema)
 	})
+
+	it('should implement Opaque', async () => {
+		const lwm2mDefinition = await loadDefinition(508)
+
+		const expectedSchema = {
+			properties: {
+				'2': {
+					title: 'nuSIM Capabilities',
+					description:
+						'Contains the supported nuSIM specification version and optional capabilities of the nuSIM.',
+					type: 'string',
+				},
+			},
+		} as const
+
+		expect(
+			lwM2MDefinitionToJSONSchema({
+				...lwm2mDefinition,
+				Resources: {
+					'2': lwm2mDefinition.Resources[2] as any,
+				},
+			}),
+		).toMatchObject(expectedSchema)
+	})
 })
