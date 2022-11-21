@@ -55,6 +55,9 @@ export const lwM2MDefinitionToJSONSchema = ({
 				// In LwM2M Boolean is an 8 bit unsigned integer with the value 0 for False and the value 1 for True.
 				prop = S.integer().minimum(0).maximum(1)
 				break
+			case LwM2MType.Objlnk:
+				prop = S.string().pattern('^dd:dd$')
+				break
 			default:
 				throw new Error(
 					`Unknown type: '${Type}' on Object ${ObjectID}, Resource ${ResourceID}!`,
