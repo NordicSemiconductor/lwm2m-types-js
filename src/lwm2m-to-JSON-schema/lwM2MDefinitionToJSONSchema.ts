@@ -37,6 +37,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 		{ Name, Type, RangeEnumeration, Description, Units, Mandatory },
 	] of Object.entries(Resources)) {
 		let prop: JSONSchema | undefined = undefined
+		const description = [Description]
 		switch (Type) {
 			case LwM2MType.Float:
 				prop = S.number()
@@ -67,6 +68,12 @@ export const lwM2MDefinitionToJSONSchema = ({
 					}
 				}
 				break
+			case LwM2MType.Time:
+				prop = S.integer().minimum(1000000000)
+				description.push(
+					'Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone.',
+				)
+				break
 			default:
 				throw new Error(
 					`Unknown type: '${Type}' on Object ${ObjectID}, Resource ${ResourceID}!`,
@@ -76,7 +83,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 			prop = prop.required()
 		}
 		prop = prop.title(Name)
-		const description = [Description]
+
 		if (Units !== undefined) {
 			description.push(`Units: ${Units}.`)
 		}

@@ -138,4 +138,28 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			}),
 		).toMatchObject(expectedSchema)
 	})
+
+	it('should implement Time', async () => {
+		const lwm2mDefinition = await loadDefinition(3430)
+
+		const expectedSchema = {
+			properties: {
+				'0': {
+					title: 'Fix timestamp',
+					description:
+						'Timestamp of when the location measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone. Units: s.',
+					type: 'integer',
+				},
+			},
+		} as const
+
+		expect(
+			lwM2MDefinitionToJSONSchema({
+				...lwm2mDefinition,
+				Resources: {
+					'0': lwm2mDefinition.Resources[0] as any,
+				},
+			}),
+		).toMatchObject(expectedSchema)
+	})
 })
