@@ -245,4 +245,25 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition).required
 		expect(result).toEqual(expectedSchema.required)
 	})
+
+	it('should implement MultipleInstances on the property level', async () => {
+		const lwm2mDefinition = await loadDefinition(12)
+		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition)
+		const expected = {
+			type: 'array',
+			title: 'Supported Channels',
+			description: 'Array of supported radio channels.',
+			items: {
+				type: 'integer',
+			},
+			// Empty arrays should not be allowed
+			minItems: 1,
+		}
+
+		expect(result.properties['11']).toMatchObject(expected)
+	})
+
+	it.skip('shoukd implement MultipleIntances on the object level', () => {
+		null
+	})
 })

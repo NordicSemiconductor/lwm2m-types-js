@@ -34,7 +34,15 @@ export const lwM2MDefinitionToJSONSchema = ({
 
 	for (const [
 		ResourceID,
-		{ Name, Type, RangeEnumeration, Description, Units, Mandatory },
+		{
+			Name,
+			Type,
+			RangeEnumeration,
+			Description,
+			Units,
+			Mandatory,
+			MultipleInstances,
+		},
 	] of Object.entries(Resources)) {
 		let prop: JSONSchema | undefined = undefined
 		const description = [Description]
@@ -89,6 +97,10 @@ export const lwM2MDefinitionToJSONSchema = ({
 					`Unknown type: '${Type}' on Object ${ObjectID}, Resource ${ResourceID}!`,
 				)
 		}
+
+		if (MultipleInstances) {
+			prop = S.array().minItems(1).items(prop)
+		}
 		if (Mandatory) {
 			prop = prop.required()
 		}
@@ -97,6 +109,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 		if (Units !== undefined) {
 			description.push(`Units: ${Units}.`)
 		}
+
 		prop = prop.description(description.join(' '))
 		lwm2mObjectSchema = lwm2mObjectSchema.prop(ResourceID, prop)
 	}
