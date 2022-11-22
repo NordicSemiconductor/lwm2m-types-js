@@ -78,6 +78,10 @@ export const lwM2MDefinitionToJSONSchema = ({
 				break
 			case LwM2MType.Corelnk:
 				prop = S.string()
+					.pattern('^</[^>]+>(;[^=]+="[^"]+")*$')
+					.description(
+						'RFC 6690 link, see https://www.rfc-editor.org/rfc/rfc6690.html',
+					)
 				break
 			default:
 				throw new Error(

@@ -222,6 +222,7 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 					description:
 						'The source of the data to publish (e.g. </sensors/temp>, or </3303/0/5700>; </3336/0>). If this Resource is empty, the published data are implementation dependent.',
 					type: 'string',
+					pattern: '^</[^>]+>(;[^=]+="[^"]+")*$',
 				},
 			},
 		} as const
