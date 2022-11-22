@@ -236,4 +236,13 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			}),
 		).toMatchObject(expectedSchema)
 	})
+
+	it('should implement Mandatory', async () => {
+		const lwm2mDefinition = await loadDefinition(12)
+		const expectedSchema = {
+			required: ['0', '1', '3', '4', '5', '8', '9', '14', '15'],
+		} as const
+		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition).required
+		expect(result).toEqual(expectedSchema.required)
+	})
 })
