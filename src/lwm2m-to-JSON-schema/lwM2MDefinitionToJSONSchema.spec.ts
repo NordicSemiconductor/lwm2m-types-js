@@ -19,6 +19,7 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 	it('should convert a LwM2M definition to a JSON schema', async () => {
 		const lwm2mDefinition = await loadDefinition(3427)
 		const expectedSchema = {
+			type: 'array',
 			title: '3427: Pressure monitoring sensor',
 			description: [
 				'The uCIFI water pressure monitoring sensor measures water pressure and help identify water leaks in water distribution pipelines.',
@@ -27,60 +28,65 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 				'MultipleInstances: true',
 				'Mandatory: false',
 			].join(' '),
-			type: 'object',
-			properties: {
-				'1': {
-					title: 'Pressure',
-					description:
-						'Last or current pressure value measured by the sensor. Units: Pa.',
-					type: 'number',
+			items: {
+				type: 'object',
+				properties: {
+					'1': {
+						title: 'Pressure',
+						description:
+							'Last or current pressure value measured by the sensor. Units: Pa.',
+						type: 'number',
+					},
+					'2': {
+						title: 'Sampling period',
+						description: 'Number of seconds between two measurement. Units: s.',
+						type: 'integer',
+					},
+					'3': {
+						title: 'Leak detected',
+						description:
+							'Set to True if a water leak is detected by the sensor.',
+						minimum: 0,
+						maximum: 1,
+						type: 'integer',
+					},
+					'4': {
+						title: 'Hammer effect detected',
+						description:
+							'Set to True if hammer effect is detected in the water pipeline.',
+						minimum: 0,
+						maximum: 1,
+						type: 'integer',
+					},
+					'5': {
+						title: 'Minimum measured pressure value',
+						description:
+							'Minimum value measured by the sensor since power ON or reset. Units: Pa.',
+						type: 'number',
+					},
+					'6': {
+						title: 'Maximum measured pressure value',
+						description:
+							'Maximum value measured by the sensor since power ON or reset. Units: Pa.',
+						type: 'number',
+					},
+					'7': {
+						title: 'Minimum range pressure value',
+						description:
+							'Minimum value that can be measured by the sensor. Units: Pa.',
+						type: 'number',
+					},
+					'8': {
+						title: 'Maximum range pressure value',
+						description:
+							'Maximum value that can be measured by the sensor. Units: Pa.',
+						type: 'number',
+					},
 				},
-				'2': {
-					title: 'Sampling period',
-					description: 'Number of seconds between two measurement. Units: s.',
-					type: 'integer',
-				},
-				'3': {
-					title: 'Leak detected',
-					description: 'Set to True if a water leak is detected by the sensor.',
-					minimum: 0,
-					maximum: 1,
-					type: 'integer',
-				},
-				'4': {
-					title: 'Hammer effect detected',
-					description:
-						'Set to True if hammer effect is detected in the water pipeline.',
-					minimum: 0,
-					maximum: 1,
-					type: 'integer',
-				},
-				'5': {
-					title: 'Minimum measured pressure value',
-					description:
-						'Minimum value measured by the sensor since power ON or reset. Units: Pa.',
-					type: 'number',
-				},
-				'6': {
-					title: 'Maximum measured pressure value',
-					description:
-						'Maximum value measured by the sensor since power ON or reset. Units: Pa.',
-					type: 'number',
-				},
-				'7': {
-					title: 'Minimum range pressure value',
-					description:
-						'Minimum value that can be measured by the sensor. Units: Pa.',
-					type: 'number',
-				},
-				'8': {
-					title: 'Maximum range pressure value',
-					description:
-						'Maximum value that can be measured by the sensor. Units: Pa.',
-					type: 'number',
-				},
+				required: ['1'],
 			},
-			required: ['1'],
+			// Empty arrays should not be allowed
+			minItems: 1,
 		} as const
 
 		expect(lwM2MDefinitionToJSONSchema(lwm2mDefinition)).toMatchObject(
@@ -192,13 +198,16 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 		const lwm2mDefinition = await loadDefinition(3391)
 
 		const expectedSchema = {
-			properties: {
-				'902': {
-					title: 'Recall Scene',
-					description: 'When written, the scene with the given ID is recalled.',
-					type: 'integer',
-					minimum: 0,
-					maximum: 65535,
+			items: {
+				properties: {
+					'902': {
+						title: 'Recall Scene',
+						description:
+							'When written, the scene with the given ID is recalled.',
+						type: 'integer',
+						minimum: 0,
+						maximum: 65535,
+					},
 				},
 			},
 		} as const
@@ -216,13 +225,15 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 	it('should implement Core Link', async () => {
 		const lwm2mDefinition = await loadDefinition(18831)
 		const expectedSchema = {
-			properties: {
-				'0': {
-					title: 'Source',
-					description:
-						'The source of the data to publish (e.g. </sensors/temp>, or </3303/0/5700>; </3336/0>). If this Resource is empty, the published data are implementation dependent.',
-					type: 'string',
-					pattern: '^</[^>]+>(;[^=]+="[^"]+")*$',
+			items: {
+				properties: {
+					'0': {
+						title: 'Source',
+						description:
+							'The source of the data to publish (e.g. </sensors/temp>, or </3303/0/5700>; </3336/0>). If this Resource is empty, the published data are implementation dependent.',
+						type: 'string',
+						pattern: '^</[^>]+>(;[^=]+="[^"]+")*$',
+					},
 				},
 			},
 		} as const
@@ -242,7 +253,7 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 		const expectedSchema = {
 			required: ['0', '1', '3', '4', '5', '8', '9', '14', '15'],
 		} as const
-		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition).required
+		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition).items.required
 		expect(result).toEqual(expectedSchema.required)
 	})
 
@@ -260,10 +271,37 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			minItems: 1,
 		}
 
-		expect(result.properties['11']).toMatchObject(expected)
+		expect(result.items.properties['11']).toMatchObject(expected)
 	})
 
-	it.skip('shoukd implement MultipleIntances on the object level', () => {
-		null
+	it('should implement MultipleIntances on the object level', async () => {
+		const lwm2mDefinition = await loadDefinition(3427)
+		const expectedSchema = {
+			type: 'array',
+			title: '3427: Pressure monitoring sensor',
+			description: [
+				'The uCIFI water pressure monitoring sensor measures water pressure and help identify water leaks in water distribution pipelines.',
+				'LWM2MVersion: 1.0',
+				'ObjectVersion: 1.0',
+				'MultipleInstances: true',
+				'Mandatory: false',
+			].join(' '),
+			items: {
+				type: 'object',
+				properties: {
+					'1': {
+						title: 'Pressure',
+						description:
+							'Last or current pressure value measured by the sensor. Units: Pa.',
+						type: 'number',
+					},
+				},
+				required: ['1'],
+			},
+			// Empty arrays should not be allowed
+			minItems: 1,
+		} as const
+		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition)
+		expect(result).toMatchObject(expectedSchema)
 	})
 })

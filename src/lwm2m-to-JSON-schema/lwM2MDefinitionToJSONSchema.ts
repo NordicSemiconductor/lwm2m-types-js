@@ -17,20 +17,20 @@ export const lwM2MDefinitionToJSONSchema = ({
 	Description1,
 	Resources,
 }: LwM2MObjectDefinition): Record<string, any> => {
+	const title = `${ObjectID}: ${Name}`
+	const description = [
+		Description1,
+		`LWM2MVersion: ${LWM2MVersion}`,
+		`ObjectVersion: ${ObjectVersion}`,
+		`MultipleInstances: ${MultipleInstances}`,
+		`Mandatory: ${Mandatory}`,
+	].join(' ')
 	let lwm2mObjectSchema = S.object()
 		.id(
 			`https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/${ObjectID}.xml`,
 		)
-		.title(`${ObjectID}: ${Name}`)
-		.description(
-			[
-				Description1,
-				`LWM2MVersion: ${LWM2MVersion}`,
-				`ObjectVersion: ${ObjectVersion}`,
-				`MultipleInstances: ${MultipleInstances}`,
-				`Mandatory: ${Mandatory}`,
-			].join(' '),
-		)
+		.title(title)
+		.description(description)
 
 	for (const [
 		ResourceID,
@@ -112,6 +112,15 @@ export const lwM2MDefinitionToJSONSchema = ({
 
 		prop = prop.description(description.join(' '))
 		lwm2mObjectSchema = lwm2mObjectSchema.prop(ResourceID, prop)
+	}
+
+	if (MultipleInstances) {
+		return S.array()
+			.minItems(1)
+			.title(title)
+			.description(description)
+			.items(lwm2mObjectSchema)
+			.valueOf()
 	}
 
 	return lwm2mObjectSchema.valueOf()
