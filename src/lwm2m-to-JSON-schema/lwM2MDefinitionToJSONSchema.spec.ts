@@ -236,30 +236,4 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			}),
 		).toMatchObject(expectedSchema)
 	})
-
-	it.only.each([
-		{ objectId: 1, resourceId: 22, dataType: 'string' },
-		{ objectId: 10245, resourceId: 4, dataType: 'number' },
-	])(
-		'should check null and undefined case in Range Enumeration prop',
-		async (element) => {
-			const lwm2mDefinition = await loadDefinition(element.objectId)
-			const expectedSchema = lwM2MDefinitionToJSONSchema({
-				...lwm2mDefinition,
-				Resources: {
-					[`${element.resourceId}`]: lwm2mDefinition.Resources[
-						`${element.resourceId}`
-					] as any,
-				},
-			})
-
-			expect(expectedSchema).not.toHaveProperty(
-				element.dataType === 'string' ? 'minLength' : 'minimum',
-			)
-
-			expect(expectedSchema).not.toHaveProperty(
-				element.dataType === 'string' ? 'maxLength' : 'maximum',
-			)
-		},
-	)
 })

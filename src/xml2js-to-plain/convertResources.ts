@@ -25,12 +25,16 @@ export const convertResources = (
 			}
 
 			const RangeEnumeration = current.RangeEnumeration?.[0]?.trim()
-			addIfNotBlank(resource, {
-				RangeEnumeration:
-					RangeEnumeration !== undefined
-						? parseRangeEnumeration(RangeEnumeration)
-						: undefined,
-			})
+			if (RangeEnumeration !== undefined) {
+				const parsedRangeEnumeration = parseRangeEnumeration(RangeEnumeration)
+				if (parsedRangeEnumeration !== null) {
+					if ('enum' in parsedRangeEnumeration) {
+						resource.RangeEnumeration = parsedRangeEnumeration.enum
+					} else {
+						resource.RangeEnumeration = parsedRangeEnumeration
+					}
+				}
+			}
 			addIfNotBlank(resource, {
 				Units: current.Units?.[0],
 			})
