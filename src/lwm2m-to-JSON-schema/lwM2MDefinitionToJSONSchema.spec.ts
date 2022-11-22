@@ -274,32 +274,29 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 		expect(result.items.properties['11']).toMatchObject(expected)
 	})
 
-	it('should implement MultipleIntances on the object level', async () => {
-		const lwm2mDefinition = await loadDefinition(3427)
+	it('should implement MultipleIntances=Single on the object level', async () => {
+		const lwm2mDefinition = await loadDefinition(6)
 		const expectedSchema = {
-			type: 'array',
-			title: '3427: Pressure monitoring sensor',
+			type: 'object',
+			title: '6: Location',
 			description: [
-				'The uCIFI water pressure monitoring sensor measures water pressure and help identify water leaks in water distribution pipelines.',
+				'This LwM2M Object provides a range of location telemetry related information which can be queried by the LwM2M Server.',
 				'LWM2MVersion: 1.0',
 				'ObjectVersion: 1.0',
-				'MultipleInstances: true',
+				'MultipleInstances: false',
 				'Mandatory: false',
 			].join(' '),
-			items: {
-				type: 'object',
-				properties: {
-					'1': {
-						title: 'Pressure',
-						description:
-							'Last or current pressure value measured by the sensor. Units: Pa.',
-						type: 'number',
-					},
+			properties: {
+				'0': {
+					title: 'Latitude',
+					description:
+						'The decimal notation of latitude, e.g. -43.5723 [World Geodetic System 1984]. Units: lat.',
+					type: 'number',
 				},
-				required: ['1'],
+				// ... others properties
 			},
+			required: ['0', '1', '5'],
 			// Empty arrays should not be allowed
-			minItems: 1,
 		} as const
 		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition)
 		expect(result).toMatchObject(expectedSchema)
