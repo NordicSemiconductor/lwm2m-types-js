@@ -108,7 +108,9 @@ export type Resource = {
 	MultipleInstances: boolean
 	Mandatory: boolean
 	Type: LwM2MType
-	RangeEnumeration?: { min: number; max: number } | (string | number)[]
+	RangeEnumeration?:
+		| { min: number; max: number }
+		| { enum: (number | string)[] }
 	Units?: string
 	Description: string
 }

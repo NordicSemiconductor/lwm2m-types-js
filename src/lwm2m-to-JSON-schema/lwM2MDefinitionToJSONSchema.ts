@@ -49,8 +49,9 @@ export const lwM2MDefinitionToJSONSchema = ({
 					if ('min' in RangeEnumeration) {
 						prop = prop.minimum(RangeEnumeration.min)
 						prop = prop.maximum(RangeEnumeration.max)
+					} else {
+						// TODO: Implement enums for now, because there is only 1 (one) object definition that uses. Revisit if there are more than 1.
 					}
-					// FIXME: Implement integer enum
 				}
 				break
 			case LwM2MType.Boolean:
