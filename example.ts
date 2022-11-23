@@ -1,11 +1,15 @@
 import * as assert from 'node:assert/strict'
 // This is a JSON representation of LwM2M, for example stored in AWS IoT Shadow
-import { LwM2MDocument } from '@nordicsemiconductor/lwm2m-typebox-types'
+import type { Static } from '@sinclair/typebox'
+import type { LwM2MDocument } from '.'
 import knowGoodShadow from './known-good-shadow.json'
+import LwM2MDocumentSchema from './LwM2MDocument.schema.json'
 import { validateWithJSONSchema } from './src/utils/validateWithJsonSchema'
 
 // validate shadow
-const validateLwM2MJSON = validateWithJSONSchema(LwM2MDocument)
+const validateLwM2MJSON =
+	validateWithJSONSchema<Static<typeof LwM2MDocument>>(LwM2MDocumentSchema)
+
 // We can validate that the data is correctly defined as LwM2M
 const maybeValidLwM2M = validateLwM2MJSON(knowGoodShadow)
 

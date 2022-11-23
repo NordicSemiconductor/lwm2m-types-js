@@ -1,10 +1,10 @@
 import { Type } from '@sinclair/typebox'
 import os from 'node:os'
+import { validateWithTypeBox } from 'src/xml2js-to-plain/validateWithTypeBox'
 import { createURN } from '../TypeScript/createURN'
 import { escapeText } from '../utils/escapeText'
 import { filterOutBlankValues } from '../utils/filterOutBlankValues'
 import { parseLwM2MURN } from '../utils/parseLwM2MURN'
-import { validateWithJSONSchema } from '../utils/validateWithJsonSchema'
 import { createResourceDefinition } from './createResourceDefinition'
 import { excludeWriteOnlyResources } from './excludeWriteOnlyResources'
 import {
@@ -66,7 +66,7 @@ const RegistrySchema = Type.Object(
 		description: 'A LwM2M object definition, converted from XML to JSON',
 	},
 )
-const validate = validateWithJSONSchema(RegistrySchema)
+const validate = validateWithTypeBox(RegistrySchema)
 
 // TODO: add test case
 /**

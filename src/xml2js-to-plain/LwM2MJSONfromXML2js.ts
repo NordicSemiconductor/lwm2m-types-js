@@ -10,9 +10,9 @@ import {
 	Operations,
 } from '../Json/parseResource'
 import { filterOutBlankValues } from '../utils/filterOutBlankValues'
-import { validateWithJSONSchema } from '../utils/validateWithJsonSchema'
 import { addIfNotBlank } from './addIfNotBlank'
 import { convertResources } from './convertResources'
+import { validateWithTypeBox } from './validateWithTypeBox'
 
 export const ObjectDef = Type.Object({
 	ATTR: Type.Object({
@@ -130,7 +130,7 @@ export type LwM2MObjectDefinition = {
 	Resources: Resources
 }
 
-const validateInput = validateWithJSONSchema(xml2jsDef)
+const validateInput = validateWithTypeBox(xml2jsDef)
 
 /**
  * This function takes the LwM2M definitions parsed using xml2js and turns them

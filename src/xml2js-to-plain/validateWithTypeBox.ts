@@ -1,9 +1,10 @@
-import Ajv, { ErrorObject, Schema } from 'ajv'
+import type { Static, TSchema } from '@sinclair/typebox'
+import Ajv, { ErrorObject } from 'ajv'
 
-export const validateWithJSONSchema = <ReturnType>(
-	schema: Schema,
+export const validateWithTypeBox = <T extends TSchema>(
+	schema: T,
 ): ((value: unknown) =>
-	| { value: ReturnType }
+	| { value: Static<typeof schema> }
 	| {
 			errors: ErrorObject[]
 	  }) => {
@@ -16,6 +17,6 @@ export const validateWithJSONSchema = <ReturnType>(
 				errors: v.errors as ErrorObject[],
 			}
 		}
-		return { value: value as ReturnType }
+		return { value: value as Static<typeof schema> }
 	}
 }

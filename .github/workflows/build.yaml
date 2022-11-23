@@ -40,6 +40,9 @@ jobs:
       - name: Create LwM2M TypeBox definition object
         run: npx tsx ./src/TypeScript/createTypeboxDef
 
+      - name: Create the JSON Schema
+        run: npx tsx cli/generate-json-schema.ts
+
       - name: Format result
         run: npx prettier --write ./
 

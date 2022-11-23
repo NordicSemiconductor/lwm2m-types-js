@@ -1,7 +1,7 @@
 import { TArray, TSchema, Type } from '@sinclair/typebox'
 import { escapeText } from '../utils/escapeText'
 import { filterOutBlankValues } from '../utils/filterOutBlankValues'
-import { validateWithJSONSchema } from '../utils/validateWithJsonSchema'
+import { validateWithTypeBox } from '../xml2js-to-plain/validateWithTypeBox'
 
 export type ParsedResource = {
 	name: string
@@ -66,7 +66,7 @@ export const ResourceSchema = Type.Object(
 		description: 'A LwM2M object definition, converted from XML to JSON',
 	},
 )
-const validate = validateWithJSONSchema(ResourceSchema)
+const validate = validateWithTypeBox(ResourceSchema)
 
 /**
  * Pick properties from element to generate the TypeBox definition
