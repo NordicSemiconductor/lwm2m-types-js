@@ -9,7 +9,8 @@
   "types": "./index.d.ts",
   "dependencies": {
     "@sinclair/typebox": "0.25.8",
-    "ajv": "8.11.2"
+    "ajv": "8.11.2",
+    "json-schema-to-typescript": "^11.0.2"
   },
   "devDependencies": {
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.143",

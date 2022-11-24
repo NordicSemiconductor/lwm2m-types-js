@@ -1,7 +1,7 @@
 import { Type } from '@sinclair/typebox'
 import os from 'node:os'
 import { validateWithTypeBox } from 'src/xml2js-to-plain/validateWithTypeBox'
-import { createURN } from '../TypeScript/createURN'
+import { createURN } from '../utils/createURN'
 import { escapeText } from '../utils/escapeText'
 import { filterOutBlankValues } from '../utils/filterOutBlankValues'
 import { parseLwM2MURN } from '../utils/parseLwM2MURN'

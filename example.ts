@@ -6,6 +6,11 @@ import knowGoodShadow from './known-good-shadow.json'
 import LwM2MDocumentSchema from './LwM2MDocument.schema.json'
 import { validateWithJSONSchema } from './src/utils/validateWithJsonSchema'
 
+import {
+	objectURN as urnTemperature_3303,
+	Temperature_3303,
+} from 'typeScript-definitions/3303'
+
 // validate shadow
 const validateLwM2MJSON =
 	validateWithJSONSchema<Static<typeof LwM2MDocument>>(LwM2MDocumentSchema)
@@ -28,3 +33,22 @@ assert.deepStrictEqual(shadow['3:1.2@1.1']?.[1], 'thingy91_nrf9160')
 assert.deepStrictEqual(shadow['4:1.3@1.1']?.[7]?.[0], 'ibasis.iot')
 assert.deepStrictEqual(shadow['3303:1.1']?.[0]?.[5701], 'Celsius degrees')
 assert.deepStrictEqual(shadow['3323:1.1']?.[0]?.[5602], 98.24)
+
+// We can use the Types when defining JSON as well
+const temperatureSensor: Temperature_3303 = [
+	{
+		'5518': 1665149633,
+		'5601': 23.51,
+		'5602': 23.51,
+		'5603': -40,
+		'5604': 85,
+		'5700': 24.57,
+		'5701': 'Celsius degrees',
+	},
+]
+
+const newShadow: Static<typeof LwM2MDocument> = {
+	[urnTemperature_3303]: temperatureSensor,
+}
+
+console.log(newShadow)

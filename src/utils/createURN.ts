@@ -1,3 +1,5 @@
+import { defaultLwM2MVersion, defaultObjectVersion } from './deconstructURN'
+
 /**
  * Construct the URN including the LwM2M version in one string how will be used in the JSON document.
  *
@@ -12,6 +14,6 @@ export const createURN = ({
 	ObjectVersion: string
 	LwM2MVersion: string
 }): string =>
-	`${ObjectID}${ObjectVersion !== '1.0' ? `:${ObjectVersion}` : ''}${
-		LwM2MVersion !== '1.0' ? `@${LwM2MVersion}` : ''
-	}`
+	`${ObjectID}${
+		ObjectVersion !== defaultObjectVersion ? `:${ObjectVersion}` : ''
+	}${LwM2MVersion !== defaultLwM2MVersion ? `@${LwM2MVersion}` : ''}`

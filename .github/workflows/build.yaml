@@ -43,6 +43,11 @@ jobs:
       - name: Create the JSON Schema
         run: npx tsx cli/generate-json-schema.ts
 
+      - name: Create LwM2M TypeScript Types
+        run: |
+          npx tsx ./src/TypeScriptTypes/index.ts
+          npx eslint --fix .
+
       - name: Format result
         run: npx prettier --write ./
 
