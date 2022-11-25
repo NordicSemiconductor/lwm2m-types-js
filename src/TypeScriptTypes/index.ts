@@ -5,13 +5,15 @@ import { tokenizeName } from 'src/Json/tokenizeName'
 import { typeName } from 'src/Json/typeName'
 import { deconstructURN } from 'src/utils/deconstructURN'
 import LwM2MDocumentSchema from '../../LwM2MDocument.schema.json'
+import { toSafeString } from './json-schema-to-typescript-strings'
 
 for (const urn of Object.keys(LwM2MDocumentSchema.properties)) {
 	const object = (LwM2MDocumentSchema.properties as any)[`${urn}`] // TODO: fix it
+	const isArray = object.type === 'array' ?? false
 
 	const { ObjectID, ObjectVersion, LwM2MVersion } = deconstructURN(urn)
 
-	const MultipleInstances = object.type === 'array' ? 'Multiple' : 'Single'
+	const MultipleInstances = isArray ? 'Multiple' : 'Single'
 	const Mandatory = 'Optional' // TODO: get real value
 
 	const comment = [
@@ -26,21 +28,32 @@ for (const urn of Object.keys(LwM2MDocumentSchema.properties)) {
 	]
 
 	const objectName = object.title.split(':')[1]
-	object.title = typeName(ObjectID, objectName)
+	const objectTitle = typeName(ObjectID, objectName)
+	object.title = objectTitle
 
-	if (object.type === 'array') {
+	if (isArray) {
 		object.items.title = tokenizeName(objectName)
 	}
 
-	const tsTypes = await compile(object, urn, {
+	let tsTypes = await compile(object, urn, {
 		format: false,
 		bannerComment: comment.join(''),
 		declareExternallyReferenced: true,
 	})
 
-	// TODO: export only 1 type
-	// TODO: remove exports from file programmatically https://nodejs.org/api/fs.html#fs_file_system
-	// https://github.com/bcherny/json-schema-to-typescript/issues/202
+	if (isArray) {
+		tsTypes = tsTypes.replace(/export /g, '')
+		tsTypes = tsTypes.replace(
+			`type ${toSafeString(objectTitle)}`,
+			`export type ${toSafeString(objectTitle)}`,
+		)
+	} else {
+		tsTypes = tsTypes.replace(/export /g, '')
+		tsTypes = tsTypes.replace(
+			`interface ${toSafeString(objectTitle)}`,
+			`export interface ${toSafeString(objectTitle)}`,
+		)
+	}
 
 	const exportURN = `\nexport const objectURN = '${urn}'`
 
