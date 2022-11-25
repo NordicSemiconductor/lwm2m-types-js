@@ -41,6 +41,7 @@ for (const urn of Object.keys(LwM2MDocumentSchema.properties)) {
 		declareExternallyReferenced: true,
 	})
 
+	// https://github.com/bcherny/json-schema-to-typescript/issues/492
 	if (isArray) {
 		tsTypes = tsTypes.replace(/export /g, '')
 		tsTypes = tsTypes.replace(
