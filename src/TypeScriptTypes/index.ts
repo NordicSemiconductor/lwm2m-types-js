@@ -1,4 +1,4 @@
-import { writeFile } from 'fs/promises'
+import { appendFile, writeFile } from 'fs/promises'
 import { compile } from 'json-schema-to-typescript'
 import path from 'node:path'
 import { tokenizeName } from 'src/Json/tokenizeName'
@@ -7,7 +7,7 @@ import { deconstructURN } from 'src/utils/deconstructURN'
 import LwM2MDocumentSchema from '../../LwM2MDocument.schema.json'
 
 for (const urn of Object.keys(LwM2MDocumentSchema.properties)) {
-	const object = LwM2MDocumentSchema.properties[`${urn}`] // TODO: fix it
+	const object = (LwM2MDocumentSchema.properties as any)[`${urn}`] // TODO: fix it
 
 	const { ObjectID, ObjectVersion, LwM2MVersion } = deconstructURN(urn)
 
@@ -42,18 +42,15 @@ for (const urn of Object.keys(LwM2MDocumentSchema.properties)) {
 	// TODO: remove exports from file programmatically https://nodejs.org/api/fs.html#fs_file_system
 	// https://github.com/bcherny/json-schema-to-typescript/issues/202
 
-	// TODO: change way to do it
-	const exportURN = `\n\nexport const objectURN = '${urn}'`
-
-	const content = []
-	content.push(tsTypes, exportURN)
+	const exportURN = `\nexport const objectURN = '${urn}'`
 
 	const outFile = path.join(
 		process.cwd(),
 		'/typeScript-definitions',
 		`${ObjectID}.ts`,
 	)
-	await writeFile(outFile, content.join(''), 'utf-8')
+	await writeFile(outFile, tsTypes, 'utf-8')
+	await appendFile(outFile, exportURN, 'utf-8')
 }
 
 // npx eslint --fix .
