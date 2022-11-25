@@ -1,3 +1,12 @@
 {
-  "extends": "@nordicsemiconductor/eslint-config-asset-tracker-cloud-typescript"
+  "extends": "@nordicsemiconductor/eslint-config-asset-tracker-cloud-typescript",
+  "overrides": [
+    {
+      "files": ["./typeScript-definitions/*.ts"],
+      "rules": {
+        "no-irregular-whitespace": ["error", { "skipComments": true }]
+      }
+    }
+  ]
 }
+// https://eslint.org/docs/latest/user-guide/configuring/rules#disabling-rules
