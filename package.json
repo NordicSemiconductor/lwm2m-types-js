@@ -8,7 +8,7 @@
   "type": "module",
   "types": "./index.d.ts",
   "dependencies": {
-    "@sinclair/typebox": "0.25.8",
+    "@sinclair/typebox": "0.25.10",
     "ajv": "8.11.2"
   },
   "devDependencies": {
