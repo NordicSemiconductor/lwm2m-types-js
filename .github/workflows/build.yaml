@@ -45,6 +45,7 @@ jobs:
 
       - name: Create LwM2M TypeScript Types
         run: |
+          mkdir typeScript-definitions
           npx tsx ./src/TypeScriptTypes/index.ts
           npx eslint --fix .
 
