@@ -1,4 +1,4 @@
-import { appendFile, writeFile } from 'fs/promises'
+import { appendFile, readFile, writeFile } from 'fs/promises'
 import { compile } from 'json-schema-to-typescript'
 import path from 'node:path'
 import { tokenizeName } from 'src/Json/tokenizeName'
@@ -14,7 +14,16 @@ for (const urn of Object.keys(LwM2MDocumentSchema.properties)) {
 	const { ObjectID, ObjectVersion, LwM2MVersion } = deconstructURN(urn)
 
 	const MultipleInstances = isArray ? 'Multiple' : 'Single'
-	const Mandatory = 'Optional' // TODO: get real value
+
+	const jsonFolder = 'lwm2m-registry-json'
+	const json = JSON.parse(
+		await readFile(
+			path.join(process.cwd(), jsonFolder, `${ObjectID}.json`),
+			'utf-8',
+		),
+	)
+	const Mandatory =
+		json.LWM2M.Object[0].Mandatory[0] === 'Mandatory' ? 'Mandatory' : 'Optional'
 
 	const comment = [
 		`/**\n`,
