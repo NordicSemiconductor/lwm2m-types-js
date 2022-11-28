@@ -27,18 +27,8 @@ jobs:
       - name: Run unit tests
         run: npm test
 
-      - name: From XML to JSON
-        run: |
-          mkdir lwm2m-registry-json
-          npx tsx cli/XMLtoJSON.ts ./lwm2m-registry ./lwm2m-registry-json
-
-      - name: From JSON to TypeBox definition
-        run: |
-          mkdir typebox-definitions
-          npx tsx cli/JSONtoTypeBox.ts ./lwm2m-registry-json ./typebox-definitions
-
-      - name: Create LwM2M TypeBox definition object
-        run: npx tsx ./src/TypeScript/createTypeboxDef
+      - name: Create LwM2M types
+        run: npx tsx cli/generate-types.ts
 
       - name: Create the JSON Schema
         run: npx tsx cli/generate-json-schema.ts
@@ -48,6 +38,9 @@ jobs:
 
       - name: Make sure result compiles
         run: npx tsc
+
+      - name: Compile JS exports
+        run: npx swc -d types-dist ./types
 
       - name: Make sure example runs
         run: npx tsx ./example.ts

@@ -1,2 +1,3 @@
-export * from './typebox-definitions/LwM2M'
-export * from './typebox-definitions/LwM2MDocument'
+export * from './src/validate'
+export * from './types/LwM2M'
+export * from './types/LwM2MDocument'

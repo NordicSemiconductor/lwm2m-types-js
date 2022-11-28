@@ -17,17 +17,16 @@ npm test
 
 ```bash
 git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git --depth 1
-mkdir lwm2m-registry-json
-npx tsx cli/XMLtoJSON.ts ./lwm2m-registry ./lwm2m-registry-json
-mkdir typebox-definitions
-npx tsx cli/JSONtoTypeBox.ts ./lwm2m-registry-json ./typebox-definitions
-npx tsx ./src/TypeScript/createTypeboxDef
+npx tsx cli/generate-types.ts
+npx tsx cli/generate-json-schema.ts
+# Format the source
 npx prettier --write ./
 # Make sure result compiles
 npx tsc
+# Compile JS exports
+npx swc -d types-dist ./types
 # Make sure example runs
 npx tsx ./example.ts
-
 ```
 
 ## Usage

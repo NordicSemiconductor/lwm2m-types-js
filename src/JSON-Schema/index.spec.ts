@@ -1,4 +1,4 @@
-import { createLwm2mJsonSchemaDocument } from './index'
+import { createLwm2mJsonSchemaDocument } from './createLwm2mJsonSchemaDocument'
 
 describe('lwM2MDefinitionToJSONSchema()', () => {
 	it('should generate the JSON schema document of LwM2M', async () => {
