@@ -69,5 +69,24 @@
   "engines": {
     "node": ">=18",
     "npm": ">=9"
-  }
+  },
+  "release": {
+    "branches": [
+      "saga"
+    ],
+    "remoteTags": true
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "index.d.ts",
+    "example.ts",
+    "types",
+    "types-dist",
+    "LwM2MDocument.schema.json",
+    "package-lock.json",
+    "LICENSE",
+    "README.md"
+  ]
 }
