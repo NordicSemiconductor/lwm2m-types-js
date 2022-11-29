@@ -8,5 +8,5 @@ const resultFile = ts.createSourceFile(
 	ts.ScriptKind.TS,
 )
 const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed })
-export const printNode = (node: ts.Node) =>
+export const printNode = (node: ts.Node): string =>
 	printer.printNode(ts.EmitHint.Unspecified, node, resultFile)
