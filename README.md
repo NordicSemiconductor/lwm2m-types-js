@@ -20,6 +20,18 @@ npm ci
 npm test
 ```
 
+## Usage
+
+See [example.ts](./example.ts)
+
+## JSON document structure
+
+LwM2M values are encoded as a JSON document, where the key is an extended
+version of the LwM2M URN: `<ObjectID>:<ObjectVersion>@<LwM2MVersion>` (where
+`ObjectVersion` and/or `LwM2MVersion` can be omitted if it is `1.0`).
+
+[Example](./known-good-shadow.json)
+
 ## Building the types
 
 ```bash
@@ -35,15 +47,3 @@ npx swc -d types-dist ./types
 # Make sure example runs
 npx tsx ./example.ts
 ```
-
-## Usage
-
-See [example.ts](./example.ts)
-
-## JSON document structure
-
-LwM2M values are encoded as a JSON document, where the key is an extended
-version of the LwM2M URN: `<ObjectID>:<ObjectVersion>@<LwM2MVersion>` (where
-`ObjectVersion` and/or `LwM2MVersion` can be omitted if it is `1.0`).
-
-[Example](./known-good-shadow.json)
