@@ -10,7 +10,7 @@ export const createLwm2mJsonSchemaDocument = async (): Promise<
 > => {
 	let lwm2mDocument = S.object()
 		.id(
-			'https://github.com/NordicSemiconductor/lwm2m-typebox-types-js/blob/saga/LwM2MDocument.schema.json',
+			'https://github.com/NordicSemiconductor/lwm2m-types-js/blob/saga/LwM2MDocument.schema.json',
 		)
 		.title('LwM2M JSON Schema')
 		.description('JSON schema for expressing LwM2M resources as JSON')

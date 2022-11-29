@@ -3,11 +3,11 @@ import * as assert from 'node:assert/strict'
 import type {
 	LwM2MDocument,
 	Temperature_3303,
-} from '@nordicsemiconductor/lwm2m-typebox-types'
+} from '@nordicsemiconductor/lwm2m-types'
 import {
 	Temperature_3303_urn,
 	validate,
-} from '@nordicsemiconductor/lwm2m-typebox-types'
+} from '@nordicsemiconductor/lwm2m-types'
 import knowGoodShadow from './known-good-shadow.json'
 
 // We can validate that the data is correctly defined as LwM2M

@@ -19,7 +19,7 @@
     "importsNotUsedAsValues": "error",
     "baseUrl": ".",
     "paths": {
-      "@nordicsemiconductor/lwm2m-typebox-types": ["index.d.ts"]
+      "@nordicsemiconductor/lwm2m-types": ["index.d.ts"]
     }
   }
 }

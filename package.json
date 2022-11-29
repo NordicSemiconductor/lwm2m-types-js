@@ -1,6 +1,6 @@
 {
-  "name": "@nordicsemiconductor/lwm2m-typebox-types",
-  "description": "TypeBox definitions for the objects defined in the LwM2M Object Registry.",
+  "name": "@nordicsemiconductor/lwm2m-types",
+  "description": "TypeScript type definitions and JSON schema for the objects defined in the LwM2M Object Registry.",
   "scripts": {
     "test": "jest",
     "prepare": "husky install"
@@ -13,6 +13,19 @@
       "node": "./types-dist/LwM2M.js"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NordicSemiconductor/lwm2m-types-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NordicSemiconductor/lwm2m-types-js/issues"
+  },
+  "homepage": "https://github.com/NordicSemiconductor/lwm2m-types-js#readme",
+  "keywords": [
+    "nrf-asset-tracker",
+    "lwm2m",
+    "json-schema"
+  ],
   "dependencies": {
     "@sinclair/typebox": "0.25.10",
     "ajv": "8.11.2"

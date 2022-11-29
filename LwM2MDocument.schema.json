@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "$id": "https://github.com/NordicSemiconductor/lwm2m-typebox-types-js/blob/saga/LwM2MDocument.schema.json",
+  "$id": "https://github.com/NordicSemiconductor/lwm2m-types-js/blob/saga/LwM2MDocument.schema.json",
   "title": "LwM2M JSON Schema",
   "description": "JSON schema for expressing LwM2M resources as JSON",
   "properties": {
