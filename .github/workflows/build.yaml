@@ -2,8 +2,6 @@ name: Compile LwM2M type definitions
 
 on:
   push:
-    branches:
-
   workflow_dispatch:
 
 jobs:
@@ -44,3 +42,11 @@ jobs:
 
       - name: Make sure example runs
         run: npx tsx ./example.ts
+
+      - name: Check if definitions have changed
+        run: |
+          if [[ `git status --porcelain` ]]; then
+            exit 1;
+          else
+            echo "No changes.";
+          fi
