@@ -34,7 +34,7 @@
     "@nordicsemiconductor/eslint-config-asset-tracker-cloud-typescript": "10.0.55",
     "@sinclair/typebox": "0.25.11",
     "@swc/cli": "0.1.57",
-    "@swc/core": "1.3.21",
+    "@swc/core": "1.3.22",
     "@swc/jest": "0.2.23",
     "@types/jest": "29.2.4",
     "@types/xml2js": "0.4.11",
