@@ -3,7 +3,8 @@
   "description": "TypeScript type definitions and JSON schema for the objects defined in the LwM2M Object Registry.",
   "scripts": {
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublish": "npx swc -d dist ./src"
   },
   "type": "module",
   "types": "./index.d.ts",
@@ -11,6 +12,10 @@
     ".": {
       "import": "./types-dist/LwM2M.js",
       "node": "./types-dist/LwM2M.js"
+    },
+    "./validate.js": {
+      "import": "./dist/validate.js",
+      "node": "./dist/validate.js"
     }
   },
   "repository": {
@@ -84,6 +89,8 @@
     "example.ts",
     "types",
     "types-dist",
+    "dist",
+    "src",
     "LwM2MDocument.schema.json",
     "package-lock.json",
     "LICENSE",
