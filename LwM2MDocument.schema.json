@@ -12231,7 +12231,7 @@
         "2": {
           "type": "integer",
           "title": "Radio Signal Strength",
-          "description": "Indicates the average value of the received signal strength indication used in the\r\ncurrent network bearer (as indicated by Resource 0 of this Object). The value is expressed in dBm. For the following network bearers the signal strength parameters indicated below are represented by this resource:\r\nGSM:    RSSI\r\nUMTS:   RSCP\r\nLTE:    RSRP\r\nNB-IoT: NRSRP\r\nFor more details on Network Measurement Report, refer to the appropriate Cellular or Wireless Network standards, (e.g. for LTE Cellular Network\r\nrefer to 3GPP TS 36.133 specification)."
+          "description": "Indicates the average value of the received signal strength indication used in the\r\ncurrent network bearer (as indicated by Resource 0 of this Object). The value is expressed in dBm. For the following network bearers the signal strength parameters indicated below are represented by this resource:\r\nGSM:    RSSI\r\nUMTS:   RSCP\r\nLTE:    RSRP\r\nNB-IoT: NRSRP\r\nFor more details on Network Measurement Report, refer to the appropriate Cellular or Wireless Network standards, (e.g. for LTE Cellular Network\r\nrefer to 3GPP TS 36.133 specification). Units: dBm."
         },
         "3": {
           "type": "integer",

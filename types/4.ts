@@ -101,6 +101,7 @@ type AvailableNetworkBearer_1 = number
  * ID: 2
  * MultipleInstances: false
  * Mandatory: true
+ * Units: dBm
  */
 type RadioSignalStrength_2 = number
 /**
