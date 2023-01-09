@@ -2,7 +2,7 @@ import { LwM2MType } from '../lwm2m/LwM2MObjectDefinition'
 import { convertResources } from './convertResources'
 import type { ObjectDef } from './LwM2MJSONfromXML2js'
 
-const input: typeof ObjectDef['Resources'] = [
+const input: (typeof ObjectDef)['Resources'] = [
 	{
 		Item: [
 			{
@@ -63,7 +63,7 @@ describe('convertResources()', () => {
 	})
 
 	it('should remove invalid RangeEnumeration definitions', () => {
-		const inputWithTextRangeEnumeration: typeof ObjectDef['Resources'] = [
+		const inputWithTextRangeEnumeration: (typeof ObjectDef)['Resources'] = [
 			{
 				Item: [
 					{
