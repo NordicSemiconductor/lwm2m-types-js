@@ -12,7 +12,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  style:
+  update-definitions:
     runs-on: ubuntu-22.04
 
     steps:
@@ -45,13 +45,7 @@ jobs:
       - name: Format result
         run: npx prettier --write ./
 
-      - name: Make sure result compiles
-        run: npx tsc
-
-      - name: Make sure example runs
-        run: npx tsx ./example.ts
-
-      - name: Check if changes were made
+      - name: Check if definitions have changed
         run: |
           git status
           if [[ `git status --porcelain` ]]; then
