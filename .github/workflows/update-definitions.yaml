@@ -1,0 +1,76 @@
+name: Create PR if LwM2M registry has changed
+
+on:
+  push:
+    branches: [saga]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  style:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Keep npm cache around to speed up installs
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Clone LwM2M object registry
+        run: |
+          git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git --depth 1
+          echo "LWM2M_REGISTRY_VERSION=`git -C lwm2m-registry rev-parse HEAD` | tr -d '\n'"
+
+      - name: Create LwM2M types
+        run: npx tsx cli/generate-types.ts
+
+      - name: Create the JSON Schema
+        run: npx tsx cli/generate-json-schema.ts
+
+      - name: Format result
+        run: npx prettier --write ./
+
+      - name: Make sure result compiles
+        run: npx tsc
+
+      - name: Make sure example runs
+        run: npx tsx ./example.ts
+
+      - name: Check if changes were made
+        run: |
+          git status
+          if [[ `git status --porcelain` ]]; then
+            echo "HAS_CHANGES=1" >> $GITHUB_ENV
+          else
+            echo "HAS_CHANGES=0" >> $GITHUB_ENV
+          fi
+
+      - name: Create Pull Request
+        if: env.HAS_CHANGES == '1'
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: "feat(registry): update definitions"
+          committer: "github-actions[bot] <actions@example.com>"
+          author: "github-actions[bot] <actions@example.com>"
+          delete-branch: true
+          title: "Update registry definitions"
+          body:
+            "Update definitions from
+            https://github.com/OpenMobileAlliance/lwm2m-registry/commit/${{
+            env.LWM2M_REGISTRY_VERSION }}"
+          labels: enhancement

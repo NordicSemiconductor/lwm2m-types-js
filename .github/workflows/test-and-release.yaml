@@ -10,9 +10,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
+
+      - name: Keep npm cache around to speed up installs
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
         run: npm ci
@@ -42,14 +49,6 @@ jobs:
 
       - name: Make sure example runs
         run: npx tsx ./example.ts
-
-      - name: Check if definitions have changed
-        run: |
-          if [[ `git status --porcelain` ]]; then
-            exit 1;
-          else
-            echo "No changes.";
-          fi
 
       - name: Semantic release
         env:
