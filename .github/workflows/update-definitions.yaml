@@ -63,8 +63,6 @@ jobs:
           author: "github-actions[bot] <actions@example.com>"
           delete-branch: true
           title: "Update registry definitions"
-          body:
-            "Update definitions from
-            https://github.com/OpenMobileAlliance/lwm2m-registry/commit/${{
-            env.LWM2M_REGISTRY_VERSION }}"
+          body: |
+            "Update definitions from https://github.com/OpenMobileAlliance/lwm2m-registry/commit/${{ env.LWM2M_REGISTRY_VERSION }}"
           labels: enhancement
