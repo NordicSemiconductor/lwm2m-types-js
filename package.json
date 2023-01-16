@@ -43,7 +43,7 @@
     "@swc/jest": "0.2.24",
     "@types/jest": "29.2.5",
     "@types/xml2js": "0.4.11",
-    "@typescript-eslint/eslint-plugin": "5.48.1",
+    "@typescript-eslint/eslint-plugin": "5.48.2",
     "chalk": "5.2.0",
     "fluent-json-schema": "4.0.0",
     "husky": "8.0.3",
