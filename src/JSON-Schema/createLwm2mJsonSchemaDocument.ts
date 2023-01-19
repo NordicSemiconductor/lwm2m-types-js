@@ -14,7 +14,6 @@ export const createLwm2mJsonSchemaDocument = async (): Promise<
 		)
 		.title('LwM2M JSON Schema')
 		.description('JSON schema for expressing LwM2M resources as JSON')
-		.additionalProperties(false)
 
 	for (const { jsonSchema, id } of await Promise.all(
 		(await lwm2mDefinitions()).map(createJsonSchema),

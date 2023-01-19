@@ -4,7 +4,6 @@
   "$id": "https://github.com/NordicSemiconductor/lwm2m-types-js/blob/saga/LwM2MDocument.schema.json",
   "title": "LwM2M JSON Schema",
   "description": "JSON schema for expressing LwM2M resources as JSON",
-  "additionalProperties": false,
   "properties": {
     "6": {
       "type": "object",
