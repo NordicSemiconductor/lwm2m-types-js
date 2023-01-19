@@ -16,6 +16,10 @@
     "./validate.js": {
       "import": "./dist/validate.js",
       "node": "./dist/validate.js"
+    },
+    "./createURN.js": {
+      "import": "./dist/type-generation/createURN.js",
+      "node": "./dist/type-generation/createURN.js"
     }
   },
   "repository": {
