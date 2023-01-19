@@ -30,6 +30,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 		)
 		.title(Name)
 		.description(description)
+		.additionalProperties(false)
 
 	for (const [
 		ResourceID,

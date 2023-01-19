@@ -4,12 +4,14 @@
   "$id": "https://github.com/NordicSemiconductor/lwm2m-types-js/blob/saga/LwM2MDocument.schema.json",
   "title": "LwM2M JSON Schema",
   "description": "JSON schema for expressing LwM2M resources as JSON",
+  "additionalProperties": false,
   "properties": {
     "6": {
       "type": "object",
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/6.xml",
       "title": "Location",
       "description": "This LwM2M Object provides a range of location telemetry related information which can be queried by the LwM2M Server. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "number",
@@ -55,6 +57,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/7.xml",
       "title": "Connectivity Statistics",
       "description": "This LwM2M Objects enables client to collect statistical information and enables the LwM2M Server to retrieve these information, set the collection duration and reset the statistical parameters. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -98,6 +101,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/8.xml",
       "title": "Lock and Wipe",
       "description": "This LWM2M objects provides the resources needed to perform the lock and wipe operations. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -147,6 +151,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/9.xml",
         "title": "LWM2M Software Management",
         "description": "This LwM2M objects provides the resources needed to perform software management on the device. Each software component is managed via a dedicated Software Management Object instance. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -251,6 +256,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/14.xml",
         "title": "LWM2M Software Component",
         "description": "If some Objects are not supported after software update, the LwM2M Client MUST delete all the Object Instances of the Objects that are not supported. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -287,6 +293,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/16.xml",
         "title": "Portfolio",
         "description": "The Portfolio Object allows to extend the data storage capability of other Object Instances in the LwM2M system, as well as the services which may be used to authenticate and to protect privacy of data contained in those extensions. In addition, a service of data encryption is also defined LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "array",
@@ -323,6 +330,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/19.xml",
         "title": "BinaryAppDataContainer",
         "description": "This LwM2M Objects provides the application service data related to a LwM2M Server, eg. Water meter data. \r\nThere are several methods to create instance to indicate the message direction based on the negotiation between Application and LwM2M. The Client and Server should negotiate the instance(s) used to exchange the data. For example:\r\n - Using a single instance for both directions communication, from Client to Server and from Server to Client.\r\n - Using an instance for communication from Client to Server and another one for communication from Server to Client\r\n - Using several instances\r\n LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "array",
@@ -366,6 +374,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/20.xml",
       "title": "Event Log",
       "description": "The Event Log Object is a single Instance Object defined for logging data in a straightforward and generic way.\r\nThe Resources of that Object are based on the OMA LwM2M set of reusable Resources dedicated to logging event activity.\r\n LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "4010": {
           "type": "integer",
@@ -400,6 +409,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/500.xml",
         "title": "CoAP Config",
         "description": "\r\n            This object is used to configure the CoAP transmission parameters (RFC7252) and other parameters that affect CoAP transmission.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -462,6 +472,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/501.xml",
         "title": "LTE-MTC Band Config",
         "description": "\r\n            This object is used to configure the cellular band used by the device as well as to change the band. It is intended to be used on LTE bands, as in NB-IoT and LTE Cat M1 frequency bands.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -517,6 +528,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/502.xml",
         "title": "CO Detector",
         "description": "This is an alarm that should be raised if the sensor detects a higher than threshold CO level. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -609,6 +621,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/503.xml",
         "title": "Fire Alarm",
         "description": "This is an alarm that should be raised if the sensor(s) detect fire, based on the values reported from Temperature, Humidity, Smoke (CO2). LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -807,6 +820,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/504.xml",
         "title": "Remote SIM Provisioning",
         "description": "This is a device management object that should be used for Remote SIM Provisioning according to GSMA standards LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -942,6 +956,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/505.xml",
         "title": "LwM2M SIM Provisioning",
         "description": "This is a device management object that should be used for Remote SIM Provisioning from a LwM2M server. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -1057,6 +1072,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/507.xml",
         "title": "nuSIM Profile",
         "description": "This device management object contains the elements of a nuSIM profile package according to nuSIM Technical Specification NTS.01. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -1102,6 +1118,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/508.xml",
       "title": "nuSIM",
       "description": "This device management object represents a nuSIM integrated SIM according to NTS.01 - nuSIM Integrated SIM Specification. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -1149,6 +1166,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2048.xml",
         "title": "CmdhPolicy",
         "description": "This Object provides links to a set of rules associated with a specific CSE that governs the behavior of that CSE regarding rejecting, buffering and sending request or response messages via the Mcc reference point. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -1191,6 +1209,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2049.xml",
       "title": "ActiveCmdhPolicy",
       "description": "This Object provides a link to the currently active set of CMDH policies LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -1211,6 +1230,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2050.xml",
         "title": "CmdhDefaults",
         "description": "Defines which CMDH related parameters will be used by default.  LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "array",
@@ -1240,6 +1260,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2051.xml",
         "title": "CmdhDefEcValues",
         "description": "This Object represents default set of values for the Event Category parameter of an incoming request or response message. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -1289,6 +1310,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2052.xml",
         "title": "CmdhEcDefParamValues",
         "description": "This Object represents a specific set of default values for the CMDH related parameters Request Expiration Timestamp, Result Expiration Timestamp, Operational Execution Time, Result Persistence and Delivery Aggregation that are applicable for a given Event Category if these parameters are not specified in the message. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "array",
@@ -1336,6 +1358,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2053.xml",
         "title": "CmdhLimits",
         "description": "This Object represents limits for CMDH related parameter values.  LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -1422,6 +1445,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2054.xml",
         "title": "CmdhNetworkAccessRules",
         "description": "This Object defines the usage of underlying networks for forwarding information to other CSEs during processing of CMDH-related requests in a CSE. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "array",
@@ -1451,6 +1475,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2055.xml",
         "title": "CmdhNwAccessRule",
         "description": "This Object defines limits in usage of specific underlying networks for forwarding information to other CSEs during processing of CMDH-related requests in a CSE. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "array",
@@ -1501,6 +1526,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2056.xml",
         "title": "CmdhBuffer",
         "description": "This Object defines limits in usage of buffers for temporarily storing information that needs to be forwarded to other CSEs during processing of CMDH-related requests in a CSE. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "array",
@@ -1535,6 +1561,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2057.xml",
         "title": "CmdhBackOffParametersSet",
         "description": "This Object defines set of parameters which can be referenced by a specific Instance of the CmdhNwAccessRule Object (ID: 2055) LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -1579,6 +1606,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3311.xml",
         "title": "Light Control",
         "description": "This Object is used to control a light source, such as a LED or other light.  It allows a light to be turned on or off and its dimmer setting to be control as a % between 0 and 100. An optional colour setting enables a string to be used to indicate the desired colour. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5701": {
             "type": "string",
@@ -1638,6 +1666,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3339.xml",
         "title": "Audio Clip",
         "description": "This IPSO object should be used for a speaker that plays a pre-recorded audio clip or an audio output that is sent elsewhere. For example, an elevator which announces the floor of the building. A resource is provided to store the clip, a dimmer resource controls the relative sound level of the playback, and a duration resource limits the maximum playback time. After the duration time is reached, any remaining samples in the clip are ignored, and the clip player will be ready to play another clip. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5522": {
             "type": "string",
@@ -1673,6 +1702,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3340.xml",
         "title": "Timer",
         "description": "This IPSO object is used to time events and actions, using patterns common to industrial timers. A write to the trigger resource or On/Off input state change starts the timing operation, and the timer remaining time shows zero when the operation is complete. The patterns supported are One-Shot (mode 1), On-Time or Interval (mode 2), Time delay on pick-up or TDPU (mode 3), and Time Delay on Drop-Out or TDDO (mode 4). Mode 0 disables the timer, so the output follows the input with no delay. A counter is provided to count occurrences of the timer output changing from 0 to 1. Writing a value of zero resets the counter. The Digital Input State resource reports the state of the timer output.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5501": {
             "type": "integer",
@@ -1744,6 +1774,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3341.xml",
         "title": "Addressable Text Display",
         "description": "This IPSO object is used to send text to a text-only or text mode graphics display. Writing a string of text to the text resource causes it to be displayed at the selected X and Y locations on the display. If X or Y are set to a value greater than the size of the display, the position \"wraps around\" to the modulus of the setting and the display size. Likewise, if the text string overflows the display size, the text \"wraps around\" and displays on the next line down or, if the last line has been written, wraps around to the top of the display. Brightness and Contrast controls are provided to allow control of various display types including STN and DSTN type LCD character displays. Writing an empty payload to the Clear Display resource causes the display to be erased.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5527": {
             "type": "string",
@@ -1799,6 +1830,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3343.xml",
         "title": "Dimmer",
         "description": "This IPSO object should be used with a dimmer or level control to report the state of the control.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5548": {
             "type": "number",
@@ -1834,6 +1866,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3344.xml",
         "title": "Up/Down Control",
         "description": "This IPSO object is used to report the state of an up/down control element like a pair of push buttons or a rotary encoder. Counters for increase and decrease operations are provided for counting pulses from a quadrature encoder.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5532": {
             "type": "integer",
@@ -1878,6 +1911,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3345.xml",
         "title": "Multiple Axis Joystick",
         "description": "This IPSO object can be used to report the position of a shuttle or joystick control. A digital input is provided to report the state of an associated push button.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5500": {
             "type": "integer",
@@ -1919,6 +1953,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3351.xml",
       "title": "powerupLog",
       "description": "One time event sent by the device at power up. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -1958,6 +1993,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3352.xml",
         "title": "plmnSearchEvent",
         "description": "List of all PLMNs found during the initial search/scan LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -1988,6 +2024,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3353.xml",
       "title": "scellID",
       "description": "serving cell information that the RRC decides to camp on LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "2": {
           "type": "integer",
@@ -2017,6 +2054,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3354.xml",
       "title": "cellReselectionEvent",
       "description": "cell reselection event information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2046,6 +2084,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3355.xml",
       "title": "handoverEvent",
       "description": "handover event information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2090,6 +2129,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3356.xml",
       "title": "radioLinkFailureEvent",
       "description": "Radio Link Failure Event LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2109,6 +2149,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3357.xml",
       "title": "rrcStateChangeEvent",
       "description": "Current RRC state change information, including the event that triggered the state change LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2128,6 +2169,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3358.xml",
       "title": "rrcTimerExpiryEvent",
       "description": "RRC timer expiry event information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2142,6 +2184,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3359.xml",
       "title": "cellBlacklistEvent",
       "description": "Cell blacklist information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "6032": {
           "type": "integer",
@@ -2161,6 +2204,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3360.xml",
       "title": "esmContextInfo",
       "description": "ESM context information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2190,6 +2234,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3361.xml",
       "title": "emmStateValue",
       "description": "EMM context information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2209,6 +2254,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3362.xml",
       "title": "nasEmmTimerExpiryEvent",
       "description": "NAS EMM timer expiry information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2223,6 +2269,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3363.xml",
       "title": "nasEsmExpiryEvent",
       "description": "NAS ESM timer expiry information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2237,6 +2284,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3364.xml",
       "title": "emmFailureCauseEvent",
       "description": "Triggered at EMM failure - failure cause is logged LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2251,6 +2299,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3365.xml",
       "title": "rachLatency_delay",
       "description": "RACH Latency & delay information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "2": {
           "type": "integer",
@@ -2280,6 +2329,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3366.xml",
       "title": "macRachAttemptEvent",
       "description": "RACH information. Logged at RACH TX LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2338,6 +2388,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3367.xml",
       "title": "macRachAttemptReasonEvent",
       "description": "RACH Information - reason for initiating RACH LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2372,6 +2423,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3368.xml",
       "title": "macTimerStatusEvent",
       "description": "MAC timer expiry information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2386,6 +2438,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3369.xml",
       "title": "macTimingAdvanceEvent",
       "description": "Timing advance information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2405,6 +2458,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3370.xml",
       "title": "ServingCellMeasurement",
       "description": "Serving Cell Measurement LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "6032": {
           "type": "integer",
@@ -2445,6 +2499,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3371.xml",
         "title": "NeighborCellMeasurements",
         "description": "Neighbor Cell Measurements LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6032": {
             "type": "integer",
@@ -2481,6 +2536,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3372.xml",
       "title": "TimingAdvance",
       "description": "Timing Advance Information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "2": {
           "type": "integer",
@@ -2505,6 +2561,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3373.xml",
       "title": "txPowerHeadroomEvent",
       "description": "TX power headroom information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "2": {
           "type": "integer",
@@ -2529,6 +2586,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3374.xml",
       "title": "radioLinkMonitoring",
       "description": "Radio Link monitoring information maintained by RRC LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "2": {
           "type": "integer",
@@ -2565,6 +2623,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3375.xml",
       "title": "PagingDRX",
       "description": "Paging DRX information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "2": {
           "type": "integer",
@@ -2601,6 +2660,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3376.xml",
       "title": "txPowerBackOffEvent",
       "description": "TX Power backoff information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2615,6 +2675,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3377.xml",
       "title": "Message3Report",
       "description": "RACH message 3 report information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": { "type": "integer", "title": "tpc", "description": "TPC" },
         "1": {
@@ -2661,6 +2722,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3378.xml",
       "title": "PbchDecodingResults",
       "description": "Serving cell PBCH decoding information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2687,6 +2749,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3379.xml",
       "title": "pucchPowerControl",
       "description": "PUCCH TX power control information LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "2": {
           "type": "integer",
@@ -2716,6 +2779,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3381.xml",
       "title": "VolteCallEvent",
       "description": "VoLTE call status LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2735,6 +2799,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3382.xml",
       "title": "SipRegistrationEvent",
       "description": "SIP Registration status LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2754,6 +2819,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3383.xml",
       "title": "sipPublishEvent",
       "description": "SIP Publish status LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2768,6 +2834,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3384.xml",
       "title": "sipSubscriptionEvent",
       "description": "SIP Subscription status LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2787,6 +2854,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3385.xml",
       "title": "volteCallStateChangeEvent",
       "description": "VoLTE call status change LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2806,6 +2874,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3386.xml",
       "title": "VoLTErtpPacketLoss",
       "description": "Log is generated at the receiving end of RTP flow when newReceivedSequenceNumber - lastReceivedSequenceNumber > 1 LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -2825,6 +2894,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3410.xml",
       "title": "Device Extension",
       "description": "The uCIFI device extension is an extension to the standard Lightweight M2M device (object ID 3) using the resource called \"ExtDevInfo\" (resource ID 22). LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "string",
@@ -2889,6 +2959,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3411.xml",
         "title": "Battery",
         "description": "The uCIFI battery object provides attributes to monitor battery level and activity. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -2965,6 +3036,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3412.xml",
         "title": "LPWAN Communication",
         "description": "The uCIFI communication object provides attributes related to the communication on the LPWAN network, including multicast grouping. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -3120,6 +3192,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3413.xml",
         "title": "uCIFI Generic Actuator",
         "description": "The uCIFI generic actuator may be used for any actuator but not to replace Outdoor Lamp Controllers nor for an Irrigation Valves which have a specific device type in the uCIFI data model. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -3176,6 +3249,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3414.xml",
         "title": "uCIFI data bridge",
         "description": "The uCIFI data bridge object may be used to transport data from a 3rd party device, operating a proprietary network or protocol, over a LwM2M compliant network. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -3218,6 +3292,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3415.xml",
       "title": "Time synchronization",
       "description": "The uCIFI time synchronization object enables a device to sync-up its internal clock with a remote NTP server. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "string",
@@ -3259,6 +3334,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3416.xml",
         "title": "Outdoor lamp controller",
         "description": "The uCIFI outdoor lamp controller object provides attributes to control, command and monitor outdoor luminaires in streets, in tunnels, on roads and for illumination of park and gardens. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -3531,6 +3607,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3417.xml",
         "title": "Luminaire asset",
         "description": "The uCIFI luminaire asset is an object that enables outdoor lighting control software to configure outdoor lamp controllers. It also enables outdoor lamp controllers to send Zhaga D4i or DALI attributes read from the control gears, to centrally managed outdoor lighting control software or asset management systems. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -3618,6 +3695,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3418.xml",
         "title": "Electrical monitor",
         "description": "The uCIFI electrical monitor object provides attributes related to the analysis of electrical consumption in an outdoor luminaire or in a streetlight cabinet. It also identifies electrical anomalies. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -3793,6 +3871,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3419.xml",
         "title": "Photocell",
         "description": "A uCIFI photocell object is used for lighting control, particularly to identify when light should be switched ON/OFF. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -3824,6 +3903,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3420.xml",
         "title": "LED color light",
         "description": "The uCIFI LED color light enables to control light colors of a LED luminaire. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -3844,6 +3924,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3421.xml",
         "title": "Single-phase electrical meter",
         "description": "The uCIFI single-phase electrical meter measures the electrical consumption of loads on one electrical line, such as electrical cabinets in city infrastructures, street lighting networks, homes and buildings. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -4156,6 +4237,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3423.xml",
         "title": "Gas meter",
         "description": "The uCIFI gas meter measures the volume of gas that was distributed through the gas meter, in pulse count and/or in m3. It also detects anomalies in the gas meter. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -4222,6 +4304,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3424.xml",
         "title": "Water meter",
         "description": "The uCIFI water meter measures water volume that was distributed through a water meter, in pulse count as well as in m3. It also detects anomalies in the water meter. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -4302,6 +4385,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3425.xml",
         "title": "Irrigation valve",
         "description": "The uCIFI irrigation valve provides a way to control and monitor an irrigation valve. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -4358,6 +4442,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3426.xml",
         "title": "Water quality sensor",
         "description": "The uCIFI water quality sensor measures the quality of the water in the drinkable water distribution network, in water tanks or in lakes and rivers. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -4442,6 +4527,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3427.xml",
         "title": "Pressure monitoring sensor",
         "description": "The uCIFI water pressure monitoring sensor measures water pressure and help identify water leaks in water distribution pipelines. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -4501,6 +4587,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3428.xml",
         "title": "Air quality",
         "description": "The uCIFI air quality sensor reports measurement required to calculate Air Quality Index (AIQ. It also provides resources for average calculation as per the IQ index calculation. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -4625,6 +4712,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3429.xml",
         "title": "Tilt sensor",
         "description": "The uCIFI tilt sensor provides the angle between the object's internal vertical and the perpendicular to the earth. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "number",
@@ -4662,6 +4750,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3430.xml",
       "title": "Global Navigation Satellite System",
       "description": "More than a positioning object, the uCIFI global navigation satellite system object provides all the information required to calculate a position/location. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -4841,6 +4930,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3431.xml",
         "title": "Parking Sensor",
         "description": "The uCIFI parking sensor provides actual and cumulated occupancy duration as well as forbidden parking detection. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -4885,6 +4975,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3432.xml",
         "title": "Traffic Counter",
         "description": "The uCIFI traffic counter provides vehicle counting and traffic analysis data. A traffic counting device may implement multiple instances of this traffic counter object, each of them being in charge of counting different categories of vehicles (e.g. bikes, cars, trucks). LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -4980,6 +5071,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3433.xml",
         "title": "Noise sensor",
         "description": "The uCIFI noise sensor reports a noise measurement in decibel. It also provides resources for minimum/maximum measured values and the minimum/maximum range that can be measured by the noise sensor and some specific alarms resulting from noise analysis by the device. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -5034,6 +5126,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3434.xml",
         "title": "People counter",
         "description": "The uCIFI people counter provides people counting information using Bluetooth beacon or any other method. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -5079,6 +5172,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3435.xml",
         "title": "Filling level",
         "description": "The uCIFI filling level sensor measures how full and/or how empty a container (e.g. waste, fuel) is and reports it either in percentage or in centimeters. The filling level sensor may be complemented with a temperature sensor to compose a waste filling sensor that can also identify waste container fire. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -5159,6 +5253,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3436.xml",
       "title": "Edge computing manager",
       "description": "The uCIFI edge computing manager object defines the capability of a device to run scripts on the device itself. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "integer",
@@ -5197,6 +5292,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3437.xml",
         "title": "Edge computing script",
         "description": "The uCIFI edge computing scripts object defines a particular script to be executed by a device under a time or any other condition set by a \"Edge Computing Time Condition\" or \"Edge Computing Generic Condition\" object. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -5251,6 +5347,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3438.xml",
         "title": "Edge computing time condition",
         "description": "The uCIFI edge computing time condition object defines the day/time (defined as a CRON rule) at which a particular script should be executed by a device. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -5285,6 +5382,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3439.xml",
         "title": "Edge computing generic condition",
         "description": "The uCIFI edge computing generic condition object defines a vendor-specific condition (e.g. when a resource or an object is equal to a particular value) at which a particular script should be executed by the device. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -5319,6 +5417,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3441.xml",
         "title": "LwM2M v1.0 Test Object",
         "description": "This object is for use in interoperability tests of the LwM2M v1.0 technical specification. It contains resources for each available datatype. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "4": {
             "type": "array",
@@ -5428,6 +5527,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10241.xml",
         "title": "HostDeviceInfo",
         "description": "This LWM2M Object provides a range of host device related information which can be queried by the LWM2M Server. The host device is any integrated device with an embedded cellular radio module. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5905": {
             "type": "array",
@@ -5471,6 +5571,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10242.xml",
         "title": "3-Phase Power Meter",
         "description": "\r\n        This Object provides the information to represent a generic 3-Phase Power Meter.\r\n     LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -5736,6 +5837,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10244.xml",
       "title": "VehicleControlUnit",
       "description": "This Object provides the information to represent a generic VCU(vehicle control unit). LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -5955,6 +6057,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10245.xml",
       "title": "Relay Management",
       "description": "This LWM2M Object provides a range of eNB related measurements and parameters of which several are changeable. Furthermore, it includes Resources to enable/disable the eNB. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -6088,6 +6191,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10246.xml",
       "title": "CrowdBox Measurements",
       "description": "This LWM2M Object provides CrowdBox-related measurements such as serving cell parameters, backhaul timing advance, and neighbour cell reports. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -6142,6 +6246,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10247.xml",
         "title": "Neighbour Cell Report",
         "description": "This LWM2M Object provides the neighbour cell report. The CrowdBox Measurements Object and the Connected UE Report Object have both Objlnk Resources pointing to this Object. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -6185,6 +6290,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10248.xml",
       "title": "Connected UE Measurements",
       "description": "This LWM2M Object provides a range of measurements of connected UEs and provides an Object link to the Connected UE report. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -6220,6 +6326,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10249.xml",
         "title": "Connected UE Report",
         "description": "This LWM2M Object provides a range of information related to the connected UEs. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -6287,6 +6394,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10250.xml",
       "title": "App Data Container",
       "description": "This LWM2M Object is used for reporting application data of a device. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -6311,6 +6419,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10251.xml",
         "title": "AT Command",
         "description": "Used to execute an AT command on a cellular modem LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -6345,6 +6454,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10252.xml",
       "title": "Manifest",
       "description": "This object provides a range of information related to updating packages on a device LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "string",
@@ -6398,6 +6508,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10253.xml",
       "title": "Confidential Data",
       "description": "This LWM2M Object is used for reporting data, but in a confidential way LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -6422,6 +6533,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10254.xml",
         "title": "Current Loop Input",
         "description": "This LWM2M Object provides a representation of a current loop sensor, which indicates the value emitted by a current source. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "number",
@@ -6472,6 +6584,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10255.xml",
       "title": "Device Metadata",
       "description": "This object provides a range of information related to device metadata LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -6516,6 +6629,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10256.xml",
         "title": "ECID-Signal Measurement Information",
         "description": "This LWM2M Object provides ECID signal measurements of a device. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -6561,6 +6675,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10257.xml",
         "title": "Heat / Cooling meter",
         "description": "\r\nThis Object provides the information to represent a generic (district) heat or cooling meter\r\n     LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -6671,6 +6786,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10258.xml",
         "title": "Current Loop Output",
         "description": "This LWM2M Object provides a representation of a current loop source, which may be used to carry control signals. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "number",
@@ -6716,6 +6832,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10259.xml",
         "title": "System Log",
         "description": "This object provides read access to log buffers as well as limited configuration of logging services. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -6758,6 +6875,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10262.xml",
         "title": "Interval Data Delivery",
         "description": "The Interval Data Delivery object provides an optimised means for managing the delivery of interval data from multiple Interval Data Object instances.  LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -6798,6 +6916,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10263.xml",
         "title": "Event Data Delivery",
         "description": "The Event Data Delivery object provides a simple means for managing the delivery of event data from multiple Event Data Object instances.  LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -6838,6 +6957,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10264.xml",
         "title": "Delivery Schedule",
         "description": "The Delivery Schedule object provides a means for controlling the periodic delivery of interval and event data to the LwM2M server. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -6878,6 +6998,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10265.xml",
       "title": "Leakage Detection Configuration",
       "description": "The leakage detection configuration object provides a means for configuring the timing and sampling frequency of a vibration based network leak detector LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "array",
@@ -6935,6 +7056,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10266.xml",
         "title": "Water Flow Readings",
         "description": "Measures the flow of water in regular intervals LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -7015,6 +7137,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10267.xml",
         "title": "Daily Maximum Flow Rate Readings",
         "description": "Measures the maximum flow rate and its time stamp for specified period LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -7095,6 +7218,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10268.xml",
         "title": "Temperature Readings",
         "description": "Periodic temperature measurements LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -7175,6 +7299,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10269.xml",
         "title": "Pressure Readings",
         "description": "Periodic pressure measurements LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -7255,6 +7380,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10270.xml",
         "title": "Battery Level Readings",
         "description": "Periodic battery level measurements LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -7335,6 +7461,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10271.xml",
         "title": "Communications Activity Time Readings",
         "description": "Measures the total duration that the meter was activating its radio for packet transmission or receipt for the period. Used to monitor for excess poower usage over time. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -7415,6 +7542,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10272.xml",
         "title": "Water Meter Customer Leakage Alarm",
         "description": "A binary flag indicating continual usage (e.g. greater than 5 L/h for 24 hours and the flow never returning to zero at any time). LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -7512,6 +7640,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10273.xml",
         "title": "Water Meter Reverse Flow Alarm",
         "description": "An alarm indicating reverse flow through the pipe. Also supports delivery of the approximate volume of water flowing in the reverse direction in the preceding period. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -7609,6 +7738,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10274.xml",
         "title": "Water Meter Empty Pipe Alarm",
         "description": "An alarm when meter detects there is no liquid in the pipe LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -7706,6 +7836,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10275.xml",
         "title": "Water Meter Tamper Alarm",
         "description": "Detects interference from strong magnetic field or other electrical sources. If this is not relevant for ultrasonic meters then the tamper alarm may be used to indicate someone attempting to open the physical enclosure or other options the manufacturer may present. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -7803,6 +7934,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10276.xml",
         "title": "Water Meter High Pressure Alarm",
         "description": "Where supported by the meter this is an alarm that should be raised if the meter detects pressure above a pre-configured threshold. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -7900,6 +8032,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10277.xml",
         "title": "Water Meter Low Pressure Alarm",
         "description": "Where supported by the meter this is an alarm that should be raised if the meter detects pressure below a pre-configured threshold. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -7997,6 +8130,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10278.xml",
         "title": "High Temperature Alarm",
         "description": "Where supported by the meter this is an alarm that should be raised if the meter detects temperature above a pre-configured threshold. When the temperature drops below the clear threshold, the alarm should be cleared. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -8094,6 +8228,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10279.xml",
         "title": "Low Temperature Alarm",
         "description": "Where supported by the meter this is an alarm that should be raised if the meter detects temperature below a pre-configured threshold. When the temperature rises above the clear threshold, the alarm should be cleared LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -8191,6 +8326,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10280.xml",
         "title": "Water Network Leak Alarm",
         "description": "All meters must support the following default configuration. This alarm will be based on the frequency output of the vibration sensor/accelerometer on the SEW Daughter board. When a frequency is identified that has the characteristics of an upstream network leak, and its amplitude is above the defined threshold, the meter will report this as a network leak alarm. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -8288,6 +8424,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10281.xml",
         "title": "Low Battery Alarm",
         "description": "This Alarm is raised when the battery voltage drops below a defined level LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -8385,6 +8522,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10282.xml",
         "title": "Daughter Board Failure Alarm",
         "description": "This binary status should indicate that the meter MCU can no longer communicate with a daughter board LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -8482,6 +8620,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10283.xml",
         "title": "Device Reboot Event",
         "description": "This binary status should indicate that the meter MCU can no longer communicate with a daughter board LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -8579,6 +8718,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10284.xml",
         "title": "Time Synchronisation Event",
         "description": "This event records the fact that the device has rebooted LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6011": {
             "type": "integer",
@@ -8671,6 +8811,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10286.xml",
       "title": "App Fota Container",
       "description": " This LWM2M Object is used to download the firmware package of a device's application. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -8695,6 +8836,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10290.xml",
         "title": "Voltage Logging",
         "description": "Periodic voltage measurements that are logged into CBOR structure payload LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -8775,6 +8917,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10291.xml",
         "title": "Voltage Transient",
         "description": "Object for sampling high frequency values (in this case Voltage readings) in order to aggregate them and summarize them (Avg, Max, Min) and to then time-stamp and log these aggregates for packaging and transmission to the server. This allows for efficient data transfer of high frequency data, without the need to send huge amounts of raw data over the air. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -8870,6 +9013,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10292.xml",
         "title": "Pressure Transient",
         "description": "Object for measuring high frequency pressure readings and summarizing/logging them at defined intervals. This way, the raw data does not need to be sent over the air, and instead just the Average , Maximum and Minimum values for the interval LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -8960,6 +9104,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10299.xml",
       "title": "HostDevice",
       "description": "This LWM2M Object provides a range of host device related information which can be queried by the LWM2M Server. The host device is any integrated device with an embedded cellular radio module. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -9009,6 +9154,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10300.xml",
         "title": "LWM2M Meta Object",
         "description": "\r\n\t  \r\n\t  Use this meta object to provide one or more locations hosting XML data\r\n\t  model definitions for reusable or private and vendor-specific devices,\r\n\t  such as those in the range 26241-42768.\r\n\t  \r\n\t LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -9059,6 +9205,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10309.xml",
         "title": "Shareparkinglot",
         "description": "This LwM2M Object provides the keying material of our technology product-ShareParkingLock. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -9126,6 +9273,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10313.xml",
         "title": "Gas Readings",
         "description": "Object to periodically log readings from any gas sensor (eg H2S, VOCx, methane etc) LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6000": {
             "type": "integer",
@@ -9213,6 +9361,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10314.xml",
         "title": "Particulates",
         "description": "This object should be used to report the concentration of particulates, for example a measurement of a particulates air quality sensor.  It also provides resources for minimum/maximum measured values and the minimum/maximum range that can be measured by the particulate sensor. An example measurement unit is microgrammes per cubic metre ug/m3. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5601": {
             "type": "number",
@@ -9258,6 +9407,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10315.xml",
       "title": "Robot",
       "description": "This LWM2M Object includes robot information and links to the location object. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "string",
@@ -9320,6 +9470,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10316.xml",
       "title": "RCU",
       "description": "This LWM2M Object includes RCU(Robotic Control Unit) information and the link to RCU APPs. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "string",
@@ -9448,6 +9599,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10318.xml",
       "title": "RCU PM",
       "description": "This LWM2M Object includes RCU(Robotic Control Unit) PM information(counter and guage). LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "integer",
@@ -9553,6 +9705,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10319.xml",
       "title": "RCU Control",
       "description": "This LWM2M Object includes all operations on RCUs. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "integer",
@@ -9580,6 +9733,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10320.xml",
         "title": "CCU",
         "description": "This LWM2M Object includes CCU(Central Control Unit) information and the link to CCU APPs. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -9644,6 +9798,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10322.xml",
         "title": "CCU PM",
         "description": "This LWM2M Object includes CCU PM(counter and gauge). LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -9686,6 +9841,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10324.xml",
         "title": "ECU",
         "description": "This LWM2M Object includes ECU(End Control Unit) information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -9711,6 +9867,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10326.xml",
       "title": "Robot PM",
       "description": "This LWM2M Object includes PM(counter and gauge) supported by all robots. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "51": {
           "type": "integer",
@@ -10070,6 +10227,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10327.xml",
         "title": "Compressor",
         "description": "This LWM2M Object includes the Compressor information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10097,6 +10255,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10328.xml",
         "title": "SCA PM",
         "description": "This LWM2M Object includes all PM items belongs to a specific SCA. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10122,6 +10281,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10329.xml",
       "title": "Robot Control",
       "description": "This LWM2M Object includes all operations on robots. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "integer",
@@ -10151,6 +10311,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10330.xml",
       "title": "Network Info",
       "description": "This LWM2M Object includes network status related information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "string",
@@ -10204,6 +10365,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10331.xml",
       "title": "Robot Service Info",
       "description": "This LWM2M Object includes robot service related information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "string",
@@ -10318,6 +10480,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10332.xml",
         "title": "Robot Selfcheck Info",
         "description": "This LWM2M Object includes robot selfcheck result. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10340,6 +10503,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10333.xml",
       "title": "PM Threshold",
       "description": "Here defines all items needed in PM Threshold management. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "array",
@@ -10382,6 +10546,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10334.xml",
         "title": "Robot Alarm",
         "description": "Here lists all items of an alarm reported by the robot. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10446,6 +10611,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10335.xml",
         "title": "Event",
         "description": "Here lists all items of an event reported by the robot. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10486,6 +10652,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10336.xml",
       "title": "MIC",
       "description": "This LWM2M Object includes MIC array information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "5905": {
           "type": "string",
@@ -10514,6 +10681,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10337.xml",
         "title": "SCA",
         "description": "This LWM2M Object includes SCA information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10536,6 +10704,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10338.xml",
       "title": "Speaker",
       "description": "This LWM2M Object includes speaker information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "integer",
@@ -10559,6 +10728,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10339.xml",
       "title": "Tripod Head",
       "description": "This LWM2M Object includes Tripod Head information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "5905": {
           "type": "string",
@@ -10587,6 +10757,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10340.xml",
         "title": "Camera",
         "description": "This LWM2M Object includes camera information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10651,6 +10822,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10341.xml",
       "title": "GPS",
       "description": "This LWM2M Object includes GPS information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "5905": {
           "type": "string",
@@ -10674,6 +10846,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10342.xml",
       "title": "IMU",
       "description": "This LWM2M Object includes IMU(Inertial Measurement Unit) information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "5905": {
           "type": "string",
@@ -10702,6 +10875,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10343.xml",
         "title": "LiDAR",
         "description": "This LWM2M Object includes LiDAR information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10737,6 +10911,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10344.xml",
         "title": "Arm",
         "description": "This LWM2M Object includes arm information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10772,6 +10947,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10345.xml",
         "title": "Leg",
         "description": "This LWM2M Object includes leg information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10807,6 +10983,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10346.xml",
         "title": "Servomotor",
         "description": "This LWM2M Object includes Servomotor information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10837,6 +11014,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10347.xml",
       "title": "Screen",
       "description": "This LWM2M Object includes robot screen information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "integer",
@@ -10868,6 +11046,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10348.xml",
         "title": "Wheel",
         "description": "This LWM2M Object includes wheel information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10898,6 +11077,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10349.xml",
       "title": "Chassis",
       "description": "This LWM2M Object includes chassis information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "5905": {
           "type": "string",
@@ -10926,6 +11106,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10350.xml",
         "title": "Light",
         "description": "This LWM2M Object includes light information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10953,6 +11134,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10351.xml",
         "title": "Door",
         "description": "This LWM2M Object includes the door information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -10975,6 +11157,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10352.xml",
       "title": "Thermal Imager",
       "description": "This LWM2M Object includes the Thermal Imager information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "number",
@@ -10999,6 +11182,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10353.xml",
       "title": "Warning Light",
       "description": "This LWM2M Object includes Warning Light information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "1": {
           "type": "integer",
@@ -11027,6 +11211,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10354.xml",
         "title": "APP",
         "description": "This LWM2M Object includes the APP information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: true",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -11080,6 +11265,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10355.xml",
       "title": "General Info",
       "description": "This LWM2M Object contains the referrence to all general info objects of the robot. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "100": {
           "type": "string",
@@ -11115,6 +11301,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10356.xml",
       "title": "Service Info",
       "description": "This LWM2M Object contains the referrence to all objects containing service info. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "100": {
           "type": "string",
@@ -11210,6 +11397,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10357.xml",
       "title": "PM",
       "description": "This LWM2M Object contains the referrence to all PM objects. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "100": {
           "type": "string",
@@ -11250,6 +11438,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10358.xml",
         "title": "Fan PM",
         "description": "This LWM2M Object includes all PM items belongs to Fans. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -11275,6 +11464,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10359.xml",
         "title": "Lock",
         "description": "This LWM2M Object includes the Lock information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -11302,6 +11492,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10360.xml",
         "title": "Ultrasonic Sensor",
         "description": "This LWM2M Object includes Ultrasonic Sensor information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -11327,6 +11518,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10361.xml",
         "title": "Collision Sensor",
         "description": "This LWM2M Object includes Collision Sensor information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -11359,6 +11551,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10362.xml",
         "title": "Drop Sensor",
         "description": "This LWM2M Object includes Drop Sensor information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -11386,6 +11579,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10363.xml",
       "title": "Temperature Sensor",
       "description": "This LWM2M Object includes Temperature Sensor information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "50": {
           "type": "integer",
@@ -11400,6 +11594,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10364.xml",
       "title": "Humidity Sensor",
       "description": "This LWM2M Object includes Humidity Sensor information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "50": {
           "type": "integer",
@@ -11414,6 +11609,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10365.xml",
       "title": "Gas-Dust Sensor",
       "description": "This LWM2M Object includes Gas-Dust information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "50": {
           "type": "integer",
@@ -11433,6 +11629,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10366.xml",
         "title": "Fan",
         "description": "This LWM2M Object includes Fan information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -11453,6 +11650,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10368.xml",
         "title": "SpringMotor",
         "description": "This LWM2M Object includes SpringMotor information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -11483,6 +11681,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10369.xml",
       "title": "MCU",
       "description": "This LWM2M Object includes MCU information. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "5905": {
           "type": "string",
@@ -11506,6 +11705,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10371.xml",
       "title": "Reboot Status",
       "description": "This object provides features allowing to monitor Reboot and Reset Factory operation from LWM2M Device object. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -11544,6 +11744,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10374.xml",
         "title": "Modbus Connection",
         "description": "This LwM2M Object is used to configure a Modbus protocol connection. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -11618,6 +11819,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10375.xml",
         "title": "Modbus Register Cluster",
         "description": "This LwM2M Object represents a set of Modbus registers and acts as an interface to read and write their values. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -11686,6 +11888,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10376.xml",
         "title": "Periodic Activity",
         "description": "\r\n\t\tGeneric interface to set up periodic activity like hourly sensor reading/load activation and mechanism to retrieve the periodic data.\r\n\t\t LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -11761,6 +11964,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10377.xml",
         "title": "Data Monitoring",
         "description": "Generic interface to set up data monitoring like sensor/log data and mechanism to receive alerts. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -11846,6 +12050,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10378.xml",
         "title": "Edge Application Server Configuration",
         "description": "This is used for UE to obtain information about suitable Edge Application Server in Edge Data Network, and to support service continuity for the UE to minimize service interruption. LWM2MVersion: 1.0 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -11887,6 +12092,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/1.xml",
         "title": "LwM2M Server",
         "description": "This LwM2M Objects provides the data related to a LwM2M Server. A Bootstrap-Server has no such an Object Instance associated to it. LWM2MVersion: 1.2 ObjectVersion: 1.2 MultipleInstances: true Mandatory: true",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -12051,6 +12257,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/2.xml",
         "title": "LwM2M Access Control",
         "description": "Access Control Object is used to check whether the LwM2M Server has access right for performing an operation. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -12089,6 +12296,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3.xml",
       "title": "Device",
       "description": "This LwM2M Object provides a range of device related information which can be queried by the LwM2M Server, and a device reboot and factory reset function. LWM2MVersion: 1.1 ObjectVersion: 1.2 MultipleInstances: false Mandatory: true",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -12213,6 +12421,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/4.xml",
       "title": "Connectivity Monitoring",
       "description": "This LwM2M Object enables monitoring of parameters related to network connectivity.\r\nIn this general connectivity Object, the Resources are limited to the most general cases common to most network bearers. It is recommended to read the description, which refers to relevant standard development organizations (e.g. 3GPP, IEEE).\r\nThe goal of the Connectivity Monitoring Object is to carry information reflecting the more up to date values of the current connection for monitoring purposes. Resources such as Link Quality, Radio Signal Strength, Cell ID are retrieved during connected mode at least for cellular networks. LWM2MVersion: 1.1 ObjectVersion: 1.3 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -12310,6 +12519,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/5.xml",
       "title": "Firmware Update",
       "description": "This LwM2M Object enables management of firmware which is to be updated. This Object includes installing a firmware package, updating firmware, and performing actions after updating firmware. The firmware update MAY require to reboot the device; it will depend on a number of factors, such as the operating system architecture and the extent of the updated software.\r\nThe envisioned functionality is to allow a LwM2M Client to connect to any LwM2M Server to obtain a firmware image using the object and resource structure defined in this section experiencing communication security protection using TLS/DTLS. There are, however, other design decisions that need to be taken into account to allow a manufacturer of a device to securely install firmware on a device. Examples for such design decisions are how to manage the firmware update repository at the server side (which may include user interface considerations), the techniques to provide additional application layer security protection of the firmware image, how many versions of firmware images to store on the device, and how to execute the firmware update process considering the hardware specific details of a given IoT hardware product. These aspects are considered to be outside the scope of this version of the specification.\r\nA LwM2M Server may also instruct a LwM2M Client to fetch a firmware image from a dedicated server (instead of pushing firmware images to the LwM2M Client). The Package URI resource is contained in the Firmware object and can be used for this purpose.\r\nA LwM2M Client MUST support block-wise transfer [CoAP_Blockwise] if it implements the Firmware Update object.\r\nA LwM2M Server MUST support block-wise transfer. Other protocols, such as HTTP/HTTPs, MAY also be used for downloading firmware updates (via the Package URI resource). For constrained devices it is, however, RECOMMENDED to use CoAP for firmware downloads to avoid the need for additional protocol implementations. LWM2MVersion: 1.1 ObjectVersion: 1.1 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -12391,6 +12601,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10.xml",
       "title": "LWM2M Cellular Connectivity",
       "description": "This object specifies resources to enable a device to connect to a 3GPP or 3GPP2 bearer, including GPRS/EDGE, UMTS, LTE, NB-IoT, SMS. For cellular connectivity, this object focuses on Packet Switched (PS) connectivity and doesn't aim to provide comprehensive Circuit Switched (CS) connectivity management. LWM2MVersion: 1.1 ObjectVersion: 1.1 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "string",
@@ -12494,6 +12705,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/11.xml",
         "title": "LWM2M APN Connection Profile",
         "description": "This object specifies resources to enable a device to connect to an APN. LWM2MVersion: 1.1 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -12720,6 +12932,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/12.xml",
         "title": "WLAN connectivity",
         "description": "This object specifies resources to enable a device to connect to a WLAN bearer. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -13010,6 +13223,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/13.xml",
       "title": "LWM2M Bearer Selection",
       "description": "This object specifies resources to enable a device to choose a PLMN/network on which to attach/register and what type of bearer to then connect.\r\n\t\tThis object allows via remote bearer and network configuration to overwrite automatic network and bearer selection e.g. as supported by the UICC. An equivalent example for overwriting automatic selection is a user doing manual network and bearer selection on a smart phone. LWM2MVersion: 1.1 ObjectVersion: 1.1 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "array",
@@ -13103,6 +13317,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/15.xml",
         "title": "DevCapMgmt",
         "description": "This LWM2M Object is dedicated to manage the device capabilities of a device e.g. sensors, communication, etc. LWM2MVersion: 1.0 ObjectVersion: 2.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -13156,6 +13371,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/22.xml",
         "title": "Virtual Observe Notify",
         "description": "The Virtual Observe Notify Object provides a main function to notify multiple resources to a LwM2M Server in one notification message whether the resources are in one object/object instance or across multiple objects. The Virtual Observe Notify Object also provides some functions to implement more efficient multi-resource report. LWM2MVersion: 1.1 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "array",
@@ -13220,6 +13436,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/24.xml",
         "title": "MQTT Server",
         "description": "This object defines configuration parameters for an MQTT client to interact with a MQTT server. LWM2MVersion: 1.2 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -13288,6 +13505,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/25.xml",
         "title": "LwM2M Gateway",
         "description": "This object is used by a LwM2M Gateway to maintain the IoT Devices connected to the LwM2M Gateway. LWM2MVersion: 1.1 ObjectVersion: 2.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -13319,6 +13537,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/26.xml",
         "title": "LwM2M Gateway Routing",
         "description": "This object is used by a LwM2M Gateway to maintain the routing table. LWM2MVersion: 1.2 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -13345,6 +13564,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/27.xml",
         "title": "5GNR Connectivity",
         "description": "This is a device management object that should be used for 5G-NR capable devices. LWM2MVersion: 1.2 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -13474,6 +13694,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/28.xml",
       "title": "Device RF Capabilities",
       "description": "This is a device management object that should be used for capturing the RF capabilities of the device. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "0": {
           "type": "integer",
@@ -13527,6 +13748,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/509.xml",
         "title": "Measurement Metadata",
         "description": "This object contains measurement metadata for sensor objects. The corresponding sensor is identified with an object link. If the LwM2M Client provides measurement quality information both inside the sensor objects and in the Measurement Metadata object, it MUST ensure that identical data is reported in corresponding object instances. The LwM2M Server SHOULD use the data from the Measurement Metadata object if both are available. The LwM2M Client also MUST ensure that no two Measurement Metadata object instances link to the same sensor object instance. If the LwM2M Server receives such non-conforming data, the Measurement Metadata object instance with largest Instance ID SHOULD be used.\r\n         LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -13569,6 +13791,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/510.xml",
         "title": "Vendor Specific Measurement Quality Reason",
         "description": "This object contains description for vendor specific measurement quality reason codes provided in a Measurement Metadata (509) object. Instances of this object define the mapping of vendor specific reason codes to reason description in the scope of an individual device.\r\n         LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -13603,6 +13826,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3200.xml",
         "title": "Digital Input",
         "description": "Generic digital input for non-specific sensors LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5500": {
             "type": "integer",
@@ -13670,6 +13894,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3201.xml",
         "title": "Digital Output",
         "description": "Generic digital output for non-specific actuators LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -13715,6 +13940,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3202.xml",
         "title": "Analog Input",
         "description": "Generic analog input for non-specific sensors LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -13790,6 +14016,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3203.xml",
         "title": "Analog Output",
         "description": "This IPSO object is a generic object that can be used with any kind of analog output interface. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -13836,6 +14063,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3300.xml",
         "title": "Generic Sensor",
         "description": "This IPSO object allows the description of a generic sensor. It is based on the description of a value and a unit according to the SenML specification. Thus, any type of value defined within this specification can be reported using this object. This object may be used as a generic object if a dedicated one does not exist. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -13916,6 +14144,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3301.xml",
         "title": "Illuminance",
         "description": "Illuminance sensor, example units = lx LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -13991,6 +14220,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3302.xml",
         "title": "Presence",
         "description": "Presence sensor with digital sensing, optional delay parameters LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5500": {
             "type": "integer",
@@ -14063,6 +14293,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3303.xml",
         "title": "Temperature",
         "description": "This IPSO object should be used with a temperature sensor to report a temperature measurement.  It also provides resources for minimum/maximum measured values and the minimum/maximum range that can be measured by the temperature sensor. An example measurement unit is degrees Celsius. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14138,6 +14369,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3304.xml",
         "title": "Humidity",
         "description": "This IPSO object should be used with a humidity sensor to report a humidity measurement.  It also provides resources for minimum/maximum measured values and the minimum/maximum range that can be measured by the humidity sensor. An example measurement unit is relative humidity as a percentage. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14213,6 +14445,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3305.xml",
         "title": "Power Measurement",
         "description": "This IPSO object should be used over a power measurement sensor to report a remote power measurement. It also provides resources for minimum/maximum measured values and the minimum/maximum range for both active and reactive power. It also provides resources for cumulative energy, calibration, and the power factor. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14338,6 +14571,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3306.xml",
         "title": "Actuation",
         "description": "This IPSO object is dedicated to remote actuation such as ON/OFF action or dimming. A multi-state output can also be described as a string. This is useful to send pilot wire orders for instance. It also provides a resource to reflect the time that the device has been switched on. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14393,6 +14627,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3308.xml",
         "title": "Set Point",
         "description": "This IPSO object should be used to set a desired value to a controller, such as a thermostat. A special resource is added to set the colour of an object. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14439,6 +14674,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3310.xml",
         "title": "Load Control",
         "description": "This Object is used for demand-response load control and other load control in automation application (not limited to power). LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14507,6 +14743,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3312.xml",
         "title": "Power Control",
         "description": "This Object is used to control a power source, such as a Smart Plug.  It allows a power relay to be turned on or off and its dimmer setting to be control as a % between 0 and 100. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14567,6 +14804,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3313.xml",
         "title": "Accelerometer",
         "description": "This IPSO object can be used to represent a 1-3 axis accelerometer. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14642,6 +14880,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3314.xml",
         "title": "Magnetometer",
         "description": "This IPSO object can be used to represent a 1-3 axis magnetometer with optional compass direction. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14712,6 +14951,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3315.xml",
         "title": "Barometer",
         "description": "This IPSO object should be used with an air pressure sensor to report a barometer measurement.  It also provides resources for minimum/maximum measured values and the minimum/maximum range that can be measured by the barometer sensor. An example measurement unit is pascals. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14787,6 +15027,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3316.xml",
         "title": "Voltage",
         "description": "This IPSO object should be used with voltmeter sensor to report measured voltage between two points.  It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is volts.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14867,6 +15108,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3317.xml",
         "title": "Current",
         "description": "This IPSO object should be used with an ammeter to report measured electric current in amperes. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is ampere.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -14947,6 +15189,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3318.xml",
         "title": "Frequency",
         "description": "This IPSO object should be used to report frequency measurements. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is hertz.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15027,6 +15270,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3319.xml",
         "title": "Depth",
         "description": "This IPSO object should be used to report depth measurements. It can, for example, be used to describe a generic rain gauge that measures the accumulated rainfall in millimetres (mm).\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15107,6 +15351,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3320.xml",
         "title": "Percentage",
         "description": "This IPSO object should can be used to report measurements relative to a 0-100% scale. For example it could be used to measure the level of a liquid in a vessel or container in units of %.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15187,6 +15432,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3321.xml",
         "title": "Altitude",
         "description": "This IPSO object should be used with an altitude sensor to report altitude above sea level in meters. Note that Altitude can be calculated from the measured pressure given the local sea level pressure.  It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is meters.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15267,6 +15513,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3322.xml",
         "title": "Load",
         "description": "This IPSO object should be used with a load sensor (as in a scale) to report the applied weight or force. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is kilograms.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15347,6 +15594,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3323.xml",
         "title": "Pressure",
         "description": "This IPSO object should be used to report pressure measurements. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is pascals.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15427,6 +15675,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3324.xml",
         "title": "Loudness",
         "description": "This IPSO object should be used to report loudness or noise level measurements. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is decibels.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15507,6 +15756,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3325.xml",
         "title": "Concentration",
         "description": "This IPSO object should be used to the particle concentration measurement of a medium. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is parts per million.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15587,6 +15837,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3326.xml",
         "title": "Acidity",
         "description": "This IPSO object should be used to report an acidity measurement of a liquid. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is pH.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15667,6 +15918,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3327.xml",
         "title": "Conductivity",
         "description": "This IPSO object should be used to report a measurement of the electric conductivity of a medium or sample. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is Siemens.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15747,6 +15999,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3328.xml",
         "title": "Power",
         "description": "This IPSO object should be used to report power measurements. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is Watts. This object may be used for either real power or apparent power measurements.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15827,6 +16080,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3329.xml",
         "title": "Power Factor",
         "description": "This IPSO object should be used to report a measurement or calculation of the power factor of a reactive electrical load. Power Factor is normally the ratio of non-reactive power to total power. This object also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15907,6 +16161,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3330.xml",
         "title": "Distance",
         "description": "This IPSO object should be used to report a distance measurement. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is Meters.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -15987,6 +16242,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3331.xml",
         "title": "Energy",
         "description": "This IPSO object should be used to report energy consumption (Cumulative Power) of an electrical load. An example measurement unit is Watt Hours.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -16042,6 +16298,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3332.xml",
         "title": "Direction",
         "description": "This IPSO object is used to report the direction indicated by a compass, wind vane, or other directional indicator. The units of measure is plane angle degrees.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -16102,6 +16359,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3333.xml",
         "title": "Time",
         "description": "This IPSO object is used to report the current time in seconds since January 1, 1970 UTC. There is also a fractional time counter that has a range of less than one second.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5506": {
             "type": "integer",
@@ -16147,6 +16405,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3334.xml",
         "title": "Gyrometer",
         "description": "This IPSO Object is used to report the current reading of a gyrometer sensor in 3 axes. It provides tracking of the minimum and maximum angular rate in all 3 axes. An example unit of measure is radians per second.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5508": {
             "type": "number",
@@ -16252,6 +16511,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3335.xml",
         "title": "Colour",
         "description": "This IPSO object should be used to report the measured value of a colour sensor in some colour space described by the units resource.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -16307,6 +16567,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3336.xml",
         "title": "Location",
         "description": "This IPSO object represents GPS coordinates. This object is compatible with the LwM2M management object for location, but uses reusable resources.\r\n         LWM2MVersion: 1.0 ObjectVersion: 2.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5517": {
             "type": "string",
@@ -16377,6 +16638,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3337.xml",
         "title": "Positioner",
         "description": "This IPSO object should be used with a generic position actuator with range from 0 to 100%. This object optionally allows setting the transition time for an operation that changes the position of the actuator, and for reading the remaining time of the currently active transition.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -16443,6 +16705,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3338.xml",
         "title": "Buzzer",
         "description": "This IPSO object should be used to actuate an audible alarm such as a buzzer, beeper, or vibration alarm. There is a dimmer control for setting the relative level of the alarm, and an optional duration control to limit the length of time the alarm sounds when turned on. Each time \"true\" is written to the On/Off resource, the alarm will sound again for the configured duration. If no duration is programmed or the setting is \"false\", writing a \"true\" to the On/Off resource will result in the alarm sounding continuously until a \"false\" is written to the On/Off resource.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -16496,6 +16759,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3342.xml",
         "title": "On/Off switch",
         "description": "This IPSO object should be used with an On/Off switch to report the state of the switch. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5500": {
             "type": "integer",
@@ -16549,6 +16813,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3346.xml",
         "title": "Rate",
         "description": "This object type should be used to report a rate measurement, for example the speed of a vehicle, or the rotational speed of a drive shaft. It also provides resources for minimum and maximum measured values, as well as the minimum and maximum range that can be measured by the sensor. An example measurement unit is meters per second (m/s).\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -16629,6 +16894,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3347.xml",
         "title": "Push button",
         "description": "This IPSO object is used to report the state of a momentary action push button control and to count the number of times the control has been operated since the last observation.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5500": {
             "type": "integer",
@@ -16672,6 +16938,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3348.xml",
         "title": "Multi-state Selector",
         "description": "This IPSO object is used to represent the state of a Multi-state selector switch with a number of fixed positions.\r\n         LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -16708,6 +16975,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3349.xml",
         "title": "Bitmap",
         "description": "Summarize several digital inputs to one value by mapping each bit to a digital input. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -16751,6 +17019,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3350.xml",
         "title": "Stopwatch",
         "description": "An ascending timer that counts how long time has passed since the timer was started after reset. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5501": {
             "type": "integer",
@@ -16808,6 +17077,7 @@
       "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3380.xml",
       "title": "PrachReport",
       "description": "PRACH report information LWM2MVersion: 1.0 ObjectVersion: 2.0 MultipleInstances: false Mandatory: false",
+      "additionalProperties": false,
       "properties": {
         "2": {
           "type": "integer",
@@ -16903,6 +17173,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3387.xml",
         "title": "oA Basic Control",
         "description": "The 'oA Basic Control' represents a common basic interface for a Control Function. This allows to have vendor specific (executing) control functions using diverse object numbers to be interfaced for the basic functionality in a common way. The object provides the basic functionality required for an OpenAIS control object. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "800": {
             "type": "integer",
@@ -17019,6 +17290,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3388.xml",
         "title": "oA Device",
         "description": "The 'oA Device' represents the OpenAIS specific parameters of a Device that are necessary in addition to the LWM2M Device. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "500": {
             "type": "string",
@@ -17117,6 +17389,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3389.xml",
         "title": "oA Group",
         "description": "The 'oA Group' represents a group. It contains an application group ID, a security group ID and a list of multicast and unicast IP addresses that are used in the group. \\nAdditionally it contains a list of all members of the group. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "600": {
             "type": "integer",
@@ -17174,6 +17447,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3390.xml",
         "title": "oA Logical Colour Light-Point Actuator",
         "description": "The 'oA Logical Colour Light Point Actuator' represents the logical part of an actuator model for a colour light point. The corresponding physical device is a light channel and associated gear (e.g. LED driver).\\nThe Object (module) supports several interactions that include absolute and relative colour setting. Several device configuration parameters are mapped, which relate to behaviour or describe device limitations. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "125": {
             "type": "integer",
@@ -17357,6 +17631,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3391.xml",
         "title": "oA Logical Colour Temperature Light-Point Actuator",
         "description": "The 'oA Logical Colour_Temperature Light Point Actuator' represents the logical part of an actuator model for a tunable white light point. The corresponding physical device is a light channel and associated gear (e.g. LED driver).\\nThe Object (module) supports several interactions that include absolute and relative colour temperature setting. Several device configuration parameters are mapped, which relate to behaviour or describe device limitations. Note that the overall intensity is not controlled by this object, it remains controlled by a logical light point object to ease dimming action across tuneable, coloured and non coloured lights. Please note also, that the corresponding executing object does not need to be restricted to tuneable white operation. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "139": {
             "type": "integer",
@@ -17510,6 +17785,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3392.xml",
         "title": "oA Logical Illuminance Sensor",
         "description": "The 'oA Logical Illuminance Sensor' represents the logical part of an illuminance sensor. The corresponding physical device is a sensor that detects illuminance in its detection area. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "400": {
             "type": "integer",
@@ -17618,6 +17894,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3393.xml",
         "title": "oA Logical Light-Point Actuator",
         "description": "The 'oA Logical Light Point Actuator' represents the logical part of an actuator model for a dimmable light point. The corresponding physical device is a light channel and associated gear (e.g. LED driver).\\nThe Object (module) supports several interactions that include basic On/Off as well as Up/Down dimming. Several device configuration parameters are mapped, which relate to behaviour or describe device limitations. For multi-channel luminaires where the configuration per channel may vary significantly (e.g. different max/min values), multiple instances of this Object should be used. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "100": {
             "type": "integer",
@@ -17775,6 +18052,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3394.xml",
         "title": "oA Logical Presence Sensor",
         "description": "The 'oA Logical Presence Sensor' represents the logical part of a presence sensor. The corresponding physical device is a sensor that detects presence in its detection area. \\nThe Object supports two states 'presence' and 'absence'. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "901": {
             "type": "string",
@@ -17865,6 +18143,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3395.xml",
         "title": "oA Logical Push-Button Sensor",
         "description": "The 'oA Logical Push-Button Sensor' represents the logical part of a standard, normally open, push-button input. The corresponding physical device is a button with a spring that returns the button to the un-pushed state once it is released.\\nThe Object supports several events such as 'click', 'hold', 'double-click' and 'release'. It also indicates if the button is 'stuck'. For physical devices with multiple push-button inputs, an instance of this Object is required to map each input. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "202": {
             "type": "integer",
@@ -17957,6 +18236,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3396.xml",
         "title": "oA Physical Colour Light-Point Actuator",
         "description": "The 'oA_Physical_Colour_Light-Point_Actuator' represents a physical colour light-point actuator. It is necessary to map at least on Logical Light Point Actuator to control the intensity and one Logical Colour Light-Point to control the colour to the Physical Colour Light-Point. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "100": {
             "type": "number",
@@ -18115,6 +18395,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3397.xml",
         "title": "oA Physical Colour Temperature Light-Point Actuator",
         "description": "The 'oA_Physical_Colour_Temperature_Light-Point_Actuator' represents a physical tunable white light-point actuator. It is necessary to map at least on Logical Light Point Actuator to control the intensity and one Logical Colour Temperature Light-Point to control the colour temperature to the Physical Colour Temperature Light Point. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "100": {
             "type": "number",
@@ -18295,6 +18576,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3398.xml",
         "title": "oA Physical Illuminance Sensor",
         "description": "The 'oA_Physical_Illuminance_Sensor' represents the physical part of an illuminance sensor. All logical illuminance sensors (object instances of 'oA Illuminance Sensor') are mapped to one physical illuminance sensor. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "407": {
             "type": "integer",
@@ -18346,6 +18628,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3399.xml",
         "title": "oA Physical Light-Point Actuator",
         "description": "The 'oA_Physical_Light-Point_Actuator' represents a physical light-point actuator. All logical light-point actuators (object instances of 'oA Light-Point Actuator') are mapped to one physical light-point actuator. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "100": {
             "type": "number",
@@ -18482,6 +18765,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3400.xml",
         "title": "oA Physical Presence Sensor",
         "description": "The 'oA_Physical_Presence_Sensor' represents the physical part of a presence sensor. All logical presence sensors (object instances of 'oA Presence Sensor') are mapped to one physical presence sensor. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "901": {
             "type": "string",
@@ -18519,6 +18803,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3401.xml",
         "title": "oA Physical Push-Button Sensor",
         "description": "The 'oA_Physical_Push-Button_Sensor' represents the physical part of a push-button sensor. All logical push-button sensors (object instances of 'oA Push-Button Sensor') are mapped to one physical push-button sensor. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "201": {
             "type": "integer",
@@ -18573,6 +18858,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3402.xml",
         "title": "oA Receiving Object",
         "description": "The 'oA Receiving Object' provides a resource for sensors/actuators to report their status message to. It is used with control objects as logical object that forwards the sensor and status data to the executing object.\\nIt is also used to receive the 'go bootstrap' message, using the Struct-ID 255, in OOTB mode. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "901": {
             "type": "string",
@@ -18609,6 +18895,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3403.xml",
         "title": "oA Reporting Object",
         "description": "The 'oA Reporting Object' packs several status messages available at the node into a single, size optimized message, as e.g. used with data collect or BMS interfacing. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "901": {
             "type": "string",
@@ -18672,6 +18959,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3404.xml",
         "title": "oA Scene",
         "description": "The 'oA Scene' represents a scene model. The scene holds defined values for each actuator in one group. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "650": {
             "type": "integer",
@@ -18732,6 +19020,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3405.xml",
         "title": "oA OGC-Security",
         "description": "The 'OGC Security' provides the appropriate keying material for a specific OGC Application group in the context of OGC. The keying material will be provided by a key distribution server, and must not be readable by any instance outside the local node. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "integer",
@@ -18776,6 +19065,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3406.xml",
         "title": "oA Status Report Structure",
         "description": "The 'oA Status_Report_Structure' describes the content of the status reports. Its ID is always the first byte, the following bytes are defined by Keys. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "850": {
             "type": "integer",
@@ -18815,6 +19105,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3407.xml",
         "title": "Smoke Alarm",
         "description": "This is an alarm that should be raised if the meter detects CO2 concentration above a pre-configured threshold. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "6044": {
             "type": "number",
@@ -18857,6 +19148,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3408.xml",
         "title": "Manhole Cover",
         "description": "Describe the status of a manhole cover. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "integer",
@@ -18893,6 +19185,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3442.xml",
         "title": "LwM2M v1.1 Test Object",
         "description": "This object aims to make easier to do interoperability tests about LWM2M v1.1. It contains resources for each available datatype. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "4": {
             "type": "array",
@@ -19038,6 +19331,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10243.xml",
         "title": "Single-Phase Power Meter",
         "description": "\r\n        This Object provides the information to represent a generic Single-Phase Power Meter.\r\n     LWM2MVersion: 1.0 ObjectVersion: 2.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -19143,6 +19437,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10260.xml",
         "title": "RDB",
         "description": "This object allows manipulation of Runtime Database variables. LWM2MVersion: 1.0 ObjectVersion: 2.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -19182,6 +19477,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10308.xml",
         "title": "AT&T Connectivity Extension",
         "description": "The AT&T Connectivity Extension Object will be used to gather information describing the UE and the operating state of the UE. The AT&T Connectivity Extension Object is an open and standard object used by AT&T. LWM2MVersion: 1.0 ObjectVersion: 2.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "1": {
             "type": "string",
@@ -19242,6 +19538,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/10311.xml",
         "title": "Solar Radiation",
         "description": "This Object is used to report solar irradiance (SI), i.e. power per unit area received from the Sun in the form of electromagnetic radiation, on a planar surface measured by a pyranometer or similar instrument. A pyranometer measures solar irradiance from the hemisphere above within a wavelength range 0.3 um to 3 um. For example, the application of solar radiation measurement can be meterological networks and solar energy applications. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "5518": {
             "type": "integer",
@@ -19322,6 +19619,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/18830.xml",
         "title": "MQTT Broker",
         "description": "This LwM2M Object provides the information to connect to an MQTT Broker i.e. URI, configuration, and keying material. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
@@ -19402,6 +19700,7 @@
         "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/18831.xml",
         "title": "MQTT Publication",
         "description": "This LwM2M Object is used to configure data reporting over MQTT. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
         "properties": {
           "0": {
             "type": "string",
