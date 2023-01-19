@@ -84,6 +84,7 @@
     "access": "public"
   },
   "files": [
+    "export.js",
     "index.d.ts",
     "example.ts",
     "types",
