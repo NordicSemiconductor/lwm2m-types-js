@@ -30,7 +30,7 @@ export const generateExports = (
 						),
 					),
 				]),
-				ts.factory.createStringLiteral(`./${definition.ObjectID}`),
+				ts.factory.createStringLiteral(`./${definition.ObjectID}.js`),
 			),
 		)
 		// URN
@@ -47,7 +47,7 @@ export const generateExports = (
 						),
 					),
 				]),
-				ts.factory.createStringLiteral(`./${definition.ObjectID}`),
+				ts.factory.createStringLiteral(`./${definition.ObjectID}.js`),
 			),
 		)
 	}

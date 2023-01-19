@@ -4,22 +4,14 @@
   "scripts": {
     "test": "jest",
     "prepare": "husky install",
-    "prepublish": "npx swc -d dist ./src"
+    "prepublish": "npx swc -C jsc.experimental.keepImportAssertions=true -d dist ./src"
   },
   "type": "module",
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./types-dist/LwM2M.js",
-      "node": "./types-dist/LwM2M.js"
-    },
-    "./validate.js": {
-      "import": "./dist/validate.js",
-      "node": "./dist/validate.js"
-    },
-    "./createURN.js": {
-      "import": "./dist/type-generation/createURN.js",
-      "node": "./dist/type-generation/createURN.js"
+      "import": "./export.js",
+      "node": "./export.js"
     }
   },
   "repository": {
