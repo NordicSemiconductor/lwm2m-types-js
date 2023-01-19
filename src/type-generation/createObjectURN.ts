@@ -19,7 +19,7 @@ export const createObjectURN = ({
 					undefined,
 					ts.factory.createStringLiteral(
 						createURN({
-							ObjectID,
+							ObjectID: parseInt(ObjectID, 10),
 							ObjectVersion,
 							LWM2MVersion: LWM2MVersion,
 						}),

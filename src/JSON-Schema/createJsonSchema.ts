@@ -11,11 +11,12 @@ export const createJsonSchema = async (
 	jsonSchema: Record<string, any>
 	id: string
 }> => {
+	const { ObjectID, ObjectVersion, LWM2MVersion } = lwm2mDefinition
 	const jsonSchema = lwM2MDefinitionToJSONSchema(lwm2mDefinition)
 	const id = createURN({
-		ObjectID: lwm2mDefinition.ObjectID ?? '',
-		ObjectVersion: lwm2mDefinition.ObjectVersion,
-		LWM2MVersion: lwm2mDefinition.LWM2MVersion ?? '1.0', // default
+		ObjectID: parseInt(ObjectID, 10),
+		ObjectVersion: ObjectVersion,
+		LWM2MVersion: LWM2MVersion ?? '1.0', // default
 	})
 	return { jsonSchema, id }
 }

@@ -16,20 +16,20 @@ export type LwM2MSIMProvisioning_505 = Readonly<
 	Array<{
 		'0': CurrentSIMType_0
 		'1': SupportedSIMType_1
-		'11': ProfileUpdateDeliveryMethod_11
 		'2': ServiceProviderName_2
 		'6': UpdateState_6
 		'7': UpdateResult_7
+		'11': ProfileUpdateDeliveryMethod_11
+		'3'?: ProfilePackage_3
+		'4'?: ProfileURI_4
+		'8'?: ProfileName_8
+		'9'?: ProfilePackageVersion_9
 		'10'?: ProfileUpdateProtocolSupport_10
 		'12'?: FreeMemoryonSIM_12
 		'13'?: TotalMemoryonSIM_13
 		'14'?: IntegratedCircuitCardIdentifier_ICCID_14
 		'15'?: eUICCID_15
 		'16'?: ProfileType_16
-		'3'?: ProfilePackage_3
-		'4'?: ProfileURI_4
-		'8'?: ProfileName_8
-		'9'?: ProfilePackageVersion_9
 	}>
 >
 /**
@@ -62,26 +62,6 @@ type CurrentSIMType_0 = number
  * Mandatory: true
  */
 type SupportedSIMType_1 = number
-/**
- * Profile Update Delivery Method
- *
- * The LwM2M Client uses this resource to
- * indicate its support for transferring Profile
- * images to the client either via the Package
- * Resource (=push) or via the Package URI
- * Resource (=pull) mechanism.
- * 0: Pull only
- * 1: Push only
- * 2: Both. In this case the LwM2M Server
- * MAY choose the preferred mechanism for
- * conveying the profile image to the
- * LwM2M Client.
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: true
- */
-type ProfileUpdateDeliveryMethod_11 = number
 /**
  * Service Provider Name
  *
@@ -143,6 +123,77 @@ type UpdateState_6 = number
  * Mandatory: true
  */
 type UpdateResult_7 = number
+/**
+ * Profile Update Delivery Method
+ *
+ * The LwM2M Client uses this resource to
+ * indicate its support for transferring Profile
+ * images to the client either via the Package
+ * Resource (=push) or via the Package URI
+ * Resource (=pull) mechanism.
+ * 0: Pull only
+ * 1: Push only
+ * 2: Both. In this case the LwM2M Server
+ * MAY choose the preferred mechanism for
+ * conveying the profile image to the
+ * LwM2M Client.
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type ProfileUpdateDeliveryMethod_11 = number
+/**
+ * Profile Package
+ *
+ * Profile Package is a personalised Profile using an interoperable description
+ * format that is transmitted to an eUICC to load and install a Profile.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ProfilePackage_3 = string
+/**
+ * Profile URI
+ *
+ * URI from where the device can download the profile package by an alternative
+ * mechanism. As soon the device has received the Profile package URI it
+ * performs the download at the next practical opportunity. The URI format is
+ * defined in RFC 3986. For example, coaps://example.org/profile is a
+ * syntactically valid URI. The URI scheme determines the protocol to be used.
+ * For CoAP this endpoint MAY be a LwM2M Server but does not necessarily need to
+ * be. A CoAP server implementing block-wise transfer is sufficient as a server
+ * hosting a firmware repository and the expectation is that this server merely
+ * serves as a separate file server making profile images available to LwM2M
+ * Clients. This server can be the future carrier server as well from which IoT
+ * devices would like to use the service.
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ProfileURI_4 = string
+/**
+ * Profile Name
+ *
+ * Name of the Profile Package.
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ProfileName_8 = string
+/**
+ * Profile Package Version
+ *
+ * Version of the Profile package.
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ProfilePackageVersion_9 = string
 /**
  * Profile Update Protocol Support
  *
@@ -222,57 +273,6 @@ type eUICCID_15 = string
  * Mandatory: false
  */
 type ProfileType_16 = string
-/**
- * Profile Package
- *
- * Profile Package is a personalised Profile using an interoperable description
- * format that is transmitted to an eUICC to load and install a Profile.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type ProfilePackage_3 = string
-/**
- * Profile URI
- *
- * URI from where the device can download the profile package by an alternative
- * mechanism. As soon the device has received the Profile package URI it
- * performs the download at the next practical opportunity. The URI format is
- * defined in RFC 3986. For example, coaps://example.org/profile is a
- * syntactically valid URI. The URI scheme determines the protocol to be used.
- * For CoAP this endpoint MAY be a LwM2M Server but does not necessarily need to
- * be. A CoAP server implementing block-wise transfer is sufficient as a server
- * hosting a firmware repository and the expectation is that this server merely
- * serves as a separate file server making profile images available to LwM2M
- * Clients. This server can be the future carrier server as well from which IoT
- * devices would like to use the service.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- */
-type ProfileURI_4 = string
-/**
- * Profile Name
- *
- * Name of the Profile Package.
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type ProfileName_8 = string
-/**
- * Profile Package Version
- *
- * Version of the Profile package.
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- */
-type ProfilePackageVersion_9 = string
 /**
  * The objectURN for LwM2M SIM Provisioning
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -20,6 +20,12 @@ export type Single_PhasePowerMeter_10243 = Readonly<
 		'5': Current_5
 		'0'?: Manufacturer_0
 		'1'?: ModelNumber_1
+		'2'?: SerialNumber_2
+		'3'?: Description_3
+		'6'?: ActivePower_6
+		'7'?: ReactivePower_7
+		'8'?: InductiveReactivePower_8
+		'9'?: CapacitiveReactivePower_9
 		'10'?: ApparentPower_10
 		'11'?: PowerFactor_11
 		'12'?: THD_V_12
@@ -28,12 +34,6 @@ export type Single_PhasePowerMeter_10243 = Readonly<
 		'15'?: ReactiveEnergy_15
 		'16'?: ApparentEnergy_16
 		'17'?: Frequency_17
-		'2'?: SerialNumber_2
-		'3'?: Description_3
-		'6'?: ActivePower_6
-		'7'?: ReactivePower_7
-		'8'?: InductiveReactivePower_8
-		'9'?: CapacitiveReactivePower_9
 	}>
 >
 /**
@@ -86,6 +86,82 @@ type Manufacturer_0 = string
  * Mandatory: false
  */
 type ModelNumber_1 = string
+/**
+ * Serial Number
+ *
+ *
+ * Serial number of the meter
+ *
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type SerialNumber_2 = string
+/**
+ * Description
+ *
+ *
+ * Description of the meter
+ *
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Description_3 = string
+/**
+ * Active Power
+ *
+ *
+ * Active Power
+ *
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kW
+ */
+type ActivePower_6 = number
+/**
+ * Reactive Power
+ *
+ *
+ * Reactive Power
+ *
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kvar
+ */
+type ReactivePower_7 = number
+/**
+ * Inductive Reactive Power
+ *
+ *
+ * Inductive Reactive Power
+ *
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kvar
+ */
+type InductiveReactivePower_8 = number
+/**
+ * Capacitive Reactive Power
+ *
+ *
+ * Capacitive Reactive Power
+ *
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kvar
+ */
+type CapacitiveReactivePower_9 = number
 /**
  * Apparent Power
  *
@@ -189,82 +265,6 @@ type ApparentEnergy_16 = number
  * Units: Hz
  */
 type Frequency_17 = number
-/**
- * Serial Number
- *
- *
- * Serial number of the meter
- *
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type SerialNumber_2 = string
-/**
- * Description
- *
- *
- * Description of the meter
- *
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type Description_3 = string
-/**
- * Active Power
- *
- *
- * Active Power
- *
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- * Units: kW
- */
-type ActivePower_6 = number
-/**
- * Reactive Power
- *
- *
- * Reactive Power
- *
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- * Units: kvar
- */
-type ReactivePower_7 = number
-/**
- * Inductive Reactive Power
- *
- *
- * Inductive Reactive Power
- *
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- * Units: kvar
- */
-type InductiveReactivePower_8 = number
-/**
- * Capacitive Reactive Power
- *
- *
- * Capacitive Reactive Power
- *
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- * Units: kvar
- */
-type CapacitiveReactivePower_9 = number
 /**
  * The objectURN for Single-Phase Power Meter
  * Used in the JSON schema for the LwM2M document definition as a key.

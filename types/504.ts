@@ -18,6 +18,13 @@ export type RemoteSIMProvisioning_504 = Readonly<
 		'1': SupportedSIMType_1
 		'11': IntegratedCircuitCardIdentifier_ICCID_11
 		'13': RSPType_13
+		'2'?: ServiceProviderName_2
+		'3'?: DownloadURI_Information_3
+		'5'?: RSPUpdateState_5
+		'6'?: RSPUpdateResult_6
+		'7'?: ProfileName_7
+		'8'?: ProfilePackageVersion_8
+		'9'?: FreeMemoryonSIM_9
 		'10'?: TotalMemoryonSIM_10
 		'12'?: eUICCID_12
 		'14'?: SelectedICCIDforRSPoperation_14
@@ -26,14 +33,7 @@ export type RemoteSIMProvisioning_504 = Readonly<
 		'17'?: RSPConfirmationCode_17
 		'18'?: RSPDataType_18
 		'19'?: SetRSPData_19
-		'2'?: ServiceProviderName_2
 		'20'?: GetRSPData_20
-		'3'?: DownloadURI_Information_3
-		'5'?: RSPUpdateState_5
-		'6'?: RSPUpdateResult_6
-		'7'?: ProfileName_7
-		'8'?: ProfilePackageVersion_8
-		'9'?: FreeMemoryonSIM_9
 	}>
 >
 /**
@@ -96,6 +96,117 @@ type IntegratedCircuitCardIdentifier_ICCID_11 = string
  * Mandatory: true
  */
 type RSPType_13 = number
+/**
+ * Service Provider Name
+ *
+ * Provides the name of the Service Provider assocatiated with the downloaded
+ * profile or the profile currently being downloaded.
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ServiceProviderName_2 = string
+/**
+ * Download URI/Information
+ *
+ * URI, or formatted data containing the URI (e.g. GSMA SGP.22 Activation Code),
+ * from where the device can download the profile package by an alternative
+ * mechanism.
+ * The URI format is defined in RFC 3986.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type DownloadURI_Information_3 = string
+/**
+ * RSP Update State
+ *
+ * Indicates current state with respect to the executed RSP action(s) in the RSP
+ * update resource. This value is set by the LwM2M Client.
+ * 0: Idle (before downloading a profile or after successful completetion of the
+ * action(s))
+ * 1: Downloading (The data sequence is on the way)
+ * 2: Downloaded profile ready for installation
+ * 3: Installing
+ * 5: Enabling
+ * 6: Disabling
+ * 7: Deleting
+ * 8: Resetting memory
+ * 9: Pending end-user consent
+ * 10: Pending confirmation code
+ * 11-24: Reserved for future use
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type RSPUpdateState_5 = number
+/**
+ * RSP Update Result
+ *
+ * Contains the result of the executed RSP action(s) in the RSP update
+ * resource.
+ * 0: Initial value. Once the updating process is initiated (Download /Update),
+ * this Resource MUST be reset to Initial value.
+ * 1: RSP action completed successfully.
+ * 2: Not enough SIM memory for the new Profile package.
+ * 3. Out of RAM during downloading process.
+ * 4: Connection lost during downloading process.
+ * 5: Integrity check failure for new downloaded profile package.
+ * 6: Unsupported profile package type.
+ * 7: Invalid URI
+ * 8: Unsupported protocol.
+ * 9: Not authorized to download profile at the given URI.
+ * 10: Failed to authenticate server given by the URI.
+ * 11: Generic download and installation error.
+ * 12: Error in profile package format
+ * 13: Failed to enable profile.
+ * 14: Failed to disable profile.
+ * 15: Failed to delete profile.
+ * 16: Failed to reset memory.
+ * 17-24: Reserved for future use
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type RSPUpdateResult_6 = number
+/**
+ * Profile Name
+ *
+ * Name of the downloaded profile / profile package or the profile / profile
+ * package currently being downloaded.
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ProfileName_7 = string
+/**
+ * Profile Package Version
+ *
+ * Version of the downloaded profile / profile package or the profile / profile
+ * package currently being downloaded.
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ProfilePackageVersion_8 = string
+/**
+ * Free Memory on SIM
+ *
+ * Estimated current available amount of storage space on SIM which can store
+ * data and software in the LwM2M Device (expressed in kibibytes).
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: KiB
+ */
+type FreeMemoryonSIM_9 = number
 /**
  * Total Memory on SIM
  *
@@ -214,17 +325,6 @@ type RSPDataType_18 = number
  */
 type SetRSPData_19 = string
 /**
- * Service Provider Name
- *
- * Provides the name of the Service Provider assocatiated with the downloaded
- * profile or the profile currently being downloaded.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type ServiceProviderName_2 = string
-/**
  * Get RSP Data
  *
  * This resource is used to retrieve the (e/i)UICC data / profile specific data
@@ -236,106 +336,6 @@ type ServiceProviderName_2 = string
  * Mandatory: false
  */
 type GetRSPData_20 = string
-/**
- * Download URI/Information
- *
- * URI, or formatted data containing the URI (e.g. GSMA SGP.22 Activation Code),
- * from where the device can download the profile package by an alternative
- * mechanism.
- * The URI format is defined in RFC 3986.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type DownloadURI_Information_3 = string
-/**
- * RSP Update State
- *
- * Indicates current state with respect to the executed RSP action(s) in the RSP
- * update resource. This value is set by the LwM2M Client.
- * 0: Idle (before downloading a profile or after successful completetion of the
- * action(s))
- * 1: Downloading (The data sequence is on the way)
- * 2: Downloaded profile ready for installation
- * 3: Installing
- * 5: Enabling
- * 6: Disabling
- * 7: Deleting
- * 8: Resetting memory
- * 9: Pending end-user consent
- * 10: Pending confirmation code
- * 11-24: Reserved for future use
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- */
-type RSPUpdateState_5 = number
-/**
- * RSP Update Result
- *
- * Contains the result of the executed RSP action(s) in the RSP update
- * resource.
- * 0: Initial value. Once the updating process is initiated (Download /Update),
- * this Resource MUST be reset to Initial value.
- * 1: RSP action completed successfully.
- * 2: Not enough SIM memory for the new Profile package.
- * 3. Out of RAM during downloading process.
- * 4: Connection lost during downloading process.
- * 5: Integrity check failure for new downloaded profile package.
- * 6: Unsupported profile package type.
- * 7: Invalid URI
- * 8: Unsupported protocol.
- * 9: Not authorized to download profile at the given URI.
- * 10: Failed to authenticate server given by the URI.
- * 11: Generic download and installation error.
- * 12: Error in profile package format
- * 13: Failed to enable profile.
- * 14: Failed to disable profile.
- * 15: Failed to delete profile.
- * 16: Failed to reset memory.
- * 17-24: Reserved for future use
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- */
-type RSPUpdateResult_6 = number
-/**
- * Profile Name
- *
- * Name of the downloaded profile / profile package or the profile / profile
- * package currently being downloaded.
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- */
-type ProfileName_7 = string
-/**
- * Profile Package Version
- *
- * Version of the downloaded profile / profile package or the profile / profile
- * package currently being downloaded.
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type ProfilePackageVersion_8 = string
-/**
- * Free Memory on SIM
- *
- * Estimated current available amount of storage space on SIM which can store
- * data and software in the LwM2M Device (expressed in kibibytes).
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- * Units: KiB
- */
-type FreeMemoryonSIM_9 = number
 /**
  * The objectURN for Remote SIM Provisioning
  * Used in the JSON schema for the LwM2M document definition as a key.

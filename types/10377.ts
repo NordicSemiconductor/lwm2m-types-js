@@ -16,18 +16,18 @@ export type DataMonitoring_10377 = Readonly<
 	Array<{
 		'0': MonitoringName_0
 		'1': MonitoringDescription_1
-		'13': MonitoringResults_13
 		'3': Data_3
 		'7': ReferenceA_7
 		'8': ComparisonA_8
-		'10'?: ComparisonB_10
-		'11'?: ReferenceC_11
-		'12'?: ComparisonC_12
+		'13': MonitoringResults_13
 		'2'?: MonitoringSettings_2
 		'4'?: DataSamplingStartMask_4
 		'5'?: DataSamplingInterval_5
 		'6'?: DataSamplingRunPeriod_6
 		'9'?: ReferenceB_9
+		'10'?: ComparisonB_10
+		'11'?: ReferenceC_11
+		'12'?: ComparisonC_12
 	}>
 >
 /**
@@ -56,37 +56,6 @@ type MonitoringName_0 = string
  * Mandatory: true
  */
 type MonitoringDescription_1 = string
-/**
- * Monitoring Results
- *
- * Monitoring Results resource is a serialized accumulation of comparison
- * results of data and the references, represented by a read-only serialized
- * Opaque (Binary).
- * This resource use CBOR format encoded as following:
- * 1. array(Result Index 1, Result Timestamp 1, Result Value 1)
- * 2. array(Result Index 2, Result Timestamp 2, Result Value 2)
- * ...
- * n. array(Result Index n, Result Timestamp n, Result Value n)
- *
- * Result value is an integer containing bit flags described as per following:
- * bit 0: 0(Comparison A statement is false), 1(Comparison A statement is true)
- * bit 1: 0(Comparison B statement is false), 1(Comparison B statement is true)
- * bit 2: 0(Comparison C statement is false), 1(Comparison C statement is true)
- * other bits: unused
- * New result will be added when there is a change of current Result Value.
- * Result Timestamp is a 32-bit integer representing the number of seconds since
- * Jan 1st, 1970 in the UTC time zone, sampled when the change occurs. Result
- * Index is the running number of the recorded changes.
- * Number of available results is up to device's implementation and maximum
- * result that can be accumulated should be stated in Monitoring Description
- * resource.
- *
- *
- * ID: 13
- * MultipleInstances: false
- * Mandatory: true
- */
-type MonitoringResults_13 = string
 /**
  * Data
  *
@@ -135,58 +104,36 @@ type ReferenceA_7 = string
  */
 type ComparisonA_8 = number
 /**
- * Comparison B
+ * Monitoring Results
  *
- * This resource represents the logical statement to compare Data resource
- * against Reference B resource. The statements are encoded as following:
- * 0: No Comparison
- * 1: Data > Reference B
- * 2: Data >= Reference B
- * 3: Data < Reference B
- * 4: Data <= Reference B
- * 5: Data equals Reference B
- * 6: Data not equal Reference B
+ * Monitoring Results resource is a serialized accumulation of comparison
+ * results of data and the references, represented by a read-only serialized
+ * Opaque (Binary).
+ * This resource use CBOR format encoded as following:
+ * 1. array(Result Index 1, Result Timestamp 1, Result Value 1)
+ * 2. array(Result Index 2, Result Timestamp 2, Result Value 2)
+ * ...
+ * n. array(Result Index n, Result Timestamp n, Result Value n)
+ *
+ * Result value is an integer containing bit flags described as per following:
+ * bit 0: 0(Comparison A statement is false), 1(Comparison A statement is true)
+ * bit 1: 0(Comparison B statement is false), 1(Comparison B statement is true)
+ * bit 2: 0(Comparison C statement is false), 1(Comparison C statement is true)
+ * other bits: unused
+ * New result will be added when there is a change of current Result Value.
+ * Result Timestamp is a 32-bit integer representing the number of seconds since
+ * Jan 1st, 1970 in the UTC time zone, sampled when the change occurs. Result
+ * Index is the running number of the recorded changes.
+ * Number of available results is up to device's implementation and maximum
+ * result that can be accumulated should be stated in Monitoring Description
+ * resource.
  *
  *
- * ID: 10
+ * ID: 13
  * MultipleInstances: false
- * Mandatory: false
+ * Mandatory: true
  */
-type ComparisonB_10 = number
-/**
- * Reference C
- *
- * This resource contains the value of reference data that is to be compared
- * with Data resource in conjunction with Comparison B resource. The comparison
- * result is flagged by Status resource. When Status resource is made
- * observable, this effectively becomes a mechanism to signal the server on a
- * hit. The reference data and data type is formatted as CBOR payload.
- *
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- */
-type ReferenceC_11 = string
-/**
- * Comparison C
- *
- * This resource represents the logical statement to compare Data resource
- * against Reference B resource. The statements are encoded as following:
- * 0: No Comparison
- * 1: Data > Reference C
- * 2: Data >= Reference C
- * 3: Data < Reference C
- * 4: Data <= Reference C
- * 5: Data equals Reference C
- * 6: Data not equal Reference C
- *
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- */
-type ComparisonC_12 = number
+type MonitoringResults_13 = string
 /**
  * Monitoring Settings
  *
@@ -279,6 +226,59 @@ type DataSamplingRunPeriod_6 = number
  * Mandatory: false
  */
 type ReferenceB_9 = string
+/**
+ * Comparison B
+ *
+ * This resource represents the logical statement to compare Data resource
+ * against Reference B resource. The statements are encoded as following:
+ * 0: No Comparison
+ * 1: Data > Reference B
+ * 2: Data >= Reference B
+ * 3: Data < Reference B
+ * 4: Data <= Reference B
+ * 5: Data equals Reference B
+ * 6: Data not equal Reference B
+ *
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ComparisonB_10 = number
+/**
+ * Reference C
+ *
+ * This resource contains the value of reference data that is to be compared
+ * with Data resource in conjunction with Comparison B resource. The comparison
+ * result is flagged by Status resource. When Status resource is made
+ * observable, this effectively becomes a mechanism to signal the server on a
+ * hit. The reference data and data type is formatted as CBOR payload.
+ *
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ReferenceC_11 = string
+/**
+ * Comparison C
+ *
+ * This resource represents the logical statement to compare Data resource
+ * against Reference B resource. The statements are encoded as following:
+ * 0: No Comparison
+ * 1: Data > Reference C
+ * 2: Data >= Reference C
+ * 3: Data < Reference C
+ * 4: Data <= Reference C
+ * 5: Data equals Reference C
+ * 6: Data not equal Reference C
+ *
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ComparisonC_12 = number
 /**
  * The objectURN for Data Monitoring
  * Used in the JSON schema for the LwM2M document definition as a key.

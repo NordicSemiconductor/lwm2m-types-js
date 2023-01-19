@@ -15,11 +15,18 @@
 export type FireAlarm_503 = Readonly<
 	Array<{
 		'1': TemperatureUnit_1
+		'3': TemperatureValue_3
 		'16': HumidityValue_16
 		'25': CO2AlarmState_25
 		'27': CO2Value_27
-		'3': TemperatureValue_3
 		'0'?: TemperatureSensorLocationTag_0
+		'2'?: AmbientTemperature_2
+		'4'?: MinimumMeasuredTemperatureValue_4
+		'5'?: MaximumMeasuredTemperatureValue_5
+		'6'?: MinTemperatureRangeValue_6
+		'7'?: MaxTemperatureRangeValue_7
+		'8'?: LowerTemperatureAccuracy_8
+		'9'?: UpperTemperatureAccuracy_9
 		'10'?: TemperatureThreshold_10
 		'11'?: TemperatureSensorError_11
 		'13'?: TemperatureAlarmLoudness_13
@@ -28,7 +35,6 @@ export type FireAlarm_503 = Readonly<
 		'17'?: MinimumMeasuredHumidityValue_17
 		'18'?: MaximumMeasuredHumidityValue_18
 		'19'?: HumidityAccuracy_19
-		'2'?: AmbientTemperature_2
 		'20'?: HumidityThreshold_20
 		'21'?: HumiditySensorError_21
 		'23'?: HumidityAlarmLoudness_23
@@ -39,16 +45,10 @@ export type FireAlarm_503 = Readonly<
 		'30'?: CO2Threshold_30
 		'31'?: SmokeSensorError_31
 		'33'?: SmokeAlarmLoudness_33
-		'4'?: MinimumMeasuredTemperatureValue_4
-		'5'?: MaximumMeasuredTemperatureValue_5
 		'5514'?: Latitude_5514
 		'5515'?: Longitude_5515
-		'6'?: MinTemperatureRangeValue_6
 		'6039'?: Altitude_6039
 		'6044'?: BatteryPercentage_6044
-		'7'?: MaxTemperatureRangeValue_7
-		'8'?: LowerTemperatureAccuracy_8
-		'9'?: UpperTemperatureAccuracy_9
 	}>
 >
 /**
@@ -62,6 +62,17 @@ export type FireAlarm_503 = Readonly<
  * Mandatory: true
  */
 type TemperatureUnit_1 = number
+/**
+ * Temperature Value
+ *
+ * Last or Current Measured Temperature Value from the Sensor. The value 65534
+ * indicates that the Sensor data is not available.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type TemperatureValue_3 = number
 /**
  * Humidity Value
  *
@@ -98,17 +109,6 @@ type CO2AlarmState_25 = boolean
  */
 type CO2Value_27 = number
 /**
- * Temperature Value
- *
- * Last or Current Measured Temperature Value from the Sensor. The value 65534
- * indicates that the Sensor data is not available.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: true
- */
-type TemperatureValue_3 = number
-/**
  * Temperature Sensor Location Tag
  *
  * Verbose identification of the location of the Temperature sensor location
@@ -118,6 +118,76 @@ type TemperatureValue_3 = number
  * Mandatory: false
  */
 type TemperatureSensorLocationTag_0 = string
+/**
+ * Ambient Temperature
+ *
+ * Temperature for the area.
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type AmbientTemperature_2 = number
+/**
+ * Minimum Measured Temperature Value
+ *
+ * The minimum Temperature value measured by the sensor since power ON or reset.
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MinimumMeasuredTemperatureValue_4 = number
+/**
+ * Maximum Measured Temperature Value
+ *
+ * The maximum Temperature value measured by the sensor since power ON or reset.
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MaximumMeasuredTemperatureValue_5 = number
+/**
+ * Min Temperature Range Value
+ *
+ * The minimum temperature value that can be measured by the sensor.
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MinTemperatureRangeValue_6 = number
+/**
+ * Max Temperature Range Value
+ *
+ * The maximum temperature value that can be measured by the sensor.
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MaxTemperatureRangeValue_7 = number
+/**
+ * Lower Temperature Accuracy
+ *
+ * Indicates the lower end of the accuracy range for the temperature sensor.
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type LowerTemperatureAccuracy_8 = number
+/**
+ * Upper Temperature Accuracy
+ *
+ * Indicates the upper end of the accuracy range for the temperature sensor.
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type UpperTemperatureAccuracy_9 = number
 /**
  * Temperature Threshold
  *
@@ -203,16 +273,6 @@ type MaximumMeasuredHumidityValue_18 = number
  * Units: /100
  */
 type HumidityAccuracy_19 = number
-/**
- * Ambient Temperature
- *
- * Temperature for the area.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type AmbientTemperature_2 = number
 /**
  * Humidity Threshold
  *
@@ -321,26 +381,6 @@ type SmokeSensorError_31 = boolean
  */
 type SmokeAlarmLoudness_33 = number
 /**
- * Minimum Measured Temperature Value
- *
- * The minimum Temperature value measured by the sensor since power ON or reset.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- */
-type MinimumMeasuredTemperatureValue_4 = number
-/**
- * Maximum Measured Temperature Value
- *
- * The maximum Temperature value measured by the sensor since power ON or reset.
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- */
-type MaximumMeasuredTemperatureValue_5 = number
-/**
  * Latitude
  *
  * The decimal notation of latitude, e.g. -43.5723 (World Geodetic System 1984).
@@ -362,16 +402,6 @@ type Latitude_5514 = string
  */
 type Longitude_5515 = string
 /**
- * Min Temperature Range Value
- *
- * The minimum temperature value that can be measured by the sensor.
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- */
-type MinTemperatureRangeValue_6 = number
-/**
  * Altitude
  *
  * Altitude above sea level in meters.
@@ -392,36 +422,6 @@ type Altitude_6039 = number
  * Mandatory: false
  */
 type BatteryPercentage_6044 = number
-/**
- * Max Temperature Range Value
- *
- * The maximum temperature value that can be measured by the sensor.
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- */
-type MaxTemperatureRangeValue_7 = number
-/**
- * Lower Temperature Accuracy
- *
- * Indicates the lower end of the accuracy range for the temperature sensor.
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type LowerTemperatureAccuracy_8 = number
-/**
- * Upper Temperature Accuracy
- *
- * Indicates the upper end of the accuracy range for the temperature sensor.
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- */
-type UpperTemperatureAccuracy_9 = number
 /**
  * The objectURN for Fire Alarm
  * Used in the JSON schema for the LwM2M document definition as a key.

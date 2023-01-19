@@ -19,8 +19,8 @@ export type oAScene_3404 = Readonly<
 		'652': TransitionTime_652
 		'653': SceneConfiguration_653
 		'655': ChangeablebyUserAPI_655
-		'4001'?: ObjectVersion_4001
 		'901'?: DocumentaryDescription_901
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -79,16 +79,6 @@ type SceneConfiguration_653 = string
  */
 type ChangeablebyUserAPI_655 = boolean
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Documentary Description
  *
  * Resource to hold a documentary text description of the object.
@@ -98,6 +88,16 @@ type ObjectVersion_4001 = string
  * Mandatory: false
  */
 type DocumentaryDescription_901 = string
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Scene
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -17,8 +17,8 @@ export type oAPhysicalPresenceSensor_3400 = Readonly<
 	Array<{
 		'907': ErrorStatus_907
 		'908': MountingLocation_908
-		'4001'?: ObjectVersion_4001
 		'901'?: DocumentaryDescription_901
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -46,16 +46,6 @@ type ErrorStatus_907 = number
  */
 type MountingLocation_908 = string
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Documentary Description
  *
  * Resource to hold a documentary text description of the object.
@@ -65,6 +55,16 @@ type ObjectVersion_4001 = string
  * Mandatory: false
  */
 type DocumentaryDescription_901 = string
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Physical Presence Sensor
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -16,14 +16,14 @@
 export type Gasmeter_3423 = Readonly<
 	Array<{
 		'1': Cumulatedgasvolume_1
-		'10'?: Leakdetected_10
-		'11'?: Hightemperature_11
 		'3'?: Typeofmeter_3
 		'4'?: Cumulatedpulsevalue_4
 		'6'?: Pulseratio_6
 		'7'?: Minimumflowrate_7
 		'8'?: Maximumflowrate_8
 		'9'?: Leaksuspected_9
+		'10'?: Leakdetected_10
+		'11'?: Hightemperature_11
 	}>
 >
 /**
@@ -37,26 +37,6 @@ export type Gasmeter_3423 = Readonly<
  * Units: m3
  */
 type Cumulatedgasvolume_1 = number
-/**
- * Leak detected
- *
- * Set to True if gas leak is detected.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type Leakdetected_10 = boolean
-/**
- * High temperature
- *
- * Set to True if high temperature is detected around the gas meter.
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- */
-type Hightemperature_11 = boolean
 /**
  * Type of meter
  *
@@ -119,6 +99,26 @@ type Maximumflowrate_8 = number
  * Mandatory: false
  */
 type Leaksuspected_9 = boolean
+/**
+ * Leak detected
+ *
+ * Set to True if gas leak is detected.
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Leakdetected_10 = boolean
+/**
+ * High temperature
+ *
+ * Set to True if high temperature is detected around the gas meter.
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Hightemperature_11 = boolean
 /**
  * The objectURN for Gas meter
  * Used in the JSON schema for the LwM2M document definition as a key.

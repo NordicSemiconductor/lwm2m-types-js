@@ -12,11 +12,24 @@
  * Mandatory: true
  */
 export type RobotPM_10326 = Readonly<{
+	'51': BatteryLevel_51
+	'300': BatteryTemperature_300
 	'1101': DataTrafficUsed_1101
 	'1507': TasksAssigned_1507
 	'1508': SuccessfulTasksExecuted_1508
-	'300': BatteryTemperature_300
-	'51': BatteryLevel_51
+	'301'?: Temperature_301
+	'302'?: Humidity_302
+	'303'?: PM2_5_303
+	'304'?: Smog_304
+	'305'?: CO_305
+	'306'?: CO2_306
+	'307'?: PM10_307
+	'601'?: Speed_601
+	'602'?: WaterUsed_602
+	'603'?: DustBoxUsed_603
+	'604'?: ObstacleDistance_604
+	'607'?: RobotTemperate_607
+	'608'?: ConfidenceIndex_608
 	'1102'?: ImagesHandled_1102
 	'1103'?: HARIS_VoiceRequests_1103
 	'1104'?: HARIS_VisionRequests_1104
@@ -66,20 +79,30 @@ export type RobotPM_10326 = Readonly<{
 	'1509'?: ImagesUploaded_1509
 	'1510'?: VideosUploaded_1510
 	'1511'?: ImagesMatted_1511
-	'301'?: Temperature_301
-	'302'?: Humidity_302
-	'303'?: PM2_5_303
-	'304'?: Smog_304
-	'305'?: CO_305
-	'306'?: CO2_306
-	'307'?: PM10_307
-	'601'?: Speed_601
-	'602'?: WaterUsed_602
-	'603'?: DustBoxUsed_603
-	'604'?: ObstacleDistance_604
-	'607'?: RobotTemperate_607
-	'608'?: ConfidenceIndex_608
 }>
+/**
+ * Battery Level
+ *
+ * Referrence to a PM item, similar with Corelnk in LwM2M 1.1,
+ * </object ID/object instance ID/resource ID>, for example: </10315/0/2>
+ *
+ * ID: 51
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: /100
+ */
+type BatteryLevel_51 = number
+/**
+ * Battery Temperature
+ *
+ * Battery Temperature.
+ *
+ * ID: 300
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: Cel
+ */
+type BatteryTemperature_300 = number
 /**
  * Data Traffic Used
  *
@@ -112,28 +135,148 @@ type TasksAssigned_1507 = number
  */
 type SuccessfulTasksExecuted_1508 = number
 /**
- * Battery Temperature
+ * Temperature
  *
- * Battery Temperature.
+ * Environment Temperature.
  *
- * ID: 300
+ * ID: 301
  * MultipleInstances: false
- * Mandatory: true
+ * Mandatory: false
  * Units: Cel
  */
-type BatteryTemperature_300 = number
+type Temperature_301 = number
 /**
- * Battery Level
+ * Humidity
  *
- * Referrence to a PM item, similar with Corelnk in LwM2M 1.1,
- * </object ID/object instance ID/resource ID>, for example: </10315/0/2>
+ * Environment Humidity.
  *
- * ID: 51
+ * ID: 302
  * MultipleInstances: false
- * Mandatory: true
+ * Mandatory: false
  * Units: /100
  */
-type BatteryLevel_51 = number
+type Humidity_302 = number
+/**
+ * PM2.5
+ *
+ * PM2.5 of the environment.
+ *
+ * ID: 303
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ug/m3
+ */
+type PM2_5_303 = number
+/**
+ * Smog
+ *
+ * Smoke concentration of the environment.
+ *
+ * ID: 304
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ug/m3
+ */
+type Smog_304 = number
+/**
+ * CO
+ *
+ * CO concentration of the environment.
+ *
+ * ID: 305
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ppm
+ */
+type CO_305 = number
+/**
+ * CO2
+ *
+ * CO2 concentration of the environment.
+ *
+ * ID: 306
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ppm
+ */
+type CO2_306 = number
+/**
+ * PM10
+ *
+ * PM10 of the environment.
+ *
+ * ID: 307
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ug/m3
+ */
+type PM10_307 = number
+/**
+ * Speed
+ *
+ * The speed of the robot.
+ *
+ * ID: 601
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m/h
+ */
+type Speed_601 = number
+/**
+ * Water Used
+ *
+ * The percentage of water used for CloudCleanX.
+ *
+ * ID: 602
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: /100
+ */
+type WaterUsed_602 = number
+/**
+ * Dust Box Used
+ *
+ * The percentage of Dust Box Space used for CloudCleanX.
+ *
+ * ID: 603
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: /100
+ */
+type DustBoxUsed_603 = number
+/**
+ * Obstacle Distance
+ *
+ * The distance between the robot and the obstacle.
+ *
+ * ID: 604
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: cm
+ */
+type ObstacleDistance_604 = number
+/**
+ * Robot Temperate
+ *
+ * Robot surface temperature, for example: the RCU temperature.
+ *
+ * ID: 607
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: Cel
+ */
+type RobotTemperate_607 = number
+/**
+ * Confidence Index
+ *
+ * The Confidence Index of the robot.
+ *
+ * ID: 608
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: /100
+ */
+type ConfidenceIndex_608 = number
 /**
  * Images Handled
  *
@@ -652,149 +795,6 @@ type VideosUploaded_1510 = number
  * Mandatory: false
  */
 type ImagesMatted_1511 = number
-/**
- * Temperature
- *
- * Environment Temperature.
- *
- * ID: 301
- * MultipleInstances: false
- * Mandatory: false
- * Units: Cel
- */
-type Temperature_301 = number
-/**
- * Humidity
- *
- * Environment Humidity.
- *
- * ID: 302
- * MultipleInstances: false
- * Mandatory: false
- * Units: /100
- */
-type Humidity_302 = number
-/**
- * PM2.5
- *
- * PM2.5 of the environment.
- *
- * ID: 303
- * MultipleInstances: false
- * Mandatory: false
- * Units: ug/m3
- */
-type PM2_5_303 = number
-/**
- * Smog
- *
- * Smoke concentration of the environment.
- *
- * ID: 304
- * MultipleInstances: false
- * Mandatory: false
- * Units: ug/m3
- */
-type Smog_304 = number
-/**
- * CO
- *
- * CO concentration of the environment.
- *
- * ID: 305
- * MultipleInstances: false
- * Mandatory: false
- * Units: ppm
- */
-type CO_305 = number
-/**
- * CO2
- *
- * CO2 concentration of the environment.
- *
- * ID: 306
- * MultipleInstances: false
- * Mandatory: false
- * Units: ppm
- */
-type CO2_306 = number
-/**
- * PM10
- *
- * PM10 of the environment.
- *
- * ID: 307
- * MultipleInstances: false
- * Mandatory: false
- * Units: ug/m3
- */
-type PM10_307 = number
-/**
- * Speed
- *
- * The speed of the robot.
- *
- * ID: 601
- * MultipleInstances: false
- * Mandatory: false
- * Units: m/h
- */
-type Speed_601 = number
-/**
- * Water Used
- *
- * The percentage of water used for CloudCleanX.
- *
- * ID: 602
- * MultipleInstances: false
- * Mandatory: false
- * Units: /100
- */
-type WaterUsed_602 = number
-/**
- * Dust Box Used
- *
- * The percentage of Dust Box Space used for CloudCleanX.
- *
- * ID: 603
- * MultipleInstances: false
- * Mandatory: false
- * Units: /100
- */
-type DustBoxUsed_603 = number
-/**
- * Obstacle Distance
- *
- * The distance between the robot and the obstacle.
- *
- * ID: 604
- * MultipleInstances: false
- * Mandatory: false
- * Units: cm
- */
-type ObstacleDistance_604 = number
-/**
- * Robot Temperate
- *
- * Robot surface temperature, for example: the RCU temperature.
- *
- * ID: 607
- * MultipleInstances: false
- * Mandatory: false
- * Units: Cel
- */
-type RobotTemperate_607 = number
-/**
- * Confidence Index
- *
- * The Confidence Index of the robot.
- *
- * ID: 608
- * MultipleInstances: false
- * Mandatory: false
- * Units: /100
- */
-type ConfidenceIndex_608 = number
 /**
  * The objectURN for Robot PM
  * Used in the JSON schema for the LwM2M document definition as a key.

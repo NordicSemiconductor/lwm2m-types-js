@@ -8,7 +8,10 @@ export const generateLwM2MDocument = (
 	definitions: LwM2MObjectDefinition[],
 ): string => {
 	const types: ts.Node[] = []
-	for (const definition of definitions) {
+	for (const definition of definitions.sort(
+		({ ObjectID: ID1 }, { ObjectID: ID2 }) =>
+			parseInt(ID1, 10) - parseInt(ID2, 10),
+	)) {
 		types.push(
 			ts.factory.createImportDeclaration(
 				undefined,

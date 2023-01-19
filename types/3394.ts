@@ -16,30 +16,20 @@
  */
 export type oALogicalPresenceSensor_3394 = Readonly<
 	Array<{
-		'5500': DigitalInputState_5500
 		'903': ApplicationGroupID_903
 		'904': StatusResendTime_904
 		'909': ExecutingObject_909
 		'919': StatusReportStructureID_919
-		'4001'?: ObjectVersion_4001
-		'5903'?: BusytoCleardelay_5903
-		'5904'?: CleartoBusydelay_5904
+		'5500': DigitalInputState_5500
 		'901'?: DocumentaryDescription_901
 		'905'?: DebugModeEnabled_905
 		'906'?: InjectTestEvent_906
 		'924'?: ObjectEnabled_924
+		'4001'?: ObjectVersion_4001
+		'5903'?: BusytoCleardelay_5903
+		'5904'?: CleartoBusydelay_5904
 	}>
 >
-/**
- * Digital Input State
- *
- * The current state of a digital input.
- *
- * ID: 5500
- * MultipleInstances: false
- * Mandatory: true
- */
-type DigitalInputState_5500 = boolean
 /**
  * Application Group ID
  *
@@ -96,37 +86,15 @@ type ExecutingObject_909 = string
  */
 type StatusReportStructureID_919 = number
 /**
- * ObjectVersion
+ * Digital Input State
  *
- * LWM2M Object versioning label.
+ * The current state of a digital input.
  *
- * ID: 4001
+ * ID: 5500
  * MultipleInstances: false
- * Mandatory: false
+ * Mandatory: true
  */
-type ObjectVersion_4001 = string
-/**
- * Busy to Clear delay
- *
- * Delay from the detection state to the clear state in ms.
- *
- * ID: 5903
- * MultipleInstances: false
- * Mandatory: false
- * Units: ms
- */
-type BusytoCleardelay_5903 = number
-/**
- * Clear to Busy delay
- *
- * Delay from the clear state to the busy state in ms.
- *
- * ID: 5904
- * MultipleInstances: false
- * Mandatory: false
- * Units: ms
- */
-type CleartoBusydelay_5904 = number
+type DigitalInputState_5500 = boolean
 /**
  * Documentary Description
  *
@@ -172,6 +140,38 @@ type InjectTestEvent_906 = boolean
  * Mandatory: false
  */
 type ObjectEnabled_924 = boolean
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
+/**
+ * Busy to Clear delay
+ *
+ * Delay from the detection state to the clear state in ms.
+ *
+ * ID: 5903
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ms
+ */
+type BusytoCleardelay_5903 = number
+/**
+ * Clear to Busy delay
+ *
+ * Delay from the clear state to the busy state in ms.
+ *
+ * ID: 5904
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ms
+ */
+type CleartoBusydelay_5904 = number
 /**
  * The objectURN for oA Logical Presence Sensor
  * Used in the JSON schema for the LwM2M document definition as a key.

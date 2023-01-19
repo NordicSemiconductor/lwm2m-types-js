@@ -20,8 +20,8 @@ export type oAReportingObject_3403 = Readonly<
 		'919': StatusReportStructureID_919
 		'932': ReportingObjectInstances_932
 		'933': TargetResource_933
-		'4001'?: ObjectVersion_4001
 		'901'?: DocumentaryDescription_901
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -96,16 +96,6 @@ type ReportingObjectInstances_932 = string
  */
 type TargetResource_933 = string
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Documentary Description
  *
  * Resource to hold a documentary text description of the object.
@@ -115,6 +105,16 @@ type ObjectVersion_4001 = string
  * Mandatory: false
  */
 type DocumentaryDescription_901 = string
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Reporting Object
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -22,13 +22,13 @@ export type oALogicalIlluminanceSensor_3392 = Readonly<
 		'909': ExecutingObject_909
 		'919': StatusReportStructureID_919
 		'400'?: LessThan_400
-		'4001'?: ObjectVersion_4001
 		'401'?: GreaterThan_401
 		'402'?: Step_402
 		'901'?: DocumentaryDescription_901
 		'905'?: DebugModeEnabled_905
 		'906'?: InjectTestEvent_906
 		'924'?: ObjectEnabled_924
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -121,16 +121,6 @@ type StatusReportStructureID_919 = number
  */
 type LessThan_400 = number
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Greater Than
  *
  * Only report if the sensor value is greater than the given value.
@@ -198,6 +188,16 @@ type InjectTestEvent_906 = number
  * Mandatory: false
  */
 type ObjectEnabled_924 = boolean
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Logical Illuminance Sensor
  * Used in the JSON schema for the LwM2M document definition as a key.

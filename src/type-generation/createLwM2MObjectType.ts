@@ -32,7 +32,7 @@ export const createLwM2MObjectType = ({
 	let type: ts.TypeNode = ts.factory.createTypeLiteralNode(
 		resources
 			// sort by id
-			.sort(({ id: id1 }, { id: id2 }) => id1.localeCompare(id2))
+			.sort(({ id: id1 }, { id: id2 }) => parseInt(id1, 10) - parseInt(id2, 10))
 			// sort mandatory up
 			.sort(
 				({ isOptional: optional1 }, { isOptional: optional2 }) =>
@@ -41,7 +41,7 @@ export const createLwM2MObjectType = ({
 			.map((resource) => {
 				const p = ts.factory.createPropertySignature(
 					undefined,
-					ts.factory.createStringLiteral(resource.id),
+					ts.factory.createStringLiteral(`${resource.id}`),
 					resource.isOptional ?? false
 						? undefined
 						: ts.factory.createToken(ts.SyntaxKind.QuestionToken),
@@ -84,8 +84,8 @@ export const createLwM2MObjectType = ({
 	return [objectTypeExport, ...resources.map((resource) => resource.type)]
 }
 
-const createResourceType = (id: string, resource: Resource) => {
-	const name = typeName(id, resource.Name)
+const createResourceType = (objectId: string, resource: Resource) => {
+	const name = typeName(objectId, resource.Name)
 	const res = ts.factory.createTypeAliasDeclaration(
 		undefined,
 		ts.factory.createIdentifier(name),
@@ -101,7 +101,7 @@ const createResourceType = (id: string, resource: Resource) => {
 			.map(wrapLongLines)
 			.flat(),
 		``,
-		`ID: ${id}`,
+		`ID: ${objectId}`,
 		`MultipleInstances: ${resource.MultipleInstances}`,
 		`Mandatory: ${resource.Mandatory}`,
 	]
@@ -109,7 +109,7 @@ const createResourceType = (id: string, resource: Resource) => {
 
 	addDocBlock(comment, res)
 	const value = {
-		id,
+		id: objectId,
 		isOptional: resource.Mandatory,
 		name,
 		type: res,

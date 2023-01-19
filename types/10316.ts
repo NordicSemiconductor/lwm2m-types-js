@@ -14,23 +14,23 @@
  */
 export type RCU_10316 = Readonly<{
 	'1': RCUID_1
-	'10': SDAvailableStorage_10
 	'2': RCUSerialNumber_2
 	'3': RCUSoftwareVersion_3
 	'4': RCUOSVersion_4
 	'5': RCUCPUInfo_5
-	'51': BatteryLevel_51
-	'5852': Ontime_5852
 	'6': RCURAMInfo_6
-	'60': DownloadedAPPPackages_60
 	'7': RCUROMSize_7
 	'8': RCUROMAvailableSize_8
 	'9': SDStorage_9
-	'100'?: RCUAPPs_100
+	'10': SDAvailableStorage_10
+	'51': BatteryLevel_51
+	'60': DownloadedAPPPackages_60
+	'5852': Ontime_5852
 	'11'?: RCUGPSLocation_11
 	'12'?: Wi_FiMAC_12
 	'13'?: BluetoothMAC_13
 	'14'?: CameraInfo_14
+	'100'?: RCUAPPs_100
 }>
 /**
  * RCU ID
@@ -42,17 +42,6 @@ export type RCU_10316 = Readonly<{
  * Mandatory: true
  */
 type RCUID_1 = string
-/**
- * SD Available Storage
- *
- * Available storage of the RCU SD card, for example: 63G.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: true
- * Units: GB
- */
-type SDAvailableStorage_10 = number
 /**
  * RCU Serial Number
  *
@@ -94,29 +83,6 @@ type RCUOSVersion_4 = string
  */
 type RCUCPUInfo_5 = string
 /**
- * Battery Level
- *
- * The current Battery Level as a percentage (with a range from 0 to 100).
- *
- * ID: 51
- * MultipleInstances: false
- * Mandatory: true
- * Units: /100
- */
-type BatteryLevel_51 = number
-/**
- * On time
- *
- * The time in seconds that the device has been on. Writing a value of 0 resets
- * the counter.
- *
- * ID: 5852
- * MultipleInstances: false
- * Mandatory: true
- * Units: s
- */
-type Ontime_5852 = number
-/**
  * RCU RAM Info
  *
  * RAM information of the RCU.
@@ -126,16 +92,6 @@ type Ontime_5852 = number
  * Mandatory: true
  */
 type RCURAMInfo_6 = string
-/**
- * Downloaded APP Packages
- *
- * Each item contains APP Name/Version info/Package Name.
- *
- * ID: 60
- * MultipleInstances: true
- * Mandatory: true
- */
-type DownloadedAPPPackages_60 = string
 /**
  * RCU ROM Size
  *
@@ -170,17 +126,49 @@ type RCUROMAvailableSize_8 = number
  */
 type SDStorage_9 = number
 /**
- * RCU APPs
+ * SD Available Storage
  *
+ * Available storage of the RCU SD card, for example: 63G.
  *
- * Contains the reference to the APPs belongs to RCU.
- *
- *
- * ID: 100
- * MultipleInstances: true
- * Mandatory: false
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: GB
  */
-type RCUAPPs_100 = string
+type SDAvailableStorage_10 = number
+/**
+ * Battery Level
+ *
+ * The current Battery Level as a percentage (with a range from 0 to 100).
+ *
+ * ID: 51
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: /100
+ */
+type BatteryLevel_51 = number
+/**
+ * Downloaded APP Packages
+ *
+ * Each item contains APP Name/Version info/Package Name.
+ *
+ * ID: 60
+ * MultipleInstances: true
+ * Mandatory: true
+ */
+type DownloadedAPPPackages_60 = string
+/**
+ * On time
+ *
+ * The time in seconds that the device has been on. Writing a value of 0 resets
+ * the counter.
+ *
+ * ID: 5852
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: s
+ */
+type Ontime_5852 = number
 /**
  * RCU GPS Location
  *
@@ -221,6 +209,18 @@ type BluetoothMAC_13 = string
  * Mandatory: false
  */
 type CameraInfo_14 = string
+/**
+ * RCU APPs
+ *
+ *
+ * Contains the reference to the APPs belongs to RCU.
+ *
+ *
+ * ID: 100
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type RCUAPPs_100 = string
 /**
  * The objectURN for RCU
  * Used in the JSON schema for the LwM2M document definition as a key.

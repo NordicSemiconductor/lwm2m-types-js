@@ -11,7 +11,7 @@ export const createURN = ({
 	ObjectVersion,
 	LWM2MVersion,
 }: {
-	ObjectID: string
+	ObjectID: number
 	ObjectVersion: string
 	LWM2MVersion: string
 }): string =>

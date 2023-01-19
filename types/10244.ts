@@ -15,6 +15,10 @@
 export type VehicleControlUnit_10244 = Readonly<{
 	'0': VehicleUIState_0
 	'1': VehicleSpeed_1
+	'2': VehicleShiftStatus_2
+	'3': VehicleAPPosition_3
+	'8': VehicleChargeCableStatus_8
+	'9': VehicleChargeStatus_9
 	'10': VehicleChargeVoltage_10
 	'11': VehicleChargeCurrent_11
 	'12': VehicleChargeRemainingTime_12
@@ -25,7 +29,6 @@ export type VehicleControlUnit_10244 = Readonly<{
 	'17': BatteryPackSOH_17
 	'18': BatteryCellMinVolt_18
 	'19': BatteryCellMaxVolt_19
-	'2': VehicleShiftStatus_2
 	'20': BatteryModuleMinTemp_20
 	'21': BatteryModuleMaxTemp_21
 	'22': BatteryConnectionStatus_22
@@ -33,18 +36,15 @@ export type VehicleControlUnit_10244 = Readonly<{
 	'25': MCUTemperature_25
 	'26': MotorSpeed_26
 	'27': MotorTemperature_27
-	'3': VehicleAPPosition_3
-	'8': VehicleChargeCableStatus_8
-	'9': VehicleChargeStatus_9
+	'4'?: VehiclePower_4
+	'5'?: VehicleDriveEnergy_5
+	'6'?: VehicleEnergyConsumptionEfficiency_6
+	'7'?: VehicleEstimatedMileage_7
 	'28'?: MotorOTWarning_28
 	'29'?: MCUOTWarning_29
 	'30'?: BatteryPackOTWarning_30
 	'31'?: MCUfault_31
 	'32'?: MotorError_32
-	'4'?: VehiclePower_4
-	'5'?: VehicleDriveEnergy_5
-	'6'?: VehicleEnergyConsumptionEfficiency_6
-	'7'?: VehicleEstimatedMileage_7
 }>
 /**
  * Vehicle UI State
@@ -68,6 +68,48 @@ type VehicleUIState_0 = number
  * Units: km/h
  */
 type VehicleSpeed_1 = number
+/**
+ * Vehicle Shift Status
+ *
+ * Current shift status of the vehicle. 0: Neutral 1: Forward 2: Reverse
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type VehicleShiftStatus_2 = number
+/**
+ * Vehicle AP Position
+ *
+ * Current position of the accelerator pedal.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: /100
+ */
+type VehicleAPPosition_3 = number
+/**
+ * Vehicle Charge Cable Status
+ *
+ * Whether the charge cable is connected or not. 0: unconnected 1: connected
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type VehicleChargeCableStatus_8 = boolean
+/**
+ * Vehicle Charge Status
+ *
+ * Charging status of the vehicle. 1: non-charge mode 2: charging 3: charge
+ * completed 4: charging abort abnormally
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type VehicleChargeStatus_9 = number
 /**
  * Vehicle Charge Voltage
  *
@@ -179,16 +221,6 @@ type BatteryCellMinVolt_18 = number
  */
 type BatteryCellMaxVolt_19 = number
 /**
- * Vehicle Shift Status
- *
- * Current shift status of the vehicle. 0: Neutral 1: Forward 2: Reverse
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: true
- */
-type VehicleShiftStatus_2 = number
-/**
  * Battery Module MinTemp
  *
  * Minimum temperature of the battery module
@@ -265,37 +297,49 @@ type MotorSpeed_26 = number
  */
 type MotorTemperature_27 = number
 /**
- * Vehicle AP Position
+ * Vehicle Power
  *
- * Current position of the accelerator pedal.
+ * Current power of drive output/regenerative braking.
  *
- * ID: 3
+ * ID: 4
  * MultipleInstances: false
- * Mandatory: true
- * Units: /100
+ * Mandatory: false
+ * Units: kW
  */
-type VehicleAPPosition_3 = number
+type VehiclePower_4 = number
 /**
- * Vehicle Charge Cable Status
+ * Vehicle Drive Energy
  *
- * Whether the charge cable is connected or not. 0: unconnected 1: connected
+ * Accumulated drive energy of the vehicle.
  *
- * ID: 8
+ * ID: 5
  * MultipleInstances: false
- * Mandatory: true
+ * Mandatory: false
+ * Units: Wh
  */
-type VehicleChargeCableStatus_8 = boolean
+type VehicleDriveEnergy_5 = number
 /**
- * Vehicle Charge Status
+ * Vehicle Energy Consumption Efficiency
  *
- * Charging status of the vehicle. 1: non-charge mode 2: charging 3: charge
- * completed 4: charging abort abnormally
+ * Energy consumption efficiency of the vehicle.
  *
- * ID: 9
+ * ID: 6
  * MultipleInstances: false
- * Mandatory: true
+ * Mandatory: false
+ * Units: Wh/km
  */
-type VehicleChargeStatus_9 = number
+type VehicleEnergyConsumptionEfficiency_6 = number
+/**
+ * Vehicle Estimated Mileage
+ *
+ * Estimated mileage of current battery capacity.
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: km
+ */
+type VehicleEstimatedMileage_7 = number
 /**
  * Motor OT Warning
  *
@@ -347,50 +391,6 @@ type MCUfault_31 = boolean
  * Mandatory: false
  */
 type MotorError_32 = boolean
-/**
- * Vehicle Power
- *
- * Current power of drive output/regenerative braking.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- * Units: kW
- */
-type VehiclePower_4 = number
-/**
- * Vehicle Drive Energy
- *
- * Accumulated drive energy of the vehicle.
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- * Units: Wh
- */
-type VehicleDriveEnergy_5 = number
-/**
- * Vehicle Energy Consumption Efficiency
- *
- * Energy consumption efficiency of the vehicle.
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- * Units: Wh/km
- */
-type VehicleEnergyConsumptionEfficiency_6 = number
-/**
- * Vehicle Estimated Mileage
- *
- * Estimated mileage of current battery capacity.
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- * Units: km
- */
-type VehicleEstimatedMileage_7 = number
 /**
  * The objectURN for VehicleControlUnit
  * Used in the JSON schema for the LwM2M document definition as a key.

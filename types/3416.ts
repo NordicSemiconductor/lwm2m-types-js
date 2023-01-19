@@ -17,6 +17,13 @@ export type Outdoorlampcontroller_3416 = Readonly<
 	Array<{
 		'1': Command_1
 		'3': Dimminglevel_3
+		'2'?: Commandinaction_2
+		'4'?: Defaultdimminglevel_4
+		'5'?: Lampfailure_5
+		'6'?: Lampfailurereason_6
+		'7'?: Controlgearfailure_7
+		'8'?: Controlgearfailurereason_8
+		'9'?: Relayfailure_9
 		'10'?: Dayburner_10
 		'11'?: Cyclingfailure_11
 		'12'?: Controlgearcommunicationfailure_12
@@ -25,7 +32,6 @@ export type Outdoorlampcontroller_3416 = Readonly<
 		'15'?: Lampoperatinghours_15
 		'17'?: LampONtimestamp_17
 		'18'?: Lampswitchcounter_18
-		'2'?: Commandinaction_2
 		'20'?: Controlgearstartcounter_20
 		'21'?: Controlgeartemperature_21
 		'22'?: Controlgearthermalderating_22
@@ -44,7 +50,6 @@ export type Outdoorlampcontroller_3416 = Readonly<
 		'37'?: Minimumdimminglevel_37
 		'38'?: Minimumlampwattage_38
 		'39'?: Lightcolortemperaturecommand_39
-		'4'?: Defaultdimminglevel_4
 		'40'?: Actuallightcolortemperature_40
 		'41'?: Virtualpoweroutput_41
 		'42'?: Voltageatmaxdimlevel_42
@@ -53,11 +58,6 @@ export type Outdoorlampcontroller_3416 = Readonly<
 		'45'?: Lightsourcecurrent_45
 		'46'?: Lightsourceactivepower_46
 		'47'?: Lightsourceactiveenergy_47
-		'5'?: Lampfailure_5
-		'6'?: Lampfailurereason_6
-		'7'?: Controlgearfailure_7
-		'8'?: Controlgearfailurereason_8
-		'9'?: Relayfailure_9
 	}>
 >
 /**
@@ -84,6 +84,89 @@ type Command_1 = number
  * Units: /100
  */
 type Dimminglevel_3 = number
+/**
+ * Command in action
+ *
+ * For outdoor lighting applications, the command in action (this resource) may
+ * differ from a command that was sent (resource ID: 1), due to LPWAN network
+ * constraints and/or light adjustments within the lamp’s control gear (e.g.
+ * virtual power settings). The command in action is the actual value of the
+ * command in action in the outdoor lamp controller.
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: /100
+ */
+type Commandinaction_2 = number
+/**
+ * Default dimming level
+ *
+ * The default dimming level that the outdoor lamp controller applies when the
+ * device is powered ON.
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: /100
+ */
+type Defaultdimminglevel_4 = number
+/**
+ * Lamp failure
+ *
+ * Set to True if the outdoor lamp controller detects that the lamp is not
+ * producing light while it is expected to (e.g. the lamp is broken).
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Lampfailure_5 = boolean
+/**
+ * Lamp failure reason
+ *
+ * Description of the reason why the lamp failed (e.g. low power on a LED
+ * engine, no consumption detected while relay closed).
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Lampfailurereason_6 = number
+/**
+ * Control gear failure
+ *
+ * Set to True in case the control gear has a failure. Outdoor lamp controllers
+ * may read the control gear failure from a DALI bus or by analyzing a 0-10
+ * volts interface to the control gear.
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Controlgearfailure_7 = boolean
+/**
+ * Control gear failure reason
+ *
+ * Description of the reason why the control gear failed. You may refer to the
+ * DiiA list of possible control gear failures.
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Controlgearfailurereason_8 = number
+/**
+ * Relay failure
+ *
+ * Set to True if the outdoor lamp controller detects that its relay is not
+ * operating as it is expected to.
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Relayfailure_9 = boolean
 /**
  * Day burner
  *
@@ -172,21 +255,6 @@ type LampONtimestamp_17 = number
  * Mandatory: false
  */
 type Lampswitchcounter_18 = number
-/**
- * Command in action
- *
- * For outdoor lighting applications, the command in action (this resource) may
- * differ from a command that was sent (resource ID: 1), due to LPWAN network
- * constraints and/or light adjustments within the lamp’s control gear (e.g.
- * virtual power settings). The command in action is the actual value of the
- * command in action in the outdoor lamp controller.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- * Units: /100
- */
-type Commandinaction_2 = number
 /**
  * Control gear start counter
  *
@@ -396,18 +464,6 @@ type Minimumlampwattage_38 = number
  */
 type Lightcolortemperaturecommand_39 = string
 /**
- * Default dimming level
- *
- * The default dimming level that the outdoor lamp controller applies when the
- * device is powered ON.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- * Units: /100
- */
-type Defaultdimminglevel_4 = number
-/**
  * Actual light color temperature
  *
  * The actual light color temperature of the light source.
@@ -502,62 +558,6 @@ type Lightsourceactivepower_46 = number
  * Units: kWh
  */
 type Lightsourceactiveenergy_47 = number
-/**
- * Lamp failure
- *
- * Set to True if the outdoor lamp controller detects that the lamp is not
- * producing light while it is expected to (e.g. the lamp is broken).
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- */
-type Lampfailure_5 = boolean
-/**
- * Lamp failure reason
- *
- * Description of the reason why the lamp failed (e.g. low power on a LED
- * engine, no consumption detected while relay closed).
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- */
-type Lampfailurereason_6 = number
-/**
- * Control gear failure
- *
- * Set to True in case the control gear has a failure. Outdoor lamp controllers
- * may read the control gear failure from a DALI bus or by analyzing a 0-10
- * volts interface to the control gear.
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- */
-type Controlgearfailure_7 = boolean
-/**
- * Control gear failure reason
- *
- * Description of the reason why the control gear failed. You may refer to the
- * DiiA list of possible control gear failures.
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type Controlgearfailurereason_8 = number
-/**
- * Relay failure
- *
- * Set to True if the outdoor lamp controller detects that its relay is not
- * operating as it is expected to.
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- */
-type Relayfailure_9 = boolean
 /**
  * The objectURN for Outdoor lamp controller
  * Used in the JSON schema for the LwM2M document definition as a key.

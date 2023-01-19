@@ -19,8 +19,8 @@ export type CCU_10320 = Readonly<
 		'3': CCUSWVersion_3
 		'4': CCUMemorySize_4
 		'5': CCUStorage_5
-		'5852': Ontime_5852
 		'6': CCUAvailableStorage_6
+		'5852': Ontime_5852
 		'100'?: DownloadedAPPPackages_100
 		'101'?: CCUAPPs_101
 	}>
@@ -78,6 +78,17 @@ type CCUMemorySize_4 = number
  */
 type CCUStorage_5 = number
 /**
+ * CCU Available Storage
+ *
+ * Available storage of the CCU.
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: GB
+ */
+type CCUAvailableStorage_6 = number
+/**
  * On time
  *
  * The time in seconds that the device has been on. Writing a value of 0 resets
@@ -89,17 +100,6 @@ type CCUStorage_5 = number
  * Units: s
  */
 type Ontime_5852 = number
-/**
- * CCU Available Storage
- *
- * Available storage of the CCU.
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: true
- * Units: GB
- */
-type CCUAvailableStorage_6 = number
 /**
  * Downloaded APP Packages
  *

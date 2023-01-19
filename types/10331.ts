@@ -13,22 +13,22 @@
  */
 export type RobotServiceInfo_10331 = Readonly<{
 	'1': Currentstatus_1
-	'13': SynchronousWhistle_13
 	'3': AdvertisingContents_3
+	'13': SynchronousWhistle_13
+	'2'?: ServicesProviding_2
+	'4'?: CurrentLanguage_4
+	'5'?: Volume_5
+	'6'?: MovingStatus_6
+	'7'?: MovingSpeed_7
+	'8'?: Location_8
+	'9'?: MapList_9
 	'10'?: PlannedRoutelist_10
 	'11'?: CurrentRoute_11
 	'12'?: Routeto_doList_12
 	'14'?: CurrentActions_14
 	'15'?: ASRType_15
-	'2'?: ServicesProviding_2
-	'4'?: CurrentLanguage_4
-	'5'?: Volume_5
 	'50'?: TTSVendor_50
 	'51'?: TTSSpeaker_51
-	'6'?: MovingStatus_6
-	'7'?: MovingSpeed_7
-	'8'?: Location_8
-	'9'?: MapList_9
 }>
 /**
  * Current status
@@ -42,6 +42,16 @@ export type RobotServiceInfo_10331 = Readonly<{
  */
 type Currentstatus_1 = string
 /**
+ * Advertising Contents
+ *
+ * The Advertising Contents it is playing.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type AdvertisingContents_3 = string
+/**
  * Synchronous Whistle
  *
  * The status of the Synchronous Whistle, 1:On, 0:Off.
@@ -52,15 +62,82 @@ type Currentstatus_1 = string
  */
 type SynchronousWhistle_13 = boolean
 /**
- * Advertising Contents
+ * Services Providing
  *
- * The Advertising Contents it is playing.
+ * Providing services: for example: patrolling, advertisement playing,
+ * patrolling and so on,
+ * one robot can do several works at the same time, for example, patrolling with
+ * advertisement playing.
  *
- * ID: 3
+ * ID: 2
  * MultipleInstances: false
- * Mandatory: true
+ * Mandatory: false
  */
-type AdvertisingContents_3 = string
+type ServicesProviding_2 = string
+/**
+ * Current Language
+ *
+ * Current language used by the robot.
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type CurrentLanguage_4 = string
+/**
+ * Volume
+ *
+ * The Volume of the speaker.
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: /100
+ */
+type Volume_5 = string
+/**
+ * Moving Status
+ *
+ * 0:Moving, 1:Stopped, 2:Suspended.
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MovingStatus_6 = number
+/**
+ * Moving Speed
+ *
+ * The moving speed of the robot.
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m/h
+ */
+type MovingSpeed_7 = number
+/**
+ * Location
+ *
+ *
+ * Contains the reference to the location object(6).
+ *
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Location_8 = string
+/**
+ * Map List
+ *
+ * Assigned Map List and the Map currently within.
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MapList_9 = string
 /**
  * Planned Route list
  *
@@ -112,40 +189,6 @@ type CurrentActions_14 = string
  */
 type ASRType_15 = number
 /**
- * Services Providing
- *
- * Providing services: for example: patrolling, advertisement playing,
- * patrolling and so on,
- * one robot can do several works at the same time, for example, patrolling with
- * advertisement playing.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type ServicesProviding_2 = string
-/**
- * Current Language
- *
- * Current language used by the robot.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- */
-type CurrentLanguage_4 = string
-/**
- * Volume
- *
- * The Volume of the speaker.
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- * Units: /100
- */
-type Volume_5 = string
-/**
  * TTS Vendor
  *
  * The TTS Vendor.
@@ -165,49 +208,6 @@ type TTSVendor_50 = string
  * Mandatory: false
  */
 type TTSSpeaker_51 = string
-/**
- * Moving Status
- *
- * 0:Moving, 1:Stopped, 2:Suspended.
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- */
-type MovingStatus_6 = number
-/**
- * Moving Speed
- *
- * The moving speed of the robot.
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- * Units: m/h
- */
-type MovingSpeed_7 = number
-/**
- * Location
- *
- *
- * Contains the reference to the location object(6).
- *
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type Location_8 = string
-/**
- * Map List
- *
- * Assigned Map List and the Map currently within.
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- */
-type MapList_9 = string
 /**
  * The objectURN for Robot Service Info
  * Used in the JSON schema for the LwM2M document definition as a key.

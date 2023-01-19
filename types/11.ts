@@ -16,6 +16,13 @@ export type LWM2MAPNConnectionProfile_11 = Readonly<
 		'0': Profilename_0
 		'4': AuthenticationType_4
 		'1'?: APN_1
+		'2'?: AutoselectAPNbydevice_2
+		'3'?: Enablestatus_3
+		'5'?: UserName_5
+		'6'?: Secret_6
+		'7'?: ReconnectSchedule_7
+		'8'?: Validity_MCC_MNC_8
+		'9'?: Connectionestablishmenttime_1_9
 		'10'?: Connectionestablishmentresult_1_10
 		'11'?: Connectionestablishmentrejectcause_1_11
 		'12'?: Connectionendtime_1_12
@@ -26,7 +33,6 @@ export type LWM2MAPNConnectionProfile_11 = Readonly<
 		'17'?: Subnetmask_2_17
 		'18'?: Gateway_2_18
 		'19'?: PrimaryDNSaddress_2_19
-		'2'?: AutoselectAPNbydevice_2
 		'20'?: SecondaryDNSaddress_2_20
 		'21'?: QCI_3_21
 		'22'?: Vendorspecificextensions_22
@@ -37,16 +43,10 @@ export type LWM2MAPNConnectionProfile_11 = Readonly<
 		'27'?: UplinkTimeUnit_27
 		'28'?: APNRateControlforExceptionData_28
 		'29'?: APNExceptionDataUplinkTimeUnit_29
-		'3'?: Enablestatus_3
 		'30'?: SupportedRATTypes_30
 		'31'?: RDSApplicationID_31
 		'32'?: RDSDestinationPort_32
 		'33'?: RDSSourcePort_33
-		'5'?: UserName_5
-		'6'?: Secret_6
-		'7'?: ReconnectSchedule_7
-		'8'?: Validity_MCC_MNC_8
-		'9'?: Connectionestablishmenttime_1_9
 	}>
 >
 /**
@@ -89,6 +89,85 @@ type AuthenticationType_4 = number
  * Mandatory: false
  */
 type APN_1 = string
+/**
+ * Auto select APN by device
+ *
+ * If this resource is present for a connection profile, it enables the device
+ * to choose an APN according to a device specific algorithm. It provides a
+ * fall-back mechanism e.g. for some MVNO SIMs the configured APN may not work.
+ * Resource not included or set to False in case the ‘APN’ resource is
+ * specified.
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type AutoselectAPNbydevice_2 = boolean
+/**
+ * Enable status
+ *
+ * Allows the profile to be remotely enabled or disabled. True: APN profile is
+ * enabled. False: APN profile is disabled. If the status is set to disabled
+ * (False) while a data connection for that profile is active, that data
+ * connection will be released.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Enablestatus_3 = boolean
+/**
+ * User Name
+ *
+ * Used with e.g. PAP.
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type UserName_5 = string
+/**
+ * Secret
+ *
+ * Used with e.g. PAP.
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Secret_6 = string
+/**
+ * Reconnect Schedule
+ *
+ * Comma separated list of retry delay values in seconds to be used in case of
+ * unsuccessful connection establishment attempts. e.g. "10,60,600,3600,86400"
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ReconnectSchedule_7 = string
+/**
+ * Validity (MCC, MNC)
+ *
+ * Coma separated mobile country code, then mobile network code - for which this
+ * APN is valid.
+ *
+ * ID: 8
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type Validity_MCC_MNC_8 = string
+/**
+ * Connection establishment time (1)
+ *
+ * UTC time of connection request. See note (1)
+ *
+ * ID: 9
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type Connectionestablishmenttime_1_9 = number
 /**
  * Connection establishment result (1)
  *
@@ -193,20 +272,6 @@ type Gateway_2_18 = string
  * Mandatory: false
  */
 type PrimaryDNSaddress_2_19 = string
-/**
- * Auto select APN by device
- *
- * If this resource is present for a connection profile, it enables the device
- * to choose an APN according to a device specific algorithm. It provides a
- * fall-back mechanism e.g. for some MVNO SIMs the configured APN may not work.
- * Resource not included or set to False in case the ‘APN’ resource is
- * specified.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type AutoselectAPNbydevice_2 = boolean
 /**
  * Secondary DNS address (2)
  *
@@ -333,19 +398,6 @@ type APNRateControlforExceptionData_28 = number
  */
 type APNExceptionDataUplinkTimeUnit_29 = number
 /**
- * Enable status
- *
- * Allows the profile to be remotely enabled or disabled. True: APN profile is
- * enabled. False: APN profile is disabled. If the status is set to disabled
- * (False) while a data connection for that profile is active, that data
- * connection will be released.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type Enablestatus_3 = boolean
-/**
  * Supported RAT Types
  *
  * This resource specifies the supported RAT Types that the LWM2M Client can use
@@ -406,58 +458,6 @@ type RDSDestinationPort_32 = number
  * Mandatory: false
  */
 type RDSSourcePort_33 = number
-/**
- * User Name
- *
- * Used with e.g. PAP.
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- */
-type UserName_5 = string
-/**
- * Secret
- *
- * Used with e.g. PAP.
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- */
-type Secret_6 = string
-/**
- * Reconnect Schedule
- *
- * Comma separated list of retry delay values in seconds to be used in case of
- * unsuccessful connection establishment attempts. e.g. "10,60,600,3600,86400"
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- */
-type ReconnectSchedule_7 = string
-/**
- * Validity (MCC, MNC)
- *
- * Coma separated mobile country code, then mobile network code - for which this
- * APN is valid.
- *
- * ID: 8
- * MultipleInstances: true
- * Mandatory: false
- */
-type Validity_MCC_MNC_8 = string
-/**
- * Connection establishment time (1)
- *
- * UTC time of connection request. See note (1)
- *
- * ID: 9
- * MultipleInstances: true
- * Mandatory: false
- */
-type Connectionestablishmenttime_1_9 = number
 /**
  * The objectURN for LWM2M APN Connection Profile
  * Used in the JSON schema for the LwM2M document definition as a key.

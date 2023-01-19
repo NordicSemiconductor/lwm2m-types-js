@@ -16,7 +16,6 @@ export type RCUPM_10318 = Readonly<{
 	'1': CPUUsage_1
 	'2': MaxCPUUsage_2
 	'3': MemoryUsage_3
-	'300': BatteryTemperature_300
 	'4': StorageUsage_4
 	'51': BatteryLevel_51
 	'52': NetworkBandwidth_52
@@ -26,6 +25,7 @@ export type RCUPM_10318 = Readonly<{
 	'57': DownLinkRate_57
 	'58': PacketLossRate_58
 	'59': NetworkLatency_59
+	'300': BatteryTemperature_300
 	'54'?: GPSSignal_54
 }>
 /**
@@ -61,17 +61,6 @@ type MaxCPUUsage_2 = number
  * Units: /100
  */
 type MemoryUsage_3 = number
-/**
- * Battery Temperature
- *
- * Battery Temperature.
- *
- * ID: 300
- * MultipleInstances: false
- * Mandatory: true
- * Units: Cel
- */
-type BatteryTemperature_300 = number
 /**
  * Storage Usage
  *
@@ -169,6 +158,17 @@ type PacketLossRate_58 = number
  * Units: ms
  */
 type NetworkLatency_59 = number
+/**
+ * Battery Temperature
+ *
+ * Battery Temperature.
+ *
+ * ID: 300
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: Cel
+ */
+type BatteryTemperature_300 = number
 /**
  * GPS Signal
  *

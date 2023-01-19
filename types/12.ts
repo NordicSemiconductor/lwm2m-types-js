@@ -16,13 +16,16 @@ export type WLANconnectivity_12 = Readonly<
 	Array<{
 		'0': Interfacename_0
 		'1': Enable_1
-		'14': Standard_14
-		'15': AuthenticationMode_15
 		'3': Status_3
 		'4': BSSID_4
 		'5': SSID_5
 		'8': Mode_8
 		'9': Channel_9
+		'14': Standard_14
+		'15': AuthenticationMode_15
+		'2'?: RadioEnabled_2
+		'6'?: BroadcastSSID_6
+		'7'?: BeaconEnabled_7
 		'10'?: AutoChannel_10
 		'11'?: SupportedChannels_11
 		'12'?: ChannelsInUse_12
@@ -31,7 +34,6 @@ export type WLANconnectivity_12 = Readonly<
 		'17'?: WPAPreSharedKey_17
 		'18'?: WPAKeyPhrase_18
 		'19'?: WEPEncryptionType_19
-		'2'?: RadioEnabled_2
 		'20'?: WEPKeyIndex_20
 		'21'?: WEPKeyPhrase_21
 		'22'?: WEPKey1_22
@@ -61,8 +63,6 @@ export type WLANconnectivity_12 = Readonly<
 		'46'?: DiscardPacketsReceived_46
 		'47'?: UnknownPacketsReceived_47
 		'48'?: Vendorspecificextensions_48
-		'6'?: BroadcastSSID_6
-		'7'?: BeaconEnabled_7
 	}>
 >
 /**
@@ -88,37 +88,6 @@ type Interfacename_0 = string
  * Mandatory: true
  */
 type Enable_1 = boolean
-/**
- * Standard
- *
- * 0: 802.11a
- * 1: 802.11b
- * 2: 802.11bg
- * 3: 802.11g
- * 4: 802.11n
- * 5: 802.11bgn
- * 6: 802.11ac
- * 7: 802.11ah
- *
- * ID: 14
- * MultipleInstances: false
- * Mandatory: true
- */
-type Standard_14 = number
-/**
- * Authentication Mode
- *
- * 0: None (Open)
- * 1: PSK
- * 2: EAP
- * 3: EAP+PSK
- * 4: EAPSIM
- *
- * ID: 15
- * MultipleInstances: false
- * Mandatory: true
- */
-type AuthenticationMode_15 = number
 /**
  * Status
  *
@@ -174,6 +143,73 @@ type Mode_8 = number
  * Mandatory: true
  */
 type Channel_9 = number
+/**
+ * Standard
+ *
+ * 0: 802.11a
+ * 1: 802.11b
+ * 2: 802.11bg
+ * 3: 802.11g
+ * 4: 802.11n
+ * 5: 802.11bgn
+ * 6: 802.11ac
+ * 7: 802.11ah
+ *
+ * ID: 14
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type Standard_14 = number
+/**
+ * Authentication Mode
+ *
+ * 0: None (Open)
+ * 1: PSK
+ * 2: EAP
+ * 3: EAP+PSK
+ * 4: EAPSIM
+ *
+ * ID: 15
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type AuthenticationMode_15 = number
+/**
+ * Radio Enabled
+ *
+ * 0: Disabled
+ * 1: 2.4 GHz
+ * 2: 5 GHz
+ * 3: 0.9 GHz
+ * 4: 3.7 GHz
+ * 5: 45 GHz
+ * 6: 60 GHz
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type RadioEnabled_2 = number
+/**
+ * Broadcast SSID
+ *
+ * 0: Do not broadcast SSID 1: Broadcast SSID
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type BroadcastSSID_6 = boolean
+/**
+ * Beacon Enabled
+ *
+ * 0: Do not broadcast beacons 1: Broadcast beacons
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type BeaconEnabled_7 = boolean
 /**
  * Auto Channel
  *
@@ -262,22 +298,6 @@ type WPAKeyPhrase_18 = string
  * Mandatory: false
  */
 type WEPEncryptionType_19 = number
-/**
- * Radio Enabled
- *
- * 0: Disabled
- * 1: 2.4 GHz
- * 2: 5 GHz
- * 3: 0.9 GHz
- * 4: 3.7 GHz
- * 5: 45 GHz
- * 6: 60 GHz
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type RadioEnabled_2 = number
 /**
  * WEP Key Index
  *
@@ -580,26 +600,6 @@ type UnknownPacketsReceived_47 = number
  * Mandatory: false
  */
 type Vendorspecificextensions_48 = string
-/**
- * Broadcast SSID
- *
- * 0: Do not broadcast SSID 1: Broadcast SSID
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- */
-type BroadcastSSID_6 = boolean
-/**
- * Beacon Enabled
- *
- * 0: Do not broadcast beacons 1: Broadcast beacons
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- */
-type BeaconEnabled_7 = boolean
 /**
  * The objectURN for WLAN connectivity
  * Used in the JSON schema for the LwM2M document definition as a key.

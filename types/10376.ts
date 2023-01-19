@@ -20,14 +20,14 @@ export type PeriodicActivity_10376 = Readonly<
 		'1': ActivityDescription_1
 		'3': StartMask_3
 		'4': PeriodicInterval_4
-		'10'?: RecordDispatchStartMask_10
-		'11'?: RecordDispatchInterval_11
 		'2'?: ActivitySettings_2
 		'5'?: RunPeriod_5
 		'6'?: Record_6
 		'7'?: RecordHeadIndex_7
 		'8'?: RecordTailIndex_8
 		'9'?: RecordReadIndex_9
+		'10'?: RecordDispatchStartMask_10
+		'11'?: RecordDispatchInterval_11
 	}>
 >
 /**
@@ -103,45 +103,6 @@ type StartMask_3 = string
  * Units: s
  */
 type PeriodicInterval_4 = number
-/**
- * Record Dispatch Start Mask
- *
- * This resource represents the start time to deliver Record resource. If Record
- * resource is currently being observed, this resource enables accumulation of
- * the Record changes before being dispatch (rather than delivering Record
- * immediately as it changes). As per Start Mask, Dispatch Start Mask must
- * adhere to following string format:
- * "YYMMDDHHmmss".
- *
- * Dispatch Start Mask is adjusted to UTC offset provided by Device [/3/0/14]
- * object instance resource, or adjusted to UTC if the resource is not
- * provided.
- *
- * If this resource is used together with Dispatch Interval resource, it is
- * possible to automatically deliver Record resource at specific time. For
- * example, dispatch accumulated record every 6 hours, at minute 5 (00:05,
- * 06:05, 12:05, 18:05).
- *
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type RecordDispatchStartMask_10 = string
-/**
- * Record Dispatch Interval
- *
- * This resource represents the time interval between consecutive automatic
- * Record dispatch. The next dispatch will run after Record Dispatch Interval
- * resource value has elapsed.
- *
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- * Units: s
- */
-type RecordDispatchInterval_11 = number
 /**
  * Activity Settings
  *
@@ -238,6 +199,45 @@ type RecordTailIndex_8 = number
  * Mandatory: false
  */
 type RecordReadIndex_9 = number
+/**
+ * Record Dispatch Start Mask
+ *
+ * This resource represents the start time to deliver Record resource. If Record
+ * resource is currently being observed, this resource enables accumulation of
+ * the Record changes before being dispatch (rather than delivering Record
+ * immediately as it changes). As per Start Mask, Dispatch Start Mask must
+ * adhere to following string format:
+ * "YYMMDDHHmmss".
+ *
+ * Dispatch Start Mask is adjusted to UTC offset provided by Device [/3/0/14]
+ * object instance resource, or adjusted to UTC if the resource is not
+ * provided.
+ *
+ * If this resource is used together with Dispatch Interval resource, it is
+ * possible to automatically deliver Record resource at specific time. For
+ * example, dispatch accumulated record every 6 hours, at minute 5 (00:05,
+ * 06:05, 12:05, 18:05).
+ *
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type RecordDispatchStartMask_10 = string
+/**
+ * Record Dispatch Interval
+ *
+ * This resource represents the time interval between consecutive automatic
+ * Record dispatch. The next dispatch will run after Record Dispatch Interval
+ * resource value has elapsed.
+ *
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type RecordDispatchInterval_11 = number
 /**
  * The objectURN for Periodic Activity
  * Used in the JSON schema for the LwM2M document definition as a key.

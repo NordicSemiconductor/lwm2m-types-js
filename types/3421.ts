@@ -16,10 +16,17 @@
 export type Single_phaseelectricalmeter_3421 = Readonly<
 	Array<{
 		'1': Voltage_1
+		'6': Current_6
 		'13': InstantaneousPowerFactor_13
 		'16': Activepower_QI_QIV_16
 		'25': Activeenergyimport_A_Un_25
-		'6': Current_6
+		'2'?: Lowvoltagethreshold_2
+		'3'?: Lowvoltage_3
+		'4'?: Highvoltagethreshold_4
+		'5'?: Highvoltage_5
+		'7'?: Lowcurrentthreshold_7
+		'8'?: Lowcurrent_8
+		'9'?: Highcurrentthreshold_9
 		'10'?: Highcurrent_10
 		'11'?: Frequency_11
 		'12'?: AngleofI_U_12
@@ -28,7 +35,6 @@ export type Single_phaseelectricalmeter_3421 = Readonly<
 		'17'?: Activepower_QII_QIII_17
 		'18'?: Reactivepower_QI_QII_18
 		'19'?: Reactivepower_QIII_QIV_19
-		'2'?: Lowvoltagethreshold_2
 		'20'?: InstantaneousApparentPowerimport_VA_20
 		'21'?: InstantaneousApparentPowerexport_VA_21
 		'22'?: InstantaneousActivePower_A_A_22
@@ -38,7 +44,6 @@ export type Single_phaseelectricalmeter_3421 = Readonly<
 		'27'?: Activeenergy_A_A_Combinedtotal_27
 		'28'?: Activeenergy_A_A_Combinedtotal_28
 		'29'?: Reactiveenergyimport_R_Un_29
-		'3'?: Lowvoltage_3
 		'30'?: Reactiveenergyexport_R_Un_30
 		'31'?: ReactiveenergyQI_Ri_Un_31
 		'32'?: ReactiveenergyQII_Rc_Un_32
@@ -49,7 +54,6 @@ export type Single_phaseelectricalmeter_3421 = Readonly<
 		'37'?: Numberofpowerfailures_37
 		'38'?: Numberoflongpowerfailures_38
 		'39'?: Timethresholdforlongpowerfailure_39
-		'4'?: Highvoltagethreshold_4
 		'40'?: Durationoflastlongpowerfailure_40
 		'41'?: Thresholdforvoltagesag_41
 		'42'?: Timethresholdforvoltagesag_42
@@ -60,7 +64,6 @@ export type Single_phaseelectricalmeter_3421 = Readonly<
 		'47'?: Timethresholdforvoltageswell_47
 		'48'?: Numberofvoltageswells_48
 		'49'?: Durationoflastvoltageswell_49
-		'5'?: Highvoltage_5
 		'50'?: Magnitudeoflastvoltageswell_50
 		'51'?: Thresholdformissingvoltage_voltagecut_51
 		'52'?: Timethresholdforvoltagecut_52
@@ -69,9 +72,6 @@ export type Single_phaseelectricalmeter_3421 = Readonly<
 		'55'?: CTDenominatorParameter_55
 		'56'?: VTNumeratorParameter_56
 		'57'?: VTDenominatorParameter_57
-		'7'?: Lowcurrentthreshold_7
-		'8'?: Lowcurrent_8
-		'9'?: Highcurrentthreshold_9
 	}>
 >
 /**
@@ -85,6 +85,17 @@ export type Single_phaseelectricalmeter_3421 = Readonly<
  * Units: V
  */
 type Voltage_1 = number
+/**
+ * Current
+ *
+ * Instantaneous current measured.
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: A
+ */
+type Current_6 = number
 /**
  * Instantaneous Power Factor
  *
@@ -118,16 +129,79 @@ type Activepower_QI_QIV_16 = number
  */
 type Activeenergyimport_A_Un_25 = number
 /**
- * Current
+ * Low voltage threshold
  *
- * Instantaneous current measured.
+ * Set to True when voltage is below low voltage threshold.
  *
- * ID: 6
+ * ID: 2
  * MultipleInstances: false
- * Mandatory: true
+ * Mandatory: false
+ * Units: V
+ */
+type Lowvoltagethreshold_2 = number
+/**
+ * Low voltage
+ *
+ * Set to True when voltage is below low voltage threshold.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Lowvoltage_3 = boolean
+/**
+ * High voltage threshold
+ *
+ * Threshold above which the high voltage resource is set to True.
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: V
+ */
+type Highvoltagethreshold_4 = number
+/**
+ * High voltage
+ *
+ * Set to True when voltage is above high voltage threshold.
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Highvoltage_5 = boolean
+/**
+ * Low current threshold
+ *
+ * Threshold below which the low current resource is set to True.
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
  * Units: A
  */
-type Current_6 = number
+type Lowcurrentthreshold_7 = number
+/**
+ * Low current
+ *
+ * Set to True when current is below low current threshold.
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Lowcurrent_8 = boolean
+/**
+ * High current threshold
+ *
+ * Threshold above which the high current resource is set to True.
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: V
+ */
+type Highcurrentthreshold_9 = number
 /**
  * High current
  *
@@ -213,17 +287,6 @@ type Reactivepower_QI_QII_18 = number
  * Units: var
  */
 type Reactivepower_QIII_QIV_19 = number
-/**
- * Low voltage threshold
- *
- * Set to True when voltage is below low voltage threshold.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- * Units: V
- */
-type Lowvoltagethreshold_2 = number
 /**
  * Instantaneous Apparent Power import (+VA)
  *
@@ -323,16 +386,6 @@ type Activeenergy_A_A_Combinedtotal_28 = number
  * Units: varh
  */
 type Reactiveenergyimport_R_Un_29 = number
-/**
- * Low voltage
- *
- * Set to True when voltage is below low voltage threshold.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type Lowvoltage_3 = boolean
 /**
  * Reactive energy export (-R) Un
  *
@@ -442,17 +495,6 @@ type Numberoflongpowerfailures_38 = number
  */
 type Timethresholdforlongpowerfailure_39 = number
 /**
- * High voltage threshold
- *
- * Threshold above which the high voltage resource is set to True.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- * Units: V
- */
-type Highvoltagethreshold_4 = number
-/**
  * Duration of last long power failure
  *
  * Duration of last long power failure.
@@ -561,16 +603,6 @@ type Numberofvoltageswells_48 = number
  */
 type Durationoflastvoltageswell_49 = number
 /**
- * High voltage
- *
- * Set to True when voltage is above high voltage threshold.
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- */
-type Highvoltage_5 = boolean
-/**
  * Magnitude of last voltage swell
  *
  * Magnitude of last voltage swell.
@@ -654,38 +686,6 @@ type VTNumeratorParameter_56 = number
  * Mandatory: false
  */
 type VTDenominatorParameter_57 = number
-/**
- * Low current threshold
- *
- * Threshold below which the low current resource is set to True.
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- * Units: A
- */
-type Lowcurrentthreshold_7 = number
-/**
- * Low current
- *
- * Set to True when current is below low current threshold.
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type Lowcurrent_8 = boolean
-/**
- * High current threshold
- *
- * Threshold above which the high current resource is set to True.
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- * Units: V
- */
-type Highcurrentthreshold_9 = number
 /**
  * The objectURN for Single-phase electrical meter
  * Used in the JSON schema for the LwM2M document definition as a key.

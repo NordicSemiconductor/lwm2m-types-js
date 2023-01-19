@@ -26,11 +26,11 @@ export type oALogicalPush_ButtonSensor_3395 = Readonly<
 		'909': ExecutingObject_909
 		'919': StatusReportStructureID_919
 		'204'?: HoldRepeatTime_204
-		'4001'?: ObjectVersion_4001
 		'901'?: DocumentaryDescription_901
 		'905'?: DebugModeEnabled_905
 		'906'?: InjectTestEvent_906
 		'924'?: ObjectEnabled_924
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -138,16 +138,6 @@ type StatusReportStructureID_919 = number
  */
 type HoldRepeatTime_204 = number
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Documentary Description
  *
  * Resource to hold a documentary text description of the object.
@@ -192,6 +182,16 @@ type InjectTestEvent_906 = number
  * Mandatory: false
  */
 type ObjectEnabled_924 = boolean
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Logical Push-Button Sensor
  * Used in the JSON schema for the LwM2M document definition as a key.

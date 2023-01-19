@@ -15,8 +15,6 @@
 export type Battery_3411 = Readonly<
 	Array<{
 		'1': Batterylevel_1
-		'10'?: Supplylosscounter_10
-		'12'?: Supplylossreason_12
 		'2'?: Batterycapacity_2
 		'3'?: Batteryvoltage_3
 		'4'?: Typeofbattery_4
@@ -25,6 +23,8 @@ export type Battery_3411 = Readonly<
 		'7'?: Batteryshutdown_7
 		'8'?: Numberofcycles_8
 		'9'?: Supplyloss_9
+		'10'?: Supplylosscounter_10
+		'12'?: Supplylossreason_12
 	}>
 >
 /**
@@ -38,28 +38,6 @@ export type Battery_3411 = Readonly<
  * Units: /100
  */
 type Batterylevel_1 = number
-/**
- * Supply loss counter
- *
- * Number of supply losses since last reset.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type Supplylosscounter_10 = number
-/**
- * Supply loss reason
- *
- * Reason identified by the device why the device has lost mains supply (e.g.
- * lightning if the device measured a high voltage, accident if the device
- * identified a move with an accelerometer).
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- */
-type Supplylossreason_12 = string
 /**
  * Battery capacity
  *
@@ -146,6 +124,28 @@ type Numberofcycles_8 = number
  * Mandatory: false
  */
 type Supplyloss_9 = boolean
+/**
+ * Supply loss counter
+ *
+ * Number of supply losses since last reset.
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Supplylosscounter_10 = number
+/**
+ * Supply loss reason
+ *
+ * Reason identified by the device why the device has lost mains supply (e.g.
+ * lightning if the device measured a high voltage, accident if the device
+ * identified a move with an accelerometer).
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Supplylossreason_12 = string
 /**
  * The objectURN for Battery
  * Used in the JSON schema for the LwM2M document definition as a key.

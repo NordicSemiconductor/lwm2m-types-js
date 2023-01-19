@@ -17,6 +17,12 @@ export type Device_3 = Readonly<{
 	'16': SupportedBindingandModes_16
 	'0'?: Manufacturer_0
 	'1'?: ModelNumber_1
+	'2'?: SerialNumber_2
+	'3'?: FirmwareVersion_3
+	'6'?: AvailablePowerSources_6
+	'7'?: PowerSourceVoltage_7
+	'8'?: PowerSourceCurrent_8
+	'9'?: BatteryLevel_9
 	'10'?: MemoryFree_10
 	'13'?: CurrentTime_13
 	'14'?: UTCOffset_14
@@ -24,15 +30,9 @@ export type Device_3 = Readonly<{
 	'17'?: DeviceType_17
 	'18'?: HardwareVersion_18
 	'19'?: SoftwareVersion_19
-	'2'?: SerialNumber_2
 	'20'?: BatteryStatus_20
 	'21'?: MemoryTotal_21
 	'22'?: ExtDevInfo_22
-	'3'?: FirmwareVersion_3
-	'6'?: AvailablePowerSources_6
-	'7'?: PowerSourceVoltage_7
-	'8'?: PowerSourceCurrent_8
-	'9'?: BatteryLevel_9
 }>
 /**
  * Error Code
@@ -99,6 +99,82 @@ type Manufacturer_0 = string
  * Mandatory: false
  */
 type ModelNumber_1 = string
+/**
+ * Serial Number
+ *
+ * Serial Number
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type SerialNumber_2 = string
+/**
+ * Firmware Version
+ *
+ * Current firmware version of the Device.The Firmware Management function could
+ * rely on this resource.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type FirmwareVersion_3 = string
+/**
+ * Available Power Sources
+ *
+ * 0: DC power
+ * 1: Internal Battery
+ * 2: External Battery
+ * 3: Fuel Cell
+ * 4: Power over Ethernet
+ * 5: USB
+ * 6: AC (Mains) power
+ * 7: Solar
+ * The same Resource Instance ID MUST be used to associate a given Power Source
+ * (Resource ID:6) with its Present Voltage (Resource ID:7) and its Present
+ * Current (Resource ID:8)
+ *
+ * ID: 6
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type AvailablePowerSources_6 = number
+/**
+ * Power Source Voltage
+ *
+ * Present voltage for each Available Power Sources Resource Instance. The unit
+ * used for this resource is in mV.
+ *
+ * ID: 7
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type PowerSourceVoltage_7 = number
+/**
+ * Power Source Current
+ *
+ * Present current for each Available Power Source. The unit used for this
+ * resource is in mA.
+ *
+ * ID: 8
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type PowerSourceCurrent_8 = number
+/**
+ * Battery Level
+ *
+ * Contains the current battery level as a percentage (with a range from 0 to
+ * 100). This value is only valid for the Device internal Battery if present
+ * (one Available Power Sources Resource Instance is 1).
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: /100
+ */
+type BatteryLevel_9 = number
 /**
  * Memory Free
  *
@@ -183,16 +259,6 @@ type HardwareVersion_18 = string
  */
 type SoftwareVersion_19 = string
 /**
- * Serial Number
- *
- * Serial Number
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type SerialNumber_2 = string
-/**
  * Battery Status
  *
  * This value is only valid for the Device Internal Battery if present (one
@@ -236,72 +302,6 @@ type MemoryTotal_21 = number
  * Mandatory: false
  */
 type ExtDevInfo_22 = string
-/**
- * Firmware Version
- *
- * Current firmware version of the Device.The Firmware Management function could
- * rely on this resource.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type FirmwareVersion_3 = string
-/**
- * Available Power Sources
- *
- * 0: DC power
- * 1: Internal Battery
- * 2: External Battery
- * 3: Fuel Cell
- * 4: Power over Ethernet
- * 5: USB
- * 6: AC (Mains) power
- * 7: Solar
- * The same Resource Instance ID MUST be used to associate a given Power Source
- * (Resource ID:6) with its Present Voltage (Resource ID:7) and its Present
- * Current (Resource ID:8)
- *
- * ID: 6
- * MultipleInstances: true
- * Mandatory: false
- */
-type AvailablePowerSources_6 = number
-/**
- * Power Source Voltage
- *
- * Present voltage for each Available Power Sources Resource Instance. The unit
- * used for this resource is in mV.
- *
- * ID: 7
- * MultipleInstances: true
- * Mandatory: false
- */
-type PowerSourceVoltage_7 = number
-/**
- * Power Source Current
- *
- * Present current for each Available Power Source. The unit used for this
- * resource is in mA.
- *
- * ID: 8
- * MultipleInstances: true
- * Mandatory: false
- */
-type PowerSourceCurrent_8 = number
-/**
- * Battery Level
- *
- * Contains the current battery level as a percentage (with a range from 0 to
- * 100). This value is only valid for the Device internal Battery if present
- * (one Available Power Sources Resource Instance is 1).
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- * Units: /100
- */
-type BatteryLevel_9 = number
 /**
  * The objectURN for Device
  * Used in the JSON schema for the LwM2M document definition as a key.

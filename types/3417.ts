@@ -18,11 +18,6 @@
 export type Luminaireasset_3417 = Readonly<
 	Array<{
 		'1': AssetGTIN_1
-		'10'?: NominalminACmainsvoltage_10
-		'11'?: CRI_11
-		'12'?: CCTvalue_12
-		'13'?: Luminaireidentification_13
-		'14'?: Luminaireidentificationnumber_14
 		'2'?: Yearofmanufacture_2
 		'3'?: Weekofmanufacture_3
 		'4'?: Nominallightoutput_4
@@ -31,6 +26,11 @@ export type Luminaireasset_3417 = Readonly<
 		'7'?: Nominalinputpower_7
 		'8'?: Poweratminimumdimlevel_8
 		'9'?: NominalmaxACmainsvoltage_9
+		'10'?: NominalminACmainsvoltage_10
+		'11'?: CRI_11
+		'12'?: CCTvalue_12
+		'13'?: Luminaireidentification_13
+		'14'?: Luminaireidentificationnumber_14
 	}>
 >
 /**
@@ -44,60 +44,6 @@ export type Luminaireasset_3417 = Readonly<
  * Mandatory: true
  */
 type AssetGTIN_1 = string
-/**
- * Nominal min AC mains voltage
- *
- * Nominal min AC mains voltage for the luminaire to operate.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- * Units: V
- */
-type NominalminACmainsvoltage_10 = number
-/**
- * CRI
- *
- * Color rendering index (0 to 100) of the luminaire.
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- */
-type CRI_11 = number
-/**
- * CCT value
- *
- * Color temperature of the luminaire.
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- * Units: K
- */
-type CCTvalue_12 = number
-/**
- * Luminaire identification
- *
- * Luminaire identification as per DiiA/D4i specification part 251 (MB1
- * extension): 60 ascii character string.
- *
- * ID: 13
- * MultipleInstances: false
- * Mandatory: false
- */
-type Luminaireidentification_13 = string
-/**
- * Luminaire identification number
- *
- * Luminaire identification number as per DiiA/D4i specification part 251 (MB1
- * extension): 20 digit number.
- *
- * ID: 14
- * MultipleInstances: false
- * Mandatory: false
- */
-type Luminaireidentificationnumber_14 = string
 /**
  * Year of manufacture
  *
@@ -183,6 +129,60 @@ type Poweratminimumdimlevel_8 = number
  * Units: V
  */
 type NominalmaxACmainsvoltage_9 = number
+/**
+ * Nominal min AC mains voltage
+ *
+ * Nominal min AC mains voltage for the luminaire to operate.
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: V
+ */
+type NominalminACmainsvoltage_10 = number
+/**
+ * CRI
+ *
+ * Color rendering index (0 to 100) of the luminaire.
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type CRI_11 = number
+/**
+ * CCT value
+ *
+ * Color temperature of the luminaire.
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: K
+ */
+type CCTvalue_12 = number
+/**
+ * Luminaire identification
+ *
+ * Luminaire identification as per DiiA/D4i specification part 251 (MB1
+ * extension): 60 ascii character string.
+ *
+ * ID: 13
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Luminaireidentification_13 = string
+/**
+ * Luminaire identification number
+ *
+ * Luminaire identification number as per DiiA/D4i specification part 251 (MB1
+ * extension): 20 digit number.
+ *
+ * ID: 14
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Luminaireidentificationnumber_14 = string
 /**
  * The objectURN for Luminaire asset
  * Used in the JSON schema for the LwM2M document definition as a key.

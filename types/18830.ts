@@ -19,12 +19,12 @@ export type MQTTBroker_18830 = Readonly<
 		'2': CleanSession_2
 		'3': KeepAlive_3
 		'6': SecurityMode_6
-		'10'?: CertificateUsage_10
 		'4'?: UserName_4
 		'5'?: Password_5
 		'7'?: PublicKeyorIdentity_7
 		'8'?: MQTTBrokerPublicKey_8
 		'9'?: SecretKey_9
+		'10'?: CertificateUsage_10
 	}>
 >
 /**
@@ -85,27 +85,6 @@ type KeepAlive_3 = number
  */
 type SecurityMode_6 = number
 /**
- * Certificate Usage
- *
- * The Certificate Usage Resource specifies the semantic of the certificate or
- * raw public key stored in the "MQTT Broker Public Key" Resource, which is used
- * to match the certificate presented in the TLS/DTLS handshake. The currently
- * defined values are:
- * 0: CA constraint
- * 1: service certificate constraint
- * 2: trust anchor assertion
- * 3: domain-issued certificate
- *
- * When this Resource is absent, value (3) for domain issued certificate mode is
- * assumed.
- *
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type CertificateUsage_10 = number
-/**
  * User Name
  *
  * The User Name to declare in the MQTT CONNECT message.
@@ -157,6 +136,27 @@ type MQTTBrokerPublicKey_8 = string
  * Mandatory: false
  */
 type SecretKey_9 = string
+/**
+ * Certificate Usage
+ *
+ * The Certificate Usage Resource specifies the semantic of the certificate or
+ * raw public key stored in the "MQTT Broker Public Key" Resource, which is used
+ * to match the certificate presented in the TLS/DTLS handshake. The currently
+ * defined values are:
+ * 0: CA constraint
+ * 1: service certificate constraint
+ * 2: trust anchor assertion
+ * 3: domain-issued certificate
+ *
+ * When this Resource is absent, value (3) for domain issued certificate mode is
+ * assumed.
+ *
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type CertificateUsage_10 = number
 /**
  * The objectURN for MQTT Broker
  * Used in the JSON schema for the LwM2M document definition as a key.

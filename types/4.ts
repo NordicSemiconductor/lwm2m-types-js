@@ -25,16 +25,16 @@ export type ConnectivityMonitoring_4 = Readonly<{
 	'1': AvailableNetworkBearer_1
 	'2': RadioSignalStrength_2
 	'4': IPAddresses_4
-	'10'?: SMCC_10
-	'11'?: SignalSNR_11
-	'12'?: LAC_12
-	'13'?: CoverageEnhancementLevel_13
 	'3'?: LinkQuality_3
 	'5'?: RouterIPAddresses_5
 	'6'?: LinkUtilization_6
 	'7'?: APN_7
 	'8'?: CellID_8
 	'9'?: SMNC_9
+	'10'?: SMCC_10
+	'11'?: SignalSNR_11
+	'12'?: LAC_12
+	'13'?: CoverageEnhancementLevel_13
 }>
 /**
  * Network Bearer
@@ -116,59 +116,6 @@ type RadioSignalStrength_2 = number
  */
 type IPAddresses_4 = string
 /**
- * SMCC
- *
- * Serving Mobile Country Code. This is applicable when the Network Bearer
- * Resource value is referring to a cellular network.
- * As specified in TS [3GPP 23.003].
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type SMCC_10 = number
-/**
- * SignalSNR
- *
- * SINR: Signal to Interference plus Noise Ratio SINR is the ratio of the
- * strength of the received signal to the strength of the received interference
- * signal (noise and interference).
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- * Units: dB
- */
-type SignalSNR_11 = number
-/**
- * LAC
- *
- * Location Area Code in case Network Bearer Resource is a Cellular Network. As
- * specified in TS [3GPP 23.003] and in [3GPP. 24.008]
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- */
-type LAC_12 = number
-/**
- * Coverage Enhancement Level
- *
- * Indicates the Coverage Enhancement Level of the UE in the serving cell. The
- * Coverage Enhancement levels are defined and specified in 3GPP TS 36.331 and
- * 36.213.
- * 0: No Coverage Enhancement in the serving cell
- * 1: Coverage Enhancement level 0
- * 2: Coverage Enhancement level 1
- * 3: Coverage Enhancement level 2
- * 4: Coverage Enhancement level 3
- *
- * ID: 13
- * MultipleInstances: false
- * Mandatory: false
- */
-type CoverageEnhancementLevel_13 = number
-/**
  * Link Quality
  *
  * This contains received link quality e.g. LQI for IEEE 802.15.4 (range
@@ -243,6 +190,59 @@ type CellID_8 = number
  * Mandatory: false
  */
 type SMNC_9 = number
+/**
+ * SMCC
+ *
+ * Serving Mobile Country Code. This is applicable when the Network Bearer
+ * Resource value is referring to a cellular network.
+ * As specified in TS [3GPP 23.003].
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type SMCC_10 = number
+/**
+ * SignalSNR
+ *
+ * SINR: Signal to Interference plus Noise Ratio SINR is the ratio of the
+ * strength of the received signal to the strength of the received interference
+ * signal (noise and interference).
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: dB
+ */
+type SignalSNR_11 = number
+/**
+ * LAC
+ *
+ * Location Area Code in case Network Bearer Resource is a Cellular Network. As
+ * specified in TS [3GPP 23.003] and in [3GPP. 24.008]
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type LAC_12 = number
+/**
+ * Coverage Enhancement Level
+ *
+ * Indicates the Coverage Enhancement Level of the UE in the serving cell. The
+ * Coverage Enhancement levels are defined and specified in 3GPP TS 36.331 and
+ * 36.213.
+ * 0: No Coverage Enhancement in the serving cell
+ * 1: Coverage Enhancement level 0
+ * 2: Coverage Enhancement level 1
+ * 3: Coverage Enhancement level 2
+ * 4: Coverage Enhancement level 3
+ *
+ * ID: 13
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type CoverageEnhancementLevel_13 = number
 /**
  * The objectURN for Connectivity Monitoring
  * Used in the JSON schema for the LwM2M document definition as a key.

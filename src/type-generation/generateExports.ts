@@ -12,7 +12,10 @@ export const generateExports = (
 	definitions: LwM2MObjectDefinition[],
 ): string => {
 	const exportDefinitions: ts.Node[] = []
-	for (const definition of definitions) {
+	for (const definition of definitions.sort(
+		({ ObjectID: ID1 }, { ObjectID: ID2 }) =>
+			parseInt(ID1, 10) - parseInt(ID2, 10),
+	)) {
 		// Type
 		exportDefinitions.push(
 			ts.factory.createExportDeclaration(

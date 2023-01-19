@@ -17,19 +17,19 @@ export type LWM2MSoftwareManagement_9 = Readonly<
 	Array<{
 		'0': PkgName_0
 		'1': PkgVersion_1
-		'12': ActivationState_12
 		'7': UpdateState_7
 		'9': UpdateResult_9
+		'12': ActivationState_12
+		'2'?: Package_2
+		'3'?: PackageURI_3
+		'5'?: Checkpoint_5
+		'8'?: UpdateSupportedObjects_8
 		'13'?: PackageSettings_13
 		'14'?: UserName_14
 		'15'?: Password_15
 		'16'?: StatusReason_16
 		'17'?: SoftwareComponentLink_17
 		'18'?: SoftwareComponenttreelength_18
-		'2'?: Package_2
-		'3'?: PackageURI_3
-		'5'?: Checkpoint_5
-		'8'?: UpdateSupportedObjects_8
 	}>
 >
 /**
@@ -52,23 +52,6 @@ type PkgName_0 = string
  * Mandatory: true
  */
 type PkgVersion_1 = string
-/**
- * Activation State
- *
- * Indicates the current activation state of this software:
- * 0: DISABLED
- * Activation State is DISABLED if the Software Activation State Machine is in
- * the INACTIVE state or not alive.
- * 1: ENABLED
- * Activation State is ENABLED only if the Software Activation State Machine is
- * in the ACTIVE state
- *
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: true
- */
-type ActivationState_12 = boolean
 /**
  * Update State
  *
@@ -132,6 +115,86 @@ type UpdateState_7 = number
  * Mandatory: true
  */
 type UpdateResult_9 = number
+/**
+ * Activation State
+ *
+ * Indicates the current activation state of this software:
+ * 0: DISABLED
+ * Activation State is DISABLED if the Software Activation State Machine is in
+ * the INACTIVE state or not alive.
+ * 1: ENABLED
+ * Activation State is ENABLED only if the Software Activation State Machine is
+ * in the ACTIVE state
+ *
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type ActivationState_12 = boolean
+/**
+ * Package
+ *
+ * Software package
+ * The package can be in one single software component, or any delivery material
+ * used by the Device to determine the software component(s) and proceed to
+ * their installation.
+ * Can be archive file, executable, manifest. This resource to be used when it
+ * is single block of delivery.
+ *
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Package_2 = string
+/**
+ * Package URI
+ *
+ * URI from where the device can download the software package by an alternative
+ * mechanism. As soon the device has received the Package URI it performs the
+ * download at the next practical opportunity.
+ * Can be direct link to a single software component or link to archive file,
+ * executable, or manifest, used by the Device to determine, then access to the
+ * software component(s). This resource to be used when it is single block of
+ * delivery.
+ *
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type PackageURI_3 = string
+/**
+ * Checkpoint
+ *
+ * Link to a "Checkpoint" object which allows to specify conditions/dependencies
+ * for a software update. E.g. power connected, sufficient memory, target
+ * system.
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Checkpoint_5 = string
+/**
+ * Update Supported Objects
+ *
+ * If this value is true, the LwM2M Client MUST inform the registered LwM2M
+ * Servers of Objects and Object Instances parameter by sending an Update or
+ * Registration message after the software update operation at the next
+ * practical opportunity if supported Objects in the LwM2M Client have changed,
+ * in order for the LwM2M Servers to promptly manage newly installed Objects.
+ * If false, Objects and Object Instances parameter MUST be reported at the next
+ * periodic Update message.
+ * The default value is false.
+ *
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type UpdateSupportedObjects_8 = boolean
 /**
  * Package Settings
  *
@@ -204,69 +267,6 @@ type SoftwareComponentLink_17 = string
  * Mandatory: false
  */
 type SoftwareComponenttreelength_18 = number
-/**
- * Package
- *
- * Software package
- * The package can be in one single software component, or any delivery material
- * used by the Device to determine the software component(s) and proceed to
- * their installation.
- * Can be archive file, executable, manifest. This resource to be used when it
- * is single block of delivery.
- *
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type Package_2 = string
-/**
- * Package URI
- *
- * URI from where the device can download the software package by an alternative
- * mechanism. As soon the device has received the Package URI it performs the
- * download at the next practical opportunity.
- * Can be direct link to a single software component or link to archive file,
- * executable, or manifest, used by the Device to determine, then access to the
- * software component(s). This resource to be used when it is single block of
- * delivery.
- *
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type PackageURI_3 = string
-/**
- * Checkpoint
- *
- * Link to a "Checkpoint" object which allows to specify conditions/dependencies
- * for a software update. E.g. power connected, sufficient memory, target
- * system.
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- */
-type Checkpoint_5 = string
-/**
- * Update Supported Objects
- *
- * If this value is true, the LwM2M Client MUST inform the registered LwM2M
- * Servers of Objects and Object Instances parameter by sending an Update or
- * Registration message after the software update operation at the next
- * practical opportunity if supported Objects in the LwM2M Client have changed,
- * in order for the LwM2M Servers to promptly manage newly installed Objects.
- * If false, Objects and Object Instances parameter MUST be reported at the next
- * periodic Update message.
- * The default value is false.
- *
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type UpdateSupportedObjects_8 = boolean
 /**
  * The objectURN for LWM2M Software Management
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -25,7 +25,6 @@ export type oABasicControl_3387 = Readonly<
 		'812': GhostStatus_812
 		'813': SupersedeHeartbeatTime_813
 		'909': ExecutingObject_909
-		'4001'?: ObjectVersion_4001
 		'802'?: GhostConfiguration_802
 		'805'?: SupersedeHeartbeat_805
 		'811'?: Active_Controller_List_811
@@ -33,6 +32,7 @@ export type oABasicControl_3387 = Readonly<
 		'905'?: DebugModeEnabled_905
 		'906'?: InjectTestEvent_906
 		'924'?: ObjectEnabled_924
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -159,16 +159,6 @@ type SupersedeHeartbeatTime_813 = number
  */
 type ExecutingObject_909 = string
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Ghost Configuration
  *
  * Configures if this control function instance is in ghost mode (see
@@ -262,6 +252,16 @@ type InjectTestEvent_906 = number
  * Mandatory: false
  */
 type ObjectEnabled_924 = boolean
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Basic Control
  * Used in the JSON schema for the LwM2M document definition as a key.

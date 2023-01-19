@@ -19,6 +19,8 @@ export type Heat_Coolingmeter_10257 = Readonly<
 		'5802': MaxMeasuredactivepower_5802
 		'0'?: Manufacturer_0
 		'1'?: ModelNumber_1
+		'2'?: SerialNumber_2
+		'3'?: Description_3
 		'11'?: Errorcode_11
 		'12'?: Flowtemperature_12
 		'13'?: MaxMeasuredflowtemperature_13
@@ -27,10 +29,8 @@ export type Heat_Coolingmeter_10257 = Readonly<
 		'16'?: Temperaturedifference_16
 		'17'?: Flowrate_17
 		'18'?: MaxMeasuredflow_18
-		'2'?: SerialNumber_2
 		'20'?: Flowvolume_20
 		'21'?: Returnvolume_21
-		'3'?: Description_3
 		'5506'?: CurrentTime_5506
 		'5800'?: Instantaneousactivepower_5800
 		'5805'?: Cumulativeactivepower_5805
@@ -67,6 +67,26 @@ type Manufacturer_0 = string
  * Mandatory: false
  */
 type ModelNumber_1 = string
+/**
+ * Serial Number
+ *
+ * Serial number of the meter
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type SerialNumber_2 = string
+/**
+ * Description
+ *
+ * Description of the meter
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Description_3 = string
 /**
  * Error code
  *
@@ -155,16 +175,6 @@ type Flowrate_17 = number
  */
 type MaxMeasuredflow_18 = number
 /**
- * Serial Number
- *
- * Serial number of the meter
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type SerialNumber_2 = string
-/**
  * Flow volume
  *
  * The cumulative flow volume measured on the flow pipe
@@ -186,16 +196,6 @@ type Flowvolume_20 = number
  * Units: m3
  */
 type Returnvolume_21 = number
-/**
- * Description
- *
- * Description of the meter
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type Description_3 = string
 /**
  * Current Time
  *

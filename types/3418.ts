@@ -16,6 +16,13 @@
 export type Electricalmonitor_3418 = Readonly<
 	Array<{
 		'1'?: Supplyvoltage_1
+		'2'?: Supplycurrent_2
+		'3'?: Frequency_3
+		'4'?: Activepower_4
+		'5'?: Powerfactor_5
+		'6'?: Cumulatedactiveenergy_6
+		'8'?: Lowpowerfactorthreshold_8
+		'9'?: Lowpowerfactor_9
 		'10'?: Lowpowerthreshold_10
 		'11'?: Lowpowerthresholdatlowdimlevel_11
 		'12'?: Lowpower_12
@@ -26,7 +33,6 @@ export type Electricalmonitor_3418 = Readonly<
 		'17'?: Lowcurrent_17
 		'18'?: Highcurrentthreshold_18
 		'19'?: Highcurrent_19
-		'2'?: Supplycurrent_2
 		'20'?: Lowvoltagethreshold_20
 		'21'?: Lowvoltage_21
 		'22'?: Highvoltagethreshold_22
@@ -37,13 +43,7 @@ export type Electricalmonitor_3418 = Readonly<
 		'27'?: MaximuminrushCurrent_27
 		'28'?: LatestinrushCurrent_28
 		'29'?: Reactivepower_29
-		'3'?: Frequency_3
 		'30'?: Reactiveenergy_30
-		'4'?: Activepower_4
-		'5'?: Powerfactor_5
-		'6'?: Cumulatedactiveenergy_6
-		'8'?: Lowpowerfactorthreshold_8
-		'9'?: Lowpowerfactor_9
 	}>
 >
 /**
@@ -57,6 +57,83 @@ export type Electricalmonitor_3418 = Readonly<
  * Units: V
  */
 type Supplyvoltage_1 = number
+/**
+ * Supply current
+ *
+ * Electrical current supplied to the device.
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: A
+ */
+type Supplycurrent_2 = number
+/**
+ * Frequency
+ *
+ * Frequency of the supply current to the device.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: Hz
+ */
+type Frequency_3 = number
+/**
+ * Active power
+ *
+ * Active power consumed by the device and its electrical load.
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: W
+ */
+type Activepower_4 = number
+/**
+ * Power factor
+ *
+ * Power factor is equal to active power divided by apparent power. The value is
+ * between -1 and +1.
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Powerfactor_5 = number
+/**
+ * Cumulated active energy
+ *
+ * Cumulated number of kWh measured by the device and its load since last energy
+ * counter reset.
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kWh
+ */
+type Cumulatedactiveenergy_6 = number
+/**
+ * Low power factor threshold
+ *
+ * Threshold below which the device should trigger a low power factor event.
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Lowpowerfactorthreshold_8 = number
+/**
+ * Low power factor
+ *
+ * Set to True if the power factor is below threshold. This is an absolute value
+ * threshold.
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Lowpowerfactor_9 = boolean
 /**
  * Low power threshold
  *
@@ -172,17 +249,6 @@ type Highcurrentthreshold_18 = number
  */
 type Highcurrent_19 = boolean
 /**
- * Supply current
- *
- * Electrical current supplied to the device.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- * Units: A
- */
-type Supplycurrent_2 = number
-/**
  * Low voltage threshold
  *
  * Threshold below which the device should trigger a low voltage event.
@@ -290,17 +356,6 @@ type LatestinrushCurrent_28 = number
  */
 type Reactivepower_29 = number
 /**
- * Frequency
- *
- * Frequency of the supply current to the device.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- * Units: Hz
- */
-type Frequency_3 = number
-/**
  * Reactive energy
  *
  * Cumulative reactive power measured by the device and its electrical load
@@ -312,61 +367,6 @@ type Frequency_3 = number
  * Units: varh
  */
 type Reactiveenergy_30 = number
-/**
- * Active power
- *
- * Active power consumed by the device and its electrical load.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- * Units: W
- */
-type Activepower_4 = number
-/**
- * Power factor
- *
- * Power factor is equal to active power divided by apparent power. The value is
- * between -1 and +1.
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- */
-type Powerfactor_5 = number
-/**
- * Cumulated active energy
- *
- * Cumulated number of kWh measured by the device and its load since last energy
- * counter reset.
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- * Units: kWh
- */
-type Cumulatedactiveenergy_6 = number
-/**
- * Low power factor threshold
- *
- * Threshold below which the device should trigger a low power factor event.
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type Lowpowerfactorthreshold_8 = number
-/**
- * Low power factor
- *
- * Set to True if the power factor is below threshold. This is an absolute value
- * threshold.
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- */
-type Lowpowerfactor_9 = boolean
 /**
  * The objectURN for Electrical monitor
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -16,12 +16,12 @@
 export type oAPhysicalPush_ButtonSensor_3401 = Readonly<
 	Array<{
 		'201': Push_ButtonStatusValue_201
-		'5502': DigitalInputPolarity_5502
-		'5503': DigitalInputDebounce_5503
 		'907': ErrorStatus_907
 		'908': MountingLocation_908
-		'4001'?: ObjectVersion_4001
+		'5502': DigitalInputPolarity_5502
+		'5503': DigitalInputDebounce_5503
 		'901'?: DocumentaryDescription_901
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -38,28 +38,6 @@ export type oAPhysicalPush_ButtonSensor_3401 = Readonly<
  * Mandatory: true
  */
 type Push_ButtonStatusValue_201 = number
-/**
- * Digital Input Polarity
- *
- * The polarity of the digital input as a Boolean (False = Normal, True =
- * Reversed).
- *
- * ID: 5502
- * MultipleInstances: false
- * Mandatory: true
- */
-type DigitalInputPolarity_5502 = boolean
-/**
- * Digital Input Debounce
- *
- * The debounce period in ms.
- *
- * ID: 5503
- * MultipleInstances: false
- * Mandatory: true
- * Units: ms
- */
-type DigitalInputDebounce_5503 = number
 /**
  * Error Status
  *
@@ -85,15 +63,27 @@ type ErrorStatus_907 = number
  */
 type MountingLocation_908 = string
 /**
- * ObjectVersion
+ * Digital Input Polarity
  *
- * LWM2M Object versioning label.
+ * The polarity of the digital input as a Boolean (False = Normal, True =
+ * Reversed).
  *
- * ID: 4001
+ * ID: 5502
  * MultipleInstances: false
- * Mandatory: false
+ * Mandatory: true
  */
-type ObjectVersion_4001 = string
+type DigitalInputPolarity_5502 = boolean
+/**
+ * Digital Input Debounce
+ *
+ * The debounce period in ms.
+ *
+ * ID: 5503
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: ms
+ */
+type DigitalInputDebounce_5503 = number
 /**
  * Documentary Description
  *
@@ -104,6 +94,16 @@ type ObjectVersion_4001 = string
  * Mandatory: false
  */
 type DocumentaryDescription_901 = string
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Physical Push-Button Sensor
  * Used in the JSON schema for the LwM2M document definition as a key.

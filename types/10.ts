@@ -19,10 +19,6 @@ export type LWM2MCellularConnectivity_10 = Readonly<{
 	'11': ActivatedProfileNames_11
 	'0'?: SMSCaddress_0
 	'1'?: Disableradioperiod_1
-	'10'?: eDRXparametersforA_Gbmode_10
-	'12'?: SupportedPowerSavingModes_12
-	'13'?: ActivePowerSavingModes_13
-	'14'?: ReleaseAssistanceIndicationUsage_14
 	'2'?: Moduleactivationcode_2
 	'3'?: Vendorspecificextensions_3
 	'4'?: PSMTimer_4
@@ -30,6 +26,10 @@ export type LWM2MCellularConnectivity_10 = Readonly<{
 	'7'?: eDRXparametersforIumode_7
 	'8'?: eDRXparametersforWB_S1mode_8
 	'9'?: eDRXparametersforNB_S1mode_9
+	'10'?: eDRXparametersforA_Gbmode_10
+	'12'?: SupportedPowerSavingModes_12
+	'13'?: ActivePowerSavingModes_13
+	'14'?: ReleaseAssistanceIndicationUsage_14
 }>
 /**
  * Activated Profile Names
@@ -72,67 +72,6 @@ type SMSCaddress_0 = string
  * Mandatory: false
  */
 type Disableradioperiod_1 = number
-/**
- * eDRX parameters for A/Gb mode
- *
- * Extended DRX parameters (Paging Time Window and eDRX value) for A/Gb mode
- * which the UE can request from the network. This resource is encoded as octet
- * 3 in [3GPP-TS_24.008, clause 10.5.5.32].
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type eDRXparametersforA_Gbmode_10 = string
-/**
- * Supported Power Saving Modes
- *
- * This Resource is used to indicate the Power Saving Modes supported by the
- * LwM2M Client.
- * Each bit set in the Resource Instance value corresponds to a supported mode.
- * Several bit set, means several modes are supported.
- * 1st LSB: PSM
- * 2nd LSB: eDRX
- * Other bits are reserved for future use
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- */
-type SupportedPowerSavingModes_12 = number
-/**
- * Active Power Saving Modes
- *
- * This Resource is used to indicate which Power Saving Mode(s) is (are)
- * currently active in the LwM2M Client.
- * Each bit set in the Resource Instance value corresponds to an active mode.
- * 1st LSB: PSM
- * 2nd LSB: eDRX
- * Other bits are reserved for future use
- *
- * ID: 13
- * MultipleInstances: false
- * Mandatory: false
- */
-type ActivePowerSavingModes_13 = number
-/**
- * Release Assistance Indication Usage
- *
- * This resource is used to indicate client configuration as to when it uses
- * Release Assistance Indicator (RAI) as defined in 3GPP-TS_24.310, clause
- * 9.9.4.25 to indicate to the NW when connection can be released.
- * 1st LSB: RAI not used
- * 2nd LSB: RAI used when transmitting last message which requires no
- * application/transport layer response/ confirmation
- * 3rd LSB: RAI used when transmitting last message which requires
- * response/confirmation; when this bit is set, 2nd LSB is also expected to be
- * set.
- *
- * ID: 14
- * MultipleInstances: false
- * Mandatory: false
- */
-type ReleaseAssistanceIndicationUsage_14 = number
 /**
  * Module activation code
  *
@@ -223,6 +162,67 @@ type eDRXparametersforWB_S1mode_8 = string
  * Mandatory: false
  */
 type eDRXparametersforNB_S1mode_9 = string
+/**
+ * eDRX parameters for A/Gb mode
+ *
+ * Extended DRX parameters (Paging Time Window and eDRX value) for A/Gb mode
+ * which the UE can request from the network. This resource is encoded as octet
+ * 3 in [3GPP-TS_24.008, clause 10.5.5.32].
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type eDRXparametersforA_Gbmode_10 = string
+/**
+ * Supported Power Saving Modes
+ *
+ * This Resource is used to indicate the Power Saving Modes supported by the
+ * LwM2M Client.
+ * Each bit set in the Resource Instance value corresponds to a supported mode.
+ * Several bit set, means several modes are supported.
+ * 1st LSB: PSM
+ * 2nd LSB: eDRX
+ * Other bits are reserved for future use
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type SupportedPowerSavingModes_12 = number
+/**
+ * Active Power Saving Modes
+ *
+ * This Resource is used to indicate which Power Saving Mode(s) is (are)
+ * currently active in the LwM2M Client.
+ * Each bit set in the Resource Instance value corresponds to an active mode.
+ * 1st LSB: PSM
+ * 2nd LSB: eDRX
+ * Other bits are reserved for future use
+ *
+ * ID: 13
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ActivePowerSavingModes_13 = number
+/**
+ * Release Assistance Indication Usage
+ *
+ * This resource is used to indicate client configuration as to when it uses
+ * Release Assistance Indicator (RAI) as defined in 3GPP-TS_24.310, clause
+ * 9.9.4.25 to indicate to the NW when connection can be released.
+ * 1st LSB: RAI not used
+ * 2nd LSB: RAI used when transmitting last message which requires no
+ * application/transport layer response/ confirmation
+ * 3rd LSB: RAI used when transmitting last message which requires
+ * response/confirmation; when this bit is set, 2nd LSB is also expected to be
+ * set.
+ *
+ * ID: 14
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ReleaseAssistanceIndicationUsage_14 = number
 /**
  * The objectURN for LWM2M Cellular Connectivity
  * Used in the JSON schema for the LwM2M document definition as a key.

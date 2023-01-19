@@ -15,13 +15,13 @@
 export type DeviceExtension_3410 = Readonly<{
 	'2': Manufactureridentifier_2
 	'1'?: GTINmodelnumber_1
-	'10'?: Additionalfirmwareinformation_10
 	'3'?: User_givenname_3
 	'4'?: Assetidentifier_4
 	'5'?: Installationdate_5
 	'6'?: Softwareupdate_6
 	'7'?: Maintenance_7
 	'9'?: Deviceoperatinghours_9
+	'10'?: Additionalfirmwareinformation_10
 }>
 /**
  * Manufacturer identifier
@@ -48,17 +48,6 @@ type Manufactureridentifier_2 = string
  * Mandatory: false
  */
 type GTINmodelnumber_1 = string
-/**
- * Additional firmware information
- *
- * Additional information about peripheral firmware versions. The format is left
- * to the vendor.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type Additionalfirmwareinformation_10 = string
 /**
  * User-given name
  *
@@ -121,6 +110,17 @@ type Maintenance_7 = boolean
  * Units: h
  */
 type Deviceoperatinghours_9 = number
+/**
+ * Additional firmware information
+ *
+ * Additional information about peripheral firmware versions. The format is left
+ * to the vendor.
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Additionalfirmwareinformation_10 = string
 /**
  * The objectURN for Device Extension
  * Used in the JSON schema for the LwM2M document definition as a key.

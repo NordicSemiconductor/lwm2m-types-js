@@ -45,12 +45,12 @@ export type FirmwareUpdate_5 = Readonly<{
 	'3': State_3
 	'5': UpdateResult_5
 	'9': FirmwareUpdateDeliveryMethod_9
-	'11'?: Severity_11
-	'12'?: LastStateChangeTime_12
-	'13'?: MaximumDeferPeriod_13
 	'6'?: PkgName_6
 	'7'?: PkgVersion_7
 	'8'?: FirmwareUpdateProtocolSupport_8
+	'11'?: Severity_11
+	'12'?: LastStateChangeTime_12
+	'13'?: MaximumDeferPeriod_13
 }>
 /**
  * Package
@@ -167,46 +167,6 @@ type UpdateResult_5 = number
  */
 type FirmwareUpdateDeliveryMethod_9 = number
 /**
- * Severity
- *
- * Severity of the firmware image.
- * 0: Critical
- * 1: Mandatory
- * 2: Optional
- * This information is useful when the device provides option for the deferred
- * update. Default value is 1.
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- */
-type Severity_11 = number
-/**
- * Last State Change Time
- *
- * This resource stores the time when the State resource is changed. Device
- * updates this resource before making any change to the State.
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- */
-type LastStateChangeTime_12 = number
-/**
- * Maximum Defer Period
- *
- * The number of seconds a user can defer the software update.
- * When this time period is over, the device will not prompt the user for update
- * and install it automatically.
- * If the value is 0, a deferred update is not allowed.
- *
- * ID: 13
- * MultipleInstances: false
- * Mandatory: false
- * Units: s
- */
-type MaximumDeferPeriod_13 = number
-/**
  * PkgName
  *
  * Name of the Firmware Package
@@ -253,6 +213,46 @@ type PkgVersion_7 = string
  * Mandatory: false
  */
 type FirmwareUpdateProtocolSupport_8 = number
+/**
+ * Severity
+ *
+ * Severity of the firmware image.
+ * 0: Critical
+ * 1: Mandatory
+ * 2: Optional
+ * This information is useful when the device provides option for the deferred
+ * update. Default value is 1.
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Severity_11 = number
+/**
+ * Last State Change Time
+ *
+ * This resource stores the time when the State resource is changed. Device
+ * updates this resource before making any change to the State.
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type LastStateChangeTime_12 = number
+/**
+ * Maximum Defer Period
+ *
+ * The number of seconds a user can defer the software update.
+ * When this time period is over, the device will not prompt the user for update
+ * and install it automatically.
+ * If the value is 0, a deferred update is not allowed.
+ *
+ * ID: 13
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type MaximumDeferPeriod_13 = number
 /**
  * The objectURN for Firmware Update
  * Used in the JSON schema for the LwM2M document definition as a key.

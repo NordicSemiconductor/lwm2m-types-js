@@ -19,9 +19,6 @@
 export type LWM2MBearerSelection_13 = Readonly<{
 	'0'?: PreferredCommunicationsBearer_0
 	'1'?: AcceptableRSSI_GSM_1
-	'10'?: AcceptableRSRP_NB_IoT_10
-	'11'?: HigherPriorityPLMNSearchTimer_11
-	'12'?: AttachwithoutPDNconnection_12
 	'2'?: AcceptableRSCP_UMTS_2
 	'3'?: AcceptableRSRP_LTE_3
 	'4'?: AcceptableRSSI_1xEV_DO_4
@@ -30,6 +27,9 @@ export type LWM2MBearerSelection_13 = Readonly<{
 	'7'?: Operatorlistmode_7
 	'8'?: ListofavailablePLMNs_8
 	'9'?: Vendorspecificextensions_9
+	'10'?: AcceptableRSRP_NB_IoT_10
+	'11'?: HigherPriorityPLMNSearchTimer_11
+	'12'?: AttachwithoutPDNconnection_12
 }>
 /**
  * Preferred Communications Bearer
@@ -79,39 +79,6 @@ type PreferredCommunicationsBearer_0 = number
  * Mandatory: false
  */
 type AcceptableRSSI_GSM_1 = number
-/**
- * Acceptable RSRP (NB-IoT)
- *
- * Provides guide to the application when performing manual network selection.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type AcceptableRSRP_NB_IoT_10 = number
-/**
- * Higher Priority PLMN Search Timer
- *
- * Interval between periodic searches for higher priority PLMNs of the same
- * country when camped on a visited PLMN, i.e. roaming scenario; based on SIM
- * configuration, EFHPPLMN [3GPP-TS_31.102, section 4.2.6]
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- */
-type HigherPriorityPLMNSearchTimer_11 = number
-/**
- * Attach without PDN connection
- *
- * False: attach with PDN connection
- * True: attach without PDN connection
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- */
-type AttachwithoutPDNconnection_12 = boolean
 /**
  * Acceptable RSCP (UMTS)
  *
@@ -197,6 +164,39 @@ type ListofavailablePLMNs_8 = string
  * Mandatory: false
  */
 type Vendorspecificextensions_9 = string
+/**
+ * Acceptable RSRP (NB-IoT)
+ *
+ * Provides guide to the application when performing manual network selection.
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type AcceptableRSRP_NB_IoT_10 = number
+/**
+ * Higher Priority PLMN Search Timer
+ *
+ * Interval between periodic searches for higher priority PLMNs of the same
+ * country when camped on a visited PLMN, i.e. roaming scenario; based on SIM
+ * configuration, EFHPPLMN [3GPP-TS_31.102, section 4.2.6]
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type HigherPriorityPLMNSearchTimer_11 = number
+/**
+ * Attach without PDN connection
+ *
+ * False: attach with PDN connection
+ * True: attach without PDN connection
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type AttachwithoutPDNconnection_12 = boolean
 /**
  * The objectURN for LWM2M Bearer Selection
  * Used in the JSON schema for the LwM2M document definition as a key.

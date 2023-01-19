@@ -20,14 +20,14 @@ export type Fillinglevel_3435 = Readonly<
 		'5': Containerfull_5
 		'7': Containerempty_7
 		'1'?: Containerheight_1
-		'10'?: Forecastfulldate_10
-		'11'?: Forecastemptydate_11
-		'12'?: Containeroutoflocation_12
-		'13'?: Containeroutofposition_13
 		'3'?: Actualfillinglevel_3
 		'4'?: Highthreshold_4
 		'6'?: Lowthreshold_6
 		'8'?: Averagefillingspeed_8
+		'10'?: Forecastfulldate_10
+		'11'?: Forecastemptydate_11
+		'12'?: Containeroutoflocation_12
+		'13'?: Containeroutofposition_13
 	}>
 >
 /**
@@ -73,46 +73,6 @@ type Containerempty_7 = boolean
  */
 type Containerheight_1 = number
 /**
- * Forecast full date
- *
- * Next date at which the container should reach the high threshold.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type Forecastfulldate_10 = number
-/**
- * Forecast empty date
- *
- * Next date at which the container should reach the low threshold.
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- */
-type Forecastemptydate_11 = number
-/**
- * Container out of location
- *
- * Set to True if the container is not at the location where it should be.
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- */
-type Containeroutoflocation_12 = boolean
-/**
- * Container out of position
- *
- * Set to True if the container is not in correct upright position.
- *
- * ID: 13
- * MultipleInstances: false
- * Mandatory: false
- */
-type Containeroutofposition_13 = boolean
-/**
  * Actual filling level
  *
  * Height of content in the container.
@@ -156,6 +116,46 @@ type Lowthreshold_6 = number
  * Units: /100
  */
 type Averagefillingspeed_8 = number
+/**
+ * Forecast full date
+ *
+ * Next date at which the container should reach the high threshold.
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Forecastfulldate_10 = number
+/**
+ * Forecast empty date
+ *
+ * Next date at which the container should reach the low threshold.
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Forecastemptydate_11 = number
+/**
+ * Container out of location
+ *
+ * Set to True if the container is not at the location where it should be.
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Containeroutoflocation_12 = boolean
+/**
+ * Container out of position
+ *
+ * Set to True if the container is not in correct upright position.
+ *
+ * ID: 13
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Containeroutofposition_13 = boolean
 /**
  * The objectURN for Filling level
  * Used in the JSON schema for the LwM2M document definition as a key.

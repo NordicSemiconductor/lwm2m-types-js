@@ -18,6 +18,9 @@ export type LwM2MServer_1 = Readonly<
 		'1': Lifetime_1
 		'6': NotificationStoringWhenDisabledorOffline_6
 		'7': Binding_7
+		'2'?: DefaultMinimumPeriod_2
+		'3'?: DefaultMaximumPeriod_3
+		'5'?: DisableTimeout_5
 		'10'?: APNLink_10
 		'11'?: TLS_DTLSAlertCode_11
 		'12'?: LastBootstrapped_12
@@ -28,7 +31,6 @@ export type LwM2MServer_1 = Readonly<
 		'17'?: CommunicationRetryCount_17
 		'18'?: CommunicationRetryTimer_18
 		'19'?: CommunicationSequenceDelayTimer_19
-		'2'?: DefaultMinimumPeriod_2
 		'20'?: CommunicationSequenceRetryCount_20
 		'21'?: Trigger_21
 		'22'?: PreferredTransport_22
@@ -37,8 +39,6 @@ export type LwM2MServer_1 = Readonly<
 		'25'?: SupportedServerVersions_25
 		'26'?: DefaultNotificationMode_26
 		'27'?: ProfileIDHashAlgorithm_27
-		'3'?: DefaultMaximumPeriod_3
-		'5'?: DisableTimeout_5
 	}>
 >
 /**
@@ -95,6 +95,46 @@ type NotificationStoringWhenDisabledorOffline_6 = boolean
  * Mandatory: true
  */
 type Binding_7 = string
+/**
+ * Default Minimum Period
+ *
+ * The default value the LwM2M Client should use for the Minimum Period of an
+ * Observation in the absence of this parameter being included in an
+ * Observation.
+ * If this Resource doesn’t exist, the default value is 0.
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type DefaultMinimumPeriod_2 = number
+/**
+ * Default Maximum Period
+ *
+ * The default value the LwM2M Client should use for the Maximum Period of an
+ * Observation in the absence of this parameter being included in an
+ * Observation.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type DefaultMaximumPeriod_3 = number
+/**
+ * Disable Timeout
+ *
+ * A period to disable the Server. After this period, the LwM2M Client MUST
+ * perform registration process to the Server. If this Resource is not set, a
+ * default timeout value is 86400 (1 day).
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type DisableTimeout_5 = number
 /**
  * APN Link
  *
@@ -228,20 +268,6 @@ type CommunicationRetryTimer_18 = number
  */
 type CommunicationSequenceDelayTimer_19 = number
 /**
- * Default Minimum Period
- *
- * The default value the LwM2M Client should use for the Minimum Period of an
- * Observation in the absence of this parameter being included in an
- * Observation.
- * If this Resource doesn’t exist, the default value is 0.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- * Units: s
- */
-type DefaultMinimumPeriod_2 = number
-/**
  * Communication Sequence Retry Count
  *
  * The number of successive communication sequences before which a registration
@@ -342,32 +368,6 @@ type DefaultNotificationMode_26 = number
  * Mandatory: false
  */
 type ProfileIDHashAlgorithm_27 = number
-/**
- * Default Maximum Period
- *
- * The default value the LwM2M Client should use for the Maximum Period of an
- * Observation in the absence of this parameter being included in an
- * Observation.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- * Units: s
- */
-type DefaultMaximumPeriod_3 = number
-/**
- * Disable Timeout
- *
- * A period to disable the Server. After this period, the LwM2M Client MUST
- * perform registration process to the Server. If this Resource is not set, a
- * default timeout value is 86400 (1 day).
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- * Units: s
- */
-type DisableTimeout_5 = number
 /**
  * The objectURN for LwM2M Server
  * Used in the JSON schema for the LwM2M document definition as a key.

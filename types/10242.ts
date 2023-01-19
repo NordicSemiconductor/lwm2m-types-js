@@ -16,14 +16,20 @@
  */
 export type n3_PhasePowerMeter_10242 = Readonly<
 	Array<{
+		'4': TensionR_4
+		'5': CurrentR_5
 		'14': TensionS_14
 		'15': CurrentS_15
 		'24': TensionT_24
 		'25': CurrentT_25
-		'4': TensionR_4
-		'5': CurrentR_5
 		'0'?: Manufacturer_0
 		'1'?: ModelNumber_1
+		'2'?: SerialNumber_2
+		'3'?: Description_3
+		'6'?: ActivePowerR_6
+		'7'?: ReactivePowerR_7
+		'8'?: InductiveReactivePowerR_8
+		'9'?: CapacitiveReactivePowerR_9
 		'10'?: ApparentPowerR_10
 		'11'?: PowerFactorR_11
 		'12'?: THD_VR_12
@@ -32,7 +38,6 @@ export type n3_PhasePowerMeter_10242 = Readonly<
 		'17'?: ReactivePowerS_17
 		'18'?: InductiveReactivePowerS_18
 		'19'?: CapacitiveReactivePowerS_19
-		'2'?: SerialNumber_2
 		'20'?: ApparentPowerS_20
 		'21'?: PowerFactorS_21
 		'22'?: THD_VS_22
@@ -41,7 +46,6 @@ export type n3_PhasePowerMeter_10242 = Readonly<
 		'27'?: ReactivePowerT_27
 		'28'?: InductiveReactivePowerT_28
 		'29'?: CapacitiveReactivePowerT_29
-		'3'?: Description_3
 		'30'?: ApparentPowerT_30
 		'31'?: PowerFactorT_31
 		'32'?: THD_VT_32
@@ -63,12 +67,34 @@ export type n3_PhasePowerMeter_10242 = Readonly<
 		'48'?: TensionT_R_48
 		'49'?: Frequency_49
 		'50'?: NeutralCurrent_50
-		'6'?: ActivePowerR_6
-		'7'?: ReactivePowerR_7
-		'8'?: InductiveReactivePowerR_8
-		'9'?: CapacitiveReactivePowerR_9
 	}>
 >
+/**
+ * Tension R
+ *
+ *
+ * Voltage phase 1 (phase to neutral)
+ *
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: V
+ */
+type TensionR_4 = number
+/**
+ * Current R
+ *
+ *
+ * Current phase 1
+ *
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: A
+ */
+type CurrentR_5 = number
 /**
  * Tension S
  *
@@ -122,32 +148,6 @@ type TensionT_24 = number
  */
 type CurrentT_25 = number
 /**
- * Tension R
- *
- *
- * Voltage phase 1 (phase to neutral)
- *
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: true
- * Units: V
- */
-type TensionR_4 = number
-/**
- * Current R
- *
- *
- * Current phase 1
- *
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: true
- * Units: A
- */
-type CurrentR_5 = number
-/**
  * Manufacturer
  *
  *
@@ -171,6 +171,82 @@ type Manufacturer_0 = string
  * Mandatory: false
  */
 type ModelNumber_1 = string
+/**
+ * Serial Number
+ *
+ *
+ * Serial number of the meter
+ *
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type SerialNumber_2 = string
+/**
+ * Description
+ *
+ *
+ * Description of the meter
+ *
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Description_3 = string
+/**
+ * Active Power R
+ *
+ *
+ * Active Power phase 1
+ *
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kW
+ */
+type ActivePowerR_6 = number
+/**
+ * Reactive Power R
+ *
+ *
+ * Reactive Power phase 1
+ *
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kvar
+ */
+type ReactivePowerR_7 = number
+/**
+ * Inductive Reactive Power R
+ *
+ *
+ * Inductive Reactive Power phase 1
+ *
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kvar
+ */
+type InductiveReactivePowerR_8 = number
+/**
+ * Capacitive Reactive Power R
+ *
+ *
+ * Capacitive Reactive Power phase 1
+ *
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: kvar
+ */
+type CapacitiveReactivePowerR_9 = number
 /**
  * Apparent Power R
  *
@@ -275,18 +351,6 @@ type InductiveReactivePowerS_18 = number
  */
 type CapacitiveReactivePowerS_19 = number
 /**
- * Serial Number
- *
- *
- * Serial number of the meter
- *
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- */
-type SerialNumber_2 = string
-/**
  * Apparent Power S
  *
  *
@@ -389,18 +453,6 @@ type InductiveReactivePowerT_28 = number
  * Units: kvar
  */
 type CapacitiveReactivePowerT_29 = number
-/**
- * Description
- *
- *
- * Description of the meter
- *
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- */
-type Description_3 = string
 /**
  * Apparent Power T
  *
@@ -671,58 +723,6 @@ type Frequency_49 = number
  * Units: A
  */
 type NeutralCurrent_50 = number
-/**
- * Active Power R
- *
- *
- * Active Power phase 1
- *
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- * Units: kW
- */
-type ActivePowerR_6 = number
-/**
- * Reactive Power R
- *
- *
- * Reactive Power phase 1
- *
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- * Units: kvar
- */
-type ReactivePowerR_7 = number
-/**
- * Inductive Reactive Power R
- *
- *
- * Inductive Reactive Power phase 1
- *
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- * Units: kvar
- */
-type InductiveReactivePowerR_8 = number
-/**
- * Capacitive Reactive Power R
- *
- *
- * Capacitive Reactive Power phase 1
- *
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- * Units: kvar
- */
-type CapacitiveReactivePowerR_9 = number
 /**
  * The objectURN for 3-Phase Power Meter
  * Used in the JSON schema for the LwM2M document definition as a key.

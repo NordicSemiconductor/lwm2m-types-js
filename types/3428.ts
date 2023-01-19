@@ -16,6 +16,14 @@
 export type Airquality_3428 = Readonly<
 	Array<{
 		'1'?: PM10_1
+		'2'?: PM1024houraverage_2
+		'3'?: PM2_5_3
+		'4'?: PM2_524houraverage_4
+		'5'?: PM1_5
+		'6'?: PM124houraverage_6
+		'7'?: CO_7
+		'8'?: CO8houraverage_8
+		'9'?: SO2_9
 		'10'?: SO21houraverage_10
 		'11'?: SO224houraverage_11
 		'12'?: O3_12
@@ -26,17 +34,9 @@ export type Airquality_3428 = Readonly<
 		'17'?: CO2_17
 		'18'?: CO21houraverage_18
 		'19'?: NO_19
-		'2'?: PM1024houraverage_2
 		'20'?: NO1houraverage_20
 		'21'?: H2S_21
 		'22'?: H2S1houraverage_22
-		'3'?: PM2_5_3
-		'4'?: PM2_524houraverage_4
-		'5'?: PM1_5
-		'6'?: PM124houraverage_6
-		'7'?: CO_7
-		'8'?: CO8houraverage_8
-		'9'?: SO2_9
 	}>
 >
 /**
@@ -50,6 +50,95 @@ export type Airquality_3428 = Readonly<
  * Units: ug/m3
  */
 type PM10_1 = number
+/**
+ * PM10 24 hour average
+ *
+ * Average level of PM10 measured by the sensor during the last 24 hours.
+ *
+ * ID: 2
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ug/m3
+ */
+type PM1024houraverage_2 = number
+/**
+ * PM2.5
+ *
+ * Level of PM2.5 measured by the air quality sensor.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ug/m3
+ */
+type PM2_5_3 = number
+/**
+ * PM2.5 24 hour average
+ *
+ * Average level of PM2.5 measured by the sensor during the last 24 hours.
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ug/m3
+ */
+type PM2_524houraverage_4 = number
+/**
+ * PM1
+ *
+ * Level of PM1 measured by the air quality sensor.
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ug/m3
+ */
+type PM1_5 = number
+/**
+ * PM1 24 hour average
+ *
+ * Average level of PM1 measured by the sensor during the last 24 hours.
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ug/m3
+ */
+type PM124houraverage_6 = number
+/**
+ * CO
+ *
+ * Level of carbon monoxide measured by the air quality sensor.
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ppm
+ */
+type CO_7 = number
+/**
+ * CO 8 hour average
+ *
+ * Average level of carbon monoxide measured by the sensor during the last 8
+ * hours.
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ppm
+ */
+type CO8houraverage_8 = number
+/**
+ * SO2
+ *
+ * Level of sulfur dioxide measured by the air quality sensor.
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ppm
+ */
+type SO2_9 = number
 /**
  * SO2 1 hour average
  *
@@ -165,17 +254,6 @@ type CO21houraverage_18 = number
  */
 type NO_19 = number
 /**
- * PM10 24 hour average
- *
- * Average level of PM10 measured by the sensor during the last 24 hours.
- *
- * ID: 2
- * MultipleInstances: false
- * Mandatory: false
- * Units: ug/m3
- */
-type PM1024houraverage_2 = number
-/**
  * NO 1 hour average
  *
  * Average level of nitric oxide measured by the sensor during the last 1 hour.
@@ -209,84 +287,6 @@ type H2S_21 = number
  * Units: ppm
  */
 type H2S1houraverage_22 = number
-/**
- * PM2.5
- *
- * Level of PM2.5 measured by the air quality sensor.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- * Units: ug/m3
- */
-type PM2_5_3 = number
-/**
- * PM2.5 24 hour average
- *
- * Average level of PM2.5 measured by the sensor during the last 24 hours.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- * Units: ug/m3
- */
-type PM2_524houraverage_4 = number
-/**
- * PM1
- *
- * Level of PM1 measured by the air quality sensor.
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- * Units: ug/m3
- */
-type PM1_5 = number
-/**
- * PM1 24 hour average
- *
- * Average level of PM1 measured by the sensor during the last 24 hours.
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- * Units: ug/m3
- */
-type PM124houraverage_6 = number
-/**
- * CO
- *
- * Level of carbon monoxide measured by the air quality sensor.
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- * Units: ppm
- */
-type CO_7 = number
-/**
- * CO 8 hour average
- *
- * Average level of carbon monoxide measured by the sensor during the last 8
- * hours.
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- * Units: ppm
- */
-type CO8houraverage_8 = number
-/**
- * SO2
- *
- * Level of sulfur dioxide measured by the air quality sensor.
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- * Units: ppm
- */
-type SO2_9 = number
 /**
  * The objectURN for Air quality
  * Used in the JSON schema for the LwM2M document definition as a key.

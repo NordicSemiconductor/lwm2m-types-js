@@ -16,6 +16,13 @@ export type LPWANCommunication_3412 = Readonly<
 	Array<{
 		'6': MACaddress_6
 		'1'?: Typeofnetwork_1
+		'2'?: IPv4address_2
+		'3'?: IPv6address_3
+		'4'?: Networkaddress_4
+		'5'?: Secondarynetworkaddress_5
+		'7'?: Peeraddress_7
+		'8'?: Multicastgroupaddress_8
+		'9'?: Multicastgroupkey_9
 		'10'?: Datarate_10
 		'11'?: Transmitpower_11
 		'12'?: Frequency_12
@@ -26,18 +33,11 @@ export type LPWANCommunication_3412 = Readonly<
 		'17'?: Numberofrepeats_17
 		'18'?: Signaltonoiseratio_18
 		'19'?: Communicationfailure_19
-		'2'?: IPv4address_2
 		'20'?: ReceivedSignalStrengthIndication_20
 		'21'?: IMSI_21
 		'22'?: IMEI_22
 		'23'?: CurrentCommunicationOperator_23
 		'24'?: IntegratedCircuitCardIdentifier_24
-		'3'?: IPv6address_3
-		'4'?: Networkaddress_4
-		'5'?: Secondarynetworkaddress_5
-		'7'?: Peeraddress_7
-		'8'?: Multicastgroupaddress_8
-		'9'?: Multicastgroupkey_9
 	}>
 >
 /**
@@ -61,6 +61,78 @@ type MACaddress_6 = string
  * Mandatory: false
  */
 type Typeofnetwork_1 = string
+/**
+ * IPv4 address
+ *
+ * Device’s IPv4 address.
+ *
+ * ID: 2
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type IPv4address_2 = string
+/**
+ * IPv6 address
+ *
+ * Device’s IPv6 address.
+ *
+ * ID: 3
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type IPv6address_3 = string
+/**
+ * Network address
+ *
+ * Address of the device on the LPWAN network.
+ *
+ * ID: 4
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type Networkaddress_4 = string
+/**
+ * Secondary network address
+ *
+ * Secondary address used to communicate with the device on the LPWAN network.
+ *
+ * ID: 5
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type Secondarynetworkaddress_5 = string
+/**
+ * Peer address
+ *
+ * Address of a peer (e.g. a router, a mesh node, a gateway).
+ *
+ * ID: 7
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type Peeraddress_7 = string
+/**
+ * Multicast group address
+ *
+ * Group address from which the device should accept incoming messages and/or
+ * commands.
+ *
+ * ID: 8
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type Multicastgroupaddress_8 = string
+/**
+ * Multicast group key
+ *
+ * Security key (e.g. AES128) to be shared with other members to be part of a
+ * multicast group.
+ *
+ * ID: 9
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type Multicastgroupkey_9 = string
 /**
  * Data rate
  *
@@ -173,16 +245,6 @@ type Signaltonoiseratio_18 = number
  */
 type Communicationfailure_19 = boolean
 /**
- * IPv4 address
- *
- * Device’s IPv4 address.
- *
- * ID: 2
- * MultipleInstances: true
- * Mandatory: false
- */
-type IPv4address_2 = string
-/**
  * Received Signal Strength Indication
  *
  * Signal strength of the communication network measured by the device (a.k.a.
@@ -240,68 +302,6 @@ type CurrentCommunicationOperator_23 = string
  * Mandatory: false
  */
 type IntegratedCircuitCardIdentifier_24 = string
-/**
- * IPv6 address
- *
- * Device’s IPv6 address.
- *
- * ID: 3
- * MultipleInstances: true
- * Mandatory: false
- */
-type IPv6address_3 = string
-/**
- * Network address
- *
- * Address of the device on the LPWAN network.
- *
- * ID: 4
- * MultipleInstances: true
- * Mandatory: false
- */
-type Networkaddress_4 = string
-/**
- * Secondary network address
- *
- * Secondary address used to communicate with the device on the LPWAN network.
- *
- * ID: 5
- * MultipleInstances: true
- * Mandatory: false
- */
-type Secondarynetworkaddress_5 = string
-/**
- * Peer address
- *
- * Address of a peer (e.g. a router, a mesh node, a gateway).
- *
- * ID: 7
- * MultipleInstances: true
- * Mandatory: false
- */
-type Peeraddress_7 = string
-/**
- * Multicast group address
- *
- * Group address from which the device should accept incoming messages and/or
- * commands.
- *
- * ID: 8
- * MultipleInstances: true
- * Mandatory: false
- */
-type Multicastgroupaddress_8 = string
-/**
- * Multicast group key
- *
- * Security key (e.g. AES128) to be shared with other members to be part of a
- * multicast group.
- *
- * ID: 9
- * MultipleInstances: true
- * Mandatory: false
- */
-type Multicastgroupkey_9 = string
 /**
  * The objectURN for LPWAN Communication
  * Used in the JSON schema for the LwM2M document definition as a key.

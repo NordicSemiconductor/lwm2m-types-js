@@ -18,6 +18,12 @@ export type TrafficCounter_3432 = Readonly<
 	Array<{
 		'3': Cumulatednumbertoday_3
 		'1'?: Cumulatednumber_1
+		'4'?: Measuringperiod1_4
+		'5'?: Measuringperiod2_5
+		'6'?: Measuringperiod3_6
+		'7'?: Cumulatednumberduringlastperiod1_7
+		'8'?: Cumulatednumberduringlastperiod2_8
+		'9'?: Cumulatednumberduringlastperiod3_9
 		'10'?: Averagespeedduringlastperiod1_10
 		'11'?: Averagespeedduringlastperiod2_11
 		'12'?: Averagespeedduringlastperiod3_12
@@ -26,12 +32,6 @@ export type TrafficCounter_3432 = Readonly<
 		'15'?: Averagedistanceduringlastperiod3_15
 		'16'?: Speedlimitthreshold_16
 		'17'?: Percentageabovespeedlimit_17
-		'4'?: Measuringperiod1_4
-		'5'?: Measuringperiod2_5
-		'6'?: Measuringperiod3_6
-		'7'?: Cumulatednumberduringlastperiod1_7
-		'8'?: Cumulatednumberduringlastperiod2_8
-		'9'?: Cumulatednumberduringlastperiod3_9
 	}>
 >
 /**
@@ -54,6 +54,74 @@ type Cumulatednumbertoday_3 = number
  * Mandatory: false
  */
 type Cumulatednumber_1 = number
+/**
+ * Measuring period 1
+ *
+ * Time period 1 during which the counter shall provide number of vehicles (e.g.
+ * 1 hour).
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type Measuringperiod1_4 = number
+/**
+ * Measuring period 2
+ *
+ * Time period 2 during which the counter shall provide number of vehicles (e.g.
+ * 15 minutes).
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type Measuringperiod2_5 = number
+/**
+ * Measuring period 3
+ *
+ * Time period 3 during which the counter shall provide number of vehicles (e.g.
+ * 5 minutes).
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type Measuringperiod3_6 = number
+/**
+ * Cumulated number during last period 1
+ *
+ * Cumulated number of vehicles counted during the last period 1 (e.g. 1 hour).
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Cumulatednumberduringlastperiod1_7 = number
+/**
+ * Cumulated number during last period 2
+ *
+ * Cumulated number of vehicles counted during the last period 2 (e.g. 15
+ * minutes).
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Cumulatednumberduringlastperiod2_8 = number
+/**
+ * Cumulated number during last period 3
+ *
+ * Cumulated number of vehicles counted during the last period 3 (e.g. 5
+ * minutes).
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Cumulatednumberduringlastperiod3_9 = number
 /**
  * Average speed during last period 1
  *
@@ -141,74 +209,6 @@ type Speedlimitthreshold_16 = number
  * Mandatory: false
  */
 type Percentageabovespeedlimit_17 = number
-/**
- * Measuring period 1
- *
- * Time period 1 during which the counter shall provide number of vehicles (e.g.
- * 1 hour).
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- * Units: s
- */
-type Measuringperiod1_4 = number
-/**
- * Measuring period 2
- *
- * Time period 2 during which the counter shall provide number of vehicles (e.g.
- * 15 minutes).
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- * Units: s
- */
-type Measuringperiod2_5 = number
-/**
- * Measuring period 3
- *
- * Time period 3 during which the counter shall provide number of vehicles (e.g.
- * 5 minutes).
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- * Units: s
- */
-type Measuringperiod3_6 = number
-/**
- * Cumulated number during last period 1
- *
- * Cumulated number of vehicles counted during the last period 1 (e.g. 1 hour).
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- */
-type Cumulatednumberduringlastperiod1_7 = number
-/**
- * Cumulated number during last period 2
- *
- * Cumulated number of vehicles counted during the last period 2 (e.g. 15
- * minutes).
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type Cumulatednumberduringlastperiod2_8 = number
-/**
- * Cumulated number during last period 3
- *
- * Cumulated number of vehicles counted during the last period 3 (e.g. 5
- * minutes).
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- */
-type Cumulatednumberduringlastperiod3_9 = number
 /**
  * The objectURN for Traffic Counter
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -23,13 +23,13 @@ export type oAPhysicalColourTemperatureLight_PointActuator_3397 = Readonly<
 		'105': MaximumIntensity_105
 		'137': CurrentColourTemperature_137
 		'138': RemainingColourTemperatureTransitionTime_138
-		'5850': On_Off_5850
 		'907': ErrorStatus_907
 		'908': MountingLocation_908
 		'910': TotalEnergyUsage_910
 		'911': ActualPowerUsage_911
 		'930': OperatingHours_930
 		'931': AdjustedOperatingHours_931
+		'5850': On_Off_5850
 		'103'?: PhysicalMinimumIntensity_103
 		'110'?: PowerOnBehaviour_110
 		'111'?: PowerOnIntensity_111
@@ -39,9 +39,9 @@ export type oAPhysicalColourTemperatureLight_PointActuator_3397 = Readonly<
 		'156'?: PhysicalMaximumColourTemperature_156
 		'157'?: MinimumColourTemperature_157
 		'158'?: MaximumColourTemperature_158
-		'4001'?: ObjectVersion_4001
 		'901'?: DocumentaryDescription_901
 		'912'?: AccuracyClass_912
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -142,16 +142,6 @@ type CurrentColourTemperature_137 = number
  */
 type RemainingColourTemperatureTransitionTime_138 = number
 /**
- * On/Off
- *
- * On/off control. Boolean value where True is On and False is Off.
- *
- * ID: 5850
- * MultipleInstances: false
- * Mandatory: true
- */
-type On_Off_5850 = boolean
-/**
  * Error Status
  *
  * Error status is a bit coded value that shows all current errors on the
@@ -218,6 +208,16 @@ type OperatingHours_930 = number
  * Mandatory: true
  */
 type AdjustedOperatingHours_931 = number
+/**
+ * On/Off
+ *
+ * On/off control. Boolean value where True is On and False is Off.
+ *
+ * ID: 5850
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type On_Off_5850 = boolean
 /**
  * Physical Minimum Intensity
  *
@@ -353,16 +353,6 @@ type MinimumColourTemperature_157 = number
  */
 type MaximumColourTemperature_158 = number
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Documentary Description
  *
  * Resource to hold a documentary text description of the object.
@@ -383,6 +373,16 @@ type DocumentaryDescription_901 = string
  * Mandatory: false
  */
 type AccuracyClass_912 = string
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Physical Colour Temperature Light-Point Actuator
  * Used in the JSON schema for the LwM2M document definition as a key.

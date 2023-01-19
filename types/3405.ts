@@ -19,8 +19,8 @@ export type oAOGC_Security_3405 = Readonly<
 		'0': OGCSecurityID_0
 		'3': AcceptedSenders_3
 		'5': SecretGroupKey_5
-		'4001'?: ObjectVersion_4001
 		'901'?: DocumentaryDescription_901
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -56,16 +56,6 @@ type AcceptedSenders_3 = string
  */
 type SecretGroupKey_5 = string
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Documentary Description
  *
  * Resource to hold a documentary text description of the object.
@@ -75,6 +65,16 @@ type ObjectVersion_4001 = string
  * Mandatory: false
  */
 type DocumentaryDescription_901 = string
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA OGC-Security
  * Used in the JSON schema for the LwM2M document definition as a key.

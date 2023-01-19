@@ -20,15 +20,15 @@ export type CODetector_502 = Readonly<
 		'2'?: AmbientCOValue_2
 		'4'?: MinCORangeValue_4
 		'5'?: MaxCORangeValue_5
-		'5514'?: Latitude_5514
-		'5515'?: Longitude_5515
 		'6'?: CODetectionAccuracy_6
-		'6039'?: Altitude_6039
-		'6044'?: BatteryPercentage_6044
-		'6048'?: Alarmloudness_6048
 		'7'?: MinimumMeasuredCOValue_7
 		'8'?: MaximumMeasuredCOValue_8
 		'9'?: UpperCOThreshold_9
+		'5514'?: Latitude_5514
+		'5515'?: Longitude_5515
+		'6039'?: Altitude_6039
+		'6044'?: BatteryPercentage_6044
+		'6048'?: Alarmloudness_6048
 	}>
 >
 /**
@@ -96,27 +96,6 @@ type MinCORangeValue_4 = number
  */
 type MaxCORangeValue_5 = number
 /**
- * Latitude
- *
- * The decimal notation of latitude, e.g. -43.5723 (World Geodetic System 1984).
- *
- * ID: 5514
- * MultipleInstances: false
- * Mandatory: false
- */
-type Latitude_5514 = string
-/**
- * Longitude
- *
- * The decimal notation of longitude, e.g. 153.21760 (World Geodetic System
- * 1984).
- *
- * ID: 5515
- * MultipleInstances: false
- * Mandatory: false
- */
-type Longitude_5515 = string
-/**
  * CO Detection Accuracy
  *
  * Indicate range of the accuracy for the temperature Sensor.
@@ -127,38 +106,6 @@ type Longitude_5515 = string
  * Units: ppm
  */
 type CODetectionAccuracy_6 = number
-/**
- * Altitude
- *
- * Altitude above sea level in meters.
- *
- * ID: 6039
- * MultipleInstances: false
- * Mandatory: false
- * Units: m
- */
-type Altitude_6039 = number
-/**
- * Battery Percentage
- *
- * Current remaining battery level.
- *
- * ID: 6044
- * MultipleInstances: false
- * Mandatory: false
- */
-type BatteryPercentage_6044 = number
-/**
- * Alarm loudness
- *
- * Indicate the loudness of the alarm.
- *
- * ID: 6048
- * MultipleInstances: false
- * Mandatory: false
- * Units: dB
- */
-type Alarmloudness_6048 = number
 /**
  * Minimum Measured CO Value
  *
@@ -192,6 +139,59 @@ type MaximumMeasuredCOValue_8 = number
  * Units: ppm
  */
 type UpperCOThreshold_9 = number
+/**
+ * Latitude
+ *
+ * The decimal notation of latitude, e.g. -43.5723 (World Geodetic System 1984).
+ *
+ * ID: 5514
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Latitude_5514 = string
+/**
+ * Longitude
+ *
+ * The decimal notation of longitude, e.g. 153.21760 (World Geodetic System
+ * 1984).
+ *
+ * ID: 5515
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Longitude_5515 = string
+/**
+ * Altitude
+ *
+ * Altitude above sea level in meters.
+ *
+ * ID: 6039
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m
+ */
+type Altitude_6039 = number
+/**
+ * Battery Percentage
+ *
+ * Current remaining battery level.
+ *
+ * ID: 6044
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type BatteryPercentage_6044 = number
+/**
+ * Alarm loudness
+ *
+ * Indicate the loudness of the alarm.
+ *
+ * ID: 6048
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: dB
+ */
+type Alarmloudness_6048 = number
 /**
  * The objectURN for CO Detector
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -16,16 +16,16 @@
 export type Watermeter_3424 = Readonly<
 	Array<{
 		'1': Cumulatedwatervolume_1
-		'10'?: Leakdetected_10
-		'11'?: Backflowdetected_11
-		'12'?: Blockedmeter_12
-		'13'?: Frauddetected_13
 		'3'?: Typeofmeter_3
 		'4'?: Cumulatedpulsevalue_4
 		'6'?: Pulseratio_6
 		'7'?: Minimumflowrate_7
 		'8'?: Maximumflowrate_8
 		'9'?: Leaksuspected_9
+		'10'?: Leakdetected_10
+		'11'?: Backflowdetected_11
+		'12'?: Blockedmeter_12
+		'13'?: Frauddetected_13
 	}>
 >
 /**
@@ -40,46 +40,6 @@ export type Watermeter_3424 = Readonly<
  * Units: m3
  */
 type Cumulatedwatervolume_1 = number
-/**
- * Leak detected
- *
- * Set to True if leak is detected.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- */
-type Leakdetected_10 = boolean
-/**
- * Back flow detected
- *
- * Set to True if water back flow is detected.
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- */
-type Backflowdetected_11 = boolean
-/**
- * Blocked meter
- *
- * Set to True if water meter is blocked.
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- */
-type Blockedmeter_12 = boolean
-/**
- * Fraud detected
- *
- * Set to True if fraud is detected.
- *
- * ID: 13
- * MultipleInstances: false
- * Mandatory: false
- */
-type Frauddetected_13 = boolean
 /**
  * Type of meter
  *
@@ -142,6 +102,46 @@ type Maximumflowrate_8 = number
  * Mandatory: false
  */
 type Leaksuspected_9 = boolean
+/**
+ * Leak detected
+ *
+ * Set to True if leak is detected.
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Leakdetected_10 = boolean
+/**
+ * Back flow detected
+ *
+ * Set to True if water back flow is detected.
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Backflowdetected_11 = boolean
+/**
+ * Blocked meter
+ *
+ * Set to True if water meter is blocked.
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Blockedmeter_12 = boolean
+/**
+ * Fraud detected
+ *
+ * Set to True if fraud is detected.
+ *
+ * ID: 13
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Frauddetected_13 = boolean
 /**
  * The objectURN for Water meter
  * Used in the JSON schema for the LwM2M document definition as a key.

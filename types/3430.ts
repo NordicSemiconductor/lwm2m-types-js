@@ -18,6 +18,13 @@ export type GlobalNavigationSatelliteSystem_3430 = Readonly<{
 	'1': Latitude_1
 	'2': Longitude_2
 	'28': Status_28
+	'3'?: Altitude_3
+	'4'?: Speed_4
+	'5'?: Heading_5
+	'6'?: Radius_6
+	'7'?: HDOP_7
+	'8'?: VDOP_8
+	'9'?: Estimatedhorizontalaccuracy_9
 	'10'?: Estimatedverticalaccuracy_10
 	'11'?: Estimatedspeedaccuracy_11
 	'12'?: Estimatedheadingaccuracy_12
@@ -36,13 +43,6 @@ export type GlobalNavigationSatelliteSystem_3430 = Readonly<{
 	'25'?: AssistedGPS_25
 	'26'?: Powercommand_26
 	'27'?: PDOP_27
-	'3'?: Altitude_3
-	'4'?: Speed_4
-	'5'?: Heading_5
-	'6'?: Radius_6
-	'7'?: HDOP_7
-	'8'?: VDOP_8
-	'9'?: Estimatedhorizontalaccuracy_9
 }>
 /**
  * Fix timestamp
@@ -89,6 +89,82 @@ type Longitude_2 = number
  * Mandatory: true
  */
 type Status_28 = string
+/**
+ * Altitude
+ *
+ * Altitude above mean sea level in meters.
+ *
+ * ID: 3
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m
+ */
+type Altitude_3 = number
+/**
+ * Speed
+ *
+ * Horizontal speed calculated by the device.
+ *
+ * ID: 4
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m/s
+ */
+type Speed_4 = number
+/**
+ * Heading
+ *
+ * Direction that the device is following
+ *
+ * ID: 5
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: deg
+ */
+type Heading_5 = number
+/**
+ * Radius
+ *
+ * Radius of a circular area corresponding to the location’s uncertainty (GPS
+ * data precision). Negative values indicate that the radius is not available.
+ *
+ * ID: 6
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m
+ */
+type Radius_6 = number
+/**
+ * HDOP
+ *
+ * Horizontal dilution of precision.
+ *
+ * ID: 7
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type HDOP_7 = number
+/**
+ * VDOP
+ *
+ * Vertical dilution of precision.
+ *
+ * ID: 8
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type VDOP_8 = number
+/**
+ * Estimated horizontal accuracy
+ *
+ * Estimated horizontal accuracy.
+ *
+ * ID: 9
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m
+ */
+type Estimatedhorizontalaccuracy_9 = number
 /**
  * Estimated vertical accuracy
  *
@@ -311,82 +387,6 @@ type Powercommand_26 = boolean
  * Mandatory: false
  */
 type PDOP_27 = number
-/**
- * Altitude
- *
- * Altitude above mean sea level in meters.
- *
- * ID: 3
- * MultipleInstances: false
- * Mandatory: false
- * Units: m
- */
-type Altitude_3 = number
-/**
- * Speed
- *
- * Horizontal speed calculated by the device.
- *
- * ID: 4
- * MultipleInstances: false
- * Mandatory: false
- * Units: m/s
- */
-type Speed_4 = number
-/**
- * Heading
- *
- * Direction that the device is following
- *
- * ID: 5
- * MultipleInstances: false
- * Mandatory: false
- * Units: deg
- */
-type Heading_5 = number
-/**
- * Radius
- *
- * Radius of a circular area corresponding to the location’s uncertainty (GPS
- * data precision). Negative values indicate that the radius is not available.
- *
- * ID: 6
- * MultipleInstances: false
- * Mandatory: false
- * Units: m
- */
-type Radius_6 = number
-/**
- * HDOP
- *
- * Horizontal dilution of precision.
- *
- * ID: 7
- * MultipleInstances: false
- * Mandatory: false
- */
-type HDOP_7 = number
-/**
- * VDOP
- *
- * Vertical dilution of precision.
- *
- * ID: 8
- * MultipleInstances: false
- * Mandatory: false
- */
-type VDOP_8 = number
-/**
- * Estimated horizontal accuracy
- *
- * Estimated horizontal accuracy.
- *
- * ID: 9
- * MultipleInstances: false
- * Mandatory: false
- * Units: m
- */
-type Estimatedhorizontalaccuracy_9 = number
 /**
  * The objectURN for Global Navigation Satellite System
  * Used in the JSON schema for the LwM2M document definition as a key.

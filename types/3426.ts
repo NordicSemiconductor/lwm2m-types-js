@@ -15,11 +15,6 @@
 export type Waterqualitysensor_3426 = Readonly<
 	Array<{
 		'1'?: pH_1
-		'10'?: Totaldissolvedsolids_10
-		'11'?: Salinity_11
-		'12'?: NO3_12
-		'13'?: NH3_13
-		'14'?: NH4_14
 		'2'?: Chlorine_2
 		'3'?: RedoxorORP_3
 		'4'?: TotaldissolvedgasorTDG_4
@@ -28,6 +23,11 @@ export type Waterqualitysensor_3426 = Readonly<
 		'7'?: Conductivity_7
 		'8'?: Conductance_8
 		'9'?: Totalsuspendedsolids_9
+		'10'?: Totaldissolvedsolids_10
+		'11'?: Salinity_11
+		'12'?: NO3_12
+		'13'?: NH3_13
+		'14'?: NH4_14
 	}>
 >
 /**
@@ -40,61 +40,6 @@ export type Waterqualitysensor_3426 = Readonly<
  * Mandatory: false
  */
 type pH_1 = number
-/**
- * Total dissolved solids
- *
- * Current or last value of the TDS measured by the sensor.
- *
- * ID: 10
- * MultipleInstances: false
- * Mandatory: false
- * Units: mg/l
- */
-type Totaldissolvedsolids_10 = number
-/**
- * Salinity
- *
- * Current or last value of the salinity measured by the sensor.
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: false
- * Units: ppt
- */
-type Salinity_11 = number
-/**
- * NO3
- *
- * Current or last value of NO3 measured by the sensor.
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: false
- * Units: mg/l
- */
-type NO3_12 = number
-/**
- * NH3
- *
- * Current or last value of NH3 measured by the sensor.
- *
- * ID: 13
- * MultipleInstances: false
- * Mandatory: false
- * Units: mg/l
- */
-type NH3_13 = number
-/**
- * NH4
- *
- * Current or last value of NH4 measured by the sensor.
- *
- * ID: 14
- * MultipleInstances: false
- * Mandatory: false
- * Units: mg/l
- */
-type NH4_14 = number
 /**
  * Chlorine
  *
@@ -185,6 +130,61 @@ type Conductance_8 = number
  * Units: mg/l
  */
 type Totalsuspendedsolids_9 = number
+/**
+ * Total dissolved solids
+ *
+ * Current or last value of the TDS measured by the sensor.
+ *
+ * ID: 10
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: mg/l
+ */
+type Totaldissolvedsolids_10 = number
+/**
+ * Salinity
+ *
+ * Current or last value of the salinity measured by the sensor.
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: ppt
+ */
+type Salinity_11 = number
+/**
+ * NO3
+ *
+ * Current or last value of NO3 measured by the sensor.
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: mg/l
+ */
+type NO3_12 = number
+/**
+ * NH3
+ *
+ * Current or last value of NH3 measured by the sensor.
+ *
+ * ID: 13
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: mg/l
+ */
+type NH3_13 = number
+/**
+ * NH4
+ *
+ * Current or last value of NH4 measured by the sensor.
+ *
+ * ID: 14
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: mg/l
+ */
+type NH4_14 = number
 /**
  * The objectURN for Water quality sensor
  * Used in the JSON schema for the LwM2M document definition as a key.

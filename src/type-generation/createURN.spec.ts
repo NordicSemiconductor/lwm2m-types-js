@@ -4,7 +4,7 @@ describe('createURN()', () => {
 	it('should create a fully qualified URN', () =>
 		expect(
 			createURN({
-				ObjectID: '42',
+				ObjectID: 42,
 				ObjectVersion: '1.1',
 				LWM2MVersion: '1.2',
 			}),
@@ -12,7 +12,7 @@ describe('createURN()', () => {
 	it('should omit the LwM2M version if it is 1.0', () =>
 		expect(
 			createURN({
-				ObjectID: '42',
+				ObjectID: 42,
 				ObjectVersion: '1.1',
 				LWM2MVersion: '1.0',
 			}),
@@ -20,7 +20,7 @@ describe('createURN()', () => {
 	it('should omit the object version if it is 1.0', () =>
 		expect(
 			createURN({
-				ObjectID: '42',
+				ObjectID: 42,
 				ObjectVersion: '1.0',
 				LWM2MVersion: '1.2',
 			}),
@@ -28,7 +28,7 @@ describe('createURN()', () => {
 	it('should omit the object version and the LwM2M version if both are 1.0', () =>
 		expect(
 			createURN({
-				ObjectID: '42',
+				ObjectID: 42,
 				ObjectVersion: '1.0',
 				LWM2MVersion: '1.0',
 			}),

@@ -19,21 +19,21 @@ export type oAPhysicalLight_PointActuator_3399 = Readonly<
 		'102': RemainingTransitionTime_102
 		'104': MinimumIntensity_104
 		'105': MaximumIntensity_105
-		'5850': On_Off_5850
 		'907': ErrorStatus_907
 		'908': MountingLocation_908
 		'910': TotalEnergyUsage_910
 		'911': ActualPowerUsage_911
 		'930': OperatingHours_930
 		'931': AdjustedOperatingHours_931
+		'5850': On_Off_5850
 		'103'?: PhysicalMinimumIntensity_103
 		'110'?: PowerOnBehaviour_110
 		'111'?: PowerOnIntensity_111
 		'114'?: StoredIntensity_114
 		'115'?: SystemFailureIntensity_115
-		'4001'?: ObjectVersion_4001
 		'901'?: DocumentaryDescription_901
 		'912'?: AccuracyClass_912
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -103,16 +103,6 @@ type MinimumIntensity_104 = number
  */
 type MaximumIntensity_105 = number
 /**
- * On/Off
- *
- * On/off control. Boolean value where True is On and False is Off.
- *
- * ID: 5850
- * MultipleInstances: false
- * Mandatory: true
- */
-type On_Off_5850 = boolean
-/**
  * Error Status
  *
  * Error status is a bit coded value that shows all current errors on the
@@ -179,6 +169,16 @@ type OperatingHours_930 = number
  * Mandatory: true
  */
 type AdjustedOperatingHours_931 = number
+/**
+ * On/Off
+ *
+ * On/off control. Boolean value where True is On and False is Off.
+ *
+ * ID: 5850
+ * MultipleInstances: false
+ * Mandatory: true
+ */
+type On_Off_5850 = boolean
 /**
  * Physical Minimum Intensity
  *
@@ -252,16 +252,6 @@ type StoredIntensity_114 = number
  */
 type SystemFailureIntensity_115 = number
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * Documentary Description
  *
  * Resource to hold a documentary text description of the object.
@@ -282,6 +272,16 @@ type DocumentaryDescription_901 = string
  * Mandatory: false
  */
 type AccuracyClass_912 = string
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Physical Light-Point Actuator
  * Used in the JSON schema for the LwM2M document definition as a key.

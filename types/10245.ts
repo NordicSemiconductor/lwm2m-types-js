@@ -16,12 +16,6 @@
 export type RelayManagement_10245 = Readonly<{
 	'0': eNBAvailability_0
 	'1': GPSStatus_1
-	'11': eNBMaximumPower_11
-	'12': BackhaulPrimaryq_OffsetFreq_12
-	'13': BackhaulSecondaryq_OffsetFreq_13
-	'14': NeighbourCrowdBoxEARFCN_14
-	'15': NeighbourCrowdBoxq_OffsetFreq_15
-	'16': ServingMacroeNBcellIndividualOffset_16
 	'3': eNBEARFCN_3
 	'4': eNBBandwidth_4
 	'5': BackhaulPrimaryEARFCN_5
@@ -29,6 +23,12 @@ export type RelayManagement_10245 = Readonly<{
 	'7': CumulativeMeasurementWindow_7
 	'8': eNBECI_8
 	'9': eNBStatus_9
+	'11': eNBMaximumPower_11
+	'12': BackhaulPrimaryq_OffsetFreq_12
+	'13': BackhaulSecondaryq_OffsetFreq_13
+	'14': NeighbourCrowdBoxEARFCN_14
+	'15': NeighbourCrowdBoxq_OffsetFreq_15
+	'16': ServingMacroeNBcellIndividualOffset_16
 	'2'?: Orientation_2
 }>
 /**
@@ -60,91 +60,6 @@ type eNBAvailability_0 = boolean
  * Mandatory: true
  */
 type GPSStatus_1 = boolean
-/**
- * eNB Maximum Power
- *
- * Maximum power for the eNB measured as the sum of input powers to all antenna
- * connectors. The maximum power per antenna port is equal to the maximum eNB
- * power divided by the number of antenna ports. If the requested power is above
- * or below the maximum or minimum power levels of the eNB, then the power level
- * should be set to the maximum or minimum respectively. The CrowdBox shall only
- * apply a change of this resource upon execution of the "Enable eNB" command.
- *
- * ID: 11
- * MultipleInstances: false
- * Mandatory: true
- * Units: dBm
- */
-type eNBMaximumPower_11 = number
-/**
- * Backhaul Primary q-OffsetFreq
- *
- * q-OffsetFreq parameter for the backhaul primary EARFCN in SIB5 of the
- * CrowdBox eNB BCCH. See TS 36.331 for details. Range: dB-24; dB-22 .. dB24 The
- * CrowdBox shall only apply a change of this resource upon execution of the
- * "Enable eNB" command.
- *
- * ID: 12
- * MultipleInstances: false
- * Mandatory: true
- * Units: dB
- */
-type BackhaulPrimaryq_OffsetFreq_12 = number
-/**
- * Backhaul Secondary q-OffsetFreq
- *
- * q-OffsetFreq parameter for the backhaul secondary EARFCN in SIB5 of the
- * CrowdBox eNB BCCH. See TS 36.331 for details Range: dB-24; dB-22 .. dB24 The
- * CrowdBox shall only apply a change of this resource upon execution of the
- * "Enable eNB" command.
- *
- * ID: 13
- * MultipleInstances: true
- * Mandatory: true
- * Units: dB
- */
-type BackhaulSecondaryq_OffsetFreq_13 = number
-/**
- * Neighbour CrowdBox EARFCN
- *
- * EARFCN of a neighbour CrowdBox. Each instance of this resource relates to the
- * same instance of resource ID 15.
- *
- * ID: 14
- * MultipleInstances: true
- * Mandatory: true
- */
-type NeighbourCrowdBoxEARFCN_14 = number
-/**
- * Neighbour CrowdBox q-OffsetFreq
- *
- * q-OffsetFreq parameter of the Neighbour CrowdBox EARFCN in SIB5 of the
- * Neighbour CrowdBox eNB BCCH. See TS 36.331 for details Range: dB-24; dB-22 ..
- * dB24 Each instance of this resource relates to the same instance of resource
- * ID 14. The CrowdBox shall only apply a change of this resource upon execution
- * of the "Enable eNB" command.
- *
- * ID: 15
- * MultipleInstances: true
- * Mandatory: true
- * Units: dB
- */
-type NeighbourCrowdBoxq_OffsetFreq_15 = number
-/**
- * Serving Macro eNB cellIndividualOffset
- *
- * Specifies the value of the cellIndividualOffset parameter applicable to the
- * CrowdBox macro serving cell that is to be signalled to connected UEs in their
- * measurement configuration information . See TS 36.331 for details. The
- * CrowdBox shall only apply a change of this resource upon execution of the
- * "Enable eNB" command.
- *
- * ID: 16
- * MultipleInstances: false
- * Mandatory: true
- * Units: dB
- */
-type ServingMacroeNBcellIndividualOffset_16 = number
 /**
  * eNB EARFCN
  *
@@ -240,6 +155,91 @@ type eNBECI_8 = number
  * Mandatory: true
  */
 type eNBStatus_9 = boolean
+/**
+ * eNB Maximum Power
+ *
+ * Maximum power for the eNB measured as the sum of input powers to all antenna
+ * connectors. The maximum power per antenna port is equal to the maximum eNB
+ * power divided by the number of antenna ports. If the requested power is above
+ * or below the maximum or minimum power levels of the eNB, then the power level
+ * should be set to the maximum or minimum respectively. The CrowdBox shall only
+ * apply a change of this resource upon execution of the "Enable eNB" command.
+ *
+ * ID: 11
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: dBm
+ */
+type eNBMaximumPower_11 = number
+/**
+ * Backhaul Primary q-OffsetFreq
+ *
+ * q-OffsetFreq parameter for the backhaul primary EARFCN in SIB5 of the
+ * CrowdBox eNB BCCH. See TS 36.331 for details. Range: dB-24; dB-22 .. dB24 The
+ * CrowdBox shall only apply a change of this resource upon execution of the
+ * "Enable eNB" command.
+ *
+ * ID: 12
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: dB
+ */
+type BackhaulPrimaryq_OffsetFreq_12 = number
+/**
+ * Backhaul Secondary q-OffsetFreq
+ *
+ * q-OffsetFreq parameter for the backhaul secondary EARFCN in SIB5 of the
+ * CrowdBox eNB BCCH. See TS 36.331 for details Range: dB-24; dB-22 .. dB24 The
+ * CrowdBox shall only apply a change of this resource upon execution of the
+ * "Enable eNB" command.
+ *
+ * ID: 13
+ * MultipleInstances: true
+ * Mandatory: true
+ * Units: dB
+ */
+type BackhaulSecondaryq_OffsetFreq_13 = number
+/**
+ * Neighbour CrowdBox EARFCN
+ *
+ * EARFCN of a neighbour CrowdBox. Each instance of this resource relates to the
+ * same instance of resource ID 15.
+ *
+ * ID: 14
+ * MultipleInstances: true
+ * Mandatory: true
+ */
+type NeighbourCrowdBoxEARFCN_14 = number
+/**
+ * Neighbour CrowdBox q-OffsetFreq
+ *
+ * q-OffsetFreq parameter of the Neighbour CrowdBox EARFCN in SIB5 of the
+ * Neighbour CrowdBox eNB BCCH. See TS 36.331 for details Range: dB-24; dB-22 ..
+ * dB24 Each instance of this resource relates to the same instance of resource
+ * ID 14. The CrowdBox shall only apply a change of this resource upon execution
+ * of the "Enable eNB" command.
+ *
+ * ID: 15
+ * MultipleInstances: true
+ * Mandatory: true
+ * Units: dB
+ */
+type NeighbourCrowdBoxq_OffsetFreq_15 = number
+/**
+ * Serving Macro eNB cellIndividualOffset
+ *
+ * Specifies the value of the cellIndividualOffset parameter applicable to the
+ * CrowdBox macro serving cell that is to be signalled to connected UEs in their
+ * measurement configuration information . See TS 36.331 for details. The
+ * CrowdBox shall only apply a change of this resource upon execution of the
+ * "Enable eNB" command.
+ *
+ * ID: 16
+ * MultipleInstances: false
+ * Mandatory: true
+ * Units: dB
+ */
+type ServingMacroeNBcellIndividualOffset_16 = number
 /**
  * Orientation
  *

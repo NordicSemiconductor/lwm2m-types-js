@@ -20,13 +20,13 @@ export type oADevice_3388 = Readonly<
 		'908': MountingLocation_908
 		'910': TotalEnergyUsage_910
 		'911': ActualPowerUsage_911
-		'4001'?: ObjectVersion_4001
 		'500'?: OEMID_500
 		'501'?: OEMString_501
 		'505'?: SystemFailureTime_505
 		'901'?: DocumentaryDescription_901
 		'912'?: AccuracyClass_912
 		'929'?: BMSID_929
+		'4001'?: ObjectVersion_4001
 	}>
 >
 /**
@@ -104,16 +104,6 @@ type TotalEnergyUsage_910 = number
  */
 type ActualPowerUsage_911 = number
 /**
- * ObjectVersion
- *
- * LWM2M Object versioning label.
- *
- * ID: 4001
- * MultipleInstances: false
- * Mandatory: false
- */
-type ObjectVersion_4001 = string
-/**
  * OEM ID
  *
  * OEM ID: Identifies the OEM product (using its GTIN) that has this
@@ -180,6 +170,16 @@ type AccuracyClass_912 = string
  * Mandatory: false
  */
 type BMSID_929 = number
+/**
+ * ObjectVersion
+ *
+ * LWM2M Object versioning label.
+ *
+ * ID: 4001
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ObjectVersion_4001 = string
 /**
  * The objectURN for oA Device
  * Used in the JSON schema for the LwM2M document definition as a key.

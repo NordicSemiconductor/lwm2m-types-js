@@ -15,12 +15,12 @@ export type CmdhLimits_2053 = Readonly<
 	Array<{
 		'0': Order_0
 		'1': RequestOrigin_1
-		'10': LimitsDelAggregation_10
 		'5': LimitsEventCategory_5
 		'6': LimitsRequestExpTime_6
 		'7': LimitsResultExpTime_7
 		'8': LimitsOptExpTime_8
 		'9': LimitsRespPersistence_9
+		'10': LimitsDelAggregation_10
 		'2'?: RequestContext_2
 		'3'?: RequestContextNotificatio_3
 		'4'?: RequestCharacteristics_4
@@ -49,19 +49,6 @@ type Order_0 = number
  * Mandatory: true
  */
 type RequestOrigin_1 = string
-/**
- * LimitsDelAggregation
- *
- * Contains the permitted settings of the DeliveryAggregation parameter of
- * request primitives.
- * '0' means 'False' '1' means 'True' '0 1' means 'False' or 'True'
- *
- *
- * ID: 10
- * MultipleInstances: true
- * Mandatory: true
- */
-type LimitsDelAggregation_10 = string
 /**
  * LimitsEventCategory
  *
@@ -133,6 +120,19 @@ type LimitsOptExpTime_8 = number
  * Units: ms
  */
 type LimitsRespPersistence_9 = number
+/**
+ * LimitsDelAggregation
+ *
+ * Contains the permitted settings of the DeliveryAggregation parameter of
+ * request primitives.
+ * '0' means 'False' '1' means 'True' '0 1' means 'False' or 'True'
+ *
+ *
+ * ID: 10
+ * MultipleInstances: true
+ * Mandatory: true
+ */
+type LimitsDelAggregation_10 = string
 /**
  * RequestContext
  *
