@@ -153,7 +153,7 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 					description:
 						'Timestamp of when the location measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone. Units: s.',
 					type: 'integer',
-					minimum: 1000000000,
+					unixTimestamp: true,
 				},
 			},
 		} as const

@@ -39,7 +39,7 @@
         },
         "5": {
           "type": "integer",
-          "minimum": 1000000000,
+          "unixTimestamp": true,
           "title": "Timestamp",
           "description": "The timestamp of when the location measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
         },
@@ -345,7 +345,7 @@
           },
           "2": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Data Creation Time",
             "description": "Indicates the Data instance creation timestamp. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -2917,7 +2917,7 @@
         },
         "5": {
           "type": "integer",
-          "minimum": 1000000000,
+          "unixTimestamp": true,
           "title": "Installation date",
           "description": "Installation date of the device. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
         },
@@ -3113,13 +3113,13 @@
           },
           "13": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Session time",
             "description": "Starting time of the multicast session. The device shall not accept incoming messages before this time or after this time + session duration. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "14": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Session duration",
             "description": "Duration of the multicast session. The device shall accept incoming messages only during this session duration time, starting at \"Session time\". Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone. Units: s."
           },
@@ -3436,7 +3436,7 @@
           },
           "17": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Lamp ON timestamp",
             "description": "Last date and time at which the lamp switched ON, i.e. from no light to light (e.g. power off to power on and/or dim level = 0 to dim level > 0). Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -3519,7 +3519,7 @@
           },
           "34": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Lamp cleaning date",
             "description": "Date at which the luminaire was last (or will be next) cleaned and the lamp cleaning factor should be set to the initial lamp cleaning factor. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -4753,7 +4753,7 @@
       "properties": {
         "0": {
           "type": "integer",
-          "minimum": 1000000000,
+          "unixTimestamp": true,
           "title": "Fix timestamp",
           "description": "Timestamp of when the location measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone. Units: s."
         },
@@ -4888,7 +4888,7 @@
         },
         "24": {
           "type": "integer",
-          "minimum": 1000000000,
+          "unixTimestamp": true,
           "title": "Hardware RTC",
           "description": "Time of the internal clock of the GNSS hardware. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone. Units: s."
         },
@@ -5219,13 +5219,13 @@
           },
           "10": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Forecast full date",
             "description": "Next date at which the container should reach the high threshold. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "11": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Forecast empty date",
             "description": "Next date at which the container should reach the low threshold. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -5454,7 +5454,7 @@
           },
           "160": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Time Value",
             "description": "Initial value must be the time to an 1st, 2000 in the UTC time zone. (Timestamp value : 946684800) Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -5502,7 +5502,7 @@
           "1160": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "integer", "minimum": 1000000000 },
+            "items": { "type": "integer", "unixTimestamp": true },
             "title": "Multiple Time Value",
             "description": "Initial value must be 1 instance with ID 0 and value 1st, 2000 in the UTC time zone (Timestamp value : 946684800). Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -6750,7 +6750,7 @@
           },
           "5506": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Current Time",
             "description": "Unix Time. A signed integer representing the number of seconds since Jan 1st, 1970 in the UTC time zone. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7078,25 +7078,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7159,25 +7159,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7240,25 +7240,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7321,25 +7321,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7402,25 +7402,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7483,25 +7483,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7596,13 +7596,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7694,13 +7694,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7792,13 +7792,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7890,13 +7890,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -7988,13 +7988,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8086,13 +8086,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8184,13 +8184,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8282,13 +8282,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8380,13 +8380,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8478,13 +8478,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8576,13 +8576,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8674,13 +8674,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8772,13 +8772,13 @@
           },
           "6020": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Delivered Event Time",
             "description": "Latest Delivered Event Time is a readable and writable resource to represent the last recorded time that an event was delivered for this event code to the LwM2M server. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Eventlog Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Eventlog Payload resource. This resource is writable to allow the server to adjust the Last Delivered Event Time value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6021": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Event Time",
             "description": "Latest Recorded Event Time is a readonly resource used to represent the last recorded event time for this object instance on the device Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8858,25 +8858,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -8939,25 +8939,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -9035,25 +9035,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -9240,7 +9240,7 @@
           "6": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "integer", "minimum": 1000000000 },
+            "items": { "type": "integer", "unixTimestamp": true },
             "title": "DataUpTime",
             "description": "The data upload time. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -9295,25 +9295,25 @@
           },
           "6003": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Interval Collection Start Time",
             "description": "The Collection Start Time resource is a read only resource representing the time when the first interval was recorded on the device. Interval times represent the end of the interval, not the beginning. As an example, the first four hourly interval past midnight will have a timestamp of 04:00 (adjusting for UTC offset).  Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6004": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Oldest Recorded Interval",
             "description": "The Oldest Recorded Interval resource is a read-only resource representing the oldest available interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6005": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Delivered Interval",
             "description": "The Last Delivered Interval is a readable and writable resource used to represent the last interval delivered to the LwM2M server. Interval times represent the end of the interval, not the beginning. The setting of this resource is implementation specific but should be updated based on, either a Read request of the Latest Payload from the LwM2M server or via a confirmed delivery of Notify operation of the Latest Payload resource. This resource is writable to allow the server to adjust the Last Delivered Interval value if the server and client is out of sync. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
           "6006": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Latest Recorded Interval",
             "description": "The Latest Recorded Interval is a readable resource representing the currently highest recorded interval on the device. Interval times represent the end of the interval, not the beginning. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -10582,7 +10582,7 @@
           },
           "6": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Report Time",
             "description": "When was this alarm reported. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -10628,7 +10628,7 @@
           },
           "3": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Time",
             "description": "When was this event reported. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -12147,7 +12147,7 @@
           },
           "12": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Last Bootstrapped",
             "description": "If this resource is defined, it represents the last time that the bootstrap server updated this LwM2M Server Account. The LwM2M Client is responsible for updating this value. When the Bootstrap Server detects that this LwM2M Server Account is \"out-of-date\", the Bootstrap Server can update the LwM2M Server Account as represented by the LwM2M Server object instance. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -12359,7 +12359,7 @@
         },
         "13": {
           "type": "integer",
-          "minimum": 1000000000,
+          "unixTimestamp": true,
           "title": "Current Time",
           "description": "Current UNIX time of the LwM2M Client.\r\nThe LwM2M Client should be responsible to increase this time value as every second elapses.\r\nThe LwM2M Server is able to write this Resource to make the LwM2M Client synchronized with the LwM2M Server. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
         },
@@ -12583,7 +12583,7 @@
         },
         "12": {
           "type": "integer",
-          "minimum": 1000000000,
+          "unixTimestamp": true,
           "title": "Last State Change Time",
           "description": "This resource stores the time when the State resource is changed. Device updates this resource before making any change to the State. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
         },
@@ -12760,7 +12760,7 @@
           "9": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "integer", "minimum": 1000000000 },
+            "items": { "type": "integer", "unixTimestamp": true },
             "title": "Connection establishment time (1)",
             "description": "UTC time of connection request. See note (1) Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -12781,7 +12781,7 @@
           "12": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "integer", "minimum": 1000000000 },
+            "items": { "type": "integer", "unixTimestamp": true },
             "title": "Connection end time (1)",
             "description": "UTC time of connection end. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -13860,7 +13860,7 @@
           },
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -13897,7 +13897,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -13943,7 +13943,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14019,7 +14019,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14066,7 +14066,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14147,7 +14147,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14235,7 +14235,7 @@
           },
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14296,7 +14296,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14372,7 +14372,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14448,7 +14448,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14574,7 +14574,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14630,7 +14630,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14677,7 +14677,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14693,7 +14693,7 @@
           },
           "5824": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Start Time",
             "description": "Time when the event started. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14746,7 +14746,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14807,7 +14807,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14883,7 +14883,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -14954,7 +14954,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15030,7 +15030,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15111,7 +15111,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15192,7 +15192,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15273,7 +15273,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15354,7 +15354,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15435,7 +15435,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15516,7 +15516,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15597,7 +15597,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15678,7 +15678,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15759,7 +15759,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15840,7 +15840,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -15921,7 +15921,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16002,7 +16002,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16083,7 +16083,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16164,7 +16164,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16245,7 +16245,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16301,7 +16301,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16362,7 +16362,7 @@
         "properties": {
           "5506": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Current Time",
             "description": "Unix Time. A signed integer representing the number of seconds since Jan 1st, 1970 in the UTC time zone. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16438,7 +16438,7 @@
           },
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16514,7 +16514,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16575,7 +16575,7 @@
           },
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16641,7 +16641,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16708,7 +16708,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16774,7 +16774,7 @@
           },
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16816,7 +16816,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16909,7 +16909,7 @@
           },
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16941,7 +16941,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -16978,7 +16978,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -17027,7 +17027,7 @@
           },
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -19234,7 +19234,7 @@
           },
           "160": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Time Value",
             "description": "Initial value must be the time to an 1st, 2000 in the UTC time zone. (Timestamp value : 946684800) Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -19295,7 +19295,7 @@
           "1160": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "integer", "minimum": 1000000000 },
+            "items": { "type": "integer", "unixTimestamp": true },
             "title": "Multiple Time Value",
             "description": "Initial value must be 1 instance with ID 0 and value 1st, 2000 in the UTC time zone (Timestamp value : 946684800). Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },
@@ -19541,7 +19541,7 @@
         "properties": {
           "5518": {
             "type": "integer",
-            "minimum": 1000000000,
+            "unixTimestamp": true,
             "title": "Timestamp",
             "description": "The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone."
           },

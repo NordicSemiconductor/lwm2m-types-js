@@ -80,7 +80,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 				}
 				break
 			case LwM2MType.Time:
-				prop = S.integer().minimum(1000000000)
+				prop = S.raw({ type: 'integer', unixTimestamp: true })
 				description.push(
 					'Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone.',
 				)
