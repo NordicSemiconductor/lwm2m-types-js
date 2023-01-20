@@ -28,8 +28,8 @@ export const lwM2MDefinitionToJSONSchema = ({
 		.id(
 			`https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/${ObjectID}.xml`,
 		)
-		.title(Name)
-		.description(description)
+		.title(Name.trim())
+		.description(description.trim())
 		.additionalProperties(false)
 
 	for (const [
@@ -45,7 +45,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 		},
 	] of Object.entries(Resources)) {
 		let prop: JSONSchema | undefined = undefined
-		const description = [Description]
+		const description = [Description.trim()]
 		switch (Type) {
 			case LwM2MType.Float:
 				prop = S.number()
@@ -107,7 +107,7 @@ export const lwM2MDefinitionToJSONSchema = ({
 		if (Mandatory) {
 			prop = prop.required()
 		}
-		prop = prop.title(Name)
+		prop = prop.title(Name.trim())
 
 		if (Units !== undefined) {
 			description.push(`Units: ${Units}.`)
@@ -120,8 +120,8 @@ export const lwM2MDefinitionToJSONSchema = ({
 	if (MultipleInstances) {
 		return S.array()
 			.minItems(1)
-			.title(Name)
-			.description(description)
+			.title(Name.trim())
+			.description(description.trim())
 			.items(lwm2mObjectSchema)
 			.valueOf()
 	}
