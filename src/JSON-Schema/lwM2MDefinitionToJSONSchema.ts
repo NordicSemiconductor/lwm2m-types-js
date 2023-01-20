@@ -80,6 +80,9 @@ export const lwM2MDefinitionToJSONSchema = ({
 				}
 				break
 			case LwM2MType.Time:
+				// A custom keyword "unixTimestamp" is added to the property
+				// so it can be inferred from the schema that this value is
+				// supposed to be a LwM2M Timestamp.
 				prop = S.raw({ type: 'integer', unixTimestamp: true })
 				description.push(
 					'Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone.',
