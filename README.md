@@ -17,6 +17,8 @@ This is useful if you need to validate a _JSON_ representation of those objects.
 
 ```bash
 npm ci
+// Clone LwM2M object registry
+git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git --depth 1
 npm test
 ```
 
