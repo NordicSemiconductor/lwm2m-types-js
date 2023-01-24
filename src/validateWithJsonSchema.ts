@@ -37,12 +37,16 @@ export const validateWithJSONSchema = <ReturnType>(
  * which has 10 characters/bytes.
  */
 export const unixTimestampKeyword = (ajv: Ajv): void => {
+	const minUnixTimestamp = 0 // 1 Jan 1970, 00:00:00 UTC
+	const maxUnixTimestamp = 9999999999 // 20 Nov 2286, 17:46:39 UTC
 	ajv.addKeyword({
 		keyword: 'unixTimestamp',
 		type: 'number',
 		schemaType: 'boolean',
 		code(cxt: KeywordCxt) {
-			cxt.fail(_`${cxt.data} < 1111111111 || ${cxt.data} > 9999999999`)
+			cxt.fail(
+				_`${cxt.data} < ${minUnixTimestamp} || ${cxt.data} > ${maxUnixTimestamp}`,
+			)
 		},
 		error: {
 			message:
