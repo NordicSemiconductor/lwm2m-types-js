@@ -63,7 +63,10 @@ export const lwM2MDefinitionToJSONSchema = ({
 				}
 				break
 			case LwM2MType.Boolean:
-				// In LwM2M Boolean is an 8 bit unsigned integer with the value 0 for False and the value 1 for True.
+				/**
+				 * In LwM2M Boolean is an 8 bit unsigned integer with the value 0 for False and the value 1 for True.
+				 * @see https://www.openmobilealliance.org/release/LightweightM2M/V1_1_1-20190617-A/OMA-TS-LightweightM2M_Core-V1_1_1-20190617-A.pdf Pag 106 Table: C.-1 Data Types
+				 */
 				prop = S.integer().minimum(0).maximum(1)
 				break
 			case LwM2MType.Objlnk:
