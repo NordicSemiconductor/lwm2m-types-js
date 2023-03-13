@@ -95,5 +95,7 @@
     "package-lock.json",
     "LICENSE",
     "README.md"
-  ]
+  ],
+  "author": "Nordic Semiconductor ASA | nordicsemi.no",
+  "license": "BSD-3-Clause"
 }
