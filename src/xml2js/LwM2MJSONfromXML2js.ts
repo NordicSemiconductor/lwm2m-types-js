@@ -1,12 +1,12 @@
 // define input format
 
-import { Static, TArray, TSchema, Type } from '@sinclair/typebox'
+import { Type, type Static, type TArray, type TSchema } from '@sinclair/typebox'
 import {
-	LwM2MObjectDefinition,
 	LwM2MType,
 	Mandatory,
 	MultipleInstances,
 	Operations,
+	type LwM2MObjectDefinition,
 } from '../lwm2m/LwM2MObjectDefinition'
 import { addIfNotBlank } from './addIfNotBlank'
 import { convertResources } from './convertResources'

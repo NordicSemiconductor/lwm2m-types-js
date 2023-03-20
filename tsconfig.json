@@ -16,7 +16,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noEmit": true,
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "paths": {
       "@nordicsemiconductor/lwm2m-types": ["index.d.ts"]

@@ -20,7 +20,7 @@ export const generateLwM2MDocument = (
 					undefined,
 					ts.factory.createNamedImports([
 						ts.factory.createImportSpecifier(
-							false,
+							true,
 							undefined,
 							ts.factory.createIdentifier(
 								typeName(definition.ObjectID, definition.Name),

@@ -3,11 +3,11 @@ import {
 	Mandatory,
 	MultipleInstances,
 	Operations,
-	Resource,
-	Resources,
+	type Resource,
+	type Resources,
 } from '../lwm2m/LwM2MObjectDefinition'
-import { addIfNotBlank } from './addIfNotBlank'
 import { ObjectDef, toLwM2mType } from './LwM2MJSONfromXML2js'
+import { addIfNotBlank } from './addIfNotBlank'
 import { parseRangeEnumeration } from './parseRangeEnumeration'
 
 export const convertResources = (

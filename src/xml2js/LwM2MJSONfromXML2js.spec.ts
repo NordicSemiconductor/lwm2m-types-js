@@ -2,9 +2,9 @@ import { readFile } from 'fs/promises'
 import path from 'node:path'
 import { Parser } from 'xml2js'
 import {
-	LwM2MObjectDefinition,
 	LwM2MType,
 	Operations,
+	type LwM2MObjectDefinition,
 } from '../lwm2m/LwM2MObjectDefinition'
 import { LwM2MJSONfromXML2js } from './LwM2MJSONfromXML2js'
 const parser = new Parser({ attrkey: 'ATTR' })

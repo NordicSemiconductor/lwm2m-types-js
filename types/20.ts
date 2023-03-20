@@ -1,8 +1,8 @@
 /**
  * Event Log
  *
- * The Event Log Object is a single Instance Object defined for logging data in
- * a straightforward and generic way.
+ * The Event Log Object is a multiple Instances Object defined for logging data
+ * in a straightforward and generic way.
  * The Resources of that Object are based on the OMA LwM2M set of reusable
  * Resources dedicated to logging event activity.
  *
@@ -11,16 +11,18 @@
  *
  * ID: 20
  * LWM2MVersion: 1.0
- * ObjectVersion: 1.0
- * MultipleInstances: false
+ * ObjectVersion: 2.0
+ * MultipleInstances: true
  * Mandatory: false
  */
-export type EventLog_20 = Readonly<{
-	'4014': LogData_4014
-	'4010'?: LogClass_4010
-	'4013'?: LogStatus_4013
-	'4015'?: LogDataFormat_4015
-}>
+export type EventLog_20 = Readonly<
+	Array<{
+		'4014': LogData_4014
+		'4010'?: LogClass_4010
+		'4013'?: LogStatus_4013
+		'4015'?: LogDataFormat_4015
+	}>
+>
 /**
  * LogData
  *
@@ -82,4 +84,4 @@ type LogDataFormat_4015 = number
  * The objectURN for Event Log
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '20'
+export const objectURN = '20:2.0'

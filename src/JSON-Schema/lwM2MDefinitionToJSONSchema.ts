@@ -1,7 +1,7 @@
-import S, { JSONSchema } from 'fluent-json-schema'
+import S, { type JSONSchema } from 'fluent-json-schema'
 import {
-	LwM2MObjectDefinition,
 	LwM2MType,
+	type LwM2MObjectDefinition,
 } from '../lwm2m/LwM2MObjectDefinition'
 
 /**
