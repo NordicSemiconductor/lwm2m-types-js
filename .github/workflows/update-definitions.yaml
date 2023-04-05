@@ -56,7 +56,7 @@ jobs:
 
       - name: Create Pull Request
         if: env.HAS_CHANGES == '1'
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           commit-message: "feat(registry): update definitions"
           committer: "github-actions[bot] <actions@example.com>"
