@@ -136,7 +136,7 @@ type CumulativeMeasurementWindow_7 = number
 /**
  * eNB ECI
  *
- * A 28 bit E-UTRAN Cell Identifier (ECI)
+ * A 28 bit E-UTRAN Cell Identifier (ECI) (range 0..2^28-1)
  *
  * ID: 8
  * MultipleInstances: false

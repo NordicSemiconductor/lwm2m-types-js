@@ -53,7 +53,8 @@ type Time_3 = number
 /**
  * Sequence No
  *
- * Sequence No of this event, used to detect event loss.
+ * Sequence No of this event, used to detect event loss. A 63 bit value with
+ * range 0..2^63-1.
  *
  * ID: 4
  * MultipleInstances: false
