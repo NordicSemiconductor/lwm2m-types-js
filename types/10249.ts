@@ -84,7 +84,8 @@ type LastdownlinkCQIreportperConnectedUser_5 = number
  * Cumulative Downlink Throughput per Connected User
  *
  * The total number of MAC bytes sent to the connected user over the immediately
- * preceding period specified by the "Cumulative Measurement Window" field.
+ * preceding period specified by the "Cumulative Measurement Window" field. A 32
+ * bit value with range 0..2^32-1.
  *
  * ID: 6
  * MultipleInstances: false
@@ -97,7 +98,7 @@ type CumulativeDownlinkThroughputperConnectedUser_6 = number
  *
  * The total number of MAC bytes received from the connected user over the
  * immediately preceding period specified by the "Cumulative Measurement Window"
- * field.
+ * field. A 32 bit value with range 0..2^32-1.
  *
  * ID: 7
  * MultipleInstances: false

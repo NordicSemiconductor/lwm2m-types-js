@@ -89,7 +89,8 @@ type ReportTime_6 = number
 /**
  * Sequence No
  *
- * Sequence No of this alarm, used to detect alarm loss.
+ * Sequence No of this alarm, used to detect alarm loss. A 63 bit value with
+ * range 0..2^63-1.
  *
  * ID: 7
  * MultipleInstances: false

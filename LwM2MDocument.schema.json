@@ -6084,8 +6084,10 @@
         },
         "8": {
           "type": "integer",
+          "minimum": 0,
+          "maximum": 268435455,
           "title": "eNB ECI",
-          "description": "A 28 bit E-UTRAN Cell Identifier (ECI)"
+          "description": "A 28 bit E-UTRAN Cell Identifier (ECI) (range 0..2^28-1)"
         },
         "9": {
           "type": "integer",
@@ -6164,6 +6166,8 @@
       "properties": {
         "0": {
           "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295,
           "title": "Serving Cell ID",
           "description": "Serving cell ID as specified by the cellIdentity field broadcast in SIB1 of the serving cell (see TS 36.331)."
         },
@@ -6226,6 +6230,8 @@
           },
           "1": {
             "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295,
             "title": "Neighbour Cell ID",
             "description": "Neighbour cell ID as specified by the cellIdentity field broadcast in SIB1 of the neighbour cell (see TS 36.331)."
           },
@@ -6306,6 +6312,8 @@
           },
           "1": {
             "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295,
             "title": "Connected User M-TMSI",
             "description": "M-TMSI signalled by the UE to the eNB in the RRCConnectionRequest message (see TS 36.331)."
           },
@@ -6339,13 +6347,17 @@
           },
           "6": {
             "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295,
             "title": "Cumulative Downlink Throughput per Connected User",
-            "description": "The total number of MAC bytes sent to the connected user over the immediately preceding period specified by the \"Cumulative Measurement Window\" field. Units: B."
+            "description": "The total number of MAC bytes sent to the connected user over the immediately preceding period specified by the \"Cumulative Measurement Window\" field. A 32 bit value with range 0..2^32-1. Units: B."
           },
           "7": {
             "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295,
             "title": "Cumulative Uplink Throughput per Connected User",
-            "description": "The total number of MAC bytes received from the connected user over the immediately preceding period specified by the \"Cumulative Measurement Window\" field. Units: B."
+            "description": "The total number of MAC bytes received from the connected user over the immediately preceding period specified by the \"Cumulative Measurement Window\" field. A 32 bit value with range 0..2^32-1. Units: B."
           },
           "8": {
             "type": "array",
@@ -10558,8 +10570,10 @@
           },
           "7": {
             "type": "integer",
+            "minimum": 0,
+            "maximum": 9223372036854776000,
             "title": "Sequence No",
-            "description": "Sequence No of this alarm, used to detect alarm loss."
+            "description": "Sequence No of this alarm, used to detect alarm loss. A 63 bit value with range 0..2^63-1."
           },
           "8": {
             "type": "string",
@@ -10604,8 +10618,10 @@
           },
           "4": {
             "type": "integer",
+            "minimum": 0,
+            "maximum": 9223372036854776000,
             "title": "Sequence No",
-            "description": "Sequence No of this event, used to detect event loss."
+            "description": "Sequence No of this event, used to detect event loss. A 63 bit value with range 0..2^63-1."
           },
           "5": {
             "type": "string",
@@ -17246,6 +17262,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -17334,6 +17352,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -17430,6 +17450,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -17527,6 +17549,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -17685,6 +17709,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -17829,6 +17855,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -17951,6 +17979,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18061,6 +18091,8 @@
         "properties": {
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18171,6 +18203,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18313,6 +18347,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18493,6 +18529,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18599,6 +18637,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18684,6 +18724,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18774,6 +18816,8 @@
         "properties": {
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18817,6 +18861,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18867,6 +18913,8 @@
         "properties": {
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -18904,6 +18952,8 @@
         "properties": {
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -19003,6 +19053,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -19048,6 +19100,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
@@ -19088,6 +19142,8 @@
           },
           "901": {
             "type": "string",
+            "minLength": 0,
+            "maxLength": 256,
             "title": "Documentary Description",
             "description": "Resource to hold a documentary text description of the object."
           },
