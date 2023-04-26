@@ -1,6 +1,6 @@
-import { LwM2MType } from '../lwm2m/LwM2MObjectDefinition'
-import { convertResources } from './convertResources'
-import type { ObjectDef } from './LwM2MJSONfromXML2js'
+import { LwM2MType } from '../lwm2m/LwM2MObjectDefinition.js'
+import { convertResources } from './convertResources.js'
+import type { ObjectDef } from './LwM2MJSONfromXML2js.js'
 
 const input: (typeof ObjectDef)['Resources'] = [
 	{

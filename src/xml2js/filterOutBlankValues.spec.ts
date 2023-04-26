@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import path from 'node:path'
 import { Parser } from 'xml2js'
-import { filterOutBlankValues } from './filterOutBlankValues'
+import { filterOutBlankValues } from './filterOutBlankValues.js'
 
 describe('filterOutBlankValues()', () => {
 	it('should remove blank values from objects', () => {

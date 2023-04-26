@@ -2,7 +2,7 @@ import S, { type JSONSchema } from 'fluent-json-schema'
 import {
 	LwM2MType,
 	type LwM2MObjectDefinition,
-} from '../lwm2m/LwM2MObjectDefinition'
+} from '../lwm2m/LwM2MObjectDefinition.js'
 
 /**
  * Converts the given LwM2M object definition into a JSON schema

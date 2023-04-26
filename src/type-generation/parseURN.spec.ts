@@ -1,4 +1,4 @@
-import { parseURN } from './parseURN'
+import { parseURN } from './parseURN.js'
 
 describe('parseURN()', () => {
 	it.each([

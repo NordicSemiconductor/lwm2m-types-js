@@ -1,9 +1,9 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { lwm2mDefinitions } from '../src/lwm2m/lwm2mDefinitions'
-import { generateExports } from '../src/type-generation/generateExports'
-import { generateLwM2MDocument } from '../src/type-generation/generateLwM2MDocument'
-import { generateObjectType } from '../src/type-generation/generateObjectType'
+import { lwm2mDefinitions } from '../src/lwm2m/lwm2mDefinitions.js'
+import { generateExports } from '../src/type-generation/generateExports.js'
+import { generateLwM2MDocument } from '../src/type-generation/generateLwM2MDocument.js'
+import { generateObjectType } from '../src/type-generation/generateObjectType.js'
 
 const outDir = path.join(process.cwd(), 'types')
 try {

@@ -1,7 +1,7 @@
 import ts from 'typescript'
-import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition'
-import { addDocBlock } from './addDocBlock'
-import { createURN } from './createURN'
+import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition.js'
+import { addDocBlock } from './addDocBlock.js'
+import { createURN } from './createURN.js'
 
 export const createObjectURN = ({
 	Name,
@@ -21,7 +21,7 @@ export const createObjectURN = ({
 						createURN({
 							ObjectID: parseInt(ObjectID, 10),
 							ObjectVersion,
-							LWM2MVersion: LWM2MVersion,
+							LWM2MVersion,
 						}),
 					),
 				),

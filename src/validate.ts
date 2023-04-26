@@ -1,5 +1,5 @@
 import LwM2MDocumentSchema from '../LwM2MDocument.schema.json' assert { type: 'json' }
-import type { LwM2MDocument } from '../types/LwM2MDocument'
+import type { LwM2MDocument } from '../types/LwM2MDocument.js'
 import { validateWithJSONSchema } from './validateWithJsonSchema.js'
 
 /**

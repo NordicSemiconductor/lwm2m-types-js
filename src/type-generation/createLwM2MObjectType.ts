@@ -3,12 +3,12 @@ import ts from 'typescript'
 import type {
 	LwM2MObjectDefinition,
 	Resource,
-} from '../lwm2m/LwM2MObjectDefinition'
-import { addDocBlock } from './addDocBlock'
-import { cleanWhitespace } from './cleanWhitespace'
-import { getTypeScriptType } from './getTypeScriptType'
-import { typeName } from './typeName'
-import { wrap } from './wrap'
+} from '../lwm2m/LwM2MObjectDefinition.js'
+import { addDocBlock } from './addDocBlock.js'
+import { cleanWhitespace } from './cleanWhitespace.js'
+import { getTypeScriptType } from './getTypeScriptType.js'
+import { typeName } from './typeName.js'
+import { wrap } from './wrap.js'
 
 const wrapLongLines = wrap(76)
 

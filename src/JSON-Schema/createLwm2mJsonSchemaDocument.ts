@@ -1,6 +1,6 @@
 import S, { type JSONSchema } from 'fluent-json-schema'
-import { lwm2mDefinitions } from '../lwm2m/lwm2mDefinitions'
-import { createJsonSchema } from './createJsonSchema'
+import { lwm2mDefinitions } from '../lwm2m/lwm2mDefinitions.js'
+import { createJsonSchema } from './createJsonSchema.js'
 
 /**
  * Create the LWM2M JSON Schema document

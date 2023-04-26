@@ -1,4 +1,4 @@
-import { wrap } from './wrap'
+import { wrap } from './wrap.js'
 
 describe('wrap()', () => {
 	it('should wrap long lines', () =>

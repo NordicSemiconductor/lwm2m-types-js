@@ -1,4 +1,4 @@
-import { parseRangeEnumeration } from './parseRangeEnumeration'
+import { parseRangeEnumeration } from './parseRangeEnumeration.js'
 
 describe('getRangeEnumeration', () => {
 	it.each([

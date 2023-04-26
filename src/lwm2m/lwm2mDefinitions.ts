@@ -1,6 +1,6 @@
-import { getLwM2MObjectDefinitionFiles } from '../lwm2m/getLwM2MObjectDefinitionFiles'
-import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition'
-import { fromXML } from '../xml2js/definitionFromXML'
+import { getLwM2MObjectDefinitionFiles } from '../lwm2m/getLwM2MObjectDefinitionFiles.js'
+import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition.js'
+import { fromXML } from '../xml2js/definitionFromXML.js'
 
 /**
  * Returns all LwM2M object definitions

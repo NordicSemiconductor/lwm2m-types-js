@@ -1,5 +1,5 @@
 import { Type } from '@sinclair/typebox'
-import { validateWithTypeBox } from './validateWithTypeBox'
+import { validateWithTypeBox } from './validateWithTypeBox.js'
 
 describe('validateWithTypeBox', () => {
 	it('Should check input is valid', async () => {

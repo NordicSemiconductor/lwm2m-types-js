@@ -5,8 +5,8 @@ import {
 	LwM2MType,
 	Operations,
 	type LwM2MObjectDefinition,
-} from '../lwm2m/LwM2MObjectDefinition'
-import { LwM2MJSONfromXML2js } from './LwM2MJSONfromXML2js'
+} from '../lwm2m/LwM2MObjectDefinition.js'
+import { LwM2MJSONfromXML2js } from './LwM2MJSONfromXML2js.js'
 const parser = new Parser({ attrkey: 'ATTR' })
 
 describe('LwM2MJSONfromXML2js()', () => {

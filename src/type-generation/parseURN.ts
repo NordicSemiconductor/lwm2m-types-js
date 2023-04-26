@@ -1,4 +1,4 @@
-import { defaultLWM2MVersion, defaultObjectVersion } from './createURN'
+import { defaultLWM2MVersion, defaultObjectVersion } from './createURN.js'
 
 export const parseURN = (
 	urn: string,

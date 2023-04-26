@@ -1,8 +1,8 @@
 import { mkdtemp, writeFile } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import { fromXML } from '../xml2js/definitionFromXML'
-import { generateObjectType } from './generateObjectType'
+import { fromXML } from '../xml2js/definitionFromXML.js'
+import { generateObjectType } from './generateObjectType.js'
 
 describe('generateObjectType()', () => {
 	it('should export the objectURN', async () => {

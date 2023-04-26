@@ -1,4 +1,4 @@
-import { createURN } from './createURN'
+import { createURN } from './createURN.js'
 
 describe('createURN()', () => {
 	it('should create a fully qualified URN', () =>

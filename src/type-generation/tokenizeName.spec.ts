@@ -1,4 +1,4 @@
-import { tokenizeName } from './tokenizeName'
+import { tokenizeName } from './tokenizeName.js'
 
 describe('tokenizeName', () => {
 	it.each([

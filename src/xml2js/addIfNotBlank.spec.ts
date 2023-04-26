@@ -1,4 +1,4 @@
-import { addIfNotBlank } from './addIfNotBlank'
+import { addIfNotBlank } from './addIfNotBlank.js'
 
 describe('addIfNotBlank()', () => {
 	it('Should add element to object if value is not undefined', () => {

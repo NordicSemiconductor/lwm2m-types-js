@@ -1,8 +1,8 @@
 import os from 'node:os'
 import ts from 'typescript'
-import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition'
-import { printNode } from './printNode'
-import { typeName } from './typeName'
+import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition.js'
+import { printNode } from './printNode.js'
+import { typeName } from './typeName.js'
 
 /**
  * This generates the TypeScript source that exports all the individual LwM2M

@@ -7,11 +7,11 @@ import {
 	MultipleInstances,
 	Operations,
 	type LwM2MObjectDefinition,
-} from '../lwm2m/LwM2MObjectDefinition'
-import { addIfNotBlank } from './addIfNotBlank'
-import { convertResources } from './convertResources'
-import { filterOutBlankValues } from './filterOutBlankValues'
-import { validateWithTypeBox } from './validateWithTypeBox'
+} from '../lwm2m/LwM2MObjectDefinition.js'
+import { addIfNotBlank } from './addIfNotBlank.js'
+import { convertResources } from './convertResources.js'
+import { filterOutBlankValues } from './filterOutBlankValues.js'
+import { validateWithTypeBox } from './validateWithTypeBox.js'
 
 export const nonEmptyArray = <Schema extends TSchema>(
 	type: Schema,

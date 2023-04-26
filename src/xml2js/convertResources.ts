@@ -5,10 +5,10 @@ import {
 	Operations,
 	type Resource,
 	type Resources,
-} from '../lwm2m/LwM2MObjectDefinition'
-import { ObjectDef, toLwM2mType } from './LwM2MJSONfromXML2js'
-import { addIfNotBlank } from './addIfNotBlank'
-import { parseRangeEnumeration } from './parseRangeEnumeration'
+} from '../lwm2m/LwM2MObjectDefinition.js'
+import { ObjectDef, toLwM2mType } from './LwM2MJSONfromXML2js.js'
+import { addIfNotBlank } from './addIfNotBlank.js'
+import { parseRangeEnumeration } from './parseRangeEnumeration.js'
 
 export const convertResources = (
 	resources: Static<typeof ObjectDef>['Resources'],

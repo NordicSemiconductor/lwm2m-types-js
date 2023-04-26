@@ -43,7 +43,7 @@ export const unixTimestampKeyword = (ajv: Ajv): void => {
 		keyword: 'unixTimestamp',
 		type: 'number',
 		schemaType: 'boolean',
-		code(cxt: KeywordCxt) {
+		code: (cxt: KeywordCxt) => {
 			cxt.fail(
 				_`${cxt.data} < ${minUnixTimestamp} || ${cxt.data} > ${maxUnixTimestamp}`,
 			)

@@ -1,4 +1,4 @@
-import { cleanWhitespace } from './cleanWhitespace'
+import { cleanWhitespace } from './cleanWhitespace.js'
 
 describe('cleanWhitespace()', () => {
 	it('should clean whitespace', () =>

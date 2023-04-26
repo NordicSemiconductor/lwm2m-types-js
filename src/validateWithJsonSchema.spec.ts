@@ -1,4 +1,4 @@
-import { validateWithJSONSchema } from './validateWithJsonSchema'
+import { validateWithJSONSchema } from './validateWithJsonSchema.js'
 
 describe('validateWithJSONSchema', () => {
 	it('Should check input is valid', () => {

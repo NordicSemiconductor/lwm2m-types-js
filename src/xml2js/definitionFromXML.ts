@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import { Parser } from 'xml2js'
-import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition'
-import { LwM2MJSONfromXML2js } from './LwM2MJSONfromXML2js'
+import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition.js'
+import { LwM2MJSONfromXML2js } from './LwM2MJSONfromXML2js.js'
 
 const parser = new Parser({ attrkey: 'ATTR' })
 const xmlFileToJSON = async (source: string) => {

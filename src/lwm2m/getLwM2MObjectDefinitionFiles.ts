@@ -1,6 +1,6 @@
 import { readdirSync } from 'fs'
 import path from 'node:path'
-import { ignoredLwM2MObjects } from './ignoredLwM2MObjects'
+import { ignoredLwM2MObjects } from './ignoredLwM2MObjects.js'
 
 /**
  * Return files that follow the following rules:

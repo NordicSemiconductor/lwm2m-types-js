@@ -1,9 +1,9 @@
 import { readFile } from 'fs/promises'
 import path from 'node:path'
 import { Parser } from 'xml2js'
-import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition'
-import { LwM2MJSONfromXML2js } from '../xml2js/LwM2MJSONfromXML2js'
-import { lwM2MDefinitionToJSONSchema } from './lwM2MDefinitionToJSONSchema'
+import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition.js'
+import { LwM2MJSONfromXML2js } from '../xml2js/LwM2MJSONfromXML2js.js'
+import { lwM2MDefinitionToJSONSchema } from './lwM2MDefinitionToJSONSchema.js'
 const parser = new Parser({ attrkey: 'ATTR' })
 
 const loadDefinition = async (id: number): Promise<LwM2MObjectDefinition> => {
@@ -125,7 +125,7 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			properties: {
 				'1': {
 					title: 'Package URI',
-					description: description,
+					description,
 					type: 'string',
 					minLength: 0,
 					maxLength: 255,

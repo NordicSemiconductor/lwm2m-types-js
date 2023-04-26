@@ -1,4 +1,4 @@
-import { tokenizeName } from './tokenizeName'
+import { tokenizeName } from './tokenizeName.js'
 
 /**
  * This creates the name used for the type definition.
