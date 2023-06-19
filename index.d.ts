@@ -1,4 +1,5 @@
 export * from './src/type-generation/createURN.js'
+export * from './src/type-generation/getURN.js'
 export * from './src/type-generation/parseURN.js'
 export * from './src/validate.js'
 export * from './types/LwM2M.js'
