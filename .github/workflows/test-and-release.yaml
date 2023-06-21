@@ -29,6 +29,9 @@ jobs:
           git clone https://github.com/OpenMobileAlliance/lwm2m-registry.git
           --depth 1
 
+      - name: Compile JS exports
+        run: npx swc -d types-dist ./types
+
       - name: Run unit tests
         run: npm test
 
@@ -43,9 +46,6 @@ jobs:
 
       - name: Make sure result compiles
         run: npx tsc
-
-      - name: Compile JS exports
-        run: npx swc -d types-dist ./types
 
       - name: Make sure example runs
         run: npx tsx ./example.ts
