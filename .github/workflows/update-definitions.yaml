@@ -39,6 +39,9 @@ jobs:
       - name: Create LwM2M types
         run: npx tsx cli/generate-types.ts
 
+      - name: Create types-dist folder
+        run: npx swc -d types-dist ./types
+
       - name: Create the JSON Schema
         run: npx tsx cli/generate-json-schema.ts
 
