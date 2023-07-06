@@ -1,955 +1,956 @@
-import { objectURN as LwM2MServer_1_urn, type LwM2MServer_1 } from './1.js'
+import { type LwM2MServer_1, objectURN as LwM2MServer_1_urn } from './1.js'
 import {
-	objectURN as LWM2MCellularConnectivity_10_urn,
-	type LWM2MCellularConnectivity_10,
-} from './10.js'
-import {
-	objectURN as HostDeviceInfo_10241_urn,
-	type HostDeviceInfo_10241,
-} from './10241.js'
-import {
-	objectURN as n3_PhasePowerMeter_10242_urn,
-	type n3_PhasePowerMeter_10242,
-} from './10242.js'
-import {
-	objectURN as Single_PhasePowerMeter_10243_urn,
-	type Single_PhasePowerMeter_10243,
-} from './10243.js'
-import {
-	objectURN as VehicleControlUnit_10244_urn,
-	type VehicleControlUnit_10244,
-} from './10244.js'
-import {
-	objectURN as RelayManagement_10245_urn,
-	type RelayManagement_10245,
-} from './10245.js'
-import {
-	objectURN as CrowdBoxMeasurements_10246_urn,
-	type CrowdBoxMeasurements_10246,
-} from './10246.js'
-import {
-	objectURN as NeighbourCellReport_10247_urn,
-	type NeighbourCellReport_10247,
-} from './10247.js'
-import {
-	objectURN as ConnectedUEMeasurements_10248_urn,
-	type ConnectedUEMeasurements_10248,
-} from './10248.js'
-import {
-	objectURN as ConnectedUEReport_10249_urn,
-	type ConnectedUEReport_10249,
-} from './10249.js'
-import {
-	objectURN as AppDataContainer_10250_urn,
-	type AppDataContainer_10250,
-} from './10250.js'
-import {
-	objectURN as ATCommand_10251_urn,
-	type ATCommand_10251,
-} from './10251.js'
-import {
-	objectURN as Manifest_10252_urn,
-	type Manifest_10252,
-} from './10252.js'
-import {
-	objectURN as ConfidentialData_10253_urn,
-	type ConfidentialData_10253,
-} from './10253.js'
-import {
-	objectURN as CurrentLoopInput_10254_urn,
-	type CurrentLoopInput_10254,
-} from './10254.js'
-import {
-	objectURN as DeviceMetadata_10255_urn,
-	type DeviceMetadata_10255,
-} from './10255.js'
-import {
-	objectURN as ECID_SignalMeasurementInformation_10256_urn,
-	type ECID_SignalMeasurementInformation_10256,
-} from './10256.js'
-import {
-	objectURN as Heat_Coolingmeter_10257_urn,
-	type Heat_Coolingmeter_10257,
-} from './10257.js'
-import {
-	objectURN as CurrentLoopOutput_10258_urn,
-	type CurrentLoopOutput_10258,
-} from './10258.js'
-import {
-	objectURN as SystemLog_10259_urn,
-	type SystemLog_10259,
-} from './10259.js'
-import { objectURN as RDB_10260_urn, type RDB_10260 } from './10260.js'
-import {
-	objectURN as IntervalDataDelivery_10262_urn,
-	type IntervalDataDelivery_10262,
-} from './10262.js'
-import {
-	objectURN as EventDataDelivery_10263_urn,
-	type EventDataDelivery_10263,
-} from './10263.js'
-import {
-	objectURN as DeliverySchedule_10264_urn,
-	type DeliverySchedule_10264,
-} from './10264.js'
-import {
-	objectURN as LeakageDetectionConfiguration_10265_urn,
-	type LeakageDetectionConfiguration_10265,
-} from './10265.js'
-import {
-	objectURN as WaterFlowReadings_10266_urn,
-	type WaterFlowReadings_10266,
-} from './10266.js'
-import {
-	objectURN as DailyMaximumFlowRateReadings_10267_urn,
-	type DailyMaximumFlowRateReadings_10267,
-} from './10267.js'
-import {
-	objectURN as TemperatureReadings_10268_urn,
-	type TemperatureReadings_10268,
-} from './10268.js'
-import {
-	objectURN as PressureReadings_10269_urn,
-	type PressureReadings_10269,
-} from './10269.js'
-import {
-	objectURN as BatteryLevelReadings_10270_urn,
-	type BatteryLevelReadings_10270,
-} from './10270.js'
-import {
-	objectURN as CommunicationsActivityTimeReadings_10271_urn,
-	type CommunicationsActivityTimeReadings_10271,
-} from './10271.js'
-import {
-	objectURN as WaterMeterCustomerLeakageAlarm_10272_urn,
-	type WaterMeterCustomerLeakageAlarm_10272,
-} from './10272.js'
-import {
-	objectURN as WaterMeterReverseFlowAlarm_10273_urn,
-	type WaterMeterReverseFlowAlarm_10273,
-} from './10273.js'
-import {
-	objectURN as WaterMeterEmptyPipeAlarm_10274_urn,
-	type WaterMeterEmptyPipeAlarm_10274,
-} from './10274.js'
-import {
-	objectURN as WaterMeterTamperAlarm_10275_urn,
-	type WaterMeterTamperAlarm_10275,
-} from './10275.js'
-import {
-	objectURN as WaterMeterHighPressureAlarm_10276_urn,
-	type WaterMeterHighPressureAlarm_10276,
-} from './10276.js'
-import {
-	objectURN as WaterMeterLowPressureAlarm_10277_urn,
-	type WaterMeterLowPressureAlarm_10277,
-} from './10277.js'
-import {
-	objectURN as HighTemperatureAlarm_10278_urn,
-	type HighTemperatureAlarm_10278,
-} from './10278.js'
-import {
-	objectURN as LowTemperatureAlarm_10279_urn,
-	type LowTemperatureAlarm_10279,
-} from './10279.js'
-import {
-	objectURN as WaterNetworkLeakAlarm_10280_urn,
-	type WaterNetworkLeakAlarm_10280,
-} from './10280.js'
-import {
-	objectURN as LowBatteryAlarm_10281_urn,
-	type LowBatteryAlarm_10281,
-} from './10281.js'
-import {
-	objectURN as DaughterBoardFailureAlarm_10282_urn,
-	type DaughterBoardFailureAlarm_10282,
-} from './10282.js'
-import {
-	objectURN as DeviceRebootEvent_10283_urn,
-	type DeviceRebootEvent_10283,
-} from './10283.js'
-import {
-	objectURN as TimeSynchronisationEvent_10284_urn,
-	type TimeSynchronisationEvent_10284,
-} from './10284.js'
-import {
-	objectURN as AppFotaContainer_10286_urn,
-	type AppFotaContainer_10286,
-} from './10286.js'
-import {
-	objectURN as VoltageLogging_10290_urn,
-	type VoltageLogging_10290,
-} from './10290.js'
-import {
-	objectURN as VoltageTransient_10291_urn,
-	type VoltageTransient_10291,
-} from './10291.js'
-import {
-	objectURN as PressureTransient_10292_urn,
-	type PressureTransient_10292,
-} from './10292.js'
-import {
-	objectURN as HostDevice_10299_urn,
-	type HostDevice_10299,
-} from './10299.js'
-import {
-	objectURN as LWM2MMetaObject_10300_urn,
-	type LWM2MMetaObject_10300,
-} from './10300.js'
-import {
-	objectURN as ATandTConnectivityExtension_10308_urn,
-	type ATandTConnectivityExtension_10308,
-} from './10308.js'
-import {
-	objectURN as Shareparkinglot_10309_urn,
-	type Shareparkinglot_10309,
-} from './10309.js'
-import {
-	objectURN as SolarRadiation_10311_urn,
-	type SolarRadiation_10311,
-} from './10311.js'
-import {
-	objectURN as GasReadings_10313_urn,
-	type GasReadings_10313,
-} from './10313.js'
-import {
-	objectURN as Particulates_10314_urn,
-	type Particulates_10314,
-} from './10314.js'
-import { objectURN as Robot_10315_urn, type Robot_10315 } from './10315.js'
-import { objectURN as RCU_10316_urn, type RCU_10316 } from './10316.js'
-import { objectURN as RCUPM_10318_urn, type RCUPM_10318 } from './10318.js'
-import {
-	objectURN as RCUControl_10319_urn,
-	type RCUControl_10319,
-} from './10319.js'
-import { objectURN as CCU_10320_urn, type CCU_10320 } from './10320.js'
-import { objectURN as CCUPM_10322_urn, type CCUPM_10322 } from './10322.js'
-import { objectURN as ECU_10324_urn, type ECU_10324 } from './10324.js'
-import { objectURN as RobotPM_10326_urn, type RobotPM_10326 } from './10326.js'
-import {
-	objectURN as Compressor_10327_urn,
-	type Compressor_10327,
-} from './10327.js'
-import { objectURN as SCAPM_10328_urn, type SCAPM_10328 } from './10328.js'
-import {
-	objectURN as RobotControl_10329_urn,
-	type RobotControl_10329,
-} from './10329.js'
-import {
-	objectURN as NetworkInfo_10330_urn,
-	type NetworkInfo_10330,
-} from './10330.js'
-import {
-	objectURN as RobotServiceInfo_10331_urn,
-	type RobotServiceInfo_10331,
-} from './10331.js'
-import {
-	objectURN as RobotSelfcheckInfo_10332_urn,
-	type RobotSelfcheckInfo_10332,
-} from './10332.js'
-import {
-	objectURN as PMThreshold_10333_urn,
-	type PMThreshold_10333,
-} from './10333.js'
-import {
-	objectURN as RobotAlarm_10334_urn,
-	type RobotAlarm_10334,
-} from './10334.js'
-import { objectURN as Event_10335_urn, type Event_10335 } from './10335.js'
-import { objectURN as MIC_10336_urn, type MIC_10336 } from './10336.js'
-import { objectURN as SCA_10337_urn, type SCA_10337 } from './10337.js'
-import { objectURN as Speaker_10338_urn, type Speaker_10338 } from './10338.js'
-import {
-	objectURN as TripodHead_10339_urn,
-	type TripodHead_10339,
-} from './10339.js'
-import { objectURN as Camera_10340_urn, type Camera_10340 } from './10340.js'
-import { objectURN as GPS_10341_urn, type GPS_10341 } from './10341.js'
-import { objectURN as IMU_10342_urn, type IMU_10342 } from './10342.js'
-import { objectURN as LiDAR_10343_urn, type LiDAR_10343 } from './10343.js'
-import { objectURN as Arm_10344_urn, type Arm_10344 } from './10344.js'
-import { objectURN as Leg_10345_urn, type Leg_10345 } from './10345.js'
-import {
-	objectURN as Servomotor_10346_urn,
-	type Servomotor_10346,
-} from './10346.js'
-import { objectURN as Screen_10347_urn, type Screen_10347 } from './10347.js'
-import { objectURN as Wheel_10348_urn, type Wheel_10348 } from './10348.js'
-import { objectURN as Chassis_10349_urn, type Chassis_10349 } from './10349.js'
-import { objectURN as Light_10350_urn, type Light_10350 } from './10350.js'
-import { objectURN as Door_10351_urn, type Door_10351 } from './10351.js'
-import {
-	objectURN as ThermalImager_10352_urn,
-	type ThermalImager_10352,
-} from './10352.js'
-import {
-	objectURN as WarningLight_10353_urn,
-	type WarningLight_10353,
-} from './10353.js'
-import { objectURN as APP_10354_urn, type APP_10354 } from './10354.js'
-import {
-	objectURN as GeneralInfo_10355_urn,
-	type GeneralInfo_10355,
-} from './10355.js'
-import {
-	objectURN as ServiceInfo_10356_urn,
-	type ServiceInfo_10356,
-} from './10356.js'
-import { objectURN as PM_10357_urn, type PM_10357 } from './10357.js'
-import { objectURN as FanPM_10358_urn, type FanPM_10358 } from './10358.js'
-import { objectURN as Lock_10359_urn, type Lock_10359 } from './10359.js'
-import {
-	objectURN as UltrasonicSensor_10360_urn,
-	type UltrasonicSensor_10360,
-} from './10360.js'
-import {
-	objectURN as CollisionSensor_10361_urn,
-	type CollisionSensor_10361,
-} from './10361.js'
-import {
-	objectURN as DropSensor_10362_urn,
-	type DropSensor_10362,
-} from './10362.js'
-import {
-	objectURN as TemperatureSensor_10363_urn,
-	type TemperatureSensor_10363,
-} from './10363.js'
-import {
-	objectURN as HumiditySensor_10364_urn,
-	type HumiditySensor_10364,
-} from './10364.js'
-import {
-	objectURN as Gas_DustSensor_10365_urn,
-	type Gas_DustSensor_10365,
-} from './10365.js'
-import { objectURN as Fan_10366_urn, type Fan_10366 } from './10366.js'
-import {
-	objectURN as SpringMotor_10368_urn,
-	type SpringMotor_10368,
-} from './10368.js'
-import { objectURN as MCU_10369_urn, type MCU_10369 } from './10369.js'
-import {
-	objectURN as RebootStatus_10371_urn,
-	type RebootStatus_10371,
-} from './10371.js'
-import {
-	objectURN as ModbusConnection_10374_urn,
-	type ModbusConnection_10374,
-} from './10374.js'
-import {
-	objectURN as ModbusRegisterCluster_10375_urn,
-	type ModbusRegisterCluster_10375,
-} from './10375.js'
-import {
-	objectURN as PeriodicActivity_10376_urn,
-	type PeriodicActivity_10376,
-} from './10376.js'
-import {
-	objectURN as DataMonitoring_10377_urn,
-	type DataMonitoring_10377,
-} from './10377.js'
-import {
-	objectURN as EdgeApplicationServerConfiguration_10378_urn,
-	type EdgeApplicationServerConfiguration_10378,
-} from './10378.js'
-import {
-	objectURN as LWM2MAPNConnectionProfile_11_urn,
-	type LWM2MAPNConnectionProfile_11,
-} from './11.js'
-import {
-	objectURN as WLANconnectivity_12_urn,
-	type WLANconnectivity_12,
-} from './12.js'
-import {
-	objectURN as LWM2MBearerSelection_13_urn,
-	type LWM2MBearerSelection_13,
-} from './13.js'
-import {
-	objectURN as LWM2MSoftwareComponent_14_urn,
-	type LWM2MSoftwareComponent_14,
-} from './14.js'
-import { objectURN as DevCapMgmt_15_urn, type DevCapMgmt_15 } from './15.js'
-import { objectURN as Portfolio_16_urn, type Portfolio_16 } from './16.js'
-import {
-	objectURN as MQTTBroker_18830_urn,
-	type MQTTBroker_18830,
-} from './18830.js'
-import {
-	objectURN as MQTTPublication_18831_urn,
-	type MQTTPublication_18831,
-} from './18831.js'
-import {
-	objectURN as BinaryAppDataContainer_19_urn,
-	type BinaryAppDataContainer_19,
-} from './19.js'
-import {
-	objectURN as LwM2MAccessControl_2_urn,
 	type LwM2MAccessControl_2,
+	objectURN as LwM2MAccessControl_2_urn,
 } from './2.js'
-import { objectURN as EventLog_20_urn, type EventLog_20 } from './20.js'
+import { type Device_3, objectURN as Device_3_urn } from './3.js'
 import {
-	objectURN as CmdhPolicy_2048_urn,
-	type CmdhPolicy_2048,
-} from './2048.js'
-import {
-	objectURN as ActiveCmdhPolicy_2049_urn,
-	type ActiveCmdhPolicy_2049,
-} from './2049.js'
-import {
-	objectURN as CmdhDefaults_2050_urn,
-	type CmdhDefaults_2050,
-} from './2050.js'
-import {
-	objectURN as CmdhDefEcValues_2051_urn,
-	type CmdhDefEcValues_2051,
-} from './2051.js'
-import {
-	objectURN as CmdhEcDefParamValues_2052_urn,
-	type CmdhEcDefParamValues_2052,
-} from './2052.js'
-import {
-	objectURN as CmdhLimits_2053_urn,
-	type CmdhLimits_2053,
-} from './2053.js'
-import {
-	objectURN as CmdhNetworkAccessRules_2054_urn,
-	type CmdhNetworkAccessRules_2054,
-} from './2054.js'
-import {
-	objectURN as CmdhNwAccessRule_2055_urn,
-	type CmdhNwAccessRule_2055,
-} from './2055.js'
-import {
-	objectURN as CmdhBuffer_2056_urn,
-	type CmdhBuffer_2056,
-} from './2056.js'
-import {
-	objectURN as CmdhBackOffParametersSet_2057_urn,
-	type CmdhBackOffParametersSet_2057,
-} from './2057.js'
-import {
-	objectURN as VirtualObserveNotify_22_urn,
-	type VirtualObserveNotify_22,
-} from './22.js'
-import { objectURN as MQTTServer_24_urn, type MQTTServer_24 } from './24.js'
-import { objectURN as LwM2MGateway_25_urn, type LwM2MGateway_25 } from './25.js'
-import {
-	objectURN as LwM2MGatewayRouting_26_urn,
-	type LwM2MGatewayRouting_26,
-} from './26.js'
-import {
-	objectURN as n5GNRConnectivity_27_urn,
-	type n5GNRConnectivity_27,
-} from './27.js'
-import {
-	objectURN as DeviceRFCapabilities_28_urn,
-	type DeviceRFCapabilities_28,
-} from './28.js'
-import { objectURN as Device_3_urn, type Device_3 } from './3.js'
-import {
-	objectURN as DigitalInput_3200_urn,
-	type DigitalInput_3200,
-} from './3200.js'
-import {
-	objectURN as DigitalOutput_3201_urn,
-	type DigitalOutput_3201,
-} from './3201.js'
-import {
-	objectURN as AnalogInput_3202_urn,
-	type AnalogInput_3202,
-} from './3202.js'
-import {
-	objectURN as AnalogOutput_3203_urn,
-	type AnalogOutput_3203,
-} from './3203.js'
-import {
-	objectURN as GenericSensor_3300_urn,
-	type GenericSensor_3300,
-} from './3300.js'
-import {
-	objectURN as Illuminance_3301_urn,
-	type Illuminance_3301,
-} from './3301.js'
-import { objectURN as Presence_3302_urn, type Presence_3302 } from './3302.js'
-import {
-	objectURN as Temperature_3303_urn,
-	type Temperature_3303,
-} from './3303.js'
-import { objectURN as Humidity_3304_urn, type Humidity_3304 } from './3304.js'
-import {
-	objectURN as PowerMeasurement_3305_urn,
-	type PowerMeasurement_3305,
-} from './3305.js'
-import { objectURN as Actuation_3306_urn, type Actuation_3306 } from './3306.js'
-import { objectURN as SetPoint_3308_urn, type SetPoint_3308 } from './3308.js'
-import {
-	objectURN as LoadControl_3310_urn,
-	type LoadControl_3310,
-} from './3310.js'
-import {
-	objectURN as LightControl_3311_urn,
-	type LightControl_3311,
-} from './3311.js'
-import {
-	objectURN as PowerControl_3312_urn,
-	type PowerControl_3312,
-} from './3312.js'
-import {
-	objectURN as Accelerometer_3313_urn,
-	type Accelerometer_3313,
-} from './3313.js'
-import {
-	objectURN as Magnetometer_3314_urn,
-	type Magnetometer_3314,
-} from './3314.js'
-import { objectURN as Barometer_3315_urn, type Barometer_3315 } from './3315.js'
-import { objectURN as Voltage_3316_urn, type Voltage_3316 } from './3316.js'
-import { objectURN as Current_3317_urn, type Current_3317 } from './3317.js'
-import { objectURN as Frequency_3318_urn, type Frequency_3318 } from './3318.js'
-import { objectURN as Depth_3319_urn, type Depth_3319 } from './3319.js'
-import {
-	objectURN as Percentage_3320_urn,
-	type Percentage_3320,
-} from './3320.js'
-import { objectURN as Altitude_3321_urn, type Altitude_3321 } from './3321.js'
-import { objectURN as Load_3322_urn, type Load_3322 } from './3322.js'
-import { objectURN as Pressure_3323_urn, type Pressure_3323 } from './3323.js'
-import { objectURN as Loudness_3324_urn, type Loudness_3324 } from './3324.js'
-import {
-	objectURN as Concentration_3325_urn,
-	type Concentration_3325,
-} from './3325.js'
-import { objectURN as Acidity_3326_urn, type Acidity_3326 } from './3326.js'
-import {
-	objectURN as Conductivity_3327_urn,
-	type Conductivity_3327,
-} from './3327.js'
-import { objectURN as Power_3328_urn, type Power_3328 } from './3328.js'
-import {
-	objectURN as PowerFactor_3329_urn,
-	type PowerFactor_3329,
-} from './3329.js'
-import { objectURN as Distance_3330_urn, type Distance_3330 } from './3330.js'
-import { objectURN as Energy_3331_urn, type Energy_3331 } from './3331.js'
-import { objectURN as Direction_3332_urn, type Direction_3332 } from './3332.js'
-import { objectURN as Time_3333_urn, type Time_3333 } from './3333.js'
-import { objectURN as Gyrometer_3334_urn, type Gyrometer_3334 } from './3334.js'
-import { objectURN as Colour_3335_urn, type Colour_3335 } from './3335.js'
-import { objectURN as Location_3336_urn, type Location_3336 } from './3336.js'
-import {
-	objectURN as Positioner_3337_urn,
-	type Positioner_3337,
-} from './3337.js'
-import { objectURN as Buzzer_3338_urn, type Buzzer_3338 } from './3338.js'
-import { objectURN as AudioClip_3339_urn, type AudioClip_3339 } from './3339.js'
-import { objectURN as Timer_3340_urn, type Timer_3340 } from './3340.js'
-import {
-	objectURN as AddressableTextDisplay_3341_urn,
-	type AddressableTextDisplay_3341,
-} from './3341.js'
-import {
-	objectURN as On_Offswitch_3342_urn,
-	type On_Offswitch_3342,
-} from './3342.js'
-import { objectURN as Dimmer_3343_urn, type Dimmer_3343 } from './3343.js'
-import {
-	objectURN as Up_DownControl_3344_urn,
-	type Up_DownControl_3344,
-} from './3344.js'
-import {
-	objectURN as MultipleAxisJoystick_3345_urn,
-	type MultipleAxisJoystick_3345,
-} from './3345.js'
-import { objectURN as Rate_3346_urn, type Rate_3346 } from './3346.js'
-import {
-	objectURN as Pushbutton_3347_urn,
-	type Pushbutton_3347,
-} from './3347.js'
-import {
-	objectURN as Multi_stateSelector_3348_urn,
-	type Multi_stateSelector_3348,
-} from './3348.js'
-import { objectURN as Bitmap_3349_urn, type Bitmap_3349 } from './3349.js'
-import { objectURN as Stopwatch_3350_urn, type Stopwatch_3350 } from './3350.js'
-import {
-	objectURN as powerupLog_3351_urn,
-	type powerupLog_3351,
-} from './3351.js'
-import {
-	objectURN as plmnSearchEvent_3352_urn,
-	type plmnSearchEvent_3352,
-} from './3352.js'
-import { objectURN as scellID_3353_urn, type scellID_3353 } from './3353.js'
-import {
-	objectURN as cellReselectionEvent_3354_urn,
-	type cellReselectionEvent_3354,
-} from './3354.js'
-import {
-	objectURN as handoverEvent_3355_urn,
-	type handoverEvent_3355,
-} from './3355.js'
-import {
-	objectURN as radioLinkFailureEvent_3356_urn,
-	type radioLinkFailureEvent_3356,
-} from './3356.js'
-import {
-	objectURN as rrcStateChangeEvent_3357_urn,
-	type rrcStateChangeEvent_3357,
-} from './3357.js'
-import {
-	objectURN as rrcTimerExpiryEvent_3358_urn,
-	type rrcTimerExpiryEvent_3358,
-} from './3358.js'
-import {
-	objectURN as cellBlacklistEvent_3359_urn,
-	type cellBlacklistEvent_3359,
-} from './3359.js'
-import {
-	objectURN as esmContextInfo_3360_urn,
-	type esmContextInfo_3360,
-} from './3360.js'
-import {
-	objectURN as emmStateValue_3361_urn,
-	type emmStateValue_3361,
-} from './3361.js'
-import {
-	objectURN as nasEmmTimerExpiryEvent_3362_urn,
-	type nasEmmTimerExpiryEvent_3362,
-} from './3362.js'
-import {
-	objectURN as nasEsmExpiryEvent_3363_urn,
-	type nasEsmExpiryEvent_3363,
-} from './3363.js'
-import {
-	objectURN as emmFailureCauseEvent_3364_urn,
-	type emmFailureCauseEvent_3364,
-} from './3364.js'
-import {
-	objectURN as rachLatency_delay_3365_urn,
-	type rachLatency_delay_3365,
-} from './3365.js'
-import {
-	objectURN as macRachAttemptEvent_3366_urn,
-	type macRachAttemptEvent_3366,
-} from './3366.js'
-import {
-	objectURN as macRachAttemptReasonEvent_3367_urn,
-	type macRachAttemptReasonEvent_3367,
-} from './3367.js'
-import {
-	objectURN as macTimerStatusEvent_3368_urn,
-	type macTimerStatusEvent_3368,
-} from './3368.js'
-import {
-	objectURN as macTimingAdvanceEvent_3369_urn,
-	type macTimingAdvanceEvent_3369,
-} from './3369.js'
-import {
-	objectURN as ServingCellMeasurement_3370_urn,
-	type ServingCellMeasurement_3370,
-} from './3370.js'
-import {
-	objectURN as NeighborCellMeasurements_3371_urn,
-	type NeighborCellMeasurements_3371,
-} from './3371.js'
-import {
-	objectURN as TimingAdvance_3372_urn,
-	type TimingAdvance_3372,
-} from './3372.js'
-import {
-	objectURN as txPowerHeadroomEvent_3373_urn,
-	type txPowerHeadroomEvent_3373,
-} from './3373.js'
-import {
-	objectURN as radioLinkMonitoring_3374_urn,
-	type radioLinkMonitoring_3374,
-} from './3374.js'
-import { objectURN as PagingDRX_3375_urn, type PagingDRX_3375 } from './3375.js'
-import {
-	objectURN as txPowerBackOffEvent_3376_urn,
-	type txPowerBackOffEvent_3376,
-} from './3376.js'
-import {
-	objectURN as Message3Report_3377_urn,
-	type Message3Report_3377,
-} from './3377.js'
-import {
-	objectURN as PbchDecodingResults_3378_urn,
-	type PbchDecodingResults_3378,
-} from './3378.js'
-import {
-	objectURN as pucchPowerControl_3379_urn,
-	type pucchPowerControl_3379,
-} from './3379.js'
-import {
-	objectURN as PrachReport_3380_urn,
-	type PrachReport_3380,
-} from './3380.js'
-import {
-	objectURN as VolteCallEvent_3381_urn,
-	type VolteCallEvent_3381,
-} from './3381.js'
-import {
-	objectURN as SipRegistrationEvent_3382_urn,
-	type SipRegistrationEvent_3382,
-} from './3382.js'
-import {
-	objectURN as sipPublishEvent_3383_urn,
-	type sipPublishEvent_3383,
-} from './3383.js'
-import {
-	objectURN as sipSubscriptionEvent_3384_urn,
-	type sipSubscriptionEvent_3384,
-} from './3384.js'
-import {
-	objectURN as volteCallStateChangeEvent_3385_urn,
-	type volteCallStateChangeEvent_3385,
-} from './3385.js'
-import {
-	objectURN as VoLTErtpPacketLoss_3386_urn,
-	type VoLTErtpPacketLoss_3386,
-} from './3386.js'
-import {
-	objectURN as oABasicControl_3387_urn,
-	type oABasicControl_3387,
-} from './3387.js'
-import { objectURN as oADevice_3388_urn, type oADevice_3388 } from './3388.js'
-import { objectURN as oAGroup_3389_urn, type oAGroup_3389 } from './3389.js'
-import {
-	objectURN as oALogicalColourLight_PointActuator_3390_urn,
-	type oALogicalColourLight_PointActuator_3390,
-} from './3390.js'
-import {
-	objectURN as oALogicalColourTemperatureLight_PointActuator_3391_urn,
-	type oALogicalColourTemperatureLight_PointActuator_3391,
-} from './3391.js'
-import {
-	objectURN as oALogicalIlluminanceSensor_3392_urn,
-	type oALogicalIlluminanceSensor_3392,
-} from './3392.js'
-import {
-	objectURN as oALogicalLight_PointActuator_3393_urn,
-	type oALogicalLight_PointActuator_3393,
-} from './3393.js'
-import {
-	objectURN as oALogicalPresenceSensor_3394_urn,
-	type oALogicalPresenceSensor_3394,
-} from './3394.js'
-import {
-	objectURN as oALogicalPush_ButtonSensor_3395_urn,
-	type oALogicalPush_ButtonSensor_3395,
-} from './3395.js'
-import {
-	objectURN as oAPhysicalColourLight_PointActuator_3396_urn,
-	type oAPhysicalColourLight_PointActuator_3396,
-} from './3396.js'
-import {
-	objectURN as oAPhysicalColourTemperatureLight_PointActuator_3397_urn,
-	type oAPhysicalColourTemperatureLight_PointActuator_3397,
-} from './3397.js'
-import {
-	objectURN as oAPhysicalIlluminanceSensor_3398_urn,
-	type oAPhysicalIlluminanceSensor_3398,
-} from './3398.js'
-import {
-	objectURN as oAPhysicalLight_PointActuator_3399_urn,
-	type oAPhysicalLight_PointActuator_3399,
-} from './3399.js'
-import {
-	objectURN as oAPhysicalPresenceSensor_3400_urn,
-	type oAPhysicalPresenceSensor_3400,
-} from './3400.js'
-import {
-	objectURN as oAPhysicalPush_ButtonSensor_3401_urn,
-	type oAPhysicalPush_ButtonSensor_3401,
-} from './3401.js'
-import {
-	objectURN as oAReceivingObject_3402_urn,
-	type oAReceivingObject_3402,
-} from './3402.js'
-import {
-	objectURN as oAReportingObject_3403_urn,
-	type oAReportingObject_3403,
-} from './3403.js'
-import { objectURN as oAScene_3404_urn, type oAScene_3404 } from './3404.js'
-import {
-	objectURN as oAOGC_Security_3405_urn,
-	type oAOGC_Security_3405,
-} from './3405.js'
-import {
-	objectURN as oAStatusReportStructure_3406_urn,
-	type oAStatusReportStructure_3406,
-} from './3406.js'
-import {
-	objectURN as SmokeAlarm_3407_urn,
-	type SmokeAlarm_3407,
-} from './3407.js'
-import {
-	objectURN as ManholeCover_3408_urn,
-	type ManholeCover_3408,
-} from './3408.js'
-import {
-	objectURN as DeviceExtension_3410_urn,
-	type DeviceExtension_3410,
-} from './3410.js'
-import { objectURN as Battery_3411_urn, type Battery_3411 } from './3411.js'
-import {
-	objectURN as LPWANCommunication_3412_urn,
-	type LPWANCommunication_3412,
-} from './3412.js'
-import {
-	objectURN as uCIFIGenericActuator_3413_urn,
-	type uCIFIGenericActuator_3413,
-} from './3413.js'
-import {
-	objectURN as uCIFIdatabridge_3414_urn,
-	type uCIFIdatabridge_3414,
-} from './3414.js'
-import {
-	objectURN as Timesynchronization_3415_urn,
-	type Timesynchronization_3415,
-} from './3415.js'
-import {
-	objectURN as Outdoorlampcontroller_3416_urn,
-	type Outdoorlampcontroller_3416,
-} from './3416.js'
-import {
-	objectURN as Luminaireasset_3417_urn,
-	type Luminaireasset_3417,
-} from './3417.js'
-import {
-	objectURN as Electricalmonitor_3418_urn,
-	type Electricalmonitor_3418,
-} from './3418.js'
-import { objectURN as Photocell_3419_urn, type Photocell_3419 } from './3419.js'
-import {
-	objectURN as LEDcolorlight_3420_urn,
-	type LEDcolorlight_3420,
-} from './3420.js'
-import {
-	objectURN as Single_phaseelectricalmeter_3421_urn,
-	type Single_phaseelectricalmeter_3421,
-} from './3421.js'
-import { objectURN as Gasmeter_3423_urn, type Gasmeter_3423 } from './3423.js'
-import {
-	objectURN as Watermeter_3424_urn,
-	type Watermeter_3424,
-} from './3424.js'
-import {
-	objectURN as Irrigationvalve_3425_urn,
-	type Irrigationvalve_3425,
-} from './3425.js'
-import {
-	objectURN as Waterqualitysensor_3426_urn,
-	type Waterqualitysensor_3426,
-} from './3426.js'
-import {
-	objectURN as Pressuremonitoringsensor_3427_urn,
-	type Pressuremonitoringsensor_3427,
-} from './3427.js'
-import {
-	objectURN as Airquality_3428_urn,
-	type Airquality_3428,
-} from './3428.js'
-import {
-	objectURN as Tiltsensor_3429_urn,
-	type Tiltsensor_3429,
-} from './3429.js'
-import {
-	objectURN as GlobalNavigationSatelliteSystem_3430_urn,
-	type GlobalNavigationSatelliteSystem_3430,
-} from './3430.js'
-import {
-	objectURN as ParkingSensor_3431_urn,
-	type ParkingSensor_3431,
-} from './3431.js'
-import {
-	objectURN as TrafficCounter_3432_urn,
-	type TrafficCounter_3432,
-} from './3432.js'
-import {
-	objectURN as Noisesensor_3433_urn,
-	type Noisesensor_3433,
-} from './3433.js'
-import {
-	objectURN as Peoplecounter_3434_urn,
-	type Peoplecounter_3434,
-} from './3434.js'
-import {
-	objectURN as Fillinglevel_3435_urn,
-	type Fillinglevel_3435,
-} from './3435.js'
-import {
-	objectURN as Edgecomputingmanager_3436_urn,
-	type Edgecomputingmanager_3436,
-} from './3436.js'
-import {
-	objectURN as Edgecomputingscript_3437_urn,
-	type Edgecomputingscript_3437,
-} from './3437.js'
-import {
-	objectURN as Edgecomputingtimecondition_3438_urn,
-	type Edgecomputingtimecondition_3438,
-} from './3438.js'
-import {
-	objectURN as Edgecomputinggenericcondition_3439_urn,
-	type Edgecomputinggenericcondition_3439,
-} from './3439.js'
-import {
-	objectURN as LwM2Mv1_0TestObject_3441_urn,
-	type LwM2Mv1_0TestObject_3441,
-} from './3441.js'
-import {
-	objectURN as LwM2Mv1_1TestObject_3442_urn,
-	type LwM2Mv1_1TestObject_3442,
-} from './3442.js'
-import {
-	objectURN as ConnectivityMonitoring_4_urn,
 	type ConnectivityMonitoring_4,
+	objectURN as ConnectivityMonitoring_4_urn,
 } from './4.js'
 import {
-	objectURN as FirmwareUpdate_5_urn,
 	type FirmwareUpdate_5,
+	objectURN as FirmwareUpdate_5_urn,
 } from './5.js'
-import { objectURN as CoAPConfig_500_urn, type CoAPConfig_500 } from './500.js'
+import { type Location_6, objectURN as Location_6_urn } from './6.js'
 import {
-	objectURN as LTE_MTCBandConfig_501_urn,
+	type ConnectivityStatistics_7,
+	objectURN as ConnectivityStatistics_7_urn,
+} from './7.js'
+import { type LockandWipe_8, objectURN as LockandWipe_8_urn } from './8.js'
+import {
+	type LWM2MSoftwareManagement_9,
+	objectURN as LWM2MSoftwareManagement_9_urn,
+} from './9.js'
+import {
+	type LWM2MCellularConnectivity_10,
+	objectURN as LWM2MCellularConnectivity_10_urn,
+} from './10.js'
+import {
+	type LWM2MAPNConnectionProfile_11,
+	objectURN as LWM2MAPNConnectionProfile_11_urn,
+} from './11.js'
+import {
+	type WLANconnectivity_12,
+	objectURN as WLANconnectivity_12_urn,
+} from './12.js'
+import {
+	type LWM2MBearerSelection_13,
+	objectURN as LWM2MBearerSelection_13_urn,
+} from './13.js'
+import {
+	type LWM2MSoftwareComponent_14,
+	objectURN as LWM2MSoftwareComponent_14_urn,
+} from './14.js'
+import { type DevCapMgmt_15, objectURN as DevCapMgmt_15_urn } from './15.js'
+import { type Portfolio_16, objectURN as Portfolio_16_urn } from './16.js'
+import {
+	type BinaryAppDataContainer_19,
+	objectURN as BinaryAppDataContainer_19_urn,
+} from './19.js'
+import { type EventLog_20, objectURN as EventLog_20_urn } from './20.js'
+import {
+	type VirtualObserveNotify_22,
+	objectURN as VirtualObserveNotify_22_urn,
+} from './22.js'
+import { type MQTTServer_24, objectURN as MQTTServer_24_urn } from './24.js'
+import { type LwM2MGateway_25, objectURN as LwM2MGateway_25_urn } from './25.js'
+import {
+	type LwM2MGatewayRouting_26,
+	objectURN as LwM2MGatewayRouting_26_urn,
+} from './26.js'
+import {
+	type n5GNRConnectivity_27,
+	objectURN as n5GNRConnectivity_27_urn,
+} from './27.js'
+import {
+	type DeviceRFCapabilities_28,
+	objectURN as DeviceRFCapabilities_28_urn,
+} from './28.js'
+import { type CoAPConfig_500, objectURN as CoAPConfig_500_urn } from './500.js'
+import {
 	type LTE_MTCBandConfig_501,
+	objectURN as LTE_MTCBandConfig_501_urn,
 } from './501.js'
-import { objectURN as CODetector_502_urn, type CODetector_502 } from './502.js'
-import { objectURN as FireAlarm_503_urn, type FireAlarm_503 } from './503.js'
+import { type CODetector_502, objectURN as CODetector_502_urn } from './502.js'
+import { type FireAlarm_503, objectURN as FireAlarm_503_urn } from './503.js'
 import {
-	objectURN as RemoteSIMProvisioning_504_urn,
 	type RemoteSIMProvisioning_504,
+	objectURN as RemoteSIMProvisioning_504_urn,
 } from './504.js'
 import {
-	objectURN as LwM2MSIMProvisioning_505_urn,
 	type LwM2MSIMProvisioning_505,
+	objectURN as LwM2MSIMProvisioning_505_urn,
 } from './505.js'
 import {
-	objectURN as nuSIMProfile_507_urn,
 	type nuSIMProfile_507,
+	objectURN as nuSIMProfile_507_urn,
 } from './507.js'
-import { objectURN as nuSIM_508_urn, type nuSIM_508 } from './508.js'
+import { type nuSIM_508, objectURN as nuSIM_508_urn } from './508.js'
 import {
-	objectURN as MeasurementMetadata_509_urn,
 	type MeasurementMetadata_509,
+	objectURN as MeasurementMetadata_509_urn,
 } from './509.js'
 import {
-	objectURN as VendorSpecificMeasurementQualityReason_510_urn,
 	type VendorSpecificMeasurementQualityReason_510,
+	objectURN as VendorSpecificMeasurementQualityReason_510_urn,
 } from './510.js'
-import { objectURN as Location_6_urn, type Location_6 } from './6.js'
 import {
-	objectURN as ConnectivityStatistics_7_urn,
-	type ConnectivityStatistics_7,
-} from './7.js'
-import { objectURN as LockandWipe_8_urn, type LockandWipe_8 } from './8.js'
+	type CmdhPolicy_2048,
+	objectURN as CmdhPolicy_2048_urn,
+} from './2048.js'
 import {
-	objectURN as LWM2MSoftwareManagement_9_urn,
-	type LWM2MSoftwareManagement_9,
-} from './9.js'
+	type ActiveCmdhPolicy_2049,
+	objectURN as ActiveCmdhPolicy_2049_urn,
+} from './2049.js'
+import {
+	type CmdhDefaults_2050,
+	objectURN as CmdhDefaults_2050_urn,
+} from './2050.js'
+import {
+	type CmdhDefEcValues_2051,
+	objectURN as CmdhDefEcValues_2051_urn,
+} from './2051.js'
+import {
+	type CmdhEcDefParamValues_2052,
+	objectURN as CmdhEcDefParamValues_2052_urn,
+} from './2052.js'
+import {
+	type CmdhLimits_2053,
+	objectURN as CmdhLimits_2053_urn,
+} from './2053.js'
+import {
+	type CmdhNetworkAccessRules_2054,
+	objectURN as CmdhNetworkAccessRules_2054_urn,
+} from './2054.js'
+import {
+	type CmdhNwAccessRule_2055,
+	objectURN as CmdhNwAccessRule_2055_urn,
+} from './2055.js'
+import {
+	type CmdhBuffer_2056,
+	objectURN as CmdhBuffer_2056_urn,
+} from './2056.js'
+import {
+	type CmdhBackOffParametersSet_2057,
+	objectURN as CmdhBackOffParametersSet_2057_urn,
+} from './2057.js'
+import {
+	type DigitalInput_3200,
+	objectURN as DigitalInput_3200_urn,
+} from './3200.js'
+import {
+	type DigitalOutput_3201,
+	objectURN as DigitalOutput_3201_urn,
+} from './3201.js'
+import {
+	type AnalogInput_3202,
+	objectURN as AnalogInput_3202_urn,
+} from './3202.js'
+import {
+	type AnalogOutput_3203,
+	objectURN as AnalogOutput_3203_urn,
+} from './3203.js'
+import {
+	type GenericSensor_3300,
+	objectURN as GenericSensor_3300_urn,
+} from './3300.js'
+import {
+	type Illuminance_3301,
+	objectURN as Illuminance_3301_urn,
+} from './3301.js'
+import { type Presence_3302, objectURN as Presence_3302_urn } from './3302.js'
+import {
+	type Temperature_3303,
+	objectURN as Temperature_3303_urn,
+} from './3303.js'
+import { type Humidity_3304, objectURN as Humidity_3304_urn } from './3304.js'
+import {
+	type PowerMeasurement_3305,
+	objectURN as PowerMeasurement_3305_urn,
+} from './3305.js'
+import { type Actuation_3306, objectURN as Actuation_3306_urn } from './3306.js'
+import { type SetPoint_3308, objectURN as SetPoint_3308_urn } from './3308.js'
+import {
+	type LoadControl_3310,
+	objectURN as LoadControl_3310_urn,
+} from './3310.js'
+import {
+	type LightControl_3311,
+	objectURN as LightControl_3311_urn,
+} from './3311.js'
+import {
+	type PowerControl_3312,
+	objectURN as PowerControl_3312_urn,
+} from './3312.js'
+import {
+	type Accelerometer_3313,
+	objectURN as Accelerometer_3313_urn,
+} from './3313.js'
+import {
+	type Magnetometer_3314,
+	objectURN as Magnetometer_3314_urn,
+} from './3314.js'
+import { type Barometer_3315, objectURN as Barometer_3315_urn } from './3315.js'
+import { type Voltage_3316, objectURN as Voltage_3316_urn } from './3316.js'
+import { type Current_3317, objectURN as Current_3317_urn } from './3317.js'
+import { type Frequency_3318, objectURN as Frequency_3318_urn } from './3318.js'
+import { type Depth_3319, objectURN as Depth_3319_urn } from './3319.js'
+import {
+	type Percentage_3320,
+	objectURN as Percentage_3320_urn,
+} from './3320.js'
+import { type Altitude_3321, objectURN as Altitude_3321_urn } from './3321.js'
+import { type Load_3322, objectURN as Load_3322_urn } from './3322.js'
+import { type Pressure_3323, objectURN as Pressure_3323_urn } from './3323.js'
+import { type Loudness_3324, objectURN as Loudness_3324_urn } from './3324.js'
+import {
+	type Concentration_3325,
+	objectURN as Concentration_3325_urn,
+} from './3325.js'
+import { type Acidity_3326, objectURN as Acidity_3326_urn } from './3326.js'
+import {
+	type Conductivity_3327,
+	objectURN as Conductivity_3327_urn,
+} from './3327.js'
+import { type Power_3328, objectURN as Power_3328_urn } from './3328.js'
+import {
+	type PowerFactor_3329,
+	objectURN as PowerFactor_3329_urn,
+} from './3329.js'
+import { type Distance_3330, objectURN as Distance_3330_urn } from './3330.js'
+import { type Energy_3331, objectURN as Energy_3331_urn } from './3331.js'
+import { type Direction_3332, objectURN as Direction_3332_urn } from './3332.js'
+import { type Time_3333, objectURN as Time_3333_urn } from './3333.js'
+import { type Gyrometer_3334, objectURN as Gyrometer_3334_urn } from './3334.js'
+import { type Colour_3335, objectURN as Colour_3335_urn } from './3335.js'
+import { type Location_3336, objectURN as Location_3336_urn } from './3336.js'
+import {
+	type Positioner_3337,
+	objectURN as Positioner_3337_urn,
+} from './3337.js'
+import { type Buzzer_3338, objectURN as Buzzer_3338_urn } from './3338.js'
+import { type AudioClip_3339, objectURN as AudioClip_3339_urn } from './3339.js'
+import { type Timer_3340, objectURN as Timer_3340_urn } from './3340.js'
+import {
+	type AddressableTextDisplay_3341,
+	objectURN as AddressableTextDisplay_3341_urn,
+} from './3341.js'
+import {
+	type On_Offswitch_3342,
+	objectURN as On_Offswitch_3342_urn,
+} from './3342.js'
+import { type Dimmer_3343, objectURN as Dimmer_3343_urn } from './3343.js'
+import {
+	type Up_DownControl_3344,
+	objectURN as Up_DownControl_3344_urn,
+} from './3344.js'
+import {
+	type MultipleAxisJoystick_3345,
+	objectURN as MultipleAxisJoystick_3345_urn,
+} from './3345.js'
+import { type Rate_3346, objectURN as Rate_3346_urn } from './3346.js'
+import {
+	type Pushbutton_3347,
+	objectURN as Pushbutton_3347_urn,
+} from './3347.js'
+import {
+	type Multi_stateSelector_3348,
+	objectURN as Multi_stateSelector_3348_urn,
+} from './3348.js'
+import { type Bitmap_3349, objectURN as Bitmap_3349_urn } from './3349.js'
+import { type Stopwatch_3350, objectURN as Stopwatch_3350_urn } from './3350.js'
+import {
+	type powerupLog_3351,
+	objectURN as powerupLog_3351_urn,
+} from './3351.js'
+import {
+	type plmnSearchEvent_3352,
+	objectURN as plmnSearchEvent_3352_urn,
+} from './3352.js'
+import { type scellID_3353, objectURN as scellID_3353_urn } from './3353.js'
+import {
+	type cellReselectionEvent_3354,
+	objectURN as cellReselectionEvent_3354_urn,
+} from './3354.js'
+import {
+	type handoverEvent_3355,
+	objectURN as handoverEvent_3355_urn,
+} from './3355.js'
+import {
+	type radioLinkFailureEvent_3356,
+	objectURN as radioLinkFailureEvent_3356_urn,
+} from './3356.js'
+import {
+	type rrcStateChangeEvent_3357,
+	objectURN as rrcStateChangeEvent_3357_urn,
+} from './3357.js'
+import {
+	type rrcTimerExpiryEvent_3358,
+	objectURN as rrcTimerExpiryEvent_3358_urn,
+} from './3358.js'
+import {
+	type cellBlacklistEvent_3359,
+	objectURN as cellBlacklistEvent_3359_urn,
+} from './3359.js'
+import {
+	type esmContextInfo_3360,
+	objectURN as esmContextInfo_3360_urn,
+} from './3360.js'
+import {
+	type emmStateValue_3361,
+	objectURN as emmStateValue_3361_urn,
+} from './3361.js'
+import {
+	type nasEmmTimerExpiryEvent_3362,
+	objectURN as nasEmmTimerExpiryEvent_3362_urn,
+} from './3362.js'
+import {
+	type nasEsmExpiryEvent_3363,
+	objectURN as nasEsmExpiryEvent_3363_urn,
+} from './3363.js'
+import {
+	type emmFailureCauseEvent_3364,
+	objectURN as emmFailureCauseEvent_3364_urn,
+} from './3364.js'
+import {
+	type rachLatency_delay_3365,
+	objectURN as rachLatency_delay_3365_urn,
+} from './3365.js'
+import {
+	type macRachAttemptEvent_3366,
+	objectURN as macRachAttemptEvent_3366_urn,
+} from './3366.js'
+import {
+	type macRachAttemptReasonEvent_3367,
+	objectURN as macRachAttemptReasonEvent_3367_urn,
+} from './3367.js'
+import {
+	type macTimerStatusEvent_3368,
+	objectURN as macTimerStatusEvent_3368_urn,
+} from './3368.js'
+import {
+	type macTimingAdvanceEvent_3369,
+	objectURN as macTimingAdvanceEvent_3369_urn,
+} from './3369.js'
+import {
+	type ServingCellMeasurement_3370,
+	objectURN as ServingCellMeasurement_3370_urn,
+} from './3370.js'
+import {
+	type NeighborCellMeasurements_3371,
+	objectURN as NeighborCellMeasurements_3371_urn,
+} from './3371.js'
+import {
+	type TimingAdvance_3372,
+	objectURN as TimingAdvance_3372_urn,
+} from './3372.js'
+import {
+	type txPowerHeadroomEvent_3373,
+	objectURN as txPowerHeadroomEvent_3373_urn,
+} from './3373.js'
+import {
+	type radioLinkMonitoring_3374,
+	objectURN as radioLinkMonitoring_3374_urn,
+} from './3374.js'
+import { type PagingDRX_3375, objectURN as PagingDRX_3375_urn } from './3375.js'
+import {
+	type txPowerBackOffEvent_3376,
+	objectURN as txPowerBackOffEvent_3376_urn,
+} from './3376.js'
+import {
+	type Message3Report_3377,
+	objectURN as Message3Report_3377_urn,
+} from './3377.js'
+import {
+	type PbchDecodingResults_3378,
+	objectURN as PbchDecodingResults_3378_urn,
+} from './3378.js'
+import {
+	type pucchPowerControl_3379,
+	objectURN as pucchPowerControl_3379_urn,
+} from './3379.js'
+import {
+	type PrachReport_3380,
+	objectURN as PrachReport_3380_urn,
+} from './3380.js'
+import {
+	type VolteCallEvent_3381,
+	objectURN as VolteCallEvent_3381_urn,
+} from './3381.js'
+import {
+	type SipRegistrationEvent_3382,
+	objectURN as SipRegistrationEvent_3382_urn,
+} from './3382.js'
+import {
+	type sipPublishEvent_3383,
+	objectURN as sipPublishEvent_3383_urn,
+} from './3383.js'
+import {
+	type sipSubscriptionEvent_3384,
+	objectURN as sipSubscriptionEvent_3384_urn,
+} from './3384.js'
+import {
+	type volteCallStateChangeEvent_3385,
+	objectURN as volteCallStateChangeEvent_3385_urn,
+} from './3385.js'
+import {
+	type VoLTErtpPacketLoss_3386,
+	objectURN as VoLTErtpPacketLoss_3386_urn,
+} from './3386.js'
+import {
+	type oABasicControl_3387,
+	objectURN as oABasicControl_3387_urn,
+} from './3387.js'
+import { type oADevice_3388, objectURN as oADevice_3388_urn } from './3388.js'
+import { type oAGroup_3389, objectURN as oAGroup_3389_urn } from './3389.js'
+import {
+	type oALogicalColourLight_PointActuator_3390,
+	objectURN as oALogicalColourLight_PointActuator_3390_urn,
+} from './3390.js'
+import {
+	type oALogicalColourTemperatureLight_PointActuator_3391,
+	objectURN as oALogicalColourTemperatureLight_PointActuator_3391_urn,
+} from './3391.js'
+import {
+	type oALogicalIlluminanceSensor_3392,
+	objectURN as oALogicalIlluminanceSensor_3392_urn,
+} from './3392.js'
+import {
+	type oALogicalLight_PointActuator_3393,
+	objectURN as oALogicalLight_PointActuator_3393_urn,
+} from './3393.js'
+import {
+	type oALogicalPresenceSensor_3394,
+	objectURN as oALogicalPresenceSensor_3394_urn,
+} from './3394.js'
+import {
+	type oALogicalPush_ButtonSensor_3395,
+	objectURN as oALogicalPush_ButtonSensor_3395_urn,
+} from './3395.js'
+import {
+	type oAPhysicalColourLight_PointActuator_3396,
+	objectURN as oAPhysicalColourLight_PointActuator_3396_urn,
+} from './3396.js'
+import {
+	type oAPhysicalColourTemperatureLight_PointActuator_3397,
+	objectURN as oAPhysicalColourTemperatureLight_PointActuator_3397_urn,
+} from './3397.js'
+import {
+	type oAPhysicalIlluminanceSensor_3398,
+	objectURN as oAPhysicalIlluminanceSensor_3398_urn,
+} from './3398.js'
+import {
+	type oAPhysicalLight_PointActuator_3399,
+	objectURN as oAPhysicalLight_PointActuator_3399_urn,
+} from './3399.js'
+import {
+	type oAPhysicalPresenceSensor_3400,
+	objectURN as oAPhysicalPresenceSensor_3400_urn,
+} from './3400.js'
+import {
+	type oAPhysicalPush_ButtonSensor_3401,
+	objectURN as oAPhysicalPush_ButtonSensor_3401_urn,
+} from './3401.js'
+import {
+	type oAReceivingObject_3402,
+	objectURN as oAReceivingObject_3402_urn,
+} from './3402.js'
+import {
+	type oAReportingObject_3403,
+	objectURN as oAReportingObject_3403_urn,
+} from './3403.js'
+import { type oAScene_3404, objectURN as oAScene_3404_urn } from './3404.js'
+import {
+	type oAOGC_Security_3405,
+	objectURN as oAOGC_Security_3405_urn,
+} from './3405.js'
+import {
+	type oAStatusReportStructure_3406,
+	objectURN as oAStatusReportStructure_3406_urn,
+} from './3406.js'
+import {
+	type SmokeAlarm_3407,
+	objectURN as SmokeAlarm_3407_urn,
+} from './3407.js'
+import {
+	type ManholeCover_3408,
+	objectURN as ManholeCover_3408_urn,
+} from './3408.js'
+import {
+	type DeviceExtension_3410,
+	objectURN as DeviceExtension_3410_urn,
+} from './3410.js'
+import { type Battery_3411, objectURN as Battery_3411_urn } from './3411.js'
+import {
+	type LPWANCommunication_3412,
+	objectURN as LPWANCommunication_3412_urn,
+} from './3412.js'
+import {
+	type uCIFIGenericActuator_3413,
+	objectURN as uCIFIGenericActuator_3413_urn,
+} from './3413.js'
+import {
+	type uCIFIdatabridge_3414,
+	objectURN as uCIFIdatabridge_3414_urn,
+} from './3414.js'
+import {
+	type Timesynchronization_3415,
+	objectURN as Timesynchronization_3415_urn,
+} from './3415.js'
+import {
+	type Outdoorlampcontroller_3416,
+	objectURN as Outdoorlampcontroller_3416_urn,
+} from './3416.js'
+import {
+	type Luminaireasset_3417,
+	objectURN as Luminaireasset_3417_urn,
+} from './3417.js'
+import {
+	type Electricalmonitor_3418,
+	objectURN as Electricalmonitor_3418_urn,
+} from './3418.js'
+import { type Photocell_3419, objectURN as Photocell_3419_urn } from './3419.js'
+import {
+	type LEDcolorlight_3420,
+	objectURN as LEDcolorlight_3420_urn,
+} from './3420.js'
+import {
+	type Single_phaseelectricalmeter_3421,
+	objectURN as Single_phaseelectricalmeter_3421_urn,
+} from './3421.js'
+import { type Gasmeter_3423, objectURN as Gasmeter_3423_urn } from './3423.js'
+import {
+	type Watermeter_3424,
+	objectURN as Watermeter_3424_urn,
+} from './3424.js'
+import {
+	type Irrigationvalve_3425,
+	objectURN as Irrigationvalve_3425_urn,
+} from './3425.js'
+import {
+	type Waterqualitysensor_3426,
+	objectURN as Waterqualitysensor_3426_urn,
+} from './3426.js'
+import {
+	type Pressuremonitoringsensor_3427,
+	objectURN as Pressuremonitoringsensor_3427_urn,
+} from './3427.js'
+import {
+	type Airquality_3428,
+	objectURN as Airquality_3428_urn,
+} from './3428.js'
+import {
+	type Tiltsensor_3429,
+	objectURN as Tiltsensor_3429_urn,
+} from './3429.js'
+import {
+	type GlobalNavigationSatelliteSystem_3430,
+	objectURN as GlobalNavigationSatelliteSystem_3430_urn,
+} from './3430.js'
+import {
+	type ParkingSensor_3431,
+	objectURN as ParkingSensor_3431_urn,
+} from './3431.js'
+import {
+	type TrafficCounter_3432,
+	objectURN as TrafficCounter_3432_urn,
+} from './3432.js'
+import {
+	type Noisesensor_3433,
+	objectURN as Noisesensor_3433_urn,
+} from './3433.js'
+import {
+	type Peoplecounter_3434,
+	objectURN as Peoplecounter_3434_urn,
+} from './3434.js'
+import {
+	type Fillinglevel_3435,
+	objectURN as Fillinglevel_3435_urn,
+} from './3435.js'
+import {
+	type Edgecomputingmanager_3436,
+	objectURN as Edgecomputingmanager_3436_urn,
+} from './3436.js'
+import {
+	type Edgecomputingscript_3437,
+	objectURN as Edgecomputingscript_3437_urn,
+} from './3437.js'
+import {
+	type Edgecomputingtimecondition_3438,
+	objectURN as Edgecomputingtimecondition_3438_urn,
+} from './3438.js'
+import {
+	type Edgecomputinggenericcondition_3439,
+	objectURN as Edgecomputinggenericcondition_3439_urn,
+} from './3439.js'
+import {
+	type LwM2Mv1_0TestObject_3441,
+	objectURN as LwM2Mv1_0TestObject_3441_urn,
+} from './3441.js'
+import {
+	type LwM2Mv1_1TestObject_3442,
+	objectURN as LwM2Mv1_1TestObject_3442_urn,
+} from './3442.js'
+import { type eSIMIoT_3443, objectURN as eSIMIoT_3443_urn } from './3443.js'
+import {
+	type HostDeviceInfo_10241,
+	objectURN as HostDeviceInfo_10241_urn,
+} from './10241.js'
+import {
+	type n3_PhasePowerMeter_10242,
+	objectURN as n3_PhasePowerMeter_10242_urn,
+} from './10242.js'
+import {
+	type Single_PhasePowerMeter_10243,
+	objectURN as Single_PhasePowerMeter_10243_urn,
+} from './10243.js'
+import {
+	type VehicleControlUnit_10244,
+	objectURN as VehicleControlUnit_10244_urn,
+} from './10244.js'
+import {
+	type RelayManagement_10245,
+	objectURN as RelayManagement_10245_urn,
+} from './10245.js'
+import {
+	type CrowdBoxMeasurements_10246,
+	objectURN as CrowdBoxMeasurements_10246_urn,
+} from './10246.js'
+import {
+	type NeighbourCellReport_10247,
+	objectURN as NeighbourCellReport_10247_urn,
+} from './10247.js'
+import {
+	type ConnectedUEMeasurements_10248,
+	objectURN as ConnectedUEMeasurements_10248_urn,
+} from './10248.js'
+import {
+	type ConnectedUEReport_10249,
+	objectURN as ConnectedUEReport_10249_urn,
+} from './10249.js'
+import {
+	type AppDataContainer_10250,
+	objectURN as AppDataContainer_10250_urn,
+} from './10250.js'
+import {
+	type ATCommand_10251,
+	objectURN as ATCommand_10251_urn,
+} from './10251.js'
+import {
+	type Manifest_10252,
+	objectURN as Manifest_10252_urn,
+} from './10252.js'
+import {
+	type ConfidentialData_10253,
+	objectURN as ConfidentialData_10253_urn,
+} from './10253.js'
+import {
+	type CurrentLoopInput_10254,
+	objectURN as CurrentLoopInput_10254_urn,
+} from './10254.js'
+import {
+	type DeviceMetadata_10255,
+	objectURN as DeviceMetadata_10255_urn,
+} from './10255.js'
+import {
+	type ECID_SignalMeasurementInformation_10256,
+	objectURN as ECID_SignalMeasurementInformation_10256_urn,
+} from './10256.js'
+import {
+	type Heat_Coolingmeter_10257,
+	objectURN as Heat_Coolingmeter_10257_urn,
+} from './10257.js'
+import {
+	type CurrentLoopOutput_10258,
+	objectURN as CurrentLoopOutput_10258_urn,
+} from './10258.js'
+import {
+	type SystemLog_10259,
+	objectURN as SystemLog_10259_urn,
+} from './10259.js'
+import { type RDB_10260, objectURN as RDB_10260_urn } from './10260.js'
+import {
+	type IntervalDataDelivery_10262,
+	objectURN as IntervalDataDelivery_10262_urn,
+} from './10262.js'
+import {
+	type EventDataDelivery_10263,
+	objectURN as EventDataDelivery_10263_urn,
+} from './10263.js'
+import {
+	type DeliverySchedule_10264,
+	objectURN as DeliverySchedule_10264_urn,
+} from './10264.js'
+import {
+	type LeakageDetectionConfiguration_10265,
+	objectURN as LeakageDetectionConfiguration_10265_urn,
+} from './10265.js'
+import {
+	type WaterFlowReadings_10266,
+	objectURN as WaterFlowReadings_10266_urn,
+} from './10266.js'
+import {
+	type DailyMaximumFlowRateReadings_10267,
+	objectURN as DailyMaximumFlowRateReadings_10267_urn,
+} from './10267.js'
+import {
+	type TemperatureReadings_10268,
+	objectURN as TemperatureReadings_10268_urn,
+} from './10268.js'
+import {
+	type PressureReadings_10269,
+	objectURN as PressureReadings_10269_urn,
+} from './10269.js'
+import {
+	type BatteryLevelReadings_10270,
+	objectURN as BatteryLevelReadings_10270_urn,
+} from './10270.js'
+import {
+	type CommunicationsActivityTimeReadings_10271,
+	objectURN as CommunicationsActivityTimeReadings_10271_urn,
+} from './10271.js'
+import {
+	type WaterMeterCustomerLeakageAlarm_10272,
+	objectURN as WaterMeterCustomerLeakageAlarm_10272_urn,
+} from './10272.js'
+import {
+	type WaterMeterReverseFlowAlarm_10273,
+	objectURN as WaterMeterReverseFlowAlarm_10273_urn,
+} from './10273.js'
+import {
+	type WaterMeterEmptyPipeAlarm_10274,
+	objectURN as WaterMeterEmptyPipeAlarm_10274_urn,
+} from './10274.js'
+import {
+	type WaterMeterTamperAlarm_10275,
+	objectURN as WaterMeterTamperAlarm_10275_urn,
+} from './10275.js'
+import {
+	type WaterMeterHighPressureAlarm_10276,
+	objectURN as WaterMeterHighPressureAlarm_10276_urn,
+} from './10276.js'
+import {
+	type WaterMeterLowPressureAlarm_10277,
+	objectURN as WaterMeterLowPressureAlarm_10277_urn,
+} from './10277.js'
+import {
+	type HighTemperatureAlarm_10278,
+	objectURN as HighTemperatureAlarm_10278_urn,
+} from './10278.js'
+import {
+	type LowTemperatureAlarm_10279,
+	objectURN as LowTemperatureAlarm_10279_urn,
+} from './10279.js'
+import {
+	type WaterNetworkLeakAlarm_10280,
+	objectURN as WaterNetworkLeakAlarm_10280_urn,
+} from './10280.js'
+import {
+	type LowBatteryAlarm_10281,
+	objectURN as LowBatteryAlarm_10281_urn,
+} from './10281.js'
+import {
+	type DaughterBoardFailureAlarm_10282,
+	objectURN as DaughterBoardFailureAlarm_10282_urn,
+} from './10282.js'
+import {
+	type DeviceRebootEvent_10283,
+	objectURN as DeviceRebootEvent_10283_urn,
+} from './10283.js'
+import {
+	type TimeSynchronisationEvent_10284,
+	objectURN as TimeSynchronisationEvent_10284_urn,
+} from './10284.js'
+import {
+	type AppFotaContainer_10286,
+	objectURN as AppFotaContainer_10286_urn,
+} from './10286.js'
+import {
+	type VoltageLogging_10290,
+	objectURN as VoltageLogging_10290_urn,
+} from './10290.js'
+import {
+	type VoltageTransient_10291,
+	objectURN as VoltageTransient_10291_urn,
+} from './10291.js'
+import {
+	type PressureTransient_10292,
+	objectURN as PressureTransient_10292_urn,
+} from './10292.js'
+import {
+	type HostDevice_10299,
+	objectURN as HostDevice_10299_urn,
+} from './10299.js'
+import {
+	type LWM2MMetaObject_10300,
+	objectURN as LWM2MMetaObject_10300_urn,
+} from './10300.js'
+import {
+	type ATandTConnectivityExtension_10308,
+	objectURN as ATandTConnectivityExtension_10308_urn,
+} from './10308.js'
+import {
+	type Shareparkinglot_10309,
+	objectURN as Shareparkinglot_10309_urn,
+} from './10309.js'
+import {
+	type SolarRadiation_10311,
+	objectURN as SolarRadiation_10311_urn,
+} from './10311.js'
+import {
+	type GasReadings_10313,
+	objectURN as GasReadings_10313_urn,
+} from './10313.js'
+import {
+	type Particulates_10314,
+	objectURN as Particulates_10314_urn,
+} from './10314.js'
+import { type Robot_10315, objectURN as Robot_10315_urn } from './10315.js'
+import { type RCU_10316, objectURN as RCU_10316_urn } from './10316.js'
+import { type RCUPM_10318, objectURN as RCUPM_10318_urn } from './10318.js'
+import {
+	type RCUControl_10319,
+	objectURN as RCUControl_10319_urn,
+} from './10319.js'
+import { type CCU_10320, objectURN as CCU_10320_urn } from './10320.js'
+import { type CCUPM_10322, objectURN as CCUPM_10322_urn } from './10322.js'
+import { type ECU_10324, objectURN as ECU_10324_urn } from './10324.js'
+import { type RobotPM_10326, objectURN as RobotPM_10326_urn } from './10326.js'
+import {
+	type Compressor_10327,
+	objectURN as Compressor_10327_urn,
+} from './10327.js'
+import { type SCAPM_10328, objectURN as SCAPM_10328_urn } from './10328.js'
+import {
+	type RobotControl_10329,
+	objectURN as RobotControl_10329_urn,
+} from './10329.js'
+import {
+	type NetworkInfo_10330,
+	objectURN as NetworkInfo_10330_urn,
+} from './10330.js'
+import {
+	type RobotServiceInfo_10331,
+	objectURN as RobotServiceInfo_10331_urn,
+} from './10331.js'
+import {
+	type RobotSelfcheckInfo_10332,
+	objectURN as RobotSelfcheckInfo_10332_urn,
+} from './10332.js'
+import {
+	type PMThreshold_10333,
+	objectURN as PMThreshold_10333_urn,
+} from './10333.js'
+import {
+	type RobotAlarm_10334,
+	objectURN as RobotAlarm_10334_urn,
+} from './10334.js'
+import { type Event_10335, objectURN as Event_10335_urn } from './10335.js'
+import { type MIC_10336, objectURN as MIC_10336_urn } from './10336.js'
+import { type SCA_10337, objectURN as SCA_10337_urn } from './10337.js'
+import { type Speaker_10338, objectURN as Speaker_10338_urn } from './10338.js'
+import {
+	type TripodHead_10339,
+	objectURN as TripodHead_10339_urn,
+} from './10339.js'
+import { type Camera_10340, objectURN as Camera_10340_urn } from './10340.js'
+import { type GPS_10341, objectURN as GPS_10341_urn } from './10341.js'
+import { type IMU_10342, objectURN as IMU_10342_urn } from './10342.js'
+import { type LiDAR_10343, objectURN as LiDAR_10343_urn } from './10343.js'
+import { type Arm_10344, objectURN as Arm_10344_urn } from './10344.js'
+import { type Leg_10345, objectURN as Leg_10345_urn } from './10345.js'
+import {
+	type Servomotor_10346,
+	objectURN as Servomotor_10346_urn,
+} from './10346.js'
+import { type Screen_10347, objectURN as Screen_10347_urn } from './10347.js'
+import { type Wheel_10348, objectURN as Wheel_10348_urn } from './10348.js'
+import { type Chassis_10349, objectURN as Chassis_10349_urn } from './10349.js'
+import { type Light_10350, objectURN as Light_10350_urn } from './10350.js'
+import { type Door_10351, objectURN as Door_10351_urn } from './10351.js'
+import {
+	type ThermalImager_10352,
+	objectURN as ThermalImager_10352_urn,
+} from './10352.js'
+import {
+	type WarningLight_10353,
+	objectURN as WarningLight_10353_urn,
+} from './10353.js'
+import { type APP_10354, objectURN as APP_10354_urn } from './10354.js'
+import {
+	type GeneralInfo_10355,
+	objectURN as GeneralInfo_10355_urn,
+} from './10355.js'
+import {
+	type ServiceInfo_10356,
+	objectURN as ServiceInfo_10356_urn,
+} from './10356.js'
+import { type PM_10357, objectURN as PM_10357_urn } from './10357.js'
+import { type FanPM_10358, objectURN as FanPM_10358_urn } from './10358.js'
+import { type Lock_10359, objectURN as Lock_10359_urn } from './10359.js'
+import {
+	type UltrasonicSensor_10360,
+	objectURN as UltrasonicSensor_10360_urn,
+} from './10360.js'
+import {
+	type CollisionSensor_10361,
+	objectURN as CollisionSensor_10361_urn,
+} from './10361.js'
+import {
+	type DropSensor_10362,
+	objectURN as DropSensor_10362_urn,
+} from './10362.js'
+import {
+	type TemperatureSensor_10363,
+	objectURN as TemperatureSensor_10363_urn,
+} from './10363.js'
+import {
+	type HumiditySensor_10364,
+	objectURN as HumiditySensor_10364_urn,
+} from './10364.js'
+import {
+	type Gas_DustSensor_10365,
+	objectURN as Gas_DustSensor_10365_urn,
+} from './10365.js'
+import { type Fan_10366, objectURN as Fan_10366_urn } from './10366.js'
+import {
+	type SpringMotor_10368,
+	objectURN as SpringMotor_10368_urn,
+} from './10368.js'
+import { type MCU_10369, objectURN as MCU_10369_urn } from './10369.js'
+import {
+	type RebootStatus_10371,
+	objectURN as RebootStatus_10371_urn,
+} from './10371.js'
+import {
+	type ModbusConnection_10374,
+	objectURN as ModbusConnection_10374_urn,
+} from './10374.js'
+import {
+	type ModbusRegisterCluster_10375,
+	objectURN as ModbusRegisterCluster_10375_urn,
+} from './10375.js'
+import {
+	type PeriodicActivity_10376,
+	objectURN as PeriodicActivity_10376_urn,
+} from './10376.js'
+import {
+	type DataMonitoring_10377,
+	objectURN as DataMonitoring_10377_urn,
+} from './10377.js'
+import {
+	type EdgeApplicationServerConfiguration_10378,
+	objectURN as EdgeApplicationServerConfiguration_10378_urn,
+} from './10378.js'
+import {
+	type MQTTBroker_18830,
+	objectURN as MQTTBroker_18830_urn,
+} from './18830.js'
+import {
+	type MQTTPublication_18831,
+	objectURN as MQTTPublication_18831_urn,
+} from './18831.js'
 export type LwM2MDocument = Readonly<
 	Partial<{
 		[LwM2MServer_1_urn]: LwM2MServer_1
@@ -1138,6 +1139,7 @@ export type LwM2MDocument = Readonly<
 		[Edgecomputinggenericcondition_3439_urn]: Edgecomputinggenericcondition_3439
 		[LwM2Mv1_0TestObject_3441_urn]: LwM2Mv1_0TestObject_3441
 		[LwM2Mv1_1TestObject_3442_urn]: LwM2Mv1_1TestObject_3442
+		[eSIMIoT_3443_urn]: eSIMIoT_3443
 		[HostDeviceInfo_10241_urn]: HostDeviceInfo_10241
 		[n3_PhasePowerMeter_10242_urn]: n3_PhasePowerMeter_10242
 		[Single_PhasePowerMeter_10243_urn]: Single_PhasePowerMeter_10243
