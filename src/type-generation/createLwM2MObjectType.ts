@@ -1,16 +1,13 @@
 import os from 'node:os'
 import ts from 'typescript'
-import type {
-	LwM2MObjectDefinition,
-	Resource,
-} from '../lwm2m/LwM2MObjectDefinition.js'
+import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition.js'
 import { addDocBlock } from './addDocBlock.js'
 import { cleanWhitespace } from './cleanWhitespace.js'
-import { getTypeScriptType } from './getTypeScriptType.js'
+import { createResourceType } from './createLwM2MResourceType.js'
 import { typeName } from './typeName.js'
 import { wrap } from './wrap.js'
 
-const wrapLongLines = wrap(76)
+export const wrapLongLines = wrap(76)
 
 const asNumber = (b: boolean) => (b ? 0 : 1)
 
@@ -82,37 +79,4 @@ export const createLwM2MObjectType = ({
 	)
 
 	return [objectTypeExport, ...resources.map((resource) => resource.type)]
-}
-
-const createResourceType = (objectId: string, resource: Resource) => {
-	const name = typeName(objectId, resource.Name)
-	const res = ts.factory.createTypeAliasDeclaration(
-		undefined,
-		ts.factory.createIdentifier(name),
-		undefined,
-		ts.factory.createTypeReferenceNode(getTypeScriptType(resource.Type)),
-	)
-
-	const comment = [
-		resource.Name,
-		``,
-		...cleanWhitespace(resource.Description)
-			.split(os.EOL)
-			.map(wrapLongLines)
-			.flat(),
-		``,
-		`ID: ${objectId}`,
-		`MultipleInstances: ${resource.MultipleInstances}`,
-		`Mandatory: ${resource.Mandatory}`,
-	]
-	if (resource.Units !== undefined) comment.push(`Units: ${resource.Units}`)
-
-	addDocBlock(comment, res)
-	const value = {
-		id: objectId,
-		isOptional: resource.Mandatory,
-		name,
-		type: res,
-	}
-	return value
 }

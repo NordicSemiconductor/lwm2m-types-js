@@ -35,6 +35,9 @@ jobs:
       - name: Run unit tests
         run: npm test
 
+      - name: Run e2e tests (type generation)
+        run: npx tsx e2e-tests/generate-types.ts
+
       - name: Create LwM2M types
         run: npx tsx cli/generate-types.ts
 
@@ -49,6 +52,9 @@ jobs:
 
       - name: Make sure example runs
         run: npx tsx ./example.ts
+
+      - name: Make sure e2e type example runs
+        run: npx tsx ./e2e-tests/checkGeneratedType.ts
 
       - name: Semantic release
         env:
