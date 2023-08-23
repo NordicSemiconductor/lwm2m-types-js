@@ -1,5 +1,7 @@
+import type { Resources } from 'src/lwm2m/LwM2MObjectDefinition'
+
 describe('createLwM2MObjectType', () => {
-	it.skip('should create object type for single instance no mandatory object', () => {
+	it('should create object type for single instance no mandatory object', () => {
 		const expected = {
 			Name: 'Connectivity Monitoring',
 			Description1:
@@ -58,7 +60,7 @@ describe('createLwM2MObjectType', () => {
 					MultipleInstances: true,
 					Mandatory: false,
 				},
-			},
+			} as Resources,
 		}
 
 		expect(expected).not.toBe(undefined)
