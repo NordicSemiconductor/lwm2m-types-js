@@ -22,16 +22,13 @@ export const createResourceType = (
 	resource: Resource,
 ): ResourceType => {
 	const name = typeName(resourceId, resource.Name)
-	//let type: ts.TypeNode = resource.Type as unknown as ts.TypeNode
 
-	/*
-	const type = resource.MultipleInstances
-		? ts.factory.createTypeReferenceNode('Array', [resource.Type])
-		: ts.factory.createTypeReferenceNode(getTypeScriptType(resource.Type))
-	*/
-	const type = ts.factory.createTypeReferenceNode(
+	let type = ts.factory.createTypeReferenceNode(
 		getTypeScriptType(resource.Type),
 	)
+
+	if (resource.MultipleInstances)
+		type = ts.factory.createTypeReferenceNode('Array', [type])
 
 	const res = ts.factory.createTypeAliasDeclaration(
 		undefined,
@@ -39,8 +36,6 @@ export const createResourceType = (
 		undefined,
 		type,
 	)
-
-	//if (resourceId === '4') console.log(resource.Name)
 
 	const comment = [
 		resource.Name,
