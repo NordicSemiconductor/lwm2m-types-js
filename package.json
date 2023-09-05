@@ -31,7 +31,7 @@
     "ajv": "8.12.0"
   },
   "devDependencies": {
-    "@nordicsemiconductor/asset-tracker-cloud-code-style": "12.0.83",
+    "@nordicsemiconductor/asset-tracker-cloud-code-style": "12.0.84",
     "@nordicsemiconductor/eslint-config-asset-tracker-cloud-typescript": "16.0.17",
     "@sinclair/typebox": "0.31.10",
     "@swc/cli": "0.1.62",
