@@ -43,7 +43,7 @@
     "chalk": "5.3.0",
     "eslint-plugin-import": "2.28.1",
     "fluent-json-schema": "4.1.1",
-    "hamjest": "4.0.1",
+    "hamjest": "4.1.0",
     "husky": "8.0.3",
     "jest": "29.6.4",
     "prettier": "3.0.3",
