@@ -4,7 +4,7 @@
   "scripts": {
     "test": "jest",
     "prepare": "husky install",
-    "prepublish": "npx swc -C jsc.experimental.keepImportAssertions=true -d dist ./src"
+    "prepublish": "npx swc -C jsc.experimental.keepImportAttributes=true -C jsc.experimental.emitAssertForImportAttributes=true -d dist ./src"
   },
   "type": "module",
   "types": "./index.d.ts",
