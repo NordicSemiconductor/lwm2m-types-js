@@ -43,7 +43,7 @@ export type LwM2Mv1_0TestObject_3441 = Readonly<
  * MultipleInstances: true
  * Mandatory: false
  */
-type ArgumentsList_4 = string
+type ArgumentsList_4 = Array<string>
 /**
  * String Value
  *
@@ -129,7 +129,7 @@ type ObjLinkValue_170 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type MultipleStringValue_1110 = string
+type MultipleStringValue_1110 = Array<string>
 /**
  * Multiple Integer Value
  *
@@ -139,7 +139,7 @@ type MultipleStringValue_1110 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type MultipleIntegerValue_1120 = number
+type MultipleIntegerValue_1120 = Array<number>
 /**
  * Multiple Float Value
  *
@@ -149,7 +149,7 @@ type MultipleIntegerValue_1120 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type MultipleFloatValue_1130 = number
+type MultipleFloatValue_1130 = Array<number>
 /**
  * Multiple Boolean Value
  *
@@ -159,7 +159,7 @@ type MultipleFloatValue_1130 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type MultipleBooleanValue_1140 = boolean
+type MultipleBooleanValue_1140 = Array<boolean>
 /**
  * Multiple Opaque Value
  *
@@ -170,7 +170,7 @@ type MultipleBooleanValue_1140 = boolean
  * MultipleInstances: true
  * Mandatory: false
  */
-type MultipleOpaqueValue_1150 = string
+type MultipleOpaqueValue_1150 = Array<string>
 /**
  * Multiple Time Value
  *
@@ -181,7 +181,7 @@ type MultipleOpaqueValue_1150 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type MultipleTimeValue_1160 = number
+type MultipleTimeValue_1160 = Array<number>
 /**
  * Multiple ObjLink Value
  *
@@ -191,7 +191,7 @@ type MultipleTimeValue_1160 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type MultipleObjLinkValue_1170 = string
+type MultipleObjLinkValue_1170 = Array<string>
 /**
  * The objectURN for LwM2M v1.0 Test Object
  * Used in the JSON schema for the LwM2M document definition as a key.

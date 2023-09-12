@@ -54,7 +54,7 @@ type SecurityGroupID_601 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type IPAddresses_602 = string
+type IPAddresses_602 = Array<string>
 /**
  * Members
  *
@@ -68,7 +68,7 @@ type IPAddresses_602 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type Members_603 = string
+type Members_603 = Array<string>
 /**
  * Documentary Description
  *

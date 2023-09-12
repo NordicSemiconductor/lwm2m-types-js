@@ -77,7 +77,7 @@ type ObjectURN_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type URI_2 = string
+type URI_2 = Array<string>
 /**
  * SHAType
  *

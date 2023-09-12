@@ -61,7 +61,7 @@ type CurrentSIMType_0 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type SupportedSIMType_1 = number
+type SupportedSIMType_1 = Array<number>
 /**
  * Service Provider Name
  *
@@ -216,7 +216,7 @@ type ProfilePackageVersion_9 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type ProfileUpdateProtocolSupport_10 = number
+type ProfileUpdateProtocolSupport_10 = Array<number>
 /**
  * Free Memory on SIM
  *
@@ -251,7 +251,7 @@ type TotalMemoryonSIM_13 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type IntegratedCircuitCardIdentifier_ICCID_14 = number
+type IntegratedCircuitCardIdentifier_ICCID_14 = Array<number>
 /**
  * eUICC ID
  *

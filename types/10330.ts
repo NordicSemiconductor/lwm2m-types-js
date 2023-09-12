@@ -94,7 +94,7 @@ type GPSSignalStatus_4 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type CCUConnectionStatus_7 = number
+type CCUConnectionStatus_7 = Array<number>
 /**
  * The objectURN for Network Info
  * Used in the JSON schema for the LwM2M document definition as a key.

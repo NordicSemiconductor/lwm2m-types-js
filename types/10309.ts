@@ -44,7 +44,7 @@ type LockID_1 = number
  * Mandatory: true
  * Units: dBm
  */
-type RSSI_4 = number
+type RSSI_4 = Array<number>
 /**
  * DataUpTime
  *
@@ -54,7 +54,7 @@ type RSSI_4 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type DataUpTime_6 = number
+type DataUpTime_6 = Array<number>
 /**
  * LockType
  *
@@ -74,7 +74,7 @@ type LockType_2 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type LightSwitchState_3 = boolean
+type LightSwitchState_3 = Array<boolean>
 /**
  * BatteryCapacity
  *
@@ -85,7 +85,7 @@ type LightSwitchState_3 = boolean
  * Mandatory: false
  * Units: %EL
  */
-type BatteryCapacity_5 = number
+type BatteryCapacity_5 = Array<number>
 /**
  * Latitude
  *
@@ -95,7 +95,7 @@ type BatteryCapacity_5 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type Latitude_5514 = string
+type Latitude_5514 = Array<string>
 /**
  * Longitude
  *
@@ -106,7 +106,7 @@ type Latitude_5514 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Longitude_5515 = string
+type Longitude_5515 = Array<string>
 /**
  * The objectURN for Shareparkinglot
  * Used in the JSON schema for the LwM2M document definition as a key.

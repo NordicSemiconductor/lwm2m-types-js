@@ -212,7 +212,7 @@ type PkgVersion_7 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type FirmwareUpdateProtocolSupport_8 = number
+type FirmwareUpdateProtocolSupport_8 = Array<number>
 /**
  * Severity
  *

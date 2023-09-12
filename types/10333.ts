@@ -26,7 +26,7 @@ export type PMThreshold_10333 = Readonly<{
  * MultipleInstances: true
  * Mandatory: true
  */
-type Entity_1 = string
+type Entity_1 = Array<string>
 /**
  * Performance Type
  *
@@ -37,7 +37,7 @@ type Entity_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type PerformanceType_2 = string
+type PerformanceType_2 = Array<string>
 /**
  * High Threshold
  *
@@ -47,7 +47,7 @@ type PerformanceType_2 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type HighThreshold_3 = number
+type HighThreshold_3 = Array<number>
 /**
  * Low Threshold
  *
@@ -57,7 +57,7 @@ type HighThreshold_3 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type LowThreshold_4 = number
+type LowThreshold_4 = Array<number>
 /**
  * The objectURN for PM Threshold
  * Used in the JSON schema for the LwM2M document definition as a key.

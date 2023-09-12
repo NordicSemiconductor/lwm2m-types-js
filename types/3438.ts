@@ -39,7 +39,7 @@ type Executiontime_day_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type Scriptidentifier_2 = string
+type Scriptidentifier_2 = Array<string>
 /**
  * Non supported time condition
  *

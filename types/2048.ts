@@ -51,7 +51,7 @@ type DefaultRule_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type LimiRules_2 = string
+type LimiRules_2 = Array<string>
 /**
  * NetworkAccessECRules
  *
@@ -61,7 +61,7 @@ type LimiRules_2 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type NetworkAccessECRules_3 = string
+type NetworkAccessECRules_3 = Array<string>
 /**
  * BufferRules
  *
@@ -71,7 +71,7 @@ type NetworkAccessECRules_3 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type BufferRules_4 = string
+type BufferRules_4 = Array<string>
 /**
  * The objectURN for CmdhPolicy
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -46,7 +46,7 @@ type State_0 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type Locktarget_1 = string
+type Locktarget_1 = Array<string>
 /**
  * Wipe target
  *
@@ -57,7 +57,7 @@ type Locktarget_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type Wipetarget_4 = string
+type Wipetarget_4 = Array<string>
 /**
  * Lock or Wipe Operation Result
  *
@@ -88,7 +88,7 @@ type LockorWipeOperationResult_5 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type Wipeitem_2 = string
+type Wipeitem_2 = Array<string>
 /**
  * The objectURN for Lock and Wipe
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -206,7 +206,7 @@ type SupersedeHeartbeat_805 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type Active_Controller_List_811 = string
+type Active_Controller_List_811 = Array<string>
 /**
  * Documentary Description
  *

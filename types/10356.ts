@@ -50,7 +50,7 @@ type RobotServiceInfo_100 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type SCAInfo_101 = string
+type SCAInfo_101 = Array<string>
 /**
  * Speaker Info
  *
@@ -74,7 +74,7 @@ type SpeakerInfo_102 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type CameraInfo_103 = string
+type CameraInfo_103 = Array<string>
 /**
  * Screen Info
  *
@@ -98,7 +98,7 @@ type ScreenInfo_104 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type LightInfo_105 = string
+type LightInfo_105 = Array<string>
 /**
  * Warning Light Info
  *
@@ -122,7 +122,7 @@ type WarningLightInfo_106 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type DoorInfo_107 = string
+type DoorInfo_107 = Array<string>
 /**
  * Thermal Imager Info
  *
@@ -146,7 +146,7 @@ type ThermalImagerInfo_108 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type CompressorInfo_109 = string
+type CompressorInfo_109 = Array<string>
 /**
  * Lock Info
  *
@@ -158,7 +158,7 @@ type CompressorInfo_109 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type LockInfo_110 = string
+type LockInfo_110 = Array<string>
 /**
  * Collision Sensor Info
  *
@@ -170,7 +170,7 @@ type LockInfo_110 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type CollisionSensorInfo_111 = string
+type CollisionSensorInfo_111 = Array<string>
 /**
  * Drop Sensor Info
  *
@@ -182,7 +182,7 @@ type CollisionSensorInfo_111 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type DropSensorInfo_112 = string
+type DropSensorInfo_112 = Array<string>
 /**
  * The objectURN for Service Info
  * Used in the JSON schema for the LwM2M document definition as a key.

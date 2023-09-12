@@ -46,7 +46,7 @@ type Name_0 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type IntervalDataLinks_1 = string
+type IntervalDataLinks_1 = Array<string>
 /**
  * Latest Payload
  *
@@ -65,7 +65,7 @@ type IntervalDataLinks_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type LatestPayload_2 = string
+type LatestPayload_2 = Array<string>
 /**
  * Schedule
  *

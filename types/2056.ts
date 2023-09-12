@@ -29,7 +29,7 @@ export type CmdhBuffer_2056 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type ApplicableEventCategory_0 = number
+type ApplicableEventCategory_0 = Array<number>
 /**
  * MaxBufferSize
  *

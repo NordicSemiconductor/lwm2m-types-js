@@ -43,7 +43,7 @@ type OGCSecurityID_0 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type AcceptedSenders_3 = string
+type AcceptedSenders_3 = Array<string>
 /**
  * Secret Group Key
  *

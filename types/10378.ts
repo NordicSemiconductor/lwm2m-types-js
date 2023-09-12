@@ -41,7 +41,7 @@ type ApplicationClientID_0 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type EASID_1 = string
+type EASID_1 = Array<string>
 /**
  * EAS Endpoint
  *
@@ -52,7 +52,7 @@ type EASID_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type EASEndpoint_2 = string
+type EASEndpoint_2 = Array<string>
 /**
  * Type
  *
@@ -66,7 +66,7 @@ type EASEndpoint_2 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Type_3 = number
+type Type_3 = Array<number>
 /**
  * The objectURN for Edge Application Server Configuration
  * Used in the JSON schema for the LwM2M document definition as a key.

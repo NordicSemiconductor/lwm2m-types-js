@@ -157,7 +157,7 @@ type ReconnectSchedule_7 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Validity_MCC_MNC_8 = string
+type Validity_MCC_MNC_8 = Array<string>
 /**
  * Connection establishment time (1)
  *
@@ -167,7 +167,7 @@ type Validity_MCC_MNC_8 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Connectionestablishmenttime_1_9 = number
+type Connectionestablishmenttime_1_9 = Array<number>
 /**
  * Connection establishment result (1)
  *
@@ -179,7 +179,7 @@ type Connectionestablishmenttime_1_9 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type Connectionestablishmentresult_1_10 = number
+type Connectionestablishmentresult_1_10 = Array<number>
 /**
  * Connection establishment reject cause (1)
  *
@@ -189,7 +189,7 @@ type Connectionestablishmentresult_1_10 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type Connectionestablishmentrejectcause_1_11 = number
+type Connectionestablishmentrejectcause_1_11 = Array<number>
 /**
  * Connection end time (1)
  *
@@ -199,7 +199,7 @@ type Connectionestablishmentrejectcause_1_11 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type Connectionendtime_1_12 = number
+type Connectionendtime_1_12 = Array<number>
 /**
  * TotalBytesSent
  *
@@ -231,7 +231,7 @@ type TotalBytesReceived_14 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type IPaddress_2_15 = string
+type IPaddress_2_15 = Array<string>
 /**
  * Prefix length(2)
  *
@@ -241,7 +241,7 @@ type IPaddress_2_15 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Prefixlength_2_16 = string
+type Prefixlength_2_16 = Array<string>
 /**
  * Subnet mask (2)
  *
@@ -251,7 +251,7 @@ type Prefixlength_2_16 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Subnetmask_2_17 = string
+type Subnetmask_2_17 = Array<string>
 /**
  * Gateway (2)
  *
@@ -261,7 +261,7 @@ type Subnetmask_2_17 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Gateway_2_18 = string
+type Gateway_2_18 = Array<string>
 /**
  * Primary DNS address (2)
  *
@@ -271,7 +271,7 @@ type Gateway_2_18 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type PrimaryDNSaddress_2_19 = string
+type PrimaryDNSaddress_2_19 = Array<string>
 /**
  * Secondary DNS address (2)
  *
@@ -281,7 +281,7 @@ type PrimaryDNSaddress_2_19 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type SecondaryDNSaddress_2_20 = string
+type SecondaryDNSaddress_2_20 = Array<string>
 /**
  * QCI (3)
  *
@@ -420,7 +420,7 @@ type APNExceptionDataUplinkTimeUnit_29 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type SupportedRATTypes_30 = number
+type SupportedRATTypes_30 = Array<number>
 /**
  * RDS Application ID
  *
@@ -431,7 +431,7 @@ type SupportedRATTypes_30 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type RDSApplicationID_31 = string
+type RDSApplicationID_31 = Array<string>
 /**
  * RDS Destination Port
  *
@@ -444,7 +444,7 @@ type RDSApplicationID_31 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type RDSDestinationPort_32 = number
+type RDSDestinationPort_32 = Array<number>
 /**
  * RDS Source Port
  *
@@ -457,7 +457,7 @@ type RDSDestinationPort_32 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type RDSSourcePort_33 = number
+type RDSSourcePort_33 = Array<number>
 /**
  * The objectURN for LWM2M APN Connection Profile
  * Used in the JSON schema for the LwM2M document definition as a key.

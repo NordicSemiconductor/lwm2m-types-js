@@ -50,7 +50,7 @@ type CPUTemperature_503 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type ExecutingObjects_504 = string
+type ExecutingObjects_504 = Array<string>
 /**
  * Error Status
  *

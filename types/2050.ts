@@ -28,7 +28,7 @@ export type CmdhDefaults_2050 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type DefaultEcRules_0 = string
+type DefaultEcRules_0 = Array<string>
 /**
  * DefaultEcParamRules
  *
@@ -38,7 +38,7 @@ type DefaultEcRules_0 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type DefaultEcParamRules_1 = string
+type DefaultEcParamRules_1 = Array<string>
 /**
  * The objectURN for CmdhDefaults
  * Used in the JSON schema for the LwM2M document definition as a key.

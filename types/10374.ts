@@ -168,7 +168,7 @@ type HardwareControlFlowMode_6 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type AvailableRTUPorts_7 = string
+type AvailableRTUPorts_7 = Array<string>
 /**
  * The objectURN for Modbus Connection
  * Used in the JSON schema for the LwM2M document definition as a key.

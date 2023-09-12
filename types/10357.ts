@@ -52,7 +52,7 @@ type RCUPM_101 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type CCUPM_102 = string
+type CCUPM_102 = Array<string>
 /**
  * SCA PM
  *
@@ -64,7 +64,7 @@ type CCUPM_102 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type SCAPM_103 = string
+type SCAPM_103 = Array<string>
 /**
  * The objectURN for PM
  * Used in the JSON schema for the LwM2M document definition as a key.

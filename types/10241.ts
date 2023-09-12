@@ -30,7 +30,7 @@ export type HostDeviceInfo_10241 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type HostDeviceManufacturer_5905 = string
+type HostDeviceManufacturer_5905 = Array<string>
 /**
  * Host Device Model Number
  *
@@ -40,7 +40,7 @@ type HostDeviceManufacturer_5905 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type HostDeviceModelNumber_5906 = string
+type HostDeviceModelNumber_5906 = Array<string>
 /**
  * Host Device Unique ID
  *
@@ -51,7 +51,7 @@ type HostDeviceModelNumber_5906 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type HostDeviceUniqueID_5907 = string
+type HostDeviceUniqueID_5907 = Array<string>
 /**
  * Host Device Software Version
  *
@@ -61,7 +61,7 @@ type HostDeviceUniqueID_5907 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type HostDeviceSoftwareVersion_5908 = string
+type HostDeviceSoftwareVersion_5908 = Array<string>
 /**
  * The objectURN for HostDeviceInfo
  * Used in the JSON schema for the LwM2M document definition as a key.

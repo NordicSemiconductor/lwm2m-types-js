@@ -156,7 +156,7 @@ type BatteryLevel_51 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type DownloadedAPPPackages_60 = string
+type DownloadedAPPPackages_60 = Array<string>
 /**
  * On time
  *
@@ -220,7 +220,7 @@ type CameraInfo_14 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type RCUAPPs_100 = string
+type RCUAPPs_100 = Array<string>
 /**
  * The objectURN for RCU
  * Used in the JSON schema for the LwM2M document definition as a key.

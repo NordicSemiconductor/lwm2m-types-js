@@ -76,7 +76,7 @@ type AccessControlOwner_3 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type ACL_2 = number
+type ACL_2 = Array<number>
 /**
  * The objectURN for LwM2M Access Control
  * Used in the JSON schema for the LwM2M document definition as a key.

@@ -46,7 +46,7 @@ type Name_0 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type EventDataLinks_1 = string
+type EventDataLinks_1 = Array<string>
 /**
  * Latest Eventlog
  *
@@ -69,7 +69,7 @@ type EventDataLinks_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type LatestEventlog_2 = string
+type LatestEventlog_2 = Array<string>
 /**
  * Schedule
  *

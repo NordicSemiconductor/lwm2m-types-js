@@ -53,7 +53,7 @@ type RCUGeneralInfo_101 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type CCUGeneralInfo_102 = string
+type CCUGeneralInfo_102 = Array<string>
 /**
  * ECU General Info
  *
@@ -65,7 +65,7 @@ type CCUGeneralInfo_102 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type ECUGeneralInfo_103 = string
+type ECUGeneralInfo_103 = Array<string>
 /**
  * The objectURN for General Info
  * Used in the JSON schema for the LwM2M document definition as a key.

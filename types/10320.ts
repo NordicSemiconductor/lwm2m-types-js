@@ -109,7 +109,7 @@ type Ontime_5852 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type DownloadedAPPPackages_100 = string
+type DownloadedAPPPackages_100 = Array<string>
 /**
  * CCU APPs
  *
@@ -121,7 +121,7 @@ type DownloadedAPPPackages_100 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type CCUAPPs_101 = string
+type CCUAPPs_101 = Array<string>
 /**
  * The objectURN for CCU
  * Used in the JSON schema for the LwM2M document definition as a key.

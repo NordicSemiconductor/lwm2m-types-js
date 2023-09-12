@@ -64,7 +64,7 @@ type ConnectivityOption_0 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type NRBandSupportavailable_1 = number
+type NRBandSupportavailable_1 = Array<number>
 /**
  * NR Band attached
  *
@@ -76,7 +76,7 @@ type NRBandSupportavailable_1 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type NRBandattached_2 = number
+type NRBandattached_2 = Array<number>
 /**
  * S-NSSAI
  *
@@ -92,7 +92,7 @@ type NRBandattached_2 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type S_NSSAI_3 = number
+type S_NSSAI_3 = Array<number>
 /**
  * DNN Name
  *
