@@ -79,7 +79,7 @@ type NetworkAction_0 = number
  * Mandatory: false
  * Units: ms
  */
-type OptionalRandomBackoffTime_4 = number
+type OptionalRandomBackoffTime_4 = Array<number>
 /**
  * The objectURN for CmdhBackOffParametersSet
  * Used in the JSON schema for the LwM2M document definition as a key.

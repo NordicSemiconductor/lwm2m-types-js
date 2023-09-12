@@ -42,7 +42,7 @@ export type VirtualObserveNotify_22 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type ObserveLinks_0 = string
+type ObserveLinks_0 = Array<string>
 /**
  * Report
  *
@@ -91,7 +91,7 @@ type ResourceFilter_2 = boolean
  * MultipleInstances: true
  * Mandatory: false
  */
-type ReportLinks_3 = string
+type ReportLinks_3 = Array<string>
 /**
  * ObserveRelation
  *

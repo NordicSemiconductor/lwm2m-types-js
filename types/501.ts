@@ -64,7 +64,7 @@ type CurrentFrequency_Downlink_2 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type PrioritizedChannels_4 = number
+type PrioritizedChannels_4 = Array<number>
 /**
  * Reset Timeout
  *

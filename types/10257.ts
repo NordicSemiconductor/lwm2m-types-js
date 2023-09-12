@@ -46,7 +46,7 @@ export type Heat_Coolingmeter_10257 = Readonly<
  * Mandatory: true
  * Units: W
  */
-type MaxMeasuredactivepower_5802 = number
+type MaxMeasuredactivepower_5802 = Array<number>
 /**
  * Manufacturer
  *
@@ -96,7 +96,7 @@ type Description_3 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Errorcode_11 = number
+type Errorcode_11 = Array<number>
 /**
  * Flow temperature
  *

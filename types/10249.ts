@@ -116,7 +116,7 @@ type CumulativeUplinkThroughputperConnectedUser_7 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type NeighbourCellReport_8 = string
+type NeighbourCellReport_8 = Array<string>
 /**
  * Cumulative Timing Advance per Connected User
  *

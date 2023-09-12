@@ -32,7 +32,7 @@ export type CmdhNwAccessRule_2055 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type TargetNetwork_0 = string
+type TargetNetwork_0 = Array<string>
 /**
  * SpreadingWaitTime
  *
@@ -97,7 +97,7 @@ type OtherConditions_4 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type AllowedSchedule_5 = string
+type AllowedSchedule_5 = Array<string>
 /**
  * The objectURN for CmdhNwAccessRule
  * Used in the JSON schema for the LwM2M document definition as a key.

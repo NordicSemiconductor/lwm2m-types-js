@@ -80,7 +80,7 @@ type StatusReportStructureID_919 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type ReportingObjectInstances_932 = string
+type ReportingObjectInstances_932 = Array<string>
 /**
  * Target Resource
  *

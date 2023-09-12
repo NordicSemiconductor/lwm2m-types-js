@@ -68,7 +68,7 @@ type StatusReportStructureID_850 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type Keys_851 = string
+type Keys_851 = Array<string>
 /**
  * Documentary Description
  *

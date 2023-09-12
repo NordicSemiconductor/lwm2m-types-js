@@ -331,7 +331,7 @@ type MuteSend_23 = boolean
  * MultipleInstances: true
  * Mandatory: false
  */
-type AlternateAPNLinks_24 = string
+type AlternateAPNLinks_24 = Array<string>
 /**
  * Supported Server Versions
  *
@@ -343,7 +343,7 @@ type AlternateAPNLinks_24 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type SupportedServerVersions_25 = string
+type SupportedServerVersions_25 = Array<string>
 /**
  * Default Notification Mode
  *

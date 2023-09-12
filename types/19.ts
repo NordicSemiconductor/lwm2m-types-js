@@ -41,7 +41,7 @@ export type BinaryAppDataContainer_19 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type Data_0 = string
+type Data_0 = Array<string>
 /**
  * Data Priority
  *

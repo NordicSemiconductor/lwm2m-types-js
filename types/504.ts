@@ -65,7 +65,7 @@ type CurrentSIMType_0 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type SupportedSIMType_1 = number
+type SupportedSIMType_1 = Array<number>
 /**
  * Integrated Circuit Card Identifier (ICCID)
  *
@@ -80,7 +80,7 @@ type SupportedSIMType_1 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type IntegratedCircuitCardIdentifier_ICCID_11 = string
+type IntegratedCircuitCardIdentifier_ICCID_11 = Array<string>
 /**
  * RSP Type
  *

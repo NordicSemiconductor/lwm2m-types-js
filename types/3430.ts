@@ -265,7 +265,7 @@ type Visiblesatellites_16 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type Satelliteidentifiers_17 = string
+type Satelliteidentifiers_17 = Array<string>
 /**
  * Satellite identifiers
  *
@@ -276,7 +276,7 @@ type Satelliteidentifiers_17 = string
  * Mandatory: false
  * Units: deg
  */
-type Satelliteidentifiers_18 = number
+type Satelliteidentifiers_18 = Array<number>
 /**
  * Satellite azimuth
  *
@@ -287,7 +287,7 @@ type Satelliteidentifiers_18 = number
  * Mandatory: false
  * Units: deg
  */
-type Satelliteazimuth_19 = number
+type Satelliteazimuth_19 = Array<number>
 /**
  * Almanac
  *
@@ -315,7 +315,7 @@ type Almanac_20 = boolean
  * MultipleInstances: true
  * Mandatory: false
  */
-type Ephemeris_21 = boolean
+type Ephemeris_21 = Array<boolean>
 /**
  * Signal-to-noise ratio
  *
@@ -326,7 +326,7 @@ type Ephemeris_21 = boolean
  * Mandatory: false
  * Units: dB
  */
-type Signal_to_noiseratio_22 = number
+type Signal_to_noiseratio_22 = Array<number>
 /**
  * GNSS
  *
@@ -344,7 +344,7 @@ type Signal_to_noiseratio_22 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type GNSS_23 = number
+type GNSS_23 = Array<number>
 /**
  * Hardware RTC
  *

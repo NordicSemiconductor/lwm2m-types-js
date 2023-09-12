@@ -41,7 +41,7 @@ export type LWM2MCellularConnectivity_10 = Readonly<{
  * MultipleInstances: true
  * Mandatory: true
  */
-type ActivatedProfileNames_11 = string
+type ActivatedProfileNames_11 = Array<string>
 /**
  * SMSC address
  *

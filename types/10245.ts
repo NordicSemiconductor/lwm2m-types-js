@@ -112,7 +112,7 @@ type BackhaulPrimaryEARFCN_5 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type BackhaulSecondaryEARFCN_6 = number
+type BackhaulSecondaryEARFCN_6 = Array<number>
 /**
  * Cumulative Measurement Window
  *
@@ -198,7 +198,7 @@ type BackhaulPrimaryq_OffsetFreq_12 = number
  * Mandatory: true
  * Units: dB
  */
-type BackhaulSecondaryq_OffsetFreq_13 = number
+type BackhaulSecondaryq_OffsetFreq_13 = Array<number>
 /**
  * Neighbour CrowdBox EARFCN
  *
@@ -209,7 +209,7 @@ type BackhaulSecondaryq_OffsetFreq_13 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type NeighbourCrowdBoxEARFCN_14 = number
+type NeighbourCrowdBoxEARFCN_14 = Array<number>
 /**
  * Neighbour CrowdBox q-OffsetFreq
  *
@@ -224,7 +224,7 @@ type NeighbourCrowdBoxEARFCN_14 = number
  * Mandatory: true
  * Units: dB
  */
-type NeighbourCrowdBoxq_OffsetFreq_15 = number
+type NeighbourCrowdBoxq_OffsetFreq_15 = Array<number>
 /**
  * Serving Macro eNB cellIndividualOffset
  *

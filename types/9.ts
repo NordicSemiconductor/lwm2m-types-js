@@ -255,7 +255,7 @@ type StatusReason_16 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type SoftwareComponentLink_17 = string
+type SoftwareComponentLink_17 = Array<string>
 /**
  * Software Component tree length
  *

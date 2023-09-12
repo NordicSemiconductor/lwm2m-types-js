@@ -209,7 +209,7 @@ type Controlgearcommunicationfailure_12 = boolean
  * MultipleInstances: true
  * Mandatory: false
  */
-type SchedulerID_13 = number
+type SchedulerID_13 = Array<number>
 /**
  * Invalid scheduler
  *

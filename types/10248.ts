@@ -50,7 +50,7 @@ type CumulativeNumberofUniqueUsers_1 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type ConnectedUEReport_2 = string
+type ConnectedUEReport_2 = Array<string>
 /**
  * The objectURN for Connected UE Measurements
  * Used in the JSON schema for the LwM2M document definition as a key.

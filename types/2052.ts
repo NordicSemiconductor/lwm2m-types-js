@@ -34,7 +34,7 @@ export type CmdhEcDefParamValues_2052 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type ApplicableEventCategory_0 = number
+type ApplicableEventCategory_0 = Array<number>
 /**
  * DefaultRequestExpTime
  *

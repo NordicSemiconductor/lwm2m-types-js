@@ -76,7 +76,7 @@ type ServingCellSINR_3 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type NeighbourCellReport_5 = string
+type NeighbourCellReport_5 = Array<string>
 /**
  * Cumulative Backhaul Timing Advance
  *

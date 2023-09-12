@@ -39,7 +39,7 @@ type Command_0 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type Response_1 = string
+type Response_1 = Array<string>
 /**
  * Status
  *
@@ -50,7 +50,7 @@ type Response_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type Status_2 = string
+type Status_2 = Array<string>
 /**
  * Timeout
  *

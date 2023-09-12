@@ -296,7 +296,7 @@ type InjectTestEvent_906 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type SceneCache_922 = string
+type SceneCache_922 = Array<string>
 /**
  * Object Enabled
  *

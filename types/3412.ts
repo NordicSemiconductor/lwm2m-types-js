@@ -70,7 +70,7 @@ type Typeofnetwork_1 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type IPv4address_2 = string
+type IPv4address_2 = Array<string>
 /**
  * IPv6 address
  *
@@ -80,7 +80,7 @@ type IPv4address_2 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type IPv6address_3 = string
+type IPv6address_3 = Array<string>
 /**
  * Network address
  *
@@ -90,7 +90,7 @@ type IPv6address_3 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Networkaddress_4 = string
+type Networkaddress_4 = Array<string>
 /**
  * Secondary network address
  *
@@ -100,7 +100,7 @@ type Networkaddress_4 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Secondarynetworkaddress_5 = string
+type Secondarynetworkaddress_5 = Array<string>
 /**
  * Peer address
  *
@@ -110,7 +110,7 @@ type Secondarynetworkaddress_5 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Peeraddress_7 = string
+type Peeraddress_7 = Array<string>
 /**
  * Multicast group address
  *
@@ -121,7 +121,7 @@ type Peeraddress_7 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Multicastgroupaddress_8 = string
+type Multicastgroupaddress_8 = Array<string>
 /**
  * Multicast group key
  *
@@ -132,7 +132,7 @@ type Multicastgroupaddress_8 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type Multicastgroupkey_9 = string
+type Multicastgroupkey_9 = Array<string>
 /**
  * Data rate
  *

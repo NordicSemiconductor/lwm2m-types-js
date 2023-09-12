@@ -81,7 +81,7 @@ type Commandinaction_4 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type SchedulerID_5 = number
+type SchedulerID_5 = Array<number>
 /**
  * Invalid scheduler
  *

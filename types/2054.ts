@@ -28,7 +28,7 @@ export type CmdhNetworkAccessRules_2054 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type ApplicableEventCategories_0 = number
+type ApplicableEventCategories_0 = Array<number>
 /**
  * NetworkAccessRule
  *
@@ -38,7 +38,7 @@ type ApplicableEventCategories_0 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type NetworkAccessRule_1 = string
+type NetworkAccessRule_1 = Array<string>
 /**
  * The objectURN for CmdhNetworkAccessRules
  * Used in the JSON schema for the LwM2M document definition as a key.

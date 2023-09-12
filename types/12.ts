@@ -229,7 +229,7 @@ type AutoChannel_10 = boolean
  * MultipleInstances: true
  * Mandatory: false
  */
-type SupportedChannels_11 = number
+type SupportedChannels_11 = Array<number>
 /**
  * Channels In Use
  *
@@ -240,7 +240,7 @@ type SupportedChannels_11 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type ChannelsInUse_12 = number
+type ChannelsInUse_12 = Array<number>
 /**
  * Regulatory Domain
  *
@@ -436,7 +436,7 @@ type MACControlEnabled_31 = boolean
  * MultipleInstances: true
  * Mandatory: false
  */
-type MACAddressList_32 = string
+type MACAddressList_32 = Array<string>
 /**
  * Total Bytes Sent
  *

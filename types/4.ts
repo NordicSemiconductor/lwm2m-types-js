@@ -81,7 +81,7 @@ type NetworkBearer_0 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type AvailableNetworkBearer_1 = number
+type AvailableNetworkBearer_1 = Array<number>
 /**
  * Radio Signal Strength
  *
@@ -114,7 +114,7 @@ type RadioSignalStrength_2 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type IPAddresses_4 = string
+type IPAddresses_4 = Array<string>
 /**
  * Link Quality
  *
@@ -139,7 +139,7 @@ type LinkQuality_3 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type RouterIPAddresses_5 = string
+type RouterIPAddresses_5 = Array<string>
 /**
  * Link Utilization
  *
@@ -161,7 +161,7 @@ type LinkUtilization_6 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type APN_7 = string
+type APN_7 = Array<string>
 /**
  * Cell ID
  *

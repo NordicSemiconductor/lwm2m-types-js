@@ -54,7 +54,7 @@ type DefEcValue_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type RequestOrigin_2 = string
+type RequestOrigin_2 = Array<string>
 /**
  * RequestContext
  *

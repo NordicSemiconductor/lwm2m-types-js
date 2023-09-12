@@ -92,7 +92,7 @@ type StartingRegisterAddress_3 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type Values_5 = number
+type Values_5 = Array<number>
 /**
  * Quantity of Registers
  *
@@ -122,7 +122,7 @@ type QuantityofRegisters_4 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type MinimumMeasuredValues_6 = number
+type MinimumMeasuredValues_6 = Array<number>
 /**
  * Maximum Measured Values
  *
@@ -138,7 +138,7 @@ type MinimumMeasuredValues_6 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type MaximumMeasuredValues_7 = number
+type MaximumMeasuredValues_7 = Array<number>
 /**
  * The objectURN for Modbus Register Cluster
  * Used in the JSON schema for the LwM2M document definition as a key.

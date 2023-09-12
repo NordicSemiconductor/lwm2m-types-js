@@ -48,7 +48,7 @@ type Order_0 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type RequestOrigin_1 = string
+type RequestOrigin_1 = Array<string>
 /**
  * LimitsEventCategory
  *
@@ -59,7 +59,7 @@ type RequestOrigin_1 = string
  * MultipleInstances: true
  * Mandatory: true
  */
-type LimitsEventCategory_5 = number
+type LimitsEventCategory_5 = Array<number>
 /**
  * LimitsRequestExpTime
  *
@@ -74,7 +74,7 @@ type LimitsEventCategory_5 = number
  * Mandatory: true
  * Units: ms
  */
-type LimitsRequestExpTime_6 = number
+type LimitsRequestExpTime_6 = Array<number>
 /**
  * LimitsResultExpTime
  *
@@ -89,7 +89,7 @@ type LimitsRequestExpTime_6 = number
  * Mandatory: true
  * Units: ms
  */
-type LimitsResultExpTime_7 = number
+type LimitsResultExpTime_7 = Array<number>
 /**
  * LimitsOptExpTime
  *
@@ -104,7 +104,7 @@ type LimitsResultExpTime_7 = number
  * Mandatory: true
  * Units: ms
  */
-type LimitsOptExpTime_8 = number
+type LimitsOptExpTime_8 = Array<number>
 /**
  * LimitsRespPersistence
  *
@@ -119,7 +119,7 @@ type LimitsOptExpTime_8 = number
  * Mandatory: true
  * Units: ms
  */
-type LimitsRespPersistence_9 = number
+type LimitsRespPersistence_9 = Array<number>
 /**
  * LimitsDelAggregation
  *
@@ -132,7 +132,7 @@ type LimitsRespPersistence_9 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type LimitsDelAggregation_10 = string
+type LimitsDelAggregation_10 = Array<string>
 /**
  * RequestContext
  *

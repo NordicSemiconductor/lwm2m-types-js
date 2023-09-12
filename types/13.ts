@@ -68,7 +68,7 @@ export type LWM2MBearerSelection_13 = Readonly<{
  * MultipleInstances: true
  * Mandatory: false
  */
-type PreferredCommunicationsBearer_0 = number
+type PreferredCommunicationsBearer_0 = Array<number>
 /**
  * Acceptable RSSI (GSM)
  *

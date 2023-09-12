@@ -71,7 +71,7 @@ type LinkedSensor_0 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type MeasurementQualityReasonCode_1 = number
+type MeasurementQualityReasonCode_1 = Array<number>
 /**
  * Measurement Quality Indicator
  *

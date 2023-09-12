@@ -67,7 +67,7 @@ export type Device_3 = Readonly<{
  * MultipleInstances: true
  * Mandatory: true
  */
-type ErrorCode_11 = number
+type ErrorCode_11 = Array<number>
 /**
  * Supported Binding and Modes
  *
@@ -139,7 +139,7 @@ type FirmwareVersion_3 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type AvailablePowerSources_6 = number
+type AvailablePowerSources_6 = Array<number>
 /**
  * Power Source Voltage
  *
@@ -150,7 +150,7 @@ type AvailablePowerSources_6 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type PowerSourceVoltage_7 = number
+type PowerSourceVoltage_7 = Array<number>
 /**
  * Power Source Current
  *
@@ -161,7 +161,7 @@ type PowerSourceVoltage_7 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type PowerSourceCurrent_8 = number
+type PowerSourceCurrent_8 = Array<number>
 /**
  * Battery Level
  *
@@ -301,7 +301,7 @@ type MemoryTotal_21 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type ExtDevInfo_22 = string
+type ExtDevInfo_22 = Array<string>
 /**
  * The objectURN for Device
  * Used in the JSON schema for the LwM2M document definition as a key.

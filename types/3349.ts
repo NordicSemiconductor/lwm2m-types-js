@@ -65,7 +65,7 @@ type ApplicationType_5750 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type ElementDescription_5912 = string
+type ElementDescription_5912 = Array<string>
 /**
  * Fractional Timestamp
  *

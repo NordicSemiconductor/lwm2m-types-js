@@ -67,7 +67,7 @@ type TransitionTime_652 = number
  * MultipleInstances: true
  * Mandatory: true
  */
-type SceneConfiguration_653 = string
+type SceneConfiguration_653 = Array<string>
 /**
  * Changeable by User API
  *

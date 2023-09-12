@@ -32,7 +32,7 @@ export type LeakageDetectionConfiguration_10265 = Readonly<{
  * MultipleInstances: true
  * Mandatory: true
  */
-type SampleTimes_0 = number
+type SampleTimes_0 = Array<number>
 /**
  * Detection Mode
  *
@@ -114,7 +114,7 @@ type TopFrequencyCount_3 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type FrequencyThresholds_4 = number
+type FrequencyThresholds_4 = Array<number>
 /**
  * Frequency Values
  *
@@ -137,7 +137,7 @@ type FrequencyThresholds_4 = number
  * MultipleInstances: true
  * Mandatory: false
  */
-type FrequencyValues_5 = number
+type FrequencyValues_5 = Array<number>
 /**
  * The objectURN for Leakage Detection Configuration
  * Used in the JSON schema for the LwM2M document definition as a key.

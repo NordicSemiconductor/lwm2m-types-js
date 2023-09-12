@@ -39,7 +39,7 @@ export type Portfolio_16 = Readonly<
  * MultipleInstances: true
  * Mandatory: true
  */
-type Identity_0 = string
+type Identity_0 = Array<string>
 /**
  * AuthData
  *
@@ -50,7 +50,7 @@ type Identity_0 = string
  * MultipleInstances: true
  * Mandatory: false
  */
-type AuthData_2 = string
+type AuthData_2 = Array<string>
 /**
  * AuthStatus
  *
