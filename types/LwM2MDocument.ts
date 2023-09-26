@@ -96,6 +96,10 @@ import {
 	objectURN as VendorSpecificMeasurementQualityReason_510_urn,
 } from './510.js'
 import {
+	type CompactComposite_511,
+	objectURN as CompactComposite_511_urn,
+} from './511.js'
+import {
 	type CmdhPolicy_2048,
 	objectURN as CmdhPolicy_2048_urn,
 } from './2048.js'
@@ -987,6 +991,7 @@ export type LwM2MDocument = Readonly<
 		[nuSIM_508_urn]: nuSIM_508
 		[MeasurementMetadata_509_urn]: MeasurementMetadata_509
 		[VendorSpecificMeasurementQualityReason_510_urn]: VendorSpecificMeasurementQualityReason_510
+		[CompactComposite_511_urn]: CompactComposite_511
 		[CmdhPolicy_2048_urn]: CmdhPolicy_2048
 		[ActiveCmdhPolicy_2049_urn]: ActiveCmdhPolicy_2049
 		[CmdhDefaults_2050_urn]: CmdhDefaults_2050

@@ -13867,6 +13867,38 @@
         "required": ["0", "1", "2"]
       }
     },
+    "511@1.1": {
+      "type": "array",
+      "minItems": 1,
+      "title": "Compact Composite",
+      "description": "This Object enables collecting a set of Resource values from other Objects into a single Resource representation. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+      "items": {
+        "type": "object",
+        "$id": "https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/511.xml",
+        "title": "Compact Composite",
+        "description": "This Object enables collecting a set of Resource values from other Objects into a single Resource representation. LWM2MVersion: 1.1 ObjectVersion: 1.0 MultipleInstances: true Mandatory: false",
+        "additionalProperties": false,
+        "properties": {
+          "0": {
+            "type": "string",
+            "pattern": "^</[^>]+>(;[^=]+=\"[^\"]+\")*$",
+            "description": "One or more CoRE Links to Readable Single Resources and/or Resource Instances of Readable Multiple Resources in the same LwM2M Client, from which the values will be stored in the Compact Data array. Each link corresponds to an item in the Compact Data array: first link points to the resource instance with the value for the first array item, second link to the instance with the second array item, etc.",
+            "title": "Target Links"
+          },
+          "1": {
+            "type": "string",
+            "title": "Compact Data",
+            "description": "CBOR array of resource values in the same order as the links in the Target Links resource. CBOR simple value of undefined should be used as the array item if an error occurs while reading the value for the corresponding resource (e.g., link pointing to a resource that doesn't exist or the resource is not allowed to be read because of access control rules)."
+          },
+          "2": {
+            "type": "string",
+            "title": "Description",
+            "description": "Human-readable description of the Compact Data resulting from the Target Links."
+          }
+        },
+        "required": ["0", "1"]
+      }
+    },
     "3200:1.1": {
       "type": "array",
       "minItems": 1,
