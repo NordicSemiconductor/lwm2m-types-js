@@ -114,9 +114,7 @@ export const LwM2MJSONfromXML2js = (
 	value: Record<string, any>,
 ): LwM2MObjectDefinition => {
 	const maybeValidValue = validateInput(
-		filterOutResourcesWithUnsupportedTypes(
-			filterOutBlankValues(value) as Record<string, any>,
-		),
+		filterOutResourcesWithUnsupportedTypes(filterOutBlankValues(value)),
 	)
 	if ('errors' in maybeValidValue)
 		throw new Error(
