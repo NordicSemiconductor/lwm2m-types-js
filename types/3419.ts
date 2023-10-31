@@ -8,7 +8,7 @@
  *
  * ID: 3419
  * LWM2MVersion: 1.0
- * ObjectVersion: 1.0
+ * ObjectVersion: 1.1
  * MultipleInstances: true
  * Mandatory: false
  */
@@ -17,6 +17,8 @@ export type Photocell_3419 = Readonly<
 		'1'?: ONluxlevel_1
 		'2'?: OFFluxlevel_2
 		'3'?: Photocellstatus_3
+		'5518'?: Timestamp_5518
+		'6050'?: FractionalTimestamp_6050
 	}>
 >
 /**
@@ -55,7 +57,29 @@ type OFFluxlevel_2 = number
  */
 type Photocellstatus_3 = boolean
 /**
+ * Timestamp
+ *
+ * The timestamp of when the measurement was performed.
+ *
+ * ID: 5518
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Timestamp_5518 = number
+/**
+ * Fractional Timestamp
+ *
+ * Fractional part of the timestamp when sub-second precision is used (e.g.,
+ * 0.23 for 230 ms).
+ *
+ * ID: 6050
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type FractionalTimestamp_6050 = number
+/**
  * The objectURN for Photocell
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '3419'
+export const objectURN = '3419:1.1'

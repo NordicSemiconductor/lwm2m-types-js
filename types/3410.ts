@@ -8,7 +8,7 @@
  *
  * ID: 3410
  * LWM2MVersion: 1.0
- * ObjectVersion: 1.0
+ * ObjectVersion: 2.0
  * MultipleInstances: false
  * Mandatory: false
  */
@@ -22,6 +22,11 @@ export type DeviceExtension_3410 = Readonly<{
 	'7'?: Maintenance_7
 	'9'?: Deviceoperatinghours_9
 	'10'?: Additionalfirmwareinformation_10
+	'11'?: DSTStart_11
+	'12'?: DSTEnd_12
+	'13'?: DSTOffset_13
+	'14'?: Uptime_14
+	'15'?: RFDdevice_15
 }>
 /**
  * Manufacturer identifier
@@ -122,7 +127,63 @@ type Deviceoperatinghours_9 = number
  */
 type Additionalfirmwareinformation_10 = string
 /**
+ * DST Start
+ *
+ * The precise date and UTC time during the year when Daylight Saving Time
+ * begins, represented as Unix Time.
+ *
+ * ID: 11
+ * MultipleInstances: true
+ * Mandatory: false
+ * Units: s
+ */
+type DSTStart_11 = Array<number>
+/**
+ * DST End
+ *
+ * The precise date and UTC time during the year when Daylight Saving Time ends,
+ * represented as Unix Time.
+ *
+ * ID: 12
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type DSTEnd_12 = Array<number>
+/**
+ * DST Offset
+ *
+ * The amount by which the UTC offset changes when Daylight Saving Time is in
+ * effect, represented as ISO 8601 time offset format. A DST offset of one hour
+ * is represented as "01:00"
+ *
+ * ID: 13
+ * MultipleInstances: true
+ * Mandatory: false
+ */
+type DSTOffset_13 = Array<string>
+/**
+ * Uptime
+ *
+ * Number of seconds since the last reboot of the device.
+ *
+ * ID: 14
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type Uptime_14 = number
+/**
+ * RFD device
+ *
+ * Set to true if the device is a Reduce Functional Device running on battery.
+ *
+ * ID: 15
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type RFDdevice_15 = boolean
+/**
  * The objectURN for Device Extension
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '3410'
+export const objectURN = '3410:2.0'

@@ -9,7 +9,7 @@
  *
  * ID: 3418
  * LWM2MVersion: 1.0
- * ObjectVersion: 1.0
+ * ObjectVersion: 2.0
  * MultipleInstances: true
  * Mandatory: false
  */
@@ -44,6 +44,15 @@ export type Electricalmonitor_3418 = Readonly<
 		'28'?: LatestinrushCurrent_28
 		'29'?: Reactivepower_29
 		'30'?: Reactiveenergy_30
+		'31'?: Lowpowerthresholdatcustomdimlevel_31
+		'32'?: Highpowerthresholdatcustomdimlevel_32
+		'33'?: Customdimlevelminrange_33
+		'34'?: Customdimlevelmaxrange_34
+		'35'?: Dimminglevel_35
+		'5518'?: Timestamp_5518
+		'6042'?: MeasurementQualityIndicator_6042
+		'6049'?: MeasurementQualityLevel_6049
+		'6050'?: FractionalTimestamp_6050
 	}>
 >
 /**
@@ -94,7 +103,7 @@ type Activepower_4 = number
  * Power factor
  *
  * Power factor is equal to active power divided by apparent power. The value is
- * between -1 and +1.
+ * between -1 and 1.
  *
  * ID: 5
  * MultipleInstances: false
@@ -104,13 +113,13 @@ type Powerfactor_5 = number
 /**
  * Cumulated active energy
  *
- * Cumulated number of kWh measured by the device and its load since last energy
+ * Cumulated number of Wh measured by the device and its load since last energy
  * counter reset.
  *
  * ID: 6
  * MultipleInstances: false
  * Mandatory: false
- * Units: kWh
+ * Units: Wh
  */
 type Cumulatedactiveenergy_6 = number
 /**
@@ -368,7 +377,121 @@ type Reactivepower_29 = number
  */
 type Reactiveenergy_30 = number
 /**
+ * Low power threshold at custom dim level
+ *
+ * If the measured power when the dimming is between "Custom dim level min
+ * range" and "Custom dim level max range" is below this threshold, a low power
+ * alarm is set.
+ *
+ * ID: 31
+ * MultipleInstances: true
+ * Mandatory: false
+ * Units: W
+ */
+type Lowpowerthresholdatcustomdimlevel_31 = Array<number>
+/**
+ * High power threshold at custom dim level
+ *
+ * If the measured power when the dimming is between "Custom dim level min
+ * range" and "Custom dim level max range" is above this threshold, a high power
+ * alarm is set.
+ *
+ * ID: 32
+ * MultipleInstances: true
+ * Mandatory: false
+ * Units: W
+ */
+type Highpowerthresholdatcustomdimlevel_32 = Array<number>
+/**
+ * Custom dim level min range
+ *
+ * Custom dimming range (lower bound) to allow specification of finer grain
+ * thresholds and alarms.
+ *
+ * ID: 33
+ * MultipleInstances: true
+ * Mandatory: false
+ * Units: /100
+ */
+type Customdimlevelminrange_33 = Array<number>
+/**
+ * Custom dim level max range
+ *
+ * Custom dimming range (upper bound) to allow specification of finer grain
+ * thresholds and alarms.
+ *
+ * ID: 34
+ * MultipleInstances: true
+ * Mandatory: false
+ * Units: /100
+ */
+type Customdimlevelmaxrange_34 = Array<number>
+/**
+ * Dimming level
+ *
+ * Dimming level associated to current measurement.
+ *
+ * ID: 35
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: /100
+ */
+type Dimminglevel_35 = number
+/**
+ * Timestamp
+ *
+ * The timestamp of when the measurement was performed.
+ *
+ * ID: 5518
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Timestamp_5518 = number
+/**
+ * Measurement Quality Indicator
+ *
+ * Measurement quality indicator reported by a smart sensor. 0: UNCHECKED No
+ * quality checks were done because they do not exist or can not be applied. 1:
+ * REJECTED WITH CERTAINTY The measured value is invalid. 2: REJECTED WITH
+ * PROBABILITY The measured value is likely invalid. 3: ACCEPTED BUT SUSPICIOUS
+ * The measured value is likely OK. 4: ACCEPTED The measured value is OK. 5-15:
+ * Reserved for future extensions. 16-23: Vendor specific measurement quality.
+ *
+ * ID: 6042
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MeasurementQualityIndicator_6042 = number
+/**
+ * Measurement Quality Level
+ *
+ * Measurement quality level reported by a smart sensor. Quality level 100 means
+ * that the measurement has fully passed quality check algorithms. Smaller
+ * quality levels mean that quality has decreased and the measurement has only
+ * partially passed quality check algorithms. The smaller the quality level, the
+ * more caution should be used by the application when using the measurement.
+ * When the quality level is 0 it means that the measurement should certainly be
+ * rejected.
+ *
+ * ID: 6049
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MeasurementQualityLevel_6049 = number
+/**
+ * Fractional Timestamp
+ *
+ * Fractional part of the timestamp when sub-second precision is used (e.g.,
+ * 0.23 for 230 ms).
+ *
+ * ID: 6050
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type FractionalTimestamp_6050 = number
+/**
  * The objectURN for Electrical monitor
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '3418'
+export const objectURN = '3418:2.0'

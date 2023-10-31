@@ -9,7 +9,7 @@
  *
  * ID: 3430
  * LWM2MVersion: 1.0
- * ObjectVersion: 1.0
+ * ObjectVersion: 2.0
  * MultipleInstances: false
  * Mandatory: false
  */
@@ -43,6 +43,18 @@ export type GlobalNavigationSatelliteSystem_3430 = Readonly<{
 	'25'?: AssistedGPS_25
 	'26'?: Powercommand_26
 	'27'?: PDOP_27
+	'29'?: Expectedlatitude_29
+	'30'?: Expectedlongitude_30
+	'31'?: Expectedaltitude_31
+	'32'?: Expectedlocationthreshold_32
+	'33'?: Outofposition_33
+	'34'?: Assistedlatitude_34
+	'35'?: Assistedlongitude_35
+	'36'?: Assistedaltitude_36
+	'5518'?: Timestamp_5518
+	'6042'?: MeasurementQualityIndicator_6042
+	'6049'?: MeasurementQualityLevel_6049
+	'6050'?: FractionalTimestamp_6050
 }>
 /**
  * Fix timestamp
@@ -212,7 +224,9 @@ type Estimatedheadingaccuracy_12 = number
  * 7 = Dead reckoning fix
  * 8 = Manual input, surveyed
  * 9 = Simulated mode
- * .
+ * If no fix is possible, but assisted position is provided, value can be
+ * returned as 8 = Manual input
+ *
  *
  *
  * ID: 13
@@ -332,7 +346,7 @@ type Signal_to_noiseratio_22 = Array<number>
  *
  * GNSS used for the fix. A mask is used with the following bit definition:
  * 0 = GPS (USA)
- * 1= GALILEO (EU)
+ * 1 = GALILEO (EU)
  * 2 = GLONASS (Russia)
  * 3 = BeiDou (China)
  * 4 = QZSS (Japan)
@@ -388,7 +402,152 @@ type Powercommand_26 = boolean
  */
 type PDOP_27 = number
 /**
+ * Expected latitude
+ *
+ * Expected latitude configured by the user. Ignored if 0 or NaN
+ *
+ * ID: 29
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: lat
+ */
+type Expectedlatitude_29 = number
+/**
+ * Expected longitude
+ *
+ * Expected longitude configured by the user. Ignored if 0 or NaN
+ *
+ * ID: 30
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: lon
+ */
+type Expectedlongitude_30 = number
+/**
+ * Expected altitude
+ *
+ * Expected altitude configured by the user. Ignored if 0 or NaN
+ *
+ * ID: 31
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m
+ */
+type Expectedaltitude_31 = number
+/**
+ * Expected location threshold
+ *
+ * Distance threshold from the expected location beyond which the location
+ * changed resource will be set. Ignored if 0 or NaN
+ *
+ * ID: 32
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m
+ */
+type Expectedlocationthreshold_32 = number
+/**
+ * Out of position
+ *
+ * True if the current position is distant more than the configured threshold
+ * from the expected location
+ *
+ * ID: 33
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Outofposition_33 = boolean
+/**
+ * Assisted latitude
+ *
+ * Assisted latitude configured by the user, to be used in case of no coverage.
+ * Ignored if 0 or NaN
+ *
+ * ID: 34
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: lat
+ */
+type Assistedlatitude_34 = number
+/**
+ * Assisted longitude
+ *
+ * Assisted longitude configured by the user, to be used in case of no coverage.
+ * Ignored if 0 or NaN
+ *
+ * ID: 35
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: lon
+ */
+type Assistedlongitude_35 = number
+/**
+ * Assisted altitude
+ *
+ * Assisted altitude configured by the user, to be used in case of no coverage.
+ * Ignored if 0 or NaN
+ *
+ * ID: 36
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: m
+ */
+type Assistedaltitude_36 = number
+/**
+ * Timestamp
+ *
+ * The timestamp of when the measurement was performed.
+ *
+ * ID: 5518
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Timestamp_5518 = number
+/**
+ * Measurement Quality Indicator
+ *
+ * Measurement quality indicator reported by a smart sensor. 0: UNCHECKED No
+ * quality checks were done because they do not exist or can not be applied. 1:
+ * REJECTED WITH CERTAINTY The measured value is invalid. 2: REJECTED WITH
+ * PROBABILITY The measured value is likely invalid. 3: ACCEPTED BUT SUSPICIOUS
+ * The measured value is likely OK. 4: ACCEPTED The measured value is OK. 5-15:
+ * Reserved for future extensions. 16-23: Vendor specific measurement quality.
+ *
+ * ID: 6042
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MeasurementQualityIndicator_6042 = number
+/**
+ * Measurement Quality Level
+ *
+ * Measurement quality level reported by a smart sensor. Quality level 100 means
+ * that the measurement has fully passed quality check algorithms. Smaller
+ * quality levels mean that quality has decreased and the measurement has only
+ * partially passed quality check algorithms. The smaller the quality level, the
+ * more caution should be used by the application when using the measurement.
+ * When the quality level is 0 it means that the measurement should certainly be
+ * rejected.
+ *
+ * ID: 6049
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MeasurementQualityLevel_6049 = number
+/**
+ * Fractional Timestamp
+ *
+ * Fractional part of the timestamp when sub-second precision is used (e.g.,
+ * 0.23 for 230 ms).
+ *
+ * ID: 6050
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type FractionalTimestamp_6050 = number
+/**
  * The objectURN for Global Navigation Satellite System
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '3430'
+export const objectURN = '3430:2.0'

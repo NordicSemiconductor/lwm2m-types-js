@@ -8,7 +8,7 @@
  *
  * ID: 3425
  * LWM2MVersion: 1.0
- * ObjectVersion: 1.0
+ * ObjectVersion: 1.1
  * MultipleInstances: true
  * Mandatory: false
  */
@@ -20,6 +20,8 @@ export type Irrigationvalve_3425 = Readonly<
 		'4'?: Commandinaction_4
 		'5'?: SchedulerID_5
 		'6'?: Invalidscheduler_6
+		'5518'?: Timestamp_5518
+		'6050'?: FractionalTimestamp_6050
 	}>
 >
 /**
@@ -93,7 +95,29 @@ type SchedulerID_5 = Array<number>
  */
 type Invalidscheduler_6 = boolean
 /**
+ * Timestamp
+ *
+ * The timestamp of when the measurement was performed.
+ *
+ * ID: 5518
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Timestamp_5518 = number
+/**
+ * Fractional Timestamp
+ *
+ * Fractional part of the timestamp when sub-second precision is used (e.g.,
+ * 0.23 for 230 ms).
+ *
+ * ID: 6050
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type FractionalTimestamp_6050 = number
+/**
  * The objectURN for Irrigation valve
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '3425'
+export const objectURN = '3425:1.1'

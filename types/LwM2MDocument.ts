@@ -767,6 +767,10 @@ import {
 	objectURN as TimeSynchronisationEvent_10284_urn,
 } from './10284.js'
 import {
+	type PresenceAlarm_10285,
+	objectURN as PresenceAlarm_10285_urn,
+} from './10285.js'
+import {
 	type AppFotaContainer_10286,
 	objectURN as AppFotaContainer_10286_urn,
 } from './10286.js'
@@ -947,6 +951,10 @@ import {
 	type EdgeApplicationServerConfiguration_10378,
 	objectURN as EdgeApplicationServerConfiguration_10378_urn,
 } from './10378.js'
+import {
+	type CellularNetworkandBearerControl_10479,
+	objectURN as CellularNetworkandBearerControl_10479_urn,
+} from './10479.js'
 import {
 	type MQTTBroker_18830,
 	objectURN as MQTTBroker_18830_urn,
@@ -1188,6 +1196,7 @@ export type LwM2MDocument = Readonly<
 		[DaughterBoardFailureAlarm_10282_urn]: DaughterBoardFailureAlarm_10282
 		[DeviceRebootEvent_10283_urn]: DeviceRebootEvent_10283
 		[TimeSynchronisationEvent_10284_urn]: TimeSynchronisationEvent_10284
+		[PresenceAlarm_10285_urn]: PresenceAlarm_10285
 		[AppFotaContainer_10286_urn]: AppFotaContainer_10286
 		[VoltageLogging_10290_urn]: VoltageLogging_10290
 		[VoltageTransient_10291_urn]: VoltageTransient_10291
@@ -1255,6 +1264,7 @@ export type LwM2MDocument = Readonly<
 		[PeriodicActivity_10376_urn]: PeriodicActivity_10376
 		[DataMonitoring_10377_urn]: DataMonitoring_10377
 		[EdgeApplicationServerConfiguration_10378_urn]: EdgeApplicationServerConfiguration_10378
+		[CellularNetworkandBearerControl_10479_urn]: CellularNetworkandBearerControl_10479
 		[MQTTBroker_18830_urn]: MQTTBroker_18830
 		[MQTTPublication_18831_urn]: MQTTPublication_18831
 	}>

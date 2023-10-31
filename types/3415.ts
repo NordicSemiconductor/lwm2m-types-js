@@ -8,7 +8,7 @@
  *
  * ID: 3415
  * LWM2MVersion: 1.0
- * ObjectVersion: 1.0
+ * ObjectVersion: 2.0
  * MultipleInstances: false
  * Mandatory: false
  */
@@ -49,8 +49,9 @@ type BackupNTPserveraddress_2 = string
  * ID: 3
  * MultipleInstances: false
  * Mandatory: false
+ * Units: h
  */
-type NTPperiod_3 = string
+type NTPperiod_3 = number
 /**
  * Last time sync
  *
@@ -77,4 +78,4 @@ type Timesyncerror_5 = boolean
  * The objectURN for Time synchronization
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '3415'
+export const objectURN = '3415:2.0'

@@ -9,7 +9,7 @@
  *
  * ID: 3416
  * LWM2MVersion: 1.0
- * ObjectVersion: 1.0
+ * ObjectVersion: 2.0
  * MultipleInstances: true
  * Mandatory: false
  */
@@ -58,13 +58,33 @@ export type Outdoorlampcontroller_3416 = Readonly<
 		'45'?: Lightsourcecurrent_45
 		'46'?: Lightsourceactivepower_46
 		'47'?: Lightsourceactiveenergy_47
+		'48'?: Maximumlightsourcecurrent_48
+		'49'?: Defaultfadetime_49
+		'50'?: Manualoverridestarttime_50
+		'51'?: Manualoverrideendtime_51
+		'52'?: Manualoverridefade_52
+		'53'?: Manualoverridedefaultduration_53
+		'54'?: Manualoverrideactive_54
+		'55'?: DefaultLightcolortemperature_55
+		'56'?: Driveroperatinghours_56
+		'58'?: ManufacturerGTIN_58
+		'59'?: ManufacturerSerialNumber_59
+		'60'?: FirmwareVersion_60
+		'61'?: DALIVersion_61
+		'62'?: Unittemperature_62
+		'63'?: Devicecapabilities_63
+		'5518'?: Timestamp_5518
+		'6042'?: MeasurementQualityIndicator_6042
+		'6049'?: MeasurementQualityLevel_6049
+		'6050'?: FractionalTimestamp_6050
 	}>
 >
 /**
  * Command
  *
- * Command (e.g. manual override, scheduler) sent to the outdoor lamp
- * controller.
+ * Command (e.g. manual override) sent to the outdoor lamp controller from 0
+ * (OFF) to 100 (ON with dimming level = 100%).
+ * A command equal to 67 means ON at 67% dimming level.
  *
  * ID: 1
  * MultipleInstances: false
@@ -90,8 +110,10 @@ type Dimminglevel_3 = number
  * For outdoor lighting applications, the command in action (this resource) may
  * differ from a command that was sent (resource ID: 1), due to LPWAN network
  * constraints and/or light adjustments within the lamp’s control gear (e.g.
- * virtual power settings). The command in action is the actual value of the
- * command in action in the outdoor lamp controller.
+ * virtual power settings).
+ * The command in action is the actual value of the command in action in the
+ * outdoor lamp controller which could have been set by a manual overide
+ * command, a scheduled action (e.g. control program) or any other mechanism.
  *
  * ID: 2
  * MultipleInstances: false
@@ -102,8 +124,8 @@ type Commandinaction_2 = number
 /**
  * Default dimming level
  *
- * The default dimming level that the outdoor lamp controller applies when the
- * device is powered ON.
+ * The default dimming level that the outdoor lamp controller applies when no
+ * schedule nor manual override command is active
  *
  * ID: 4
  * MultipleInstances: false
@@ -136,9 +158,9 @@ type Lampfailurereason_6 = number
 /**
  * Control gear failure
  *
- * Set to True in case the control gear has a failure. Outdoor lamp controllers
- * may read the control gear failure from a DALI bus or by analyzing a 0-10
- * volts interface to the control gear.
+ * Set to True in case the control gear has a failure.
+ * Outdoor lamp controllers may read the control gear failure from a DALI bus or
+ * by analyzing a 0-10 volts interface to the control gear.
  *
  * ID: 7
  * MultipleInstances: false
@@ -148,8 +170,8 @@ type Controlgearfailure_7 = boolean
 /**
  * Control gear failure reason
  *
- * Description of the reason why the control gear failed. You may refer to the
- * DiiA list of possible control gear failures.
+ * Description of the reason why the control gear failed.
+ * You may refer to the DiiA list of possible control gear failures.
  *
  * ID: 8
  * MultipleInstances: false
@@ -237,7 +259,7 @@ type Lampoperatinghours_15 = number
  * Lamp ON timestamp
  *
  * Last date and time at which the lamp switched ON, i.e. from no light to light
- * (e.g. power off to power on and/or dim level = 0 to dim level > 0).
+ * (e.g. power off to power on and/or dim level = 0 to dim level &gt; 0).
  *
  * ID: 17
  * MultipleInstances: false
@@ -336,7 +358,8 @@ type Outputport_28 = number
  * Standby mode
  *
  * Set to True if the outdoor lamp controller should keep its relay closed
- * (control gear is powered ON) when command and/or dimming level is equal to 0.
+ * (control gear is powered ON) when command and/or dimming level is equal to
+ * 0.
  * Set to False if the outdoor lamp controller should open its relay (control
  * gear is not powered ON) when command and/or dimming level is equal to 0.
  *
@@ -349,7 +372,8 @@ type Standbymode_29 = boolean
  * Constant light output
  *
  * Set to True to activate Constant Light Output dimming correction on the
- * outdoor lamp controller. Set to False to deactivate Constant Light Output.
+ * outdoor lamp controller.
+ * Set to False to deactivate Constant Light Output.
  *
  * ID: 30
  * MultipleInstances: false
@@ -359,10 +383,11 @@ type Constantlightoutput_30 = boolean
 /**
  * Cleaning factor enabled
  *
- * Light output of a luminaire may depend on the lamp cleaning factor. Cleaning
- * factor may be used as a light output compensation. Set to True to activate
- * lamp cleaning correction on the outdoor lamp controller. Set to False to
- * deactivate the lamp cleaning correction.
+ * Light output of a luminaire may depend on the lamp cleaning factor.
+ * Cleaning factor may be used as a light output compensation.
+ * Set to True to activate lamp cleaning correction on the outdoor lamp
+ * controller.
+ * Set to False to deactivate the lamp cleaning correction.
  *
  * ID: 31
  * MultipleInstances: false
@@ -405,19 +430,29 @@ type Lampcleaningdate_34 = number
 /**
  * Control type
  *
- * Type of control system with whioch the outdoor lamp controller switches, dims
- * and monitors the lamp. The possible control types are: 0: No dimming control,
- * 1 : DALI part 201 - Device Type 0, 2 : DALI part 202 - Device Type 1, 3 :
- * DALI part 203 - Device Type 2, 4 : DALI part 204 - Device Type 3, 5 : DALI
- * part 205 - Device Type 4, 6 : DALI part 206 - Device Type 5, 7 : DALI part
- * 207 - Device Type 6, 8 : DALI part 208 - Device Type 7, 9 : DALI part 209 -
- * Device Type 8, 10 : 0-10V, 11 : PWM, 12 : PWM_N, 13 : Other
+ * Type of control system with which the outdoor lamp controller switches, dims
+ * and monitors the lamp.
+ * The possible control types are:
+ * 0: No dimming control
+ * 1 : DALI part 201 - Device Type 0
+ * 2 : DALI part 202 - Device Type 1
+ * 3 : DALI part 203 - Device Type 2
+ * 4 : DALI part 204 - Device Type 3
+ * 5 : DALI part 205 - Device Type 4
+ * 6 : DALI part 206 - Device Type 5
+ * 7 : DALI part 207 - Device Type 6
+ * 8 : DALI part 208 - Device Type 7
+ * 9 : DALI part 209 - Device Type 8
+ * 10 : 0-10V
+ * 11 : PWM
+ * 12 : PWM_N
+ * 13 : Other
  *
  * ID: 35
- * MultipleInstances: false
+ * MultipleInstances: true
  * Mandatory: false
  */
-type Controltype_35 = number
+type Controltype_35 = Array<number>
 /**
  * Nominal Lamp wattage
  *
@@ -443,8 +478,8 @@ type Minimumdimminglevel_37 = number
 /**
  * Minimum lamp wattage
  *
- * Expected active power of the light source at its minimum dimming level. This
- * value may be used to detect failure at low dimming level.
+ * Expected active power of the light source at its minimum dimming level.
+ * This value may be used to detect failure at low dimming level.
  *
  * ID: 38
  * MultipleInstances: false
@@ -462,7 +497,7 @@ type Minimumlampwattage_38 = number
  * Mandatory: false
  * Units: K
  */
-type Lightcolortemperaturecommand_39 = string
+type Lightcolortemperaturecommand_39 = number
 /**
  * Actual light color temperature
  *
@@ -473,7 +508,7 @@ type Lightcolortemperaturecommand_39 = string
  * Mandatory: false
  * Units: K
  */
-type Actuallightcolortemperature_40 = string
+type Actuallightcolortemperature_40 = number
 /**
  * Virtual power output
  *
@@ -559,7 +594,255 @@ type Lightsourceactivepower_46 = number
  */
 type Lightsourceactiveenergy_47 = number
 /**
+ * Maximum light source current
+ *
+ * Maximum current (usually DC current) the control gear is able to deliver to
+ * the light source or generic load, measured at the output of the control gear.
+ *
+ * ID: 48
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: A
+ */
+type Maximumlightsourcecurrent_48 = number
+/**
+ * Default fade time
+ *
+ * Fade time to be applied to dimming commands when no schedule nor manual
+ * override command is active, particularly managed by DALI control gears.
+ * Default = 0
+ *
+ * ID: 49
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type Defaultfadetime_49 = number
+/**
+ * Manual override start time
+ *
+ * If the current timestamp is greater than the configured start time and below
+ * the configured end time, the manual command specified in resource 1 is
+ * applied, overriding any schedule. Otherwise, if no schedule is currenlty
+ * active, the default values of dimming, color temperature and fade time would
+ * be restored.
+ * Default = 0
+ *
+ * ID: 50
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Manualoverridestarttime_50 = number
+/**
+ * Manual override end time
+ *
+ * If the current timestamp is greater than the configured start time and below
+ * the configured end time, the manual command specified in resource 1 is
+ * applied, overriding any schedule. Otherwise, if no schedule is currenlty
+ * active, the default values of dimming, color temperature and fade time would
+ * be restored. Setting this resource to 0 would in fact clear any pending
+ * override command. If this resource is not explicitly written, the device
+ * shall adjust this resource according to the default duration (when the
+ * command will expire).
+ * Default = 0
+ *
+ * ID: 51
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Manualoverrideendtime_51 = number
+/**
+ * Manual override fade
+ *
+ * Fade time to be applied when an override is in progress. If set to NaN or a
+ * negative number, the value would be ignored.
+ * Default = 0
+ *
+ * ID: 52
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type Manualoverridefade_52 = number
+/**
+ * Manual override default duration
+ *
+ * If a manual command is applied without specifying a corresponding end time,
+ * the default duration is applied and the end time, if supported, is changed
+ * accordingly.
+ * A value of 0 can be considered vendor specific.
+ * Default = vendor specific (e.g. 7200)
+ *
+ * ID: 53
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type Manualoverridedefaultduration_53 = number
+/**
+ * Manual override active
+ *
+ * Indicate if a manual override is currently active on the device
+ *
+ * ID: 54
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Manualoverrideactive_54 = boolean
+/**
+ * Default Light color temperature
+ *
+ * The default color temperature level that the outdoor lamp controller applies
+ * no schedule nor manual override command is active. (kelvin)
+ *
+ * ID: 55
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: K
+ */
+type DefaultLightcolortemperature_55 = number
+/**
+ * Driver operating hours
+ *
+ * Cumulated number of hours during which the driver controlling the LED pannel
+ * has been powered.
+ * This resource MUST be used as a direct mapping for the Control Gear Operating
+ * Time extracted from the Memory bank 205 of any D4i driver being connected to
+ * the DALI bus, and supporting DALI part 253
+ *
+ * ID: 56
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: h
+ */
+type Driveroperatinghours_56 = number
+/**
+ * Manufacturer GTIN
+ *
+ * GTIN associated to the driver manufacturer as retrieved from DALI Memory Bank
+ * 0
+ *
+ * ID: 58
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ManufacturerGTIN_58 = string
+/**
+ * Manufacturer Serial Number
+ *
+ * Identification number associated to the driver manufacturer as retrieved from
+ * DALI Memory Bank 0
+ *
+ * ID: 59
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type ManufacturerSerialNumber_59 = string
+/**
+ * Firmware Version
+ *
+ * Firmware version of the bus unit
+ *
+ * ID: 60
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type FirmwareVersion_60 = string
+/**
+ * DALI Version
+ *
+ * Version of DALI implementation as a string (to allow future extensions)
+ *
+ * ID: 61
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type DALIVersion_61 = string
+/**
+ * Unit temperature
+ *
+ * Temperature associated to the Control Gear in Celsius Degrees as per DiiA
+ * specification
+ *
+ * ID: 62
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: Cel
+ */
+type Unittemperature_62 = number
+/**
+ * Device capabilities
+ *
+ * Bit mask of supported capabilities:
+ * bit 0: Power Supply
+ * bit 1: Memory Bank 1 Extension
+ * bit 2: Energy Reporting
+ * bit 3: Diagnostic
+ * bit 4: Sensor Ready
+ * bit 5: Sensor Ready Extended Diagnostic
+ * bit 6: Sensor Ready Power Type: Total Energy
+ * bit 7: Sensor Ready Power Type: Apparent Energy
+ *
+ * ID: 63
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Devicecapabilities_63 = number
+/**
+ * Timestamp
+ *
+ * The timestamp of when the measurement was performed.
+ *
+ * ID: 5518
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type Timestamp_5518 = number
+/**
+ * Measurement Quality Indicator
+ *
+ * Measurement quality indicator reported by a smart sensor. 0: UNCHECKED No
+ * quality checks were done because they do not exist or can not be applied. 1:
+ * REJECTED WITH CERTAINTY The measured value is invalid. 2: REJECTED WITH
+ * PROBABILITY The measured value is likely invalid. 3: ACCEPTED BUT SUSPICIOUS
+ * The measured value is likely OK. 4: ACCEPTED The measured value is OK. 5-15:
+ * Reserved for future extensions. 16-23: Vendor specific measurement quality.
+ *
+ * ID: 6042
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MeasurementQualityIndicator_6042 = number
+/**
+ * Measurement Quality Level
+ *
+ * Measurement quality level reported by a smart sensor. Quality level 100 means
+ * that the measurement has fully passed quality check algorithms. Smaller
+ * quality levels mean that quality has decreased and the measurement has only
+ * partially passed quality check algorithms. The smaller the quality level, the
+ * more caution should be used by the application when using the measurement.
+ * When the quality level is 0 it means that the measurement should certainly be
+ * rejected.
+ *
+ * ID: 6049
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type MeasurementQualityLevel_6049 = number
+/**
+ * Fractional Timestamp
+ *
+ * Fractional part of the timestamp when sub-second precision is used (e.g.,
+ * 0.23 for 230 ms).
+ *
+ * ID: 6050
+ * MultipleInstances: false
+ * Mandatory: false
+ * Units: s
+ */
+type FractionalTimestamp_6050 = number
+/**
  * The objectURN for Outdoor lamp controller
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '3416'
+export const objectURN = '3416:2.0'

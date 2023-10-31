@@ -35,7 +35,7 @@
  *
  * ID: 5
  * LWM2MVersion: 1.1
- * ObjectVersion: 1.1
+ * ObjectVersion: 1.2
  * MultipleInstances: false
  * Mandatory: false
  */
@@ -51,6 +51,7 @@ export type FirmwareUpdate_5 = Readonly<{
 	'11'?: Severity_11
 	'12'?: LastStateChangeTime_12
 	'13'?: MaximumDeferPeriod_13
+	'14'?: AutomaticUpgradeatDownload_14
 }>
 /**
  * Package
@@ -254,7 +255,23 @@ type LastStateChangeTime_12 = number
  */
 type MaximumDeferPeriod_13 = number
 /**
+ * Automatic Upgrade at Download
+ *
+ * Determines if the Firmware Upgrade will proceed automatically when the
+ * firmware download has completed. Value true means that the server does not
+ * need to instruct the device to proceed with the firmware upgrade when the
+ * firmware download is complete. Value false means that the server will have to
+ * instruct the device to proceed with the firmware upgrade when the firmware
+ * download is complete. When this is set to false, the server will use the
+ * Update resource to trigger the upgrade.
+ *
+ * ID: 14
+ * MultipleInstances: false
+ * Mandatory: false
+ */
+type AutomaticUpgradeatDownload_14 = boolean
+/**
  * The objectURN for Firmware Update
  * Used in the JSON schema for the LwM2M document definition as a key.
  */
-export const objectURN = '5:1.1@1.1'
+export const objectURN = '5:1.2@1.1'
