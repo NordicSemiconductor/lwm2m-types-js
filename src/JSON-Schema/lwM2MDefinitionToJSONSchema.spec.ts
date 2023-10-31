@@ -21,68 +21,98 @@ void describe('lwM2MDefinitionToJSONSchema()', () => {
 	void it('should convert a LwM2M definition to a JSON schema', async () => {
 		const lwm2mDefinition = await loadDefinition(3427)
 		const expectedSchema = {
+			$schema: 'http://json-schema.org/draft-07/schema#',
 			type: 'array',
 			title: 'Pressure monitoring sensor',
-			description: [
-				'The uCIFI water pressure monitoring sensor measures water pressure and help identify water leaks in water distribution pipelines.',
-				'LWM2MVersion: 1.0',
-				'ObjectVersion: 1.0',
-				'MultipleInstances: true',
-				'Mandatory: false',
-			].join(' '),
+			description:
+				'The uCIFI water pressure monitoring sensor measures water pressure and help identify water leaks in water distribution pipelines. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false',
 			items: {
 				type: 'object',
+				$id: 'https://github.com/OpenMobileAlliance/lwm2m-registry/raw/prod/3427.xml',
+				title: 'Pressure monitoring sensor',
+				description:
+					'The uCIFI water pressure monitoring sensor measures water pressure and help identify water leaks in water distribution pipelines. LWM2MVersion: 1.0 ObjectVersion: 1.1 MultipleInstances: true Mandatory: false',
+				additionalProperties: false,
 				properties: {
 					'1': {
+						type: 'number',
 						title: 'Pressure',
 						description:
 							'Last or current pressure value measured by the sensor. Units: Pa.',
-						type: 'number',
 					},
 					'2': {
+						type: 'integer',
 						title: 'Sampling period',
 						description: 'Number of seconds between two measurement. Units: s.',
-						type: 'integer',
 					},
 					'3': {
+						type: 'integer',
+						minimum: 0,
+						maximum: 1,
 						title: 'Leak detected',
 						description:
 							'Set to True if a water leak is detected by the sensor.',
-						minimum: 0,
-						maximum: 1,
-						type: 'integer',
 					},
 					'4': {
+						type: 'integer',
+						minimum: 0,
+						maximum: 1,
 						title: 'Hammer effect detected',
 						description:
 							'Set to True if hammer effect is detected in the water pipeline.',
-						minimum: 0,
-						maximum: 1,
-						type: 'integer',
 					},
 					'5': {
+						type: 'number',
 						title: 'Minimum measured pressure value',
 						description:
 							'Minimum value measured by the sensor since power ON or reset. Units: Pa.',
-						type: 'number',
 					},
 					'6': {
+						type: 'number',
 						title: 'Maximum measured pressure value',
 						description:
 							'Maximum value measured by the sensor since power ON or reset. Units: Pa.',
-						type: 'number',
 					},
 					'7': {
+						type: 'number',
 						title: 'Minimum range pressure value',
 						description:
 							'Minimum value that can be measured by the sensor. Units: Pa.',
-						type: 'number',
 					},
 					'8': {
+						type: 'number',
 						title: 'Maximum range pressure value',
 						description:
 							'Maximum value that can be measured by the sensor. Units: Pa.',
+					},
+					'5518': {
+						type: 'integer',
+						unixTimestamp: true,
+						title: 'Timestamp',
+						description:
+							'The timestamp of when the measurement was performed. Unix Time. A signed integer representing the number of seconds since Jan 1 st, 1970 in the UTC time zone.',
+					},
+					'6042': {
+						type: 'integer',
+						minimum: 0,
+						maximum: 23,
+						title: 'Measurement Quality Indicator',
+						description:
+							'Measurement quality indicator reported by a smart sensor. 0: UNCHECKED No quality checks were done because they do not exist or can not be applied. 1: REJECTED WITH CERTAINTY The measured value is invalid. 2: REJECTED WITH PROBABILITY The measured value is likely invalid. 3: ACCEPTED BUT SUSPICIOUS The measured value is likely OK. 4: ACCEPTED The measured value is OK. 5-15: Reserved for future extensions. 16-23: Vendor specific measurement quality.',
+					},
+					'6049': {
+						type: 'integer',
+						minimum: 0,
+						maximum: 100,
+						title: 'Measurement Quality Level',
+						description:
+							'Measurement quality level reported by a smart sensor. Quality level 100 means that the measurement has fully passed quality check algorithms. Smaller quality levels mean that quality has decreased and the measurement has only partially passed quality check algorithms. The smaller the quality level, the more caution should be used by the application when using the measurement. When the quality level is 0 it means that the measurement should certainly be rejected.',
+					},
+					'6050': {
 						type: 'number',
+						title: 'Fractional Timestamp',
+						description:
+							'Fractional part of the timestamp when sub-second precision is used (e.g., 0.23 for 230 ms). Units: s.',
 					},
 				},
 				required: ['1'],
