@@ -1,7 +1,9 @@
 import { createLwm2mJsonSchemaDocument } from './createLwm2mJsonSchemaDocument.js'
+import { describe, it } from 'node:test'
+import { check, objectMatching } from 'tsmatchers'
 
-describe('lwM2MDefinitionToJSONSchema()', () => {
-	it('should generate the JSON schema document of LwM2M', async () => {
+void describe('lwM2MDefinitionToJSONSchema()', () => {
+	void it('should generate the JSON schema document of LwM2M', async () => {
 		const result = await createLwm2mJsonSchemaDocument()
 		const expectedSchema = {
 			type: 'object',
@@ -64,6 +66,6 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			},
 		}
 
-		expect(result).toMatchObject(expectedSchema)
+		check(result).is(objectMatching(expectedSchema))
 	})
 })

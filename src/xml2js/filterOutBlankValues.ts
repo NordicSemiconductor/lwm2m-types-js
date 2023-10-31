@@ -1,13 +1,24 @@
+type filterOutBlankValuesFn = {
+	(input: null): undefined
+	(input: undefined): undefined
+	(input: string): string | undefined
+	(input: unknown[]): unknown[]
+	(input: Record<string, any>): Record<string, any>
+}
 /**
  * Filters out "blank" values (empty strings, null)
  */
-export const filterOutBlankValues = (input: unknown): unknown => {
+export const filterOutBlankValues: filterOutBlankValuesFn = (
+	input: unknown,
+) => {
 	if (input === null) return undefined
+	if (input === undefined) return undefined
 	if (typeof input === 'string') {
 		if (input.length === 0) return undefined
 		return input
 	}
-	return Object.entries(input as Record<string, any>).reduce(
+	if (typeof input !== 'object') return input as any
+	return Object.entries(input).reduce(
 		(blanksRemoved, [k, v]) => {
 			if (Array.isArray(v)) {
 				const filtered: any[] = []

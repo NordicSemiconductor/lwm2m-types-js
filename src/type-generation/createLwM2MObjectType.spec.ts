@@ -1,7 +1,9 @@
 import type { Resources } from 'src/lwm2m/LwM2MObjectDefinition'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 
-describe('createLwM2MObjectType', () => {
-	it('should create object type for single instance no mandatory object', () => {
+void describe('createLwM2MObjectType', () => {
+	void it('should create object type for single instance no mandatory object', () => {
 		const expected = {
 			Name: 'Connectivity Monitoring',
 			Description1:
@@ -63,6 +65,6 @@ describe('createLwM2MObjectType', () => {
 			} as Resources,
 		}
 
-		expect(expected).not.toBe(undefined)
+		assert.notEqual(expected, undefined)
 	})
 })

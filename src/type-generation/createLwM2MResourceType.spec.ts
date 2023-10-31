@@ -5,9 +5,11 @@ import {
 	type Resource,
 } from '../lwm2m/LwM2MObjectDefinition.js'
 import { createResourceType } from './createLwM2MResourceType.js'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 
-describe('createLwM2MResourceType', () => {
-	it(`should create array type definition for a resource`, () => {
+void describe('createLwM2MResourceType', () => {
+	void it(`should create array type definition for a resource`, () => {
 		const resourceId = '4'
 		const resource: Resource = {
 			Name: 'IP Addresses',
@@ -28,13 +30,13 @@ describe('createLwM2MResourceType', () => {
 		const result = createResourceType(resourceId, resource)
 		const type = (result.type.type as unknown as { typeName: Identifier })
 			.typeName.escapedText
-		expect(type).toBe('Array')
-		expect(result.id).toBe(expected.id)
-		expect(result.isOptional).toBe(expected.isOptional)
-		expect(result.name).toBe(expected.name)
+		assert.equal(type, 'Array')
+		assert.equal(result.id, expected.id)
+		assert.equal(result.isOptional, expected.isOptional)
+		assert.equal(result.name, expected.name)
 	})
 
-	it(`should create number type definition for a resource`, () => {
+	void it(`should create number type definition for a resource`, () => {
 		const resourceId = '3'
 		const resource: Resource = {
 			Name: 'Link Quality',
@@ -54,9 +56,9 @@ describe('createLwM2MResourceType', () => {
 		const result = createResourceType(resourceId, resource)
 		const type = (result.type.type as unknown as { typeName: Identifier })
 			.typeName.escapedText
-		expect(type).toBe('number')
-		expect(result.id).toBe(expected.id)
-		expect(result.isOptional).toBe(expected.isOptional)
-		expect(result.name).toBe(expected.name)
+		assert.equal(type, 'number')
+		assert.equal(result.id, expected.id)
+		assert.equal(result.isOptional, expected.isOptional)
+		assert.equal(result.name, expected.name)
 	})
 })

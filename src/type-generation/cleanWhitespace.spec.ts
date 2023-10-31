@@ -1,8 +1,11 @@
 import { cleanWhitespace } from './cleanWhitespace.js'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 
-describe('cleanWhitespace()', () => {
-	it('should clean whitespace', () =>
-		expect(
+void describe('cleanWhitespace()', () => {
+	void it('should clean whitespace', () =>
+		assert.equal(
 			cleanWhitespace('2: 3GPP PS GSM (GPRS) preferred (including EC-GSM-IoT)'),
-		).toEqual('2: 3GPP PS GSM (GPRS) preferred (including EC-GSM-IoT)'))
+			'2: 3GPP PS GSM (GPRS) preferred (including EC-GSM-IoT)',
+		))
 })

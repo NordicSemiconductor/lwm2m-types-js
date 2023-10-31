@@ -1,7 +1,8 @@
 import { addIfNotBlank } from './addIfNotBlank.js'
-
-describe('addIfNotBlank()', () => {
-	it('Should add element to object if value is not undefined', () => {
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
+void describe('addIfNotBlank()', () => {
+	void it('Should add element to object if value is not undefined', () => {
 		const object = { a: 'a' }
 		const input = { b: 'b' }
 		const expected = {
@@ -9,28 +10,28 @@ describe('addIfNotBlank()', () => {
 			b: 'b',
 		}
 		addIfNotBlank(object, input)
-		expect(object).toMatchObject(expected)
+		assert.deepEqual(object, expected)
 	})
 
-	it('Should not add element to object if value is undefined', () => {
+	void it('Should not add element to object if value is undefined', () => {
 		const object = { a: 'a' }
 		const input = { b: undefined }
 		const expected = {
 			a: 'a',
 		}
 		addIfNotBlank(object, input)
-		expect(object).toMatchObject(expected)
-		expect(object).not.toHaveProperty('b')
+		assert.deepEqual(object, expected)
+		assert.equal('b' in object, false)
 	})
 
-	it('Should not add element to object if value is blank', () => {
+	void it('Should not add element to object if value is blank', () => {
 		const object = { a: 'a' }
 		const input = { b: '' }
 		const expected = {
 			a: 'a',
 		}
 		addIfNotBlank(object, input)
-		expect(object).toMatchObject(expected)
-		expect(object).not.toHaveProperty('b')
+		assert.deepEqual(object, expected)
+		assert.equal('b' in object, false)
 	})
 })

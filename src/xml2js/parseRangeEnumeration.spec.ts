@@ -1,7 +1,9 @@
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 import { parseRangeEnumeration } from './parseRangeEnumeration.js'
 
-describe('getRangeEnumeration', () => {
-	it.each([
+void describe('getRangeEnumeration', () => {
+	for (const [value, expected] of [
 		// Proper range
 		['0..125', { min: 0, max: 125 }],
 		['1..256', { min: 1, max: 256 }],
@@ -19,7 +21,9 @@ describe('getRangeEnumeration', () => {
 		// String not quoted
 		['no valid case', null],
 		['8-Bits', null],
-	])('should parse %s into %j', (value, expected) =>
-		expect(parseRangeEnumeration(value)).toStrictEqual(expected),
-	)
+	] as [string, unknown][]) {
+		void it(`should parse ${value} into ${JSON.stringify(expected)}`, () => {
+			assert.deepEqual(parseRangeEnumeration(value), expected)
+		})
+	}
 })

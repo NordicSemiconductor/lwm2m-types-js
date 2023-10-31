@@ -4,6 +4,10 @@ import { Parser } from 'xml2js'
 import type { LwM2MObjectDefinition } from '../lwm2m/LwM2MObjectDefinition.js'
 import { LwM2MJSONfromXML2js } from '../xml2js/LwM2MJSONfromXML2js.js'
 import { lwM2MDefinitionToJSONSchema } from './lwM2MDefinitionToJSONSchema.js'
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import { check, objectMatching } from 'tsmatchers'
+
 const parser = new Parser({ attrkey: 'ATTR' })
 
 const loadDefinition = async (id: number): Promise<LwM2MObjectDefinition> => {
@@ -13,8 +17,8 @@ const loadDefinition = async (id: number): Promise<LwM2MObjectDefinition> => {
 	return LwM2MJSONfromXML2js(xmlAsJSON)
 }
 
-describe('lwM2MDefinitionToJSONSchema()', () => {
-	it('should convert a LwM2M definition to a JSON schema', async () => {
+void describe('lwM2MDefinitionToJSONSchema()', () => {
+	void it('should convert a LwM2M definition to a JSON schema', async () => {
 		const lwm2mDefinition = await loadDefinition(3427)
 		const expectedSchema = {
 			type: 'array',
@@ -87,12 +91,12 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			minItems: 1,
 		} as const
 
-		expect(lwM2MDefinitionToJSONSchema(lwm2mDefinition)).toMatchObject(
-			expectedSchema,
+		check(lwM2MDefinitionToJSONSchema(lwm2mDefinition)).is(
+			objectMatching(expectedSchema),
 		)
 	})
 
-	it('should implement Objlnk', async () => {
+	void it('should implement Objlnk', async () => {
 		const lwm2mDefinition = await loadDefinition(508)
 
 		const expectedSchema = {
@@ -107,17 +111,17 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			},
 		} as const
 
-		expect(
+		check(
 			lwM2MDefinitionToJSONSchema({
 				...lwm2mDefinition,
 				Resources: {
 					'4': lwm2mDefinition.Resources[4] as any,
 				},
 			}),
-		).toMatchObject(expectedSchema)
+		).is(objectMatching(expectedSchema))
 	})
 
-	it('should implement String', async () => {
+	void it('should implement String', async () => {
 		const lwm2mDefinition = await loadDefinition(5)
 		const description = `URI from where the device can download the firmware package by an alternative mechanism. As soon the device has received the Package URI it performs the download at the next practical opportunity. \r\nThe URI format is defined in RFC 3986. For example, coaps://example.org/firmware is a syntactically valid URI. The URI scheme determines the protocol to be used. For CoAP this endpoint MAY be a LwM2M Server but does not necessarily need to be. A CoAP server implementing block-wise transfer is sufficient as a server hosting a firmware repository and the expectation is that this server merely serves as a separate file server making firmware images available to LwM2M Clients.`
 
@@ -133,17 +137,17 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			},
 		} as const
 
-		expect(
+		check(
 			lwM2MDefinitionToJSONSchema({
 				...lwm2mDefinition,
 				Resources: {
 					'1': lwm2mDefinition.Resources[1] as any,
 				},
 			}),
-		).toMatchObject(expectedSchema)
+		).is(objectMatching(expectedSchema))
 	})
 
-	it('should implement Time', async () => {
+	void it('should implement Time', async () => {
 		const lwm2mDefinition = await loadDefinition(3430)
 
 		const expectedSchema = {
@@ -158,17 +162,17 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			},
 		} as const
 
-		expect(
+		check(
 			lwM2MDefinitionToJSONSchema({
 				...lwm2mDefinition,
 				Resources: {
 					'0': lwm2mDefinition.Resources[0] as any,
 				},
 			}),
-		).toMatchObject(expectedSchema)
+		).is(objectMatching(expectedSchema))
 	})
 
-	it('should implement Opaque', async () => {
+	void it('should implement Opaque', async () => {
 		const lwm2mDefinition = await loadDefinition(508)
 
 		const expectedSchema = {
@@ -182,17 +186,17 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			},
 		} as const
 
-		expect(
+		check(
 			lwM2MDefinitionToJSONSchema({
 				...lwm2mDefinition,
 				Resources: {
 					'2': lwm2mDefinition.Resources[2] as any,
 				},
 			}),
-		).toMatchObject(expectedSchema)
+		).is(objectMatching(expectedSchema))
 	})
 
-	it('should implement Unsigned Integer', async () => {
+	void it('should implement Unsigned Integer', async () => {
 		const lwm2mDefinition = await loadDefinition(3391)
 
 		const expectedSchema = {
@@ -210,17 +214,17 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			},
 		} as const
 
-		expect(
+		check(
 			lwM2MDefinitionToJSONSchema({
 				...lwm2mDefinition,
 				Resources: {
 					'902': lwm2mDefinition.Resources[902] as any,
 				},
 			}),
-		).toMatchObject(expectedSchema)
+		).is(objectMatching(expectedSchema))
 	})
 
-	it('should implement Core Link', async () => {
+	void it('should implement Core Link', async () => {
 		const lwm2mDefinition = await loadDefinition(18831)
 		const expectedSchema = {
 			items: {
@@ -236,26 +240,26 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			},
 		} as const
 
-		expect(
+		check(
 			lwM2MDefinitionToJSONSchema({
 				...lwm2mDefinition,
 				Resources: {
 					'0': lwm2mDefinition.Resources[0] as any,
 				},
 			}),
-		).toMatchObject(expectedSchema)
+		).is(objectMatching(expectedSchema))
 	})
 
-	it('should implement Mandatory', async () => {
+	void it('should implement Mandatory', async () => {
 		const lwm2mDefinition = await loadDefinition(12)
 		const expectedSchema = {
 			required: ['0', '1', '3', '4', '5', '8', '9', '14', '15'],
 		} as const
 		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition).items.required
-		expect(result).toEqual(expectedSchema.required)
+		assert.deepEqual(result, expectedSchema.required)
 	})
 
-	it('should implement MultipleInstances on the property level', async () => {
+	void it('should implement MultipleInstances on the property level', async () => {
 		const lwm2mDefinition = await loadDefinition(12)
 		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition)
 		const expected = {
@@ -269,10 +273,10 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			minItems: 1,
 		}
 
-		expect(result.items.properties['11']).toMatchObject(expected)
+		assert.deepEqual(result.items.properties['11'], expected)
 	})
 
-	it('should implement MultipleIntances=Single on the object level', async () => {
+	void it('should implement MultipleIntances=Single on the object level', async () => {
 		const lwm2mDefinition = await loadDefinition(6)
 		const expectedSchema = {
 			type: 'object',
@@ -297,6 +301,6 @@ describe('lwM2MDefinitionToJSONSchema()', () => {
 			// Empty arrays should not be allowed
 		} as const
 		const result = lwM2MDefinitionToJSONSchema(lwm2mDefinition)
-		expect(result).toMatchObject(expectedSchema)
+		check(result).is(objectMatching(expectedSchema))
 	})
 })

@@ -7,10 +7,13 @@ import {
 	type LwM2MObjectDefinition,
 } from '../lwm2m/LwM2MObjectDefinition.js'
 import { LwM2MJSONfromXML2js } from './LwM2MJSONfromXML2js.js'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
+
 const parser = new Parser({ attrkey: 'ATTR' })
 
-describe('LwM2MJSONfromXML2js()', () => {
-	it('should turn LwM2M definitions parsed using xml2js into plain LwM2M object definitions', async () => {
+void describe('LwM2MJSONfromXML2js()', () => {
+	void it('should turn LwM2M definitions parsed using xml2js into plain LwM2M object definitions', async () => {
 		const sourceFile = path.join(process.cwd(), 'lwm2m-registry', '2.xml')
 		const xml = await readFile(sourceFile, 'utf-8')
 		const value = await parser.parseStringPromise(xml)
@@ -51,15 +54,21 @@ describe('LwM2MJSONfromXML2js()', () => {
 
 		const result = LwM2MJSONfromXML2js(value)
 
-		expect(result).toMatchObject(expected)
-		expect(result).not.toHaveProperty('Description2')
-		expect(result.Resources[0]).not.toHaveProperty('Units')
+		assert.deepEqual(
+			{
+				...result,
+				Resources: {
+					'0': result.Resources[0],
+					'2': result.Resources[2],
+				},
+			},
+			expected,
+		)
+		assert.equal('Description2' in result, false)
+		assert.equal('Units' in (result.Resources[0] ?? {}), false)
 	})
 
-	it("Should check 'invalid' input value", () => {
-		const value = {}
-		expect(() => {
-			LwM2MJSONfromXML2js(value)
-		}).toThrow(Error)
+	void it("Should check 'invalid' input value", () => {
+		assert.throws(() => LwM2MJSONfromXML2js({}))
 	})
 })

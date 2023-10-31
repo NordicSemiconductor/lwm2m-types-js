@@ -2,7 +2,7 @@
   "name": "@nordicsemiconductor/lwm2m-types",
   "description": "TypeScript type definitions and JSON schema for the objects defined in the LwM2M Object Registry.",
   "scripts": {
-    "test": "jest",
+    "test": "find ./ -type f -name '*.spec.ts' -not -path './node_modules/*' -print | xargs npx tsx --no-warnings --test",
     "prepare": "husky install",
     "prepublish": "npx swc -C jsc.experimental.keepImportAttributes=true -C jsc.experimental.emitAssertForImportAttributes=true -d dist ./src"
   },
@@ -50,6 +50,7 @@
     "husky": "8.0.3",
     "jest": "29.7.0",
     "prettier": "3.0.3",
+    "tsmatchers": "5.0.0",
     "tsx": "3.14.0",
     "typescript": "5.2.2",
     "xml2js": "0.6.2"

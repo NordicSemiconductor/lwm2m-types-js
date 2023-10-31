@@ -1,51 +1,46 @@
 import { validateWithJSONSchema } from './validateWithJsonSchema.js'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 
-describe('validateWithJSONSchema', () => {
-	it('Should check input is valid', () => {
+void describe('validateWithJSONSchema', () => {
+	void it('Should check input is valid', () => {
 		const maybeValid = validateWithJSONSchema<number>({
 			type: 'number',
 		})(42)
 		if ('value' in maybeValid) {
-			expect(maybeValid.value).toEqual(42)
+			assert.equal(maybeValid.value, 42)
 		} else {
 			throw new Error(`It should be valid!`)
 		}
 	})
-	it("Should check as 'invalid' values less than 0", (done) => {
+	void it("Should check as 'invalid' values less than 0", () => {
 		const maybeValid = validateWithJSONSchema<number>({
 			type: 'number',
 			minimum: 0,
 		})(-42)
-		if ('errors' in maybeValid) {
-			done()
-		} else {
-			throw new Error(`It should not be valid!`)
-		}
+		assert.equal('errors' in maybeValid, true, `It should not be valid!`)
 	})
 })
 
-describe('unixTimestampKeyword', () => {
-	it.each([[0], [9999999999], [1476186613]])(
-		'Should check Unix Time: %s',
-		(value) => {
+void describe('unixTimestampKeyword', () => {
+	for (const value of [0, 9999999999, 1476186613]) {
+		void it(`should check Unix Time: ${value}`, () => {
 			const schema = {
 				type: 'integer',
 				unixTimestamp: true,
 				title: 'Timestamp',
 			}
 			const maybeValid = validateWithJSONSchema<number>(schema)(value)
+			assert.equal(
+				'value' in maybeValid && maybeValid.value,
+				value,
+				`It should be valid!`,
+			)
+		})
+	}
 
-			if ('value' in maybeValid) {
-				expect(maybeValid.value).toEqual(value)
-			} else {
-				throw new Error(`It should be valid!`)
-			}
-		},
-	)
-
-	it.each([[-1], [10000000000]])(
-		'should check when time is out of the allowed range: %s',
-		(value: number) => {
+	for (const value of [-1, 10000000000]) {
+		void it(`should check when time is out of the allowed range: ${value}`, () => {
 			const schema = {
 				type: 'integer',
 				unixTimestamp: true,
@@ -53,12 +48,7 @@ describe('unixTimestampKeyword', () => {
 			}
 
 			const maybeValid = validateWithJSONSchema<number>(schema)(value)
-
-			if ('errors' in maybeValid) {
-				expect(true)
-			} else {
-				throw new Error(`It should not be valid!`)
-			}
-		},
-	)
+			assert.equal('errors' in maybeValid, true, `It should not be valid!`)
+		})
+	}
 })

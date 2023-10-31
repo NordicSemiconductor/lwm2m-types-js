@@ -1,6 +1,8 @@
 import { LwM2MType } from '../lwm2m/LwM2MObjectDefinition.js'
 import { convertResources } from './convertResources.js'
 import type { ObjectDef } from './LwM2MJSONfromXML2js.js'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 
 const input: (typeof ObjectDef)['Resources'] = [
 	{
@@ -37,8 +39,8 @@ const input: (typeof ObjectDef)['Resources'] = [
 	},
 ]
 
-describe('convertResources()', () => {
-	it('Shopuld convert resources', () => {
+void describe('convertResources()', () => {
+	void it('Should convert resources', () => {
 		const expected = {
 			'0': {
 				Name: 'Short Server ID',
@@ -57,12 +59,13 @@ describe('convertResources()', () => {
 				Type: LwM2MType.Integer,
 				Description:
 					'The default value the LwM2M Client should use for the Minimum Period of an Observation in the absence of this parameter being included in an Observation.\r\nIf this Resource doesn’t exist, the default value is 0.',
+				Units: 's',
 			},
 		}
-		expect(convertResources(input)).toMatchObject(expected)
+		assert.deepEqual(convertResources(input), expected)
 	})
 
-	it('should remove invalid RangeEnumeration definitions', () => {
+	void it('should remove invalid RangeEnumeration definitions', () => {
 		const inputWithTextRangeEnumeration: (typeof ObjectDef)['Resources'] = [
 			{
 				Item: [
@@ -76,6 +79,6 @@ describe('convertResources()', () => {
 			},
 		]
 		const result = convertResources(inputWithTextRangeEnumeration)
-		expect(result[0]).not.toHaveProperty('RangeEnumeration')
+		assert.equal('RangeEnumeration' in (result?.[0] ?? {}), false)
 	})
 })

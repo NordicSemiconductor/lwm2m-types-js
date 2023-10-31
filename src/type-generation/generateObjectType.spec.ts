@@ -3,9 +3,11 @@ import os from 'node:os'
 import path from 'node:path'
 import { fromXML } from '../xml2js/definitionFromXML.js'
 import { generateObjectType } from './generateObjectType.js'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 
-describe('generateObjectType()', () => {
-	it('should export the objectURN', async () => {
+void describe('generateObjectType()', () => {
+	void it('should export the objectURN', async () => {
 		const objectDefinition = await fromXML(
 			path.join(process.cwd(), 'lwm2m-registry', '6.xml'),
 		)
@@ -19,6 +21,6 @@ describe('generateObjectType()', () => {
 
 		const { objectURN } = await import(outFile)
 
-		expect(objectURN).toEqual('6')
+		assert.equal(objectURN, '6')
 	})
 })

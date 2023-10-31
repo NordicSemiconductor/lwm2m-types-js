@@ -1,7 +1,9 @@
 import { tokenizeName } from './tokenizeName.js'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 
-describe('tokenizeName', () => {
-	it.each([
+void describe('tokenizeName', () => {
+	for (const [name, expected] of [
 		['LwM2M Server', 'LwM2MServer'],
 		// Dash -> underline
 		['LTE-MTC Band Config', 'LTE_MTCBandConfig'],
@@ -15,7 +17,9 @@ describe('tokenizeName', () => {
 		['AT&T Connectivity Extension', 'ATandTConnectivityExtension'],
 		// Remove whitespace
 		[' Server ', 'Server'],
-	])(`should replace %s to %s`, (name, expected) =>
-		expect(tokenizeName(name)).toEqual(expected),
-	)
+	] as [string, string][]) {
+		void it(`should replaced ${name} to ${expected}`, () => {
+			assert.equal(tokenizeName(name), expected)
+		})
+	}
 })
